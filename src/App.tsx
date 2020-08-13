@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 
 /* Styles */
 import { GlobalStyle } from "./styles/GlobalStyle";
+import "./styles/main.styl";
 
 const App: React.FC = (): JSX.Element => {
    return (

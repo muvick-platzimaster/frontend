@@ -4,17 +4,17 @@ A Netflix clone.
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Support](#support)
-- [Contributing](#contributing)
+-  [Installation](#installation)
+-  [Support](#support)
+-  [Contributing](#contributing)
 
 ## Installation
 
 Download to your project directory and install dependencies:
 
 ```bash
-npm install 
-npm run	dev 
+npm install
+npm run	dev
 
 npm run build
 npm run start

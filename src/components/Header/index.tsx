@@ -13,7 +13,7 @@ const Navbar = () => {
       <HeaderStyled>
          <Wrapper>
             <Link to="/">
-               <Logo width="75px" height="48px" fill="brown" />
+               <Logo width="75px" height="48px" />
             </Link>
          </Wrapper>
       </HeaderStyled>

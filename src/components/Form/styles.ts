@@ -2,6 +2,13 @@ import styled from "styled-components";
 import { colors } from "../../styles/theme";
 
 export const FormStyled = styled.form`
+   position: relative;
+   padding: 1rem 2rem;
+   border-radius: 1rem;
+   background-color: ${colors.primary}55;
+   text-align: center;
+   z-index: 10;
+
    .form-field {
       margin-bottom: 3rem;
       position: relative;
@@ -27,7 +34,7 @@ export const FormStyled = styled.form`
       height: 100%;
       font-size: 0.8rem;
       pointer-events: none;
-      border-bottom: 1px solid ${colors.secondary};
+      border-bottom: 1px solid ${colors.white};
    }
 
    .form-field label::after {
@@ -66,14 +73,29 @@ export const FormStyled = styled.form`
 
    button {
       width: 100%;
-      height: 45px;
+      max-width: 150px;
+      margin: 0 auto;
+      height: 40px;
       cursor: pointer;
       background-color: ${colors.primary};
       color: ${colors.white};
       font-size: 1rem;
-      font-weight: bold;
       border: none;
       outline: none;
       border-radius: 0.4rem;
+   }
+
+   button:focus {
+      background-color: ${colors.primary}aa;
+   }
+
+   & > p {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: ${colors.white};
+   }
+
+   & > p a {
+      font-weight: 700;
    }
 `;

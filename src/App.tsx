@@ -17,6 +17,7 @@ const App: React.FC = (): JSX.Element => {
             <Switch>
                <Route exact path="/" component={Home} />
                <Route exact path="/login" component={Signin} />
+               <Route exact path="/signup" component={Signin} />
             </Switch>
          </Router>
       </>

@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { FormStyled } from "./styles";
 import { breakpoints } from "../../styles/theme";
 
-type Props = { title: string };
+interface Props {
+   title: string;
+}
 
 const SigninForm: React.FC<Props> = ({ title }: Props): JSX.Element => {
    return (
@@ -20,7 +22,13 @@ const SigninForm: React.FC<Props> = ({ title }: Props): JSX.Element => {
                </label>
             </div>
             <div className="form-field">
-               <input id="password" type="password" name="password" required />
+               <input
+                  id="password"
+                  min="5"
+                  type="password"
+                  name="password"
+                  required
+               />
                <label htmlFor="password">
                   <span>Contraseña</span>
                </label>

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
    return (
-      <div>
+      <nav>
          <Link to="/login">Login</Link>
-      </div>
+      </nav>
    );
 };
 

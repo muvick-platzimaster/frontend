@@ -1,14 +1,7 @@
-import React from "react";
-
-/* Components */
-import Header from "../components/Header";
-import SigninForm from "../components/Form";
-
-/* Styles */
 import styled from "styled-components";
-import { colors } from "../styles/theme";
+import { colors } from "../../styles/theme";
 
-const SignupStyled = styled.div`
+export const SigninStyled = styled.div`
    position: relative;
    background-color: ${colors.black};
    color: ${colors.white};
@@ -29,14 +22,3 @@ const SignupStyled = styled.div`
       opacity: 0.5;
    }
 `;
-
-const Signup = () => {
-   return (
-      <SignupStyled>
-         <Header />
-         <SigninForm title="Inicia Sesión" />
-      </SignupStyled>
-   );
-};
-
-export default Signup;

@@ -70,6 +70,10 @@ export const FormStyled = styled.form`
    .form-field input:valid + label::after {
       transform: translateX(0);
    }
+   .form-field input:invalid:focus + label::after {
+      transform: translateX(0);
+      border-bottom: 1px solid ${colors.error};
+   }
 
    button {
       width: 100%;
@@ -97,5 +101,6 @@ export const FormStyled = styled.form`
 
    & > p a {
       font-weight: 700;
+      color: ${colors.white};
    }
 `;

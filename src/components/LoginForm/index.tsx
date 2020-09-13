@@ -24,7 +24,7 @@ const SigninForm: React.FC<Props> = ({ title }: Props): JSX.Element => {
             <div className="form-field">
                <input
                   id="password"
-                  min="5"
+                  minLength={5}
                   type="password"
                   name="password"
                   required

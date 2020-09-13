@@ -16,7 +16,13 @@ const SigninForm: React.FC<Props> = ({ title }: Props): JSX.Element => {
          <FormStyled method="post">
             <h1>{title}</h1>
             <div className="form-field">
-               <input id="name" type="text" name="name" required />
+               <input
+                  id="name"
+                  type="text"
+                  name="name"
+                  required
+                  minLength={5}
+               />
                <label htmlFor="name">
                   <span>Nombre</span>
                </label>
@@ -30,7 +36,7 @@ const SigninForm: React.FC<Props> = ({ title }: Props): JSX.Element => {
             <div className="form-field">
                <input
                   id="password"
-                  min="5"
+                  minLength={5}
                   type="password"
                   name="password"
                   required

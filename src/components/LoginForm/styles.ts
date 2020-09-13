@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { colors } from "../../styles/theme";
+import { colors, colorOpacity } from "../../styles/theme";
 
 export const FormStyled = styled.form`
    position: relative;
    padding: 1rem 2rem;
    border-radius: 1rem;
-   background-color: ${colors.primary}55;
+   background-color: ${colorOpacity(colors["color-primary"], "55")};
    text-align: center;
    z-index: 10;
 
@@ -22,7 +22,7 @@ export const FormStyled = styled.form`
       padding: 20px 0 5px;
       background-color: transparent;
       outline: none;
-      color: ${colors.white};
+      color: ${colors["color-font-base"]};
       font-size: 1.2rem;
       border: none;
    }
@@ -34,7 +34,7 @@ export const FormStyled = styled.form`
       height: 100%;
       font-size: 0.8rem;
       pointer-events: none;
-      border-bottom: 1px solid ${colors.white};
+      border-bottom: 1px solid ${colors["color-font-base"]};
    }
 
    .form-field label::after {
@@ -45,7 +45,7 @@ export const FormStyled = styled.form`
       position: absolute;
       height: 100%;
       width: 100%;
-      border-bottom: 1px solid ${colors.primary};
+      border-bottom: 1px solid ${colors["color-primary"]};
       transform: translateX(-100%);
       transition: all 200ms ease;
    }
@@ -63,7 +63,7 @@ export const FormStyled = styled.form`
    .form-field input:valid + label span {
       transform: translateY(-10px);
       font-size: 0.8rem;
-      color: ${colors.primary};
+      color: ${colors["color-primary"]};
    }
 
    .form-field input:focus + label::after,
@@ -72,7 +72,7 @@ export const FormStyled = styled.form`
    }
    .form-field input:invalid:focus + label::after {
       transform: translateX(0);
-      border-bottom: 1px solid ${colors.error};
+      border-bottom: 1px solid ${colors["color-error"]};
    }
 
    button {
@@ -81,8 +81,8 @@ export const FormStyled = styled.form`
       margin: 0 auto;
       height: 40px;
       cursor: pointer;
-      background-color: ${colors.primary};
-      color: ${colors.white};
+      background-color: ${colors["color-primary"]};
+      color: ${colors["color-font-base"]};
       font-size: 1rem;
       border: none;
       outline: none;
@@ -90,17 +90,17 @@ export const FormStyled = styled.form`
    }
 
    button:focus {
-      background-color: ${colors.primary}aa;
+      background-color: ${colorOpacity(colors["color-primary"], "AA")};
    }
 
    & > p {
       margin-top: 2rem;
       font-size: 0.9rem;
-      color: ${colors.white};
+      color: ${colors["color-font-base"]};
    }
 
    & > p a {
       font-weight: 700;
-      color: ${colors.white};
+      color: ${colors["color-font-base"]};
    }
 `;

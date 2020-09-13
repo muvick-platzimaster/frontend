@@ -18,7 +18,3 @@ type Opacity = "2A" | "55" | "7E" | "AA" | "D4";
 export const colorOpacity = (color: string, opacity: Opacity): string => {
    return `${color}${opacity}`;
 };
-
-export const sizes = {
-   "px-": "asdasd"
-};

@@ -5,7 +5,7 @@
    "main": "index.js",
    "scripts": {
       "start": "npm run build && npx serve ./dist -s",
-      "dev": "webpack-dev-server --mode development",
+      "dev": "webpack-dev-server --mode development --open",
       "build": "webpack --mode production",
       "npm:check-updates": "ncu",
       "npm:update": "ncu -u && npm install"

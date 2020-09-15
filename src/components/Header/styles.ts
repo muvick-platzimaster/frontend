@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/theme";
 
 export const HeaderStyled = styled.header`
    background-color: transparent;
@@ -26,4 +27,16 @@ export const HeaderStyled = styled.header`
       border: none;
       margin-left: 1rem;
    }
+`;
+
+export const LoginButton = styled.span`
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   background: ${colors["color-primary"]};
+   color: ${colors["color-font-base"]};
+   width: 176px;
+   height: 54px;
+   font-size: 20px;
+   border-radius: 10px;
 `;

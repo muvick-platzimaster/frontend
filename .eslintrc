@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+{
+   "env": {
+      "browser": true,
+      "es2020": true
+   },
+   "extends": ["plugin:react/recommended", "standard", "prettier"],
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+      "ecmaFeatures": {
+         "jsx": true
+      },
+      "ecmaVersion": 11,
+      "sourceType": "module"
+   },
+   "plugins": ["react", "@typescript-eslint"],
+   "rules": {}
+}
+=======
 {
    "env": {
       "browser": true,
@@ -20,3 +39,4 @@
    "plugins": ["react", "@typescript-eslint"],
    "rules": {}
 }
+>>>>>>> b20bab268b7c800a1f2eb3dcf070efbbdf63ab52

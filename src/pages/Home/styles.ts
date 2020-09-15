@@ -31,26 +31,32 @@ export const HomeStyled = styled.div`
 `;
 
 export const HomeContent = styled.div`
-   position: absolute;
+   position: relative;
+   display: flex;
+   flex-direction: column;
    color: ${colors["color-font-base"]};
-   margin-top: 180px;
-   display: block;
+   min-height: calc(100vh - 103px);
+   justify-content: center;
+   margin-top: -103px;
+   font-weight: bold;
+
    & h2 {
-      font-size: 60px;
-      font-weight: bold;
-      width: 680px;
+      font-size: 64px;
+      margin-bottom: 0;
+      line-height: 54px;
    }
    & span {
       display: block;
-      margin: 10px 0;
-      font-size: 25px;
+      margin: 2rem 0;
+      font-size: 24px;
       color: ${colors["color-font-base"]};
+      text-align: center;
    }
 `;
 
 export const HomeForm = styled.div`
-   margin-top: 50px;
    display: flex;
+   justify-content: center;
    align-items: center;
    & input {
       width: 580px;
@@ -67,8 +73,8 @@ export const HomeForm = styled.div`
       background: ${colors["color-primary"]};
       color: ${colors["color-font-base"]};
       font-size: 20px;
-      & :focus {
-         background-color: ${colors["color-primary"]};
+      &:focus {
+         filter: brightness(1.2);
       }
    }
 `;

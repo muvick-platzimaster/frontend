@@ -14,10 +14,9 @@ const Home: FC = () => {
             <div className="background"></div>
             <HomeContent>
                <h2>Programas, películas sin límite y mucho más.</h2>
-               <span>¿Quieres ver Muvick ya?</span>
                <span>
-                  Ingresa tu email para crear una cuenta o reiniciar tu
-                  membresía de Muvick.
+                  ¿Quieres ver Muvick ya? Ingresa tu email para crear una cuenta
+                  o reiniciar tu membresía de Muvick.
                </span>
                <HomeForm>
                   <input

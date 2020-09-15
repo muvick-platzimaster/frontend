@@ -90,7 +90,7 @@ export const FormStyled = styled.form`
    }
 
    button:focus {
-      background-color: ${colors.primary}aa;
+      background-color: ${colors.primary};
    }
 
    & > p {

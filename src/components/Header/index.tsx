@@ -6,17 +6,21 @@ import Wrapper from "../Wrapper";
 import Logo from "../Icons/Logo";
 
 /* Styles */
-import { HeaderStyled } from "./styles";
+import { HeaderStyled, LoginButton } from "./styles";
+import { breakpoints } from "../../styles/theme";
 
 const Navbar = () => {
    return (
-      <HeaderStyled>
-         <Wrapper>
+      <Wrapper maxWidth={breakpoints.xl}>
+         <HeaderStyled>
             <Link to="/">
-               <Logo width="75px" height="48px" />
+               <Logo width="100px" height="67px" />
             </Link>
-         </Wrapper>
-      </HeaderStyled>
+            <Link to="/login">
+               <LoginButton>Iniciar sesión</LoginButton>
+            </Link>
+         </HeaderStyled>
+      </Wrapper>
    );
 };
 

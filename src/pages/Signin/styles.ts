@@ -3,8 +3,8 @@ import { colors } from "../../styles/theme";
 
 export const SigninStyled = styled.div`
    position: relative;
-   background-color: ${colors.black};
-   color: ${colors.white};
+   background-color: ${colors["color-body-base"]};
+   color: ${colors["color-font-base"]};
    min-height: 100vh;
    background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
    background-position: center;

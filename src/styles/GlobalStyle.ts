@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    a {
-      color: ${colors.black};
+      color: ${colors["color-font-base"]};
       text-decoration: none;
    }
 `;

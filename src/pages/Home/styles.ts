@@ -3,8 +3,8 @@ import { colors } from "../../styles/theme";
 
 export const HomeStyled = styled.div`
    position: relative;
-   background-color: ${colors.black};
-   color: ${colors.white};
+   background-color: ${colors["color-body-base"]};
+   color: ${colors["color-font-base"]};
    min-height: 100vh;
    background-image: url("https://www.casadelaweb.com/wp-content/uploads/2018/10/admission-2974645_1920.jpg");
    background-position: center;
@@ -25,7 +25,7 @@ export const HomeStyled = styled.div`
 
 export const HomeContent = styled.div`
    position: absolute;
-   color: ${colors.white};
+   color: ${colors["color-font-base"]};
    margin-top: 180px;
    display: block;
    & h2 {
@@ -56,11 +56,11 @@ export const HomeForm = styled.div`
       height: 55px;
       width: 176px;
       border: none;
-      background: ${colors.primary};
-      color: ${colors.white};
+      background: ${colors["color-primary"]};
+      color: ${colors["color-font-base"]};
       font-size: 20px;
       & :focus {
-         background-color: ${colors.primary};
+         background-color: ${colors["color-primary"]};
       }
    }
 `;

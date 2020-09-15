@@ -4,7 +4,10 @@ import { breakpoints } from "../../styles/theme";
 /* Styles */
 import { WrapperStyled } from "./styles";
 
-type Props = { children: JSX.Element | JSX.Element[]; maxWidth?: string };
+interface Props {
+   children: JSX.Element | JSX.Element[];
+   maxWidth?: string;
+}
 
 const Wrapper: React.FC<Props> = ({
    children,

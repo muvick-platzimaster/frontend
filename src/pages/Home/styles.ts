@@ -15,9 +15,10 @@ export const HomeStyled = styled.div`
       bottom: 0;
       right: 0;
       left: 0;
+      min-height: 100vh;
    }
 
-   &::before {
+   .background::before {
       content: "";
       position: absolute;
       top: 0;
@@ -25,7 +26,7 @@ export const HomeStyled = styled.div`
       left: 0;
       right: 0;
       background-color: ${colors["color-primary"]};
-      opacity: 0.2;
+      opacity: 0.1;
    }
 `;
 

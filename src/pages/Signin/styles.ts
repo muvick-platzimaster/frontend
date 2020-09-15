@@ -2,16 +2,23 @@ import styled from "styled-components";
 import { colors } from "../../styles/theme";
 
 export const SigninStyled = styled.div`
-   position: relative;
-   background-color: ${colors["color-body-base"]};
    color: ${colors["color-font-base"]};
-   min-height: 100vh;
-   background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
+   margin-top: 4rem;
 
-   &::before {
+   .background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 100vh;
+      background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+   }
+
+   .background::before {
       content: "";
       position: absolute;
       top: 0;

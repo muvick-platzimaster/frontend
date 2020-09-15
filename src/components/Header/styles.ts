@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
+   background-color: transparent;
    position: relative;
    padding: 1rem 0.5rem;
    z-index: 10;

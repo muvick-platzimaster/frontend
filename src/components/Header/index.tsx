@@ -68,9 +68,11 @@ const Navbar: FC = () => {
                         </button>
                      </li>
                   ) : (
-                     <Link to="/login">
-                        <LoginButton>Iniciar sesión</LoginButton>
-                     </Link>
+                     pathname !== "/login" && (
+                        <Link to="/login">
+                           <LoginButton>Iniciar sesión</LoginButton>
+                        </Link>
+                     )
                   )}
                </ul>
             </Fragment>

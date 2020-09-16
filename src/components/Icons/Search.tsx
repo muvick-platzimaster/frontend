@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-function SvgComponent(props: React.SVGProps<SVGSVGElement>) {
+function SvgComponent (props: React.SVGProps<SVGSVGElement>) {
    return (
       <svg
          width={100}
@@ -17,8 +17,8 @@ function SvgComponent(props: React.SVGProps<SVGSVGElement>) {
          <circle cx={11} cy={11} r={8} />
          <path d="M21 21l-4.35-4.35" />
       </svg>
-   );
+   )
 }
 
-const MemoSvgComponent = React.memo(SvgComponent);
-export default MemoSvgComponent;
+const MemoSvgComponent = React.memo(SvgComponent)
+export default MemoSvgComponent

@@ -1,21 +1,21 @@
-import React, { FC, Fragment } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { FC, Fragment } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 /* Components */
-import Wrapper from "../Wrapper";
-import Logo from "../Icons/Logo";
-import Search from "../Icons/Search";
-import Bell from "../Icons/Bell";
+import Wrapper from '../Wrapper'
+import Logo from '../Icons/Logo'
+import Search from '../Icons/Search'
+import Bell from '../Icons/Bell'
 
 /* Styles */
-import { HeaderStyled, LoginButton } from "./styles";
-import { breakpoints, colors } from "../../styles/theme";
+import { HeaderStyled, LoginButton } from './styles'
+import { breakpoints, colors } from '../../styles/theme'
 
 const Navbar: FC = () => {
-   const { pathname } = useLocation();
-   const isLogged = false; // FIXME: Esto está hardcodeado
+   const { pathname } = useLocation()
+   const isLogged = false // FIXME: Esto está hardcodeado
 
-   const SIZE = "24px";
+   const SIZE = '24px'
    return (
       <Wrapper maxWidth={breakpoints.xl}>
          <HeaderStyled>
@@ -29,11 +29,11 @@ const Navbar: FC = () => {
                   {isLogged && (
                      <Fragment>
                         <li>
-                           <Link to="/">Home</Link>{" "}
+                           <Link to="/">Home</Link>{' '}
                            {/* TODO: Hacer el homepage */}
                         </li>
                         <li>
-                           <Link to="/tv-shows">Series</Link>{" "}
+                           <Link to="/tv-shows">Series</Link>{' '}
                         </li>
                         <li>
                            <Link to="/movies">Películas</Link>
@@ -55,7 +55,7 @@ const Navbar: FC = () => {
                            <Search
                               width={SIZE}
                               height={SIZE}
-                              stroke={colors["color-font-base"]}
+                              stroke={colors['color-font-base']}
                               strokeWidth="1px"
                            />
                         </button>
@@ -63,12 +63,12 @@ const Navbar: FC = () => {
                            <Bell
                               width={SIZE}
                               height={SIZE}
-                              stroke={colors["color-font-base"]}
+                              stroke={colors['color-font-base']}
                            />
                         </button>
                      </li>
                   ) : (
-                     pathname !== "/login" && (
+                     pathname !== '/login' && (
                         <Link to="/login">
                            <LoginButton>Iniciar sesión</LoginButton>
                         </Link>
@@ -78,7 +78,7 @@ const Navbar: FC = () => {
             </Fragment>
          </HeaderStyled>
       </Wrapper>
-   );
-};
+   )
+}
 
-export default Navbar;
+export default Navbar

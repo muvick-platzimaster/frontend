@@ -1,19 +1,25 @@
-import React, { FC } from "react";
-import { breakpoints } from "../../styles/theme";
-import Wrapper from "../Wrapper";
+import React, { FC } from 'react'
+import { breakpoints } from '../../styles/theme'
+import Wrapper from '../Wrapper'
 
 /* Styles */
-import { Container, Pane, Title, SubTitle, Image, Grid } from "./styles";
+import { Container, Pane, Title, SubTitle, Image, Grid } from './styles'
 
 interface Props {
-   direction: string;
-   title: string;
-   subTitle: string;
-   image: string;
-   alt: string;
+   direction: string
+   title: string
+   subTitle: string
+   image: string
+   alt: string
 }
 
-const Jumbotron: FC<Props> = ({ direction, title, subTitle, image, alt }) => {
+const Jumbotron: FC<Props> = ({
+   direction,
+   title,
+   subTitle,
+   image,
+   alt
+}: Props) => {
    return (
       <Container>
          <Wrapper maxWidth={breakpoints.lg}>
@@ -28,7 +34,7 @@ const Jumbotron: FC<Props> = ({ direction, title, subTitle, image, alt }) => {
             </Grid>
          </Wrapper>
       </Container>
-   );
-};
+   )
+}
 
-export default Jumbotron;
+export default Jumbotron

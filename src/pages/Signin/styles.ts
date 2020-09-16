@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { colors } from "../../styles/theme";
+import styled from 'styled-components'
+import { colors } from '../../styles/theme'
 
 export const SigninStyled = styled.div`
-   color: ${colors["color-font-base"]};
+   color: ${colors['color-font-base']};
 
    .background {
       position: absolute;
@@ -27,4 +27,4 @@ export const SigninStyled = styled.div`
       background-color: black;
       opacity: 0.5;
    }
-`;
+`

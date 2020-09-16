@@ -1,14 +1,14 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 
 /* Components */
-import { Wrapper, Footer } from "../../components";
+import { Wrapper, Footer } from '../../components'
 
 /* Styles */
-import { HomeStyled, HomeContent, HomeForm } from "./styles";
-import { breakpoints } from "../../styles/theme";
+import { HomeStyled, HomeContent, HomeForm } from './styles'
+import { breakpoints } from '../../styles/theme'
 
 /* Containers */
-import JumbotronContainer from "../../containers/Jumbotron";
+import JumbotronContainer from '../../containers/Jumbotron'
 
 const Home: FC = () => {
    return (
@@ -36,7 +36,7 @@ const Home: FC = () => {
          <JumbotronContainer />
          <Footer />
       </HomeStyled>
-   );
-};
+   )
+}
 
-export default Home;
+export default Home

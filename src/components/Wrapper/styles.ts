@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 type Props = { maxWidth?: string };
 
@@ -8,4 +8,4 @@ export const WrapperStyled = styled.div`
    margin-left: auto;
    margin-right: auto;
    padding: 0 1rem;
-`;
+`

@@ -1,8 +1,8 @@
-import React from "react";
-import { breakpoints } from "../../styles/theme";
+import React from 'react'
+import { breakpoints } from '../../styles/theme'
 
 /* Styles */
-import { WrapperStyled } from "./styles";
+import { WrapperStyled } from './styles'
 
 interface Props {
    children: JSX.Element | JSX.Element[];
@@ -13,7 +13,7 @@ const Wrapper: React.FC<Props> = ({
    children,
    maxWidth = breakpoints.lg
 }: Props): JSX.Element => {
-   return <WrapperStyled maxWidth={maxWidth}>{children}</WrapperStyled>;
-};
+   return <WrapperStyled maxWidth={maxWidth}>{children}</WrapperStyled>
+}
 
-export default Wrapper;
+export default Wrapper

@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import { breakpoints, colors } from "../../styles/theme";
+import styled from 'styled-components'
+import { breakpoints, colors } from '../../styles/theme'
 
 export const Container = styled.div`
-   border-bottom: 0.5rem solid ${colors["color-body-base"]};
+   border-bottom: 0.5rem solid ${colors['color-body-base']};
    padding: 3rem 0;
-   background: ${colors["color-body-dark"]};
-   color: ${colors["color-font-base"]};
+   background: ${colors['color-body-dark']};
+   color: ${colors['color-font-base']};
 
    &:first-of-type {
-      border-top: 0.5rem solid ${colors["color-body-base"]};
+      border-top: 0.5rem solid ${colors['color-body-base']};
    }
-`;
+`
 
 export const Grid = styled.div`
    display: flex;
@@ -22,7 +22,7 @@ export const Grid = styled.div`
    @media (max-width: ${breakpoints.md}) {
       flex-direction: column;
    }
-`;
+`
 
 export const Pane = styled.div`
    width: 50%;
@@ -31,18 +31,18 @@ export const Pane = styled.div`
       width: 100%;
       text-align: center;
    }
-`;
+`
 
 export const Image = styled.img`
    width: 100%;
    height: auto;
-`;
+`
 
 export const Title = styled.h1`
    font-size: 3rem;
    margin-bottom: 0.5rem;
-`;
+`
 
 export const SubTitle = styled.h2`
    font-size: 1.5rem;
-`;
+`

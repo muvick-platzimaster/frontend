@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-{
-   "env": {
-      "browser": true,
-      "es2020": true
-   },
-   "extends": ["plugin:react/recommended", "standard", "prettier"],
-   "parser": "@typescript-eslint/parser",
-   "parserOptions": {
-      "ecmaFeatures": {
-         "jsx": true
-      },
-      "ecmaVersion": 11,
-      "sourceType": "module"
-   },
-   "plugins": ["react", "@typescript-eslint"],
-   "rules": {}
-}
-=======
 {
    "env": {
       "browser": true,
@@ -25,7 +6,6 @@
    "extends": [
       "plugin:react/recommended",
       "standard",
-      "prettier",
       "plugin:@typescript-eslint/recommended"
    ],
    "parser": "@typescript-eslint/parser",
@@ -37,6 +17,7 @@
       "sourceType": "module"
    },
    "plugins": ["react", "@typescript-eslint"],
-   "rules": {}
+   "rules": {
+      "indent": ["error", 3]
+   }
 }
->>>>>>> b20bab268b7c800a1f2eb3dcf070efbbdf63ab52

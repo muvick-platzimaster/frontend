@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { Wrapper } from "../";
+import React, { FC } from 'react'
+import { Wrapper } from '../'
 
 /* Styles */
-import { Container, Grid, Title, Anchor, Column, Row, Text } from "./styles";
+import { Container, Grid, Title, Anchor, Column, Row, Text } from './styles'
 
 const Footer: FC = () => {
    return (
@@ -10,7 +10,7 @@ const Footer: FC = () => {
          <Wrapper>
             <Grid>
                <Title>
-                  ¿Preguntas? Llama al{" "}
+                  ¿Preguntas? Llama al{' '}
                   <Anchor href="tel:57 321 231 24">+57 320 843 57 39</Anchor>
                </Title>
 
@@ -45,7 +45,7 @@ const Footer: FC = () => {
             </Grid>
          </Wrapper>
       </Container>
-   );
-};
+   )
+}
 
-export default Footer;
+export default Footer

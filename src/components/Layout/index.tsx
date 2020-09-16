@@ -1,5 +1,5 @@
-import React, { FC, Fragment } from "react";
-import Header from "../Header";
+import React, { FC, Fragment } from 'react'
+import Header from '../Header'
 
 interface Props {
    children: JSX.Element | JSX.Element[];
@@ -11,7 +11,7 @@ const Layout: FC<Props> = ({ children }: Props) => {
          <Header />
          {children}
       </Fragment>
-   );
-};
+   )
+}
 
-export default Layout;
+export default Layout

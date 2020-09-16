@@ -1,17 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 /* pages */
-import Signin from "./pages/Signin";
-import Home from "./pages/Home";
+import Signin from './pages/Signin'
+import Home from './pages/Home'
 
 /* Styles */
-import { GlobalStyle } from "./styles/GlobalStyle";
-import "./styles/main.styl";
-import Layout from "./components/Layout";
-import Jumbotron from "./components/Jumbotron";
-
-import jumboData from "./components/Jumbotron/jumboData.json";
+import { GlobalStyle } from './styles/GlobalStyle'
+import './styles/main.styl'
+import Layout from './components/Layout'
 
 const App: React.FC = (): JSX.Element => {
    return (
@@ -28,7 +25,7 @@ const App: React.FC = (): JSX.Element => {
             </Layout>
          </Router>
       </>
-   );
-};
+   )
+}
 
-export default App;
+export default App

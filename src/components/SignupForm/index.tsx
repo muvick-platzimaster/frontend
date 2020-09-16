@@ -1,10 +1,10 @@
-import React from "react";
-import Wrapper from "../Wrapper";
-import { Link } from "react-router-dom";
+import React from 'react'
+import Wrapper from '../Wrapper'
+import { Link } from 'react-router-dom'
 
 /* Styles */
-import { FormStyled } from "../LoginForm/styles";
-import { breakpoints } from "../../styles/theme";
+import { FormStyled } from '../LoginForm/styles'
+import { breakpoints } from '../../styles/theme'
 
 interface Props {
    title: string;
@@ -52,7 +52,7 @@ const SigninForm: React.FC<Props> = ({ title }: Props): JSX.Element => {
             </p>
          </FormStyled>
       </Wrapper>
-   );
-};
+   )
+}
 
-export default SigninForm;
+export default SigninForm

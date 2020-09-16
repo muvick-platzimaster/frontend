@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from 'react'
 
 /* Components */
-import { Jumbotron } from "../components";
+import { Jumbotron } from '../components'
 
-import jumboData from "../fixtures/jumboData.json";
+import jumboData from '../fixtures/jumboData.json'
 
-const JumbotronContainer = () => {
+const JumbotronContainer: FC = () => {
    return (
       <section>
          {jumboData.map(({ id, title, subTitle, alt, direction, image }) => (
@@ -19,7 +19,7 @@ const JumbotronContainer = () => {
             />
          ))}
       </section>
-   );
-};
+   )
+}
 
-export default JumbotronContainer;
+export default JumbotronContainer

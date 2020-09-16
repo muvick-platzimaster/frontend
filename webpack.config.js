@@ -1,50 +1,50 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-   entry: path.resolve(__dirname, "src", "index.tsx"),
+   entry: path.resolve(__dirname, 'src', 'index.tsx'),
    output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "bundle.js"
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js'
    },
    resolve: {
-      extensions: [".ts", ".tsx", ".jsx", ".js"]
+      extensions: ['.ts', '.tsx', '.jsx', '.js']
    },
    devServer: {
       historyApiFallback: true,
-      host: "0.0.0.0",
+      host: '0.0.0.0',
       disableHostCheck: true
    },
    module: {
       rules: [
          {
             test: /\.tsx?$/,
-            use: "babel-loader",
+            use: 'babel-loader',
             exclude: /node_modules/
          },
          {
             test: /\.styl$/,
-            use: [MiniCssExtractPlugin.loader, "css-loader", "stylus-loader"]
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader']
          }
       ]
    },
    optimization: {
       splitChunks: {
-         name: "commons",
-         chunks: "all",
+         name: 'commons',
+         chunks: 'all',
          minSize: 0,
-         filename: "[name].js"
+         filename: '[name].js'
       }
    },
    plugins: [
       new HtmlWebpackPlugin({
-         template: path.resolve(__dirname, "public", "index.html"),
-         filename: "index.html"
+         template: path.resolve(__dirname, 'public', 'index.html'),
+         filename: 'index.html'
       }),
       new MiniCssExtractPlugin({
-         chunkFilename: "[name].chunk.css",
-         filename: "[name].css"
+         chunkFilename: '[name].chunk.css',
+         filename: '[name].css'
       })
    ]
-};
+}

@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { breakpoints, colors } from "../../styles/theme";
+import styled from 'styled-components'
+import { breakpoints, colors } from '../../styles/theme'
 
 export const HomeStyled = styled.div`
-   background-color: ${colors["color-body-dark"]};
-   color: ${colors["color-font-base"]};
+   background-color: ${colors['color-body-dark']};
+   color: ${colors['color-font-base']};
 
    .background {
       position: absolute;
@@ -24,16 +24,16 @@ export const HomeStyled = styled.div`
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: ${colors["color-primary"]};
+      background-color: ${colors['color-primary']};
       opacity: 0.1;
    }
-`;
+`
 
 export const HomeContent = styled.div`
    position: relative;
    display: flex;
    flex-direction: column;
-   color: ${colors["color-font-base"]};
+   color: ${colors['color-font-base']};
    min-height: calc(100vh - 103px);
    justify-content: center;
    margin-top: -103px;
@@ -51,7 +51,7 @@ export const HomeContent = styled.div`
       display: block;
       margin: 2rem 0;
       font-size: 24px;
-      color: ${colors["color-font-base"]};
+      color: ${colors['color-font-base']};
    }
 
    @media (max-width: ${breakpoints.sm}) {
@@ -70,7 +70,7 @@ export const HomeContent = styled.div`
          font-size: 18px;
       }
    }
-`;
+`
 
 export const HomeForm = styled.div`
    display: flex;
@@ -89,8 +89,8 @@ export const HomeForm = styled.div`
       width: 176px;
       cursor: pointer;
       border: none;
-      background: ${colors["color-primary"]};
-      color: ${colors["color-font-base"]};
+      background: ${colors['color-primary']};
+      color: ${colors['color-font-base']};
       font-size: 20px;
       &:focus {
          filter: brightness(1.2);
@@ -106,4 +106,4 @@ export const HomeForm = styled.div`
          margin-bottom: 1rem;
       }
    }
-`;
+`

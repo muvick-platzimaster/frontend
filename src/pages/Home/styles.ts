@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { colors } from "../../styles/theme";
+import { breakpoints, colors } from "../../styles/theme";
 
 export const HomeStyled = styled.div`
-   background-color: ${colors["color-body-base"]};
+   background-color: ${colors["color-body-dark"]};
    color: ${colors["color-font-base"]};
 
    .background {
@@ -15,7 +15,6 @@ export const HomeStyled = styled.div`
       bottom: 0;
       right: 0;
       left: 0;
-      min-height: 100vh;
    }
 
    .background::before {
@@ -38,19 +37,38 @@ export const HomeContent = styled.div`
    min-height: calc(100vh - 103px);
    justify-content: center;
    margin-top: -103px;
+   text-align: center;
    font-weight: bold;
+   margin-bottom: 103px;
 
    & h2 {
       font-size: 64px;
       margin-bottom: 0;
       line-height: 54px;
    }
+
    & span {
       display: block;
       margin: 2rem 0;
       font-size: 24px;
       color: ${colors["color-font-base"]};
-      text-align: center;
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
+      h2 {
+         font-size: 54px;
+      }
+   }
+
+   @media (max-width: ${breakpoints.xs}) {
+      h2 {
+         font-size: 32px;
+         line-height: 26px;
+      }
+
+      span {
+         font-size: 18px;
+      }
    }
 `;
 
@@ -58,6 +76,7 @@ export const HomeForm = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
+
    & input {
       width: 580px;
       height: 55px;
@@ -75,6 +94,16 @@ export const HomeForm = styled.div`
       font-size: 20px;
       &:focus {
          filter: brightness(1.2);
+      }
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
+      flex-direction: column;
+      width: 100%;
+
+      input {
+         width: 100%;
+         margin-bottom: 1rem;
       }
    }
 `;

@@ -2,7 +2,9 @@ export const colors = {
    "color-body-base": "#24292e",
    "color-font-base": "#e8f0fe",
    "color-primary": "#3D81D8",
-   "color-error": "brown"
+   "color-error": "brown",
+   "color-body-dark": "#000",
+   "color-font-muted": "#757575"
 };
 
 export const breakpoints = {

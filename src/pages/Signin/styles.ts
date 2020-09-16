@@ -3,7 +3,6 @@ import { colors } from "../../styles/theme";
 
 export const SigninStyled = styled.div`
    color: ${colors["color-font-base"]};
-   margin-top: 4rem;
 
    .background {
       position: absolute;

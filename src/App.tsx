@@ -9,6 +9,9 @@ import Home from "./pages/Home";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import "./styles/main.styl";
 import Layout from "./components/Layout";
+import Jumbotron from "./components/Jumbotron";
+
+import jumboData from "./components/Jumbotron/jumboData.json";
 
 const App: React.FC = (): JSX.Element => {
    return (
@@ -20,6 +23,7 @@ const App: React.FC = (): JSX.Element => {
                   <Route exact path="/" component={Home} />
                   <Route exact path="/login" component={Signin} />
                   <Route exact path="/signup" component={Signin} />
+                  <Route exact path="/movies"></Route>
                </Switch>
             </Layout>
          </Router>

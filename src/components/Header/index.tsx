@@ -2,24 +2,38 @@ import React, { FC, Fragment } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 /* Components */
-import Wrapper from '../Wrapper'
-import Logo from '../Icons/Logo'
-import Search from '../Icons/Search'
-import Bell from '../Icons/Bell'
+import { Wrapper } from '../'
+
+/* Icons */
+import { Search, Bell } from '../Icons'
 
 /* Styles */
-import { HeaderStyled, LoginButton } from './styles'
+import { Container, LoginButton, Grid, IconContainer, Logo } from './styles'
 import { breakpoints, colors } from '../../styles/theme'
+
+/* Contants */
+import ROUTES from '../../constants/routes'
 
 const Navbar: FC = () => {
    const { pathname } = useLocation()
    const isLogged = false // FIXME: Esto está hardcodeado
 
-   const SIZE = '24px'
    return (
+      <Container>
+         <Wrapper maxWidth={breakpoints.xl}>
+            <Grid>
+               <IconContainer to={ROUTES.HOME}>
+                  <Logo />
+               </IconContainer>
+               <LoginButton to={ROUTES.SIGN_UP}>Iniciar Sesión</LoginButton>
+            </Grid>
+         </Wrapper>
+      </Container>
+   )
+
+   /* return (
       <Wrapper maxWidth={breakpoints.xl}>
          <HeaderStyled>
-            {/* List */}
             <Fragment>
                <ul>
                   <Link to="/">
@@ -30,7 +44,6 @@ const Navbar: FC = () => {
                      <Fragment>
                         <li>
                            <Link to="/">Home</Link>{' '}
-                           {/* TODO: Hacer el homepage */}
                         </li>
                         <li>
                            <Link to="/tv-shows">Series</Link>{' '}
@@ -78,7 +91,7 @@ const Navbar: FC = () => {
             </Fragment>
          </HeaderStyled>
       </Wrapper>
-   )
+   ) */
 }
 
 export default Navbar

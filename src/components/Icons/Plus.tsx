@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const SvgComponent = (props: React.SVGProps<SVGSVGElement>) => {
+const SvgComponent: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
    return (
       <svg
          width={100}

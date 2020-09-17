@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import { colors } from '../../styles/theme'
+import { Link } from 'react-router-dom'
+import { breakpoints, colors } from '../../styles/theme'
+import { Logo as LogoMuvick } from '../Icons'
 
-export const HeaderStyled = styled.header`
+/* export const HeaderStyled = styled.header`
    background-color: transparent;
    position: relative;
    padding: 1rem 0.5rem;
@@ -27,16 +29,40 @@ export const HeaderStyled = styled.header`
       border: none;
       margin-left: 1rem;
    }
-`
+` */
 
-export const LoginButton = styled.span`
+export const LoginButton = styled(Link)`
    display: inline-flex;
    align-items: center;
    justify-content: center;
-   background: ${colors['color-primary']};
+   background-color: ${colors['color-primary']};
    color: ${colors['color-font-base']};
-   width: 176px;
-   height: 54px;
    font-size: 20px;
-   border-radius: 10px;
+   padding: 0.5rem 1rem;
+   border-radius: 5px;
+   white-space: nowrap;
+`
+
+export const Container = styled.header`
+   position: relative;
+   padding: 2rem 0;
+   z-index: 10;
+`
+
+export const IconContainer = styled(Link)``
+
+export const Logo = styled(LogoMuvick)`
+   width: 108px;
+   height: 32px;
+
+   @media (min-width: ${breakpoints.xl}) {
+      width: 167px;
+      height: 45px;
+   }
+`
+
+export const Grid = styled.div`
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 `

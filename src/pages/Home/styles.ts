@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import { breakpoints, colors } from '../../styles/theme'
 
 export const HomeStyled = styled.div`
-   background-color: ${colors['color-body-dark']};
-   color: ${colors['color-font-base']};
+   /* background-color: ${colors['color-body-dark']};
+   color: ${colors[
+      'color-font-base'
+   ]};
 
    .background {
       position: absolute;
@@ -24,33 +26,32 @@ export const HomeStyled = styled.div`
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: ${colors['color-primary']};
+      background-color: ${colors[
+      'color-primary'
+   ]};
       opacity: 0.1;
-   }
+   } */
 `
 
 export const HomeContent = styled.div`
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   color: ${colors['color-font-base']};
-   min-height: calc(100vh - 103px);
-   justify-content: center;
-   margin-top: -103px;
+   padding: calc(15rem - 113px) 0 15rem 0;
    text-align: center;
-   font-weight: bold;
-   margin-bottom: 103px;
+   position: relative;
+   z-index: 10;
 
-   & > span {
-      display: block;
-      margin: 2rem 0;
-      font-size: 24px;
-      color: ${colors['color-font-base']};
+   @media (max-width: ${breakpoints.md}) {
+      padding: calc(10rem - 113px) 0 10rem 0;
    }
 
-   @media (max-width: ${breakpoints.xs}) {
-      & > span {
-         font-size: 18px;
-      }
+   @media (max-width: ${breakpoints.sm}) {
+      padding: calc(5rem - 113px) 0 5rem 0;
+   }
+`
+export const Subtitle = styled.h2`
+   margin: 2rem 0;
+
+   @media (max-width: ${breakpoints.sm}) {
+      font-size: 1rem;
+      margin: 1rem 0;
    }
 `

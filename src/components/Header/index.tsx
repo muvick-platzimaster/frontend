@@ -1,22 +1,20 @@
-import React, { FC, Fragment } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { FC } from 'react'
 
 /* Components */
 import { Wrapper } from '../'
 
 /* Icons */
-import { Search, Bell } from '../Icons'
 
 /* Styles */
 import { Container, LoginButton, Grid, IconContainer, Logo } from './styles'
-import { breakpoints, colors } from '../../styles/theme'
+import { breakpoints } from '../../styles/theme'
 
 /* Contants */
 import ROUTES from '../../constants/routes'
 
 const Navbar: FC = () => {
-   const { pathname } = useLocation()
-   const isLogged = false // FIXME: Esto está hardcodeado
+   /* const { pathname } = useLocation() */
+   /* const isLogged = false */ // FIXME: Esto está hardcodeado
 
    return (
       <Container>

@@ -9,7 +9,7 @@ import { GlobalStyle } from './styles/GlobalStyle'
 import './styles/main.styl'
 
 /* Components */
-import Layout from './components/Layout'
+/* import Layout from './components/Layout' */
 
 /* Constants */
 import ROUTES from './constants/routes'

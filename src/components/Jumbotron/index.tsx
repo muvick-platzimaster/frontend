@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC } from 'react'
 import { breakpoints } from '../../styles/theme'
 import { Wrapper, Title } from '../'
 

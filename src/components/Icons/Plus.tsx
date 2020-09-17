@@ -19,4 +19,4 @@ const SvgComponent: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
 }
 
 const MemoSvgComponent = React.memo(SvgComponent)
-export default SvgComponent
+export default MemoSvgComponent

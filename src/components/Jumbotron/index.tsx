@@ -1,26 +1,21 @@
-import React, { FC } from 'react'
+import React, { FC, Fragment } from 'react'
 import { breakpoints } from '../../styles/theme'
-import Wrapper from '../Wrapper'
+import { Wrapper, Title } from '../'
 
 /* Styles */
-import { Container, Pane, Title, SubTitle, Image, Grid } from './styles'
+import { Container, Pane, SubTitle, Image, Grid } from './styles'
 
 interface Props {
    direction: string
-   title: string
    subTitle: string
    image: string
    alt: string
-   Container: FC
+   title: string
 }
 
-const Jumbotron: FC<Props> = ({
-   direction,
-   title,
-   subTitle,
-   image,
-   alt
-}: Props) => {
+const Jumbotron: FC<Props> = (props: Props) => {
+   const { alt, image, direction, subTitle, title } = props
+
    return (
       <Container>
          <Wrapper maxWidth={breakpoints.lg}>

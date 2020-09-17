@@ -1,8 +1,8 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC, Fragment, ReactNode } from 'react'
 import Header from '../Header'
 
 interface Props {
-   children: JSX.Element | JSX.Element[];
+   children: ReactNode
 }
 
 const Layout: FC<Props> = ({ children }: Props) => {

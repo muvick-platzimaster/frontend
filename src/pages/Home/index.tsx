@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 /* Components */
-import { Wrapper, Footer, Accordion } from '../../components'
+import { Wrapper, Footer, Accordion, Title } from '../../components'
 
 /* Styles */
 import { HomeStyled, HomeContent, HomeForm } from './styles'
@@ -17,7 +17,7 @@ const Home: FC = () => {
          <Wrapper maxWidth={breakpoints.xl}>
             <div className="background"></div>
             <HomeContent>
-               <h2>Programas, películas sin límite y mucho más.</h2>
+               <Title>Programas, películas sin límite y mucho más.</Title>
                <span>
                   ¿Quieres ver Muvick ya? Ingresa tu email para crear una cuenta
                   o reiniciar tu membresía de Muvick.

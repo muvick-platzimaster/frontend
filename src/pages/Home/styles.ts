@@ -7,7 +7,7 @@ export const HomeStyled = styled.div`
 
    .background {
       position: absolute;
-      background-image: url("https://www.casadelaweb.com/wp-content/uploads/2018/10/admission-2974645_1920.jpg");
+      background-image: url('https://www.casadelaweb.com/wp-content/uploads/2018/10/admission-2974645_1920.jpg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -18,7 +18,7 @@ export const HomeStyled = styled.div`
    }
 
    .background::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       bottom: 0;
@@ -41,12 +41,6 @@ export const HomeContent = styled.div`
    font-weight: bold;
    margin-bottom: 103px;
 
-   & h2 {
-      font-size: 64px;
-      margin-bottom: 0;
-      line-height: 54px;
-   }
-
    & span {
       display: block;
       margin: 2rem 0;
@@ -54,18 +48,7 @@ export const HomeContent = styled.div`
       color: ${colors['color-font-base']};
    }
 
-   @media (max-width: ${breakpoints.sm}) {
-      h2 {
-         font-size: 54px;
-      }
-   }
-
    @media (max-width: ${breakpoints.xs}) {
-      h2 {
-         font-size: 32px;
-         line-height: 26px;
-      }
-
       span {
          font-size: 18px;
       }

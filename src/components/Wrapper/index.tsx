@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { breakpoints } from '../../styles/theme'
 
 /* Styles */
 import { WrapperStyled } from './styles'
 
 interface Props {
-   children: JSX.Element | JSX.Element[];
-   maxWidth?: string;
+   children: ReactNode
+   maxWidth?: string
 }
 
 const Wrapper: React.FC<Props> = ({

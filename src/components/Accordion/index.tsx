@@ -11,10 +11,7 @@ interface Props {
    answer: string
 }
 
-const Accordion: FC<Props> = ({
-   question = 'Hola mundo',
-   answer = 'sopdhjasiodjasohd'
-}: Props) => {
+const Accordion: FC<Props> = ({ question, answer }: Props) => {
    const [toggleShowAnswer, setToggleShowAnswer] = useState<boolean>(false)
 
    return (

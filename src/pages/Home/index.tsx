@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 /* Components */
-import { Wrapper, Footer } from '../../components'
+import { Wrapper, Footer, Accordion } from '../../components'
 
 /* Styles */
 import { HomeStyled, HomeContent, HomeForm } from './styles'
@@ -9,6 +9,7 @@ import { breakpoints } from '../../styles/theme'
 
 /* Containers */
 import JumbotronContainer from '../../containers/Jumbotron'
+import Faqs from '../../containers/Faqs'
 
 const Home: FC = () => {
    return (
@@ -34,6 +35,7 @@ const Home: FC = () => {
             </HomeContent>
          </Wrapper>
          <JumbotronContainer />
+         <Faqs />
          <Footer />
       </HomeStyled>
    )

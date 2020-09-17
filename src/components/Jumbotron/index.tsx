@@ -11,6 +11,7 @@ interface Props {
    subTitle: string
    image: string
    alt: string
+   Container: FC
 }
 
 const Jumbotron: FC<Props> = ({

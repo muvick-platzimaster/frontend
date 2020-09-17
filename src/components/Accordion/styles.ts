@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { colors } from '../../styles/theme'
 
-export const Container = styled.div`
+export const Container = styled.li`
    background-color: ${colors['color-body-base']};
    margin-bottom: 0.5rem;
-`
-
-export const Item = styled.li`
    padding-left: 0;
    list-style: none;
+`
+
+export const Item = styled.div`
    width: 100%;
    border-top: 3px solid ${colors['color-body-dark']};
    border-bottom: 3px solid ${colors['color-body-dark']};

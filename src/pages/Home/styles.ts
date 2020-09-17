@@ -41,7 +41,7 @@ export const HomeContent = styled.div`
    font-weight: bold;
    margin-bottom: 103px;
 
-   & span {
+   & > span {
       display: block;
       margin: 2rem 0;
       font-size: 24px;
@@ -49,44 +49,8 @@ export const HomeContent = styled.div`
    }
 
    @media (max-width: ${breakpoints.xs}) {
-      span {
+      & > span {
          font-size: 18px;
-      }
-   }
-`
-
-export const HomeForm = styled.div`
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
-   & input {
-      width: 580px;
-      height: 55px;
-      padding-left: 20px;
-      font-size: 20px;
-      border: none;
-   }
-   & button {
-      height: 55px;
-      width: 176px;
-      cursor: pointer;
-      border: none;
-      background: ${colors['color-primary']};
-      color: ${colors['color-font-base']};
-      font-size: 20px;
-      &:focus {
-         filter: brightness(1.2);
-      }
-   }
-
-   @media (max-width: ${breakpoints.sm}) {
-      flex-direction: column;
-      width: 100%;
-
-      input {
-         width: 100%;
-         margin-bottom: 1rem;
       }
    }
 `

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 
 /* Components */
-import { Wrapper, Footer, Accordion, Title } from '../../components'
+import { Wrapper, Footer, Title, InputForm } from '../../components'
 
 /* Styles */
-import { HomeStyled, HomeContent, HomeForm } from './styles'
+import { HomeStyled, HomeContent } from './styles'
 import { breakpoints } from '../../styles/theme'
 
 /* Containers */
@@ -14,7 +14,7 @@ import Faqs from '../../containers/Faqs'
 const Home: FC = () => {
    return (
       <HomeStyled>
-         <Wrapper maxWidth={breakpoints.xl}>
+         <Wrapper maxWidth={breakpoints.lg}>
             <div className="background"></div>
             <HomeContent>
                <Title>Programas, películas sin límite y mucho más.</Title>
@@ -22,16 +22,9 @@ const Home: FC = () => {
                   ¿Quieres ver Muvick ya? Ingresa tu email para crear una cuenta
                   o reiniciar tu membresía de Muvick.
                </span>
-               <HomeForm>
-                  <input
-                     id="email"
-                     type="email"
-                     name="email"
-                     placeholder="Email"
-                     required
-                  />
-                  <button>COMIENZA YA</button>
-               </HomeForm>
+               <Wrapper maxWidth={breakpoints.md}>
+                  <InputForm textButton="Comienza ya" placeholder="Email" />
+               </Wrapper>
             </HomeContent>
          </Wrapper>
          <JumbotronContainer />

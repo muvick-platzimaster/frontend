@@ -6,7 +6,6 @@ import { TitleStyled } from './styles'
 interface Props {
    children: ReactNode
 }
-
 const Title: FC<Props> = ({ children }: Props) => {
    return <TitleStyled>{children}</TitleStyled>
 }

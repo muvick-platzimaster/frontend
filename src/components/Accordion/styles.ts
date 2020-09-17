@@ -3,7 +3,7 @@ import { colors } from '../../styles/theme'
 
 export const Container = styled.div`
    background-color: ${colors['color-body-base']};
-   margin-bottom: 1rem;
+   margin-bottom: 0.5rem;
 `
 
 export const Item = styled.li`
@@ -21,14 +21,16 @@ export const Button = styled.button`
    align-items: center;
    color: ${colors['color-font-base']};
    border: none;
-   padding: 0 2rem;
+   padding: 0.5rem 2rem;
    background-color: ${colors['color-body-base']};
 `
 
 export const Text = styled.p``
 
 export const IconContainer = styled.span`
-   /* transform: rotate(180deg); */
+   svg {
+      transition: all ease 200ms;
+   }
 `
 
 export const Body = styled.div`

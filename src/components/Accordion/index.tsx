@@ -21,9 +21,9 @@ const Accordion: FC<Props> = ({ question, answer }: Props) => {
                <Text>{question}</Text>
                <IconContainer theme={toggleShowAnswer}>
                   <Plus
-                     width="32"
-                     height="32"
-                     transform={toggleShowAnswer ? 'rotate(45)' : 'rotate(0)'}
+                     width="2rem"
+                     height="2rem"
+                     transform={toggleShowAnswer ? 'rotate(135)' : 'rotate(0)'}
                   />
                </IconContainer>
             </Button>

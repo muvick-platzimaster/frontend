@@ -38,11 +38,6 @@ export const Image = styled.img`
    height: auto;
 `
 
-export const Title = styled.h1`
-   font-size: 3rem;
-   margin-bottom: 0.5rem;
-`
-
 export const SubTitle = styled.h2`
    font-size: 1.5rem;
 `

@@ -1,6 +1,8 @@
 import * as React from 'react'
 
-const SvgComponent: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
+type Props = React.SVGProps<SVGSVGElement>
+
+const Plus: React.FC<Props> = (props: Props) => {
    return (
       <svg
          width={100}
@@ -18,5 +20,5 @@ const SvgComponent: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
    )
 }
 
-const MemoSvgComponent = React.memo(SvgComponent)
+const MemoSvgComponent = React.memo(Plus)
 export default MemoSvgComponent

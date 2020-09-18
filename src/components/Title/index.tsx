@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 /* Styles */
 import { TitleStyled } from './styles'
@@ -6,7 +6,7 @@ import { TitleStyled } from './styles'
 interface Props {
    children: ReactNode
 }
-const Title: FC<Props> = ({ children }: Props) => {
+function Title({ children }: Props): JSX.Element {
    return <TitleStyled>{children}</TitleStyled>
 }
 

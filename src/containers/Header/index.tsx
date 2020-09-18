@@ -1,29 +1,26 @@
-import React, { FC } from 'react'
+import React, { ReactNode } from 'react'
 
 /* Components */
-import { Header, Wrapper, InputForm, Title } from '../../components/'
+import { Header, Wrapper } from '../../components/'
 import { breakpoints } from '../../styles/theme'
 
-/* styles */
-import { Container, HomeContent, Subtitle } from './styles'
+interface Props {
+   children: ReactNode
+}
 
-const HeaderContainer: FC = () => {
+function HeaderContainer({ children }: Props): JSX.Element {
    return (
-      <Container>
-         <Header />
-         <Wrapper maxWidth={breakpoints.lg}>
-            <HomeContent>
-               <Title>Programas, películas sin límite y mucho más.</Title>
-               <Subtitle>
-                  ¿Quieres ver Muvick ya? Ingresa tu email para crear una cuenta
-                  o reiniciar tu membresía de Muvick.
-               </Subtitle>
-               <Wrapper maxWidth={breakpoints.md}>
-                  <InputForm textButton="Comienza ya" placeholder="Email" />
-               </Wrapper>
-            </HomeContent>
+      <Header>
+         <Wrapper maxWidth={breakpoints.xl}>
+            <Header.Grid>
+               <Header.Logo />
+               <Header.Button>Inicia Sesión</Header.Button>
+            </Header.Grid>
          </Wrapper>
-      </Container>
+         <Wrapper maxWidth={breakpoints.lg}>
+            <Header.Content>{children}</Header.Content>
+         </Wrapper>
+      </Header>
    )
 }
 

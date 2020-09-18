@@ -2,14 +2,7 @@ import styled from 'styled-components/macro'
 import { breakpoints, colors } from '../../styles/theme'
 
 export const Container = styled.div`
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
-   @media (max-width: ${breakpoints.sm}) {
-      flex-direction: column;
-      width: 100%;
-   }
+   padding: 2rem 0;
 `
 
 export const Input = styled.input`
@@ -46,4 +39,26 @@ export const Button = styled.button`
 export const Text = styled.span`
    white-space: nowrap;
    margin-right: 0.25rem;
+`
+
+export const Label = styled.h2`
+   text-align: center;
+   font-size: 1.3rem;
+   margin: 2rem 0;
+
+   @media (max-width: ${breakpoints.sm}) {
+      font-size: 1rem;
+      margin: 1rem 0;
+   }
+`
+
+export const Frame = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   @media (max-width: ${breakpoints.sm}) {
+      flex-direction: column;
+      width: 100%;
+   }
 `

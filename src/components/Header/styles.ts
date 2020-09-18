@@ -3,35 +3,7 @@ import { Link } from 'react-router-dom'
 import { breakpoints, colors } from '../../styles/theme'
 import { Logo as LogoMuvick } from '../Icons'
 
-/* export const HeaderStyled = styled.header`
-   background-color: transparent;
-   position: relative;
-   padding: 1rem 0.5rem;
-   z-index: 10;
-   display: flex;
-   justify-content: space-between;
-
-   ul {
-      margin: 0;
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      align-items: center;
-   }
-
-   ul li {
-      padding-left: 1rem;
-   }
-
-   button {
-      background-color: transparent;
-      cursor: pointer;
-      border: none;
-      margin-left: 1rem;
-   }
-` */
-
-export const LoginButton = styled(Link)`
+export const LinkButton = styled(Link)`
    display: inline-flex;
    align-items: center;
    justify-content: center;
@@ -46,10 +18,23 @@ export const LoginButton = styled(Link)`
 export const Container = styled.header`
    position: relative;
    padding: 2rem 0;
-   z-index: 10;
-`
 
-export const IconContainer = styled(Link)``
+   background-image: url('https://www.casadelaweb.com/wp-content/uploads/2018/10/admission-2974645_1920.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: ${colors['color-primary']};
+      opacity: 0.2;
+   }
+`
 
 export const Logo = styled(LogoMuvick)`
    width: 108px;
@@ -63,6 +48,23 @@ export const Logo = styled(LogoMuvick)`
 
 export const Grid = styled.div`
    display: flex;
+   position: relative;
    justify-content: space-between;
    align-items: center;
+   z-index: 10;
+`
+
+export const Content = styled.div`
+   position: relative;
+   padding: calc(15rem - 56.5px) 0 15rem 0;
+   z-index: 10;
+   text-align: center;
+
+   @media (max-width: ${breakpoints.md}) {
+      padding: calc(10rem - 56.5px) 0 10rem 0;
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
+      padding: 5rem 0;
+   }
 `

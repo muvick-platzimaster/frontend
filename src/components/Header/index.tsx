@@ -1,95 +1,36 @@
-import React, { FC } from 'react'
-
-/* Components */
-import { Wrapper } from '../'
-
-/* Icons */
+import React, { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 
 /* Styles */
-import { Container, LoginButton, Grid, IconContainer, Logo } from './styles'
-import { breakpoints } from '../../styles/theme'
+import { Container, LinkButton, Grid, Logo, Content } from './styles'
 
 /* Contants */
 import ROUTES from '../../constants/routes'
 
-const Navbar: FC = () => {
-   /* const { pathname } = useLocation() */
-   /* const isLogged = false */ // FIXME: Esto está hardcodeado
+type PropsWithChildren = { children: ReactNode }
 
-   return (
-      <Container>
-         <Wrapper maxWidth={breakpoints.xl}>
-            <Grid>
-               <IconContainer to={ROUTES.HOME}>
-                  <Logo />
-               </IconContainer>
-               <LoginButton to={ROUTES.SIGN_UP}>Iniciar Sesión</LoginButton>
-            </Grid>
-         </Wrapper>
-      </Container>
-   )
-
-   /* return (
-      <Wrapper maxWidth={breakpoints.xl}>
-         <HeaderStyled>
-            <Fragment>
-               <ul>
-                  <Link to="/">
-                     <Logo width="100px" height="67px" />
-                  </Link>
-
-                  {isLogged && (
-                     <Fragment>
-                        <li>
-                           <Link to="/">Home</Link>{' '}
-                        </li>
-                        <li>
-                           <Link to="/tv-shows">Series</Link>{' '}
-                        </li>
-                        <li>
-                           <Link to="/movies">Películas</Link>
-                        </li>
-                        <li>
-                           <Link to="/latest">Últimos</Link>
-                        </li>
-                        <li>
-                           <Link to="/my-list">Mi lista</Link>
-                        </li>
-                     </Fragment>
-                  )}
-               </ul>
-
-               <ul>
-                  {isLogged ? (
-                     <li>
-                        <button className="btn-search">
-                           <Search
-                              width={SIZE}
-                              height={SIZE}
-                              stroke={colors['color-font-base']}
-                              strokeWidth="1px"
-                           />
-                        </button>
-                        <button>
-                           <Bell
-                              width={SIZE}
-                              height={SIZE}
-                              stroke={colors['color-font-base']}
-                           />
-                        </button>
-                     </li>
-                  ) : (
-                     pathname !== '/login' && (
-                        <Link to="/login">
-                           <LoginButton>Iniciar sesión</LoginButton>
-                        </Link>
-                     )
-                  )}
-               </ul>
-            </Fragment>
-         </HeaderStyled>
-      </Wrapper>
-   ) */
+function Header({ children }: PropsWithChildren): JSX.Element {
+   return <Container>{children}</Container>
 }
 
-export default Navbar
+Header.Grid = function HeaderGrid({ children }: PropsWithChildren) {
+   return <Grid>{children}</Grid>
+}
+
+Header.Logo = function HeaderLogo() {
+   return (
+      <Link to={ROUTES.HOME}>
+         <Logo />
+      </Link>
+   )
+}
+
+Header.Button = function HeaderButton({ children }: PropsWithChildren) {
+   return <LinkButton to={ROUTES.SIGN_UP}>{children}</LinkButton>
+}
+
+Header.Content = function HeaderContent({ children }: PropsWithChildren) {
+   return <Content>{children}</Content>
+}
+
+export default Header

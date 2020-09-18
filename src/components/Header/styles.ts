@@ -56,12 +56,12 @@ export const Grid = styled.div`
 
 export const Content = styled.div`
    position: relative;
-   padding: calc(15rem - 56.5px) 0 15rem 0;
+   padding: calc(10rem - 56.5px) 0 10rem 0;
    z-index: 10;
    text-align: center;
 
    @media (max-width: ${breakpoints.md}) {
-      padding: calc(10rem - 56.5px) 0 10rem 0;
+      padding: calc(7rem - 56.5px) 0 7rem 0;
    }
 
    @media (max-width: ${breakpoints.sm}) {

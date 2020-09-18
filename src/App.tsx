@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 /* pages */
-import { Home } from './pages/'
+import { Home, Signup } from './pages/'
 
 /* Styles */
 import { GlobalStyle } from './styles/GlobalStyle'
@@ -21,6 +21,7 @@ const App: React.FC = () => {
          <Router>
             <Switch>
                <Route exact path={ROUTES.HOME} component={Home} />
+               <Route exact path={ROUTES.SIGN_UP} component={Signup} />
             </Switch>
          </Router>
       </>

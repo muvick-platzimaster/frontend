@@ -21,11 +21,13 @@ interface Context {
 }
 export const ToggleContext = createContext<Partial<Context>>({})
 
-function Accordion({ children }: { children: ReactNode }): JSX.Element {
+type PropsWithChildren = { children: ReactNode }
+
+function Accordion({ children }: PropsWithChildren): JSX.Element {
    return <Container>{children}</Container>
 }
 
-Accordion.Item = function AccordionItem({ children }: { children: ReactNode }) {
+Accordion.Item = function AccordionItem({ children }: PropsWithChildren) {
    const [toggleShow, setToggleShow] = useState(false)
 
    return (
@@ -35,15 +37,11 @@ Accordion.Item = function AccordionItem({ children }: { children: ReactNode }) {
    )
 }
 
-Accordion.Text = function AccordionText({ children }: { children: ReactNode }) {
+Accordion.Text = function AccordionText({ children }: PropsWithChildren) {
    return <Text>{children}</Text>
 }
 
-Accordion.Frame = function AccordionFrame({
-   children
-}: {
-   children: ReactNode
-}) {
+Accordion.Frame = function AccordionFrame({ children }: PropsWithChildren) {
    return <Frame>{children}</Frame>
 }
 
@@ -62,11 +60,7 @@ Accordion.IconContainer = function AccordionIconContainer() {
    )
 }
 
-Accordion.Button = function AccordionButton({
-   children
-}: {
-   children: ReactNode
-}) {
+Accordion.Button = function AccordionButton({ children }: PropsWithChildren) {
    const { setToggleShow, toggleShow } = useContext(ToggleContext)
 
    const handleClick = () => {
@@ -76,17 +70,13 @@ Accordion.Button = function AccordionButton({
    return <Button onClick={handleClick}>{children}</Button>
 }
 
-Accordion.Body = function AccordionBody({ children }: { children: ReactNode }) {
+Accordion.Body = function AccordionBody({ children }: PropsWithChildren) {
    const { toggleShow } = useContext(ToggleContext)
 
    return <Body hidden={!toggleShow}>{children}</Body>
 }
 
-Accordion.Title = function AccordionTitle({
-   children
-}: {
-   children: ReactNode
-}) {
+Accordion.Title = function AccordionTitle({ children }: PropsWithChildren) {
    return <Title>{children}</Title>
 }
 

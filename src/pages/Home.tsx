@@ -1,17 +1,17 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 /* Components */
 import { Footer, InputForm, Title, Wrapper } from '../components'
 
 /* Styles */
+import { breakpoints } from '../styles/theme'
 
 /* Containers */
 import JumbotronContainer from '../containers/Jumbotron'
 import Faqs from '../containers/Faqs'
 import HeaderContainer from '../containers/Header'
-import { breakpoints } from '../styles/theme'
 
-const Home: FC = () => {
+function Home(): JSX.Element {
    return (
       <>
          <HeaderContainer>

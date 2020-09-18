@@ -9,10 +9,7 @@ interface Props {
    maxWidth?: string
 }
 
-const Wrapper: React.FC<Props> = ({
-   children,
-   maxWidth = breakpoints.lg
-}: Props): JSX.Element => {
+function Wrapper({ children, maxWidth = breakpoints.lg }: Props): JSX.Element {
    return <WrapperStyled maxWidth={maxWidth}>{children}</WrapperStyled>
 }
 

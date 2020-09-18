@@ -1,8 +1,10 @@
 import React, { ReactNode } from 'react'
 
 /* Components */
-import { Header, Wrapper } from '../../components/'
-import { breakpoints } from '../../styles/theme'
+import { Header, Wrapper } from '../components'
+
+/* Styles */
+import { breakpoints } from '../styles/theme'
 
 interface Props {
    children: ReactNode

@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 /* pages */
-import { Home, Signup } from './pages/'
+import { Home, Signup, Browse } from './pages/'
 
 /* Styles */
 import { GlobalStyle } from './styles/GlobalStyle'
@@ -13,6 +13,7 @@ import './styles/main.styl'
 
 /* Constants */
 import ROUTES from './constants/routes'
+import routes from './constants/routes'
 
 const App: React.FC = () => {
    return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
             <Switch>
                <Route exact path={ROUTES.HOME} component={Home} />
                <Route exact path={ROUTES.SIGN_UP} component={Signup} />
+               <Route exact path={ROUTES.BROWSE} component={Browse} />
             </Switch>
          </Router>
       </>

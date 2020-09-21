@@ -7,9 +7,6 @@ import { Container, LinkButton, Grid, Logo, Content } from './styles'
 /* Contants */
 import ROUTES from '../../constants/routes'
 
-/* Icons */
-import { Search } from '../Icons/'
-
 // type PropsWithChildren = { children: ReactNode }
 
 interface Props {
@@ -39,11 +36,6 @@ Nav.Button = function NavButton({ children, linkTo }: Props) {
 
 Nav.Content = function NavContent({ children }: Props) {
    return <Content>{children}</Content>
-}
-
-Nav.Icon = function NavIcon() {
-   const SIZE = '1rem'
-   return <Search width={SIZE} height={SIZE} />
 }
 
 export default Nav

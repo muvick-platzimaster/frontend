@@ -15,19 +15,6 @@ function Browse(): JSX.Element {
       <>
          <NavContainer>
             <Title>Nombre de Película</Title>
-
-            <InputForm>
-               <Wrapper maxWidth={breakpoints.md}>
-                  <InputForm.Button>
-                     <InputForm.Text>Reproducir</InputForm.Text>
-                     <InputForm.Icon />
-                  </InputForm.Button>
-                  <InputForm.Button>
-                     <InputForm.Text>Más información</InputForm.Text>
-                     <InputForm.Icon />
-                  </InputForm.Button>
-               </Wrapper>
-            </InputForm>
          </NavContainer>
          <ListsContainer />
          <Footer />

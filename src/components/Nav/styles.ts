@@ -20,7 +20,7 @@ export const LinkButton = styled(Link)`
 
 export const Container = styled.header`
    position: relative;
-   padding: 2rem 0;
+   padding: 1rem 0;
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
@@ -54,13 +54,17 @@ export const Grid = styled.div`
    justify-content: flex-start;
    align-items: center;
    z-index: 10;
+   & .Nav__Icons {
+      position: absolute;
+      right: 4%;
+   }
 `
 
 export const Content = styled.div`
    position: relative;
-   padding: calc(10rem - 56.5px) 0 10rem 0;
+   padding: calc(20rem - 56.5px) 0 10rem 0;
    z-index: 10;
-   text-align: center;
+   text-align: left;
 
    @media (max-width: ${breakpoints.md}) {
       padding: calc(7rem - 56.5px) 0 7rem 0;

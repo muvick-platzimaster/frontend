@@ -6,13 +6,15 @@ import { Nav, Wrapper } from '../components'
 /* Styles */
 import { breakpoints } from '../styles/theme'
 
-import { Search } from '../components/Icons/Search'
+/* Icons */
+import { Search, Bell } from '../components/Icons/'
 
 interface Props {
    children: ReactNode
 }
 
 function NavContainer({ children }: Props): JSX.Element {
+   const ICONSIZE = { width: '17px', height: '22px' }
    return (
       <Nav>
          <Wrapper maxWidth={breakpoints.responsive}>
@@ -25,10 +27,13 @@ function NavContainer({ children }: Props): JSX.Element {
                   <Nav.Button linkTo="/latest">Más recientes</Nav.Button>
                   <Nav.Button linkTo="/browse/my-list">Mi lista</Nav.Button>
                </section>
-               <Nav.Icon />
+               <section className="Nav__Icons">
+                  <Search width={ICONSIZE.width} height={ICONSIZE.height} />
+                  <Bell width={ICONSIZE.width} height={ICONSIZE.height} />
+               </section>
             </Nav.Grid>
          </Wrapper>
-         <Wrapper maxWidth={breakpoints.lg}>
+         <Wrapper maxWidth={breakpoints.responsive}>
             <Nav.Content>{children}</Nav.Content>
          </Wrapper>
       </Nav>

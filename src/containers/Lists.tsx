@@ -3,8 +3,13 @@ import React, { FC } from 'react'
 /* Components */
 import { Lists, ListsCard } from '../components'
 
-// import { results } from '../fixtures/lists.json'
 import useFetchData from '../hooks/useFetchData'
+
+interface Data {
+   id: string
+   image: string
+   title: string
+}
 
 const ListsContainer: FC = () => {
    const { data, loading, error } = useFetchData(
@@ -15,7 +20,7 @@ const ListsContainer: FC = () => {
       <section>
          <Lists>
             {data &&
-               data.results.map(({ id, title, backdrop_path: image }) => (
+               data.results.map(({ id, title, image }: Data) => (
                   <ListsCard
                      key={id}
                      title={title}

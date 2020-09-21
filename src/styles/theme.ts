@@ -13,7 +13,8 @@ export const breakpoints = {
    sm: '640px',
    md: '768px',
    lg: '1024px',
-   xl: '1280px'
+   xl: '1280px',
+   responsive: '100%'
 }
 
 type Opacity = '2A' | '55' | '7E' | 'AA' | 'D4'

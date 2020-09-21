@@ -5,9 +5,12 @@ export const Container = styled.div`
    flex-direction: column;
    width: 300px;
    height: 180px;
-   margin: 10px 5px;
+   margin-top: 10px;
+   margin-right: 5px;
+   margin-bottom: 10px;
 `
 
 export const Image = styled.img`
    width: 300px;
+   border-radius: 5px;
 `

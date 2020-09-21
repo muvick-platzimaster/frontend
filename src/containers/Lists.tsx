@@ -3,21 +3,29 @@ import React, { FC } from 'react'
 /* Components */
 import { Lists, ListsCard } from '../components'
 
-import { results } from '../fixtures/lists.json'
+import useFetchData from '../hooks/useFetchData'
+
+interface Data {
+   id: number
+   backdrop_path: string
+   title: string
+}
 
 const ListsContainer: FC = () => {
+   const { data, loading, error } = useFetchData(
+      'https://api.themoviedb.org/3/movie/popular?api_key=e5bbbe23be02b4a93f9a207728ca1844&language=en-US&page=1'
+   )
    return (
-      <section>
-         <Lists>
-            {results.map(({ id, title, backdrop_path: image }) => (
+      <Lists>
+         {!loading &&
+            data.results.map(({ id, title, backdrop_path: image }: Data) => (
                <ListsCard
                   key={id}
                   title={title}
                   image={`http://image.tmdb.org/t/p/w300/${image}`}
                />
             ))}
-         </Lists>
-      </section>
+      </Lists>
    )
 }
 

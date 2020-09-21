@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 
-const useFetchData: any = (api: string) => {
+const useFetchData = (
+   api: string
+): { data: any; loading: boolean; error: Error | null } => {
    const [data, setData] = useState(false)
    const [loading, setLoading] = useState(true)
-   const [error, setError] = useState(false)
+   const [error, setError] = useState(null)
 
    useEffect(() => {
       setLoading(true)

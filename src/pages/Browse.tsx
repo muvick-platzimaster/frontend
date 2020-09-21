@@ -1,10 +1,7 @@
 import React from 'react'
 
 /* Components */
-import { Footer, InputForm, Title, Wrapper } from '../components'
-
-/* Styles */
-import { breakpoints } from '../styles/theme'
+import { Footer, Title } from '../components'
 
 /* Containers */
 import NavContainer from '../containers/Nav'

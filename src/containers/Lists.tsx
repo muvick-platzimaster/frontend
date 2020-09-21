@@ -7,18 +7,18 @@ import useFetchData from '../hooks/useFetchData'
 
 interface Data {
    id: number
-   backdrop_path: string
+   backdropPath: string
    title: string
 }
 
 const ListsContainer: FC = () => {
-   const { data, loading, error } = useFetchData(
+   const { data, loading } = useFetchData(
       'https://api.themoviedb.org/3/movie/popular?api_key=e5bbbe23be02b4a93f9a207728ca1844&language=en-US&page=1'
    )
    return (
       <Lists>
          {!loading &&
-            data.results.map(({ id, title, backdrop_path: image }: Data) => (
+            data.results.map(({ id, title, backdropPath: image }: Data) => (
                <ListsCard
                   key={id}
                   title={title}

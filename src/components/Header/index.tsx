@@ -26,7 +26,7 @@ Header.Logo = function HeaderLogo() {
 }
 
 Header.Button = function HeaderButton({ children }: PropsWithChildren) {
-   return <LinkButton to={ROUTES.SIGN_UP}>{children}</LinkButton>
+   return <LinkButton to={ROUTES.SIGN_IN}>{children}</LinkButton>
 }
 
 Header.Content = function HeaderContent({ children }: PropsWithChildren) {

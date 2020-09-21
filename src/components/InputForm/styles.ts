@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { breakpoints, colors } from '../../styles/theme'
+import { breakpoints, colors, transitions } from '../../styles/theme'
 
 export const Container = styled.div`
    padding: 2rem 0;
@@ -31,8 +31,15 @@ export const Button = styled.button`
    background: ${colors['color-primary']};
    color: ${colors['color-font-base']};
    font-size: 1rem;
+   transition: all ${transitions.normal};
    &:focus {
       filter: brightness(1.2);
+   }
+
+   &:disabled {
+      background-color: ${colors['color-primary-muted']};
+      cursor: default;
+      opacity: 0.8;
    }
 `
 

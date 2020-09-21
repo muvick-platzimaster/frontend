@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Accordion, Wrapper, InputForm } from '../components'
+import ROUTES from '../constants/routes'
 
 import faqs from '../fixtures/faqs.json'
 import { breakpoints } from '../styles/theme'
 
 function Faqs(): JSX.Element {
+   const [email, setEmail] = useState('')
+   const history = useHistory()
+   const handleClick = () => {
+      if (email) {
+         history.push(ROUTES.SIGN_UP)
+      }
+   }
    return (
       <Accordion>
          <Wrapper maxWidth={breakpoints.md}>
@@ -27,8 +36,13 @@ function Faqs(): JSX.Element {
                   cuenta o reiniciar tu membresía de Netflix.
                </InputForm.Label>
                <InputForm.Frame>
-                  <InputForm.Input placeholder="Email" />
-                  <InputForm.Button>
+                  <InputForm.Input
+                     onChange={({ target }) => setEmail(target.value)}
+                     placeholder="Email"
+                     value={email}
+                     type="email"
+                  />
+                  <InputForm.Button disabled={!email} onClick={handleClick}>
                      <InputForm.Text>Comienza Ya</InputForm.Text>
                      <InputForm.Icon />
                   </InputForm.Button>

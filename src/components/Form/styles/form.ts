@@ -1,10 +1,21 @@
 import styled from 'styled-components/macro'
 import { Link as ReactRouterDomLink } from 'react-router-dom'
-import { colors } from '../../../styles/theme'
+import { breakpoints, colors, transitions } from '../../../styles/theme'
 
 export const Container = styled.form``
 
-export const Error = styled.div``
+export const Error = styled.div`
+   width: 100%;
+   padding: 0.125rem 1rem;
+   background-color: ${colors['color-error']};
+   margin-bottom: 1rem;
+   border-radius: 0.25rem;
+
+   p {
+      font-size: 1rem;
+      text-align: left;
+   }
+`
 
 export const Base = styled.div``
 
@@ -33,6 +44,10 @@ export const TextSmall = styled.small`
 export const Link = styled(ReactRouterDomLink)`
    font-weight: 700;
    color: ${colors['color-font-base']};
+
+   &:hover {
+      text-decoration: underline;
+   }
 `
 
 export const Input = styled.input`
@@ -74,11 +89,26 @@ export const Submit = styled.button`
    border: none;
    outline: none;
    border-radius: 0.4rem;
+   transition: all ${transitions.normal};
+
+   &:disabled {
+      background-color: ${colors['color-primary-muted']};
+      cursor: default;
+      opacity: 0.8;
+   }
 `
 
 export const Grid = styled.div`
    background-color: #00000099;
    padding: 3rem;
+
+   @media (max-width: ${breakpoints.sm}) {
+      padding: 2rem;
+   }
+
+   @media (max-width: ${breakpoints.xs}) {
+      padding: 2rem 1rem;
+   }
 `
 export const Label = styled.label`
    bottom: 0;
@@ -100,12 +130,12 @@ export const Label = styled.label`
       width: 100%;
       border-bottom: 1px solid ${colors['color-primary']};
       transform: translateX(-100%);
-      transition: all 200ms ease;
+      transition: all ${transitions.normal};
    }
 `
 
 export const Span = styled.span`
-   transition: all ease 200ms;
+   transition: all ${transitions.normal};
    font-size: 1rem;
    position: absolute;
    bottom: 50%;

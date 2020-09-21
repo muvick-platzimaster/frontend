@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles/theme'
+import { colors, transitions } from '../../styles/theme'
 
 export const Container = styled.section`
    margin-bottom: 0.5rem;
@@ -33,7 +33,7 @@ export const IconContainer = styled.span`
    height: 32px;
    width: 32px;
    svg {
-      transition: all ease 200ms;
+      transition: all ${transitions.normal};
    }
 `
 

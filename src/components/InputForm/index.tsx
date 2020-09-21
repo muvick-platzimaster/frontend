@@ -1,4 +1,8 @@
-import React, { ReactNode } from 'react'
+import React, {
+   ButtonHTMLAttributes,
+   InputHTMLAttributes,
+   ReactNode
+} from 'react'
 
 /* Icons */
 import ArrowRight from '../Icons/ArrowRight'
@@ -10,24 +14,25 @@ interface Props {
    children: ReactNode
 }
 
+interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+   children: ReactNode
+}
+
+type PropsInput = InputHTMLAttributes<HTMLInputElement>
+
 function InputForm({ children }: Props): JSX.Element {
    return <Container>{children}</Container>
 }
 
-InputForm.Input = function InputFormInput({
-   placeholder
-}: {
-   placeholder: string
-}) {
-   return <Input placeholder={placeholder} />
+InputForm.Input = function InputFormInput({ ...restProps }: PropsInput) {
+   return <Input {...restProps} />
 }
 
 InputForm.Button = function InputFormButton({
-   children
-}: {
-   children: ReactNode
-}) {
-   return <Button>{children}</Button>
+   children,
+   ...restProps
+}: PropsButton) {
+   return <Button {...restProps}>{children}</Button>
 }
 
 InputForm.Text = function InputFormText({ children }: { children: ReactNode }) {

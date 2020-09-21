@@ -61,10 +61,10 @@ export const Content = styled.div`
    text-align: center;
 
    @media (max-width: ${breakpoints.md}) {
-      padding: calc(7rem - 56.5px) 0 7rem 0;
+      padding: calc(5rem - 56.5px) 0 5rem 0;
    }
 
    @media (max-width: ${breakpoints.sm}) {
-      padding: 5rem 0;
+      padding: 3rem 0;
    }
 `

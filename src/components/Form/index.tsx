@@ -1,6 +1,10 @@
-import React, { ReactNode } from 'react'
+import React, {
+   ButtonHTMLAttributes,
+   FormHTMLAttributes,
+   InputHTMLAttributes,
+   ReactNode
+} from 'react'
 
-import ROUTES from '../../constants/routes'
 import { breakpoints } from '../../styles/theme'
 import Wrapper from '../Wrapper'
 
@@ -23,16 +27,25 @@ import {
 
 /* Types */
 type PropsWithChildren = { children: ReactNode }
-type PropsFormGroup = {
-   name: string
-   type: string
-   minLength: number
+interface PropsFormGroup extends InputHTMLAttributes<HTMLInputElement> {
    children: ReactNode
 }
 
-function Form({ children }: PropsWithChildren): JSX.Element {
+interface PropsForm extends FormHTMLAttributes<HTMLFormElement> {
+   children: ReactNode
+}
+
+interface PropsFormSubmit extends ButtonHTMLAttributes<HTMLButtonElement> {
+   children: ReactNode
+}
+
+interface PropsFormLink {
+   children: ReactNode
+   to: string
+}
+function Form({ children, ...restProps }: PropsForm): JSX.Element {
    return (
-      <Container>
+      <Container {...restProps}>
          <Wrapper maxWidth={breakpoints.xs}>
             <Grid>{children}</Grid>
          </Wrapper>
@@ -41,7 +54,11 @@ function Form({ children }: PropsWithChildren): JSX.Element {
 }
 
 Form.Error = function FormError({ children }: PropsWithChildren) {
-   return <Error>{children}</Error>
+   return (
+      <Error>
+         <p>{children}</p>
+      </Error>
+   )
 }
 
 Form.Title = function FormTitle({ children }: PropsWithChildren) {
@@ -56,12 +73,16 @@ Form.TextSmall = function FormTextSmall({ children }: PropsWithChildren) {
    return <TextSmall>{children}</TextSmall>
 }
 
-Form.Link = function FormLink({ children }: PropsWithChildren) {
-   return <Link to={ROUTES.HOME}>{children}</Link>
+Form.Link = function FormLink({ children, to, ...restProps }: PropsFormLink) {
+   return (
+      <Link to={to} {...restProps}>
+         {children}
+      </Link>
+   )
 }
 
-Form.Submit = function FormSubmit({ children }: PropsWithChildren) {
-   return <Submit type="submit">{children}</Submit>
+Form.Submit = function FormSubmit({ children, ...restProps }: PropsFormSubmit) {
+   return <Submit {...restProps}>{children}</Submit>
 }
 
 Form.Base = function FormBase({ children }: PropsWithChildren) {
@@ -69,21 +90,13 @@ Form.Base = function FormBase({ children }: PropsWithChildren) {
 }
 
 Form.FormGroup = function FormFormGroup({
-   name,
-   type,
-   minLength,
-   children
+   children,
+   ...restProps
 }: PropsFormGroup) {
    return (
       <FormGroup>
-         <Input
-            required
-            id={name}
-            type={type}
-            name={name}
-            minLength={minLength}
-         />
-         <Label htmlFor={name}>
+         <Input {...restProps} />
+         <Label>
             <Span>{children}</Span>
          </Label>
       </FormGroup>

@@ -19,9 +19,8 @@ function HeaderContainer({ children }: Props): JSX.Element {
                <Header.Button>Inicia Sesión</Header.Button>
             </Header.Grid>
          </Wrapper>
-         <Wrapper maxWidth={breakpoints.lg}>
-            <Header.Content>{children}</Header.Content>
-         </Wrapper>
+
+         <Header.Content>{children}</Header.Content>
       </Header>
    )
 }

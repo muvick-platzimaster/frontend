@@ -7,7 +7,8 @@ import useFetchData from '../hooks/useFetchData'
 
 interface Data {
    id: number
-   backdropPath: string
+   // eslint-disable-next-line camelcase
+   backdrop_path: string
    title: string
 }
 
@@ -18,7 +19,7 @@ const ListsContainer: FC = () => {
    return (
       <Lists>
          {!loading &&
-            data.results.map(({ id, title, backdropPath: image }: Data) => (
+            data.results.map(({ id, title, backdrop_path: image }: Data) => (
                <ListsCard
                   key={id}
                   title={title}

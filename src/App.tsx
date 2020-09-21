@@ -1,5 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+   BrowserRouter as Router,
+   Route,
+   Switch,
+   Redirect
+} from 'react-router-dom'
 
 /* pages */
 import { Home, Signin, Browse, Signup } from './pages/'
@@ -15,15 +20,25 @@ import './styles/main.styl'
 import ROUTES from './constants/routes'
 
 const App: React.FC = () => {
+   const user = {}
+
    return (
       <>
          <GlobalStyle />
          <Router>
             <Switch>
-               <Route exact path={ROUTES.HOME} component={Home} />
-               <Route exact path={ROUTES.SIGN_IN} component={Signin} />
-               <Route exact path={ROUTES.BROWSE} component={Browse} />
-               <Route exact path={ROUTES.SIGN_UP} component={Signup} />
+               <Route exact path={ROUTES.HOME}>
+                  {user ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
+               </Route>
+               <Route exact path={ROUTES.SIGN_IN}>
+                  {user ? <Redirect to={ROUTES.BROWSE} /> : <Signin />}
+               </Route>
+               <Route exact path={ROUTES.BROWSE}>
+                  {user ? <Browse /> : <Redirect to={ROUTES.SIGN_IN} />}
+               </Route>
+               <Route exact path={ROUTES.SIGN_UP}>
+                  {user ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
+               </Route>
             </Switch>
          </Router>
       </>

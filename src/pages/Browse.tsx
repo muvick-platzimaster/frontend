@@ -7,13 +7,13 @@ import { Footer, InputForm, Title, Wrapper } from '../components'
 import { breakpoints } from '../styles/theme'
 
 /* Containers */
-import HeaderContainer from '../containers/Header'
+import NavContainer from '../containers/Nav'
 import ListsContainer from '../containers/Lists'
 
 function Browse(): JSX.Element {
    return (
       <>
-         <HeaderContainer>
+         <NavContainer>
             <Title>Nombre de Película</Title>
 
             <InputForm>
@@ -28,7 +28,7 @@ function Browse(): JSX.Element {
                   </InputForm.Button>
                </Wrapper>
             </InputForm>
-         </HeaderContainer>
+         </NavContainer>
          <ListsContainer />
          <Footer />
       </>

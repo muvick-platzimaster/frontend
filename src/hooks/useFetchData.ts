@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 const useFetchData: any = (api: string) => {
    const [data, setData] = useState(false)
-   const [loading, setLoading] = useState(false)
+   const [loading, setLoading] = useState(true)
    const [error, setError] = useState(false)
 
    useEffect(() => {

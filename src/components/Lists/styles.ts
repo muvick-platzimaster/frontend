@@ -7,6 +7,7 @@ export const Container = styled.main`
    width: 100%;
    overflow: scroll;
    padding-left: 50px;
+   top: -80px;
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
    &::-webkit-scrollbar {

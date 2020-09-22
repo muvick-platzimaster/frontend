@@ -21,7 +21,7 @@ function Browse(): JSX.Element {
             </Browser.Frame>
          </NavContainer>
          <BrowseContainer />
-         {/* <ListsContainer /> */}
+         <ListsContainer />
          <Footer /> */
       </>
    )

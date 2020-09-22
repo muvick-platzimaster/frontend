@@ -2,6 +2,7 @@ import React, { FC, Fragment, useState, FormEvent } from 'react'
 import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
+import axios from 'axios'
 
 const Signup: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
@@ -15,6 +16,20 @@ const Signup: FC = (): JSX.Element => {
       setEmail('')
       setPassword('')
       setUsername('')
+      setError(null)
+
+      axios({
+         baseURL: 'http://localhost:5000',
+         method: 'POST',
+         url: '/auth/signup',
+         data: {
+            email,
+            password,
+            name: username
+         }
+      })
+         .then(console.log)
+         .catch(setError)
    }
 
    return (

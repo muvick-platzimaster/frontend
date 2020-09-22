@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { transitions } from '../../../styles/theme'
 
 export const Container = styled.section`
    padding: 0 0 0 1rem;
@@ -15,9 +16,8 @@ export const Entities = styled.div`
    display: flex;
    overflow-x: scroll;
    cursor: grab;
-   &::-webkit-scrollbar {
-      display: none;
-   }
+   padding: 2rem 0;
+   margin-right: 5rem;
 `
 
 export const Subtitle = styled.p``
@@ -26,7 +26,25 @@ export const Text = styled.p``
 
 export const Image = styled.img``
 
-export const Item = styled.div``
+export const Item = styled.div`
+   margin-right: 0.5rem;
+   width: 100%;
+   transition: all ${transitions.normal};
+   transform-origin: left center;
+
+   &:hover {
+      margin-right: 6.725rem;
+      transform: scale(1.5);
+   }
+
+   &:last-of-type {
+      padding-right: 1rem;
+      transform-origin: right center;
+   }
+
+   &:last-of-type:hover {
+   }
+`
 
 export const Details = styled.div``
 

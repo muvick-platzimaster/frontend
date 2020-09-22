@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
    BrowserRouter as Router,
    Route,
@@ -20,7 +20,19 @@ import './styles/main.styl'
 import ROUTES from './constants/routes'
 
 const App: React.FC = () => {
-   const user = {}
+   const [user, setUser] = useState(() => {
+      return localStorage.getItem('TOKEN') || null
+   })
+   useEffect(() => {
+      window.addEventListener('storage', () => {
+         setUser(localStorage.getItem('TOKEN') || null)
+      })
+
+      return () =>
+         window.removeEventListener('storage', () => {
+            setUser(localStorage.getItem('TOKEN') || null)
+         })
+   }, [])
 
    return (
       <>

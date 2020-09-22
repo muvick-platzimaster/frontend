@@ -2,21 +2,39 @@ import React, { FC, Fragment, useState, FormEvent } from 'react'
 import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
-import { useHistory } from 'react-router-dom'
+import { Spinner } from '../components/Icons'
+import axios from 'axios'
 
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
    const [password, setPassword] = useState<string>('')
    const [error, setError] = useState<null | Error>(null)
+   const [loading, setLoading] = useState<boolean>(false)
    const isInvalid = email === '' || password === ''
-   const history = useHistory()
 
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
-
-      setEmail('')
-      setPassword('')
-      history.push(ROUTES.BROWSE)
+      setError(null)
+      setLoading(true)
+      axios({
+         baseURL: 'http://localhost:5000',
+         url: '/auth/signin',
+         method: 'POST',
+         data: {
+            email,
+            password
+         }
+      })
+         .then(({ data }) => {
+            localStorage.setItem('TOKEN', data.accessToken)
+         })
+         .then(() => location.reload())
+         .catch((err) => {
+            setError(err)
+            setEmail('')
+            setPassword('')
+         })
+         .finally(() => setLoading(false))
    }
 
    return (
@@ -47,8 +65,12 @@ const Signin: FC = (): JSX.Element => {
                >
                   Password
                </Form.FormGroup>
-               <Form.Submit type="submit" disabled={isInvalid}>
-                  Iniciar Sesión
+               <Form.Submit type="submit" disabled={isInvalid || loading}>
+                  {loading ? (
+                     <Spinner color="#fff" width="1rem" height="100%" />
+                  ) : (
+                     'Iniciar Sesión'
+                  )}
                </Form.Submit>
                <Form.Text>
                   ¿Primera vez en Muvick?{' '}

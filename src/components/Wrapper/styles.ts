@@ -7,5 +7,5 @@ export const WrapperStyled = styled.div`
    max-width: ${(props: Props) => props.maxWidth};
    margin-left: auto;
    margin-right: auto;
-   /* padding: 0 1rem; */
+   padding: 0 1rem;
 `

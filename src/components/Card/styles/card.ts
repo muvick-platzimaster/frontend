@@ -1,12 +1,24 @@
 import styled from 'styled-components/macro'
 
-export const Container = styled.section`` /* Group */
+export const Container = styled.section`
+   padding: 0 0 0 1rem;
+` /* Group */
 
 export const Title = styled.p``
 
-export const RowContainer = styled.div`` /* Card - Container */
+export const RowContainer = styled.div`
+   margin-top: 3rem;
+` /* Card - Container */
 
-export const Entities = styled.div``
+export const Entities = styled.div`
+   width: 100%;
+   display: flex;
+   overflow-x: scroll;
+   cursor: grab;
+   &::-webkit-scrollbar {
+      display: none;
+   }
+`
 
 export const Subtitle = styled.p``
 

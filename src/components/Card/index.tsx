@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import useFetchData from '../../hooks/useFetchData'
 import { Movie } from '../../interfaces'
 
 /* Styles */
@@ -26,6 +27,12 @@ interface Context {
    setShowFeature: React.Dispatch<React.SetStateAction<boolean>>
    itemFeature: Movie | null
    setItemFeature: React.Dispatch<React.SetStateAction<Movie | null>>
+   movies: Movie[]
+}
+
+interface PropsRowContainer {
+   children: React.ReactNode
+   genreId: number | string
 }
 
 /* Card Component */
@@ -40,21 +47,49 @@ Card.Title = function CardTitle({ children }: PropsWithChildren) {
    return <Title>{children}</Title>
 }
 
-Card.RowContainer = function CardRowContainer({ children }: PropsWithChildren) {
+Card.RowContainer = function CardRowContainer({
+   children,
+   genreId
+}: PropsRowContainer) {
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
 
+   const API_KEY = 'e5bbbe23be02b4a93f9a207728ca1844'
+
+   const { data } = useFetchData(
+      `/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
+   )
+
    return (
       <FeatureContext.Provider
-         value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}
+         value={{
+            showFeature,
+            setShowFeature,
+            itemFeature,
+            setItemFeature,
+            movies: data?.results
+         }}
       >
          <RowContainer>{children}</RowContainer>
       </FeatureContext.Provider>
    )
 }
 
-Card.Entities = function CardEntities({ children }: PropsWithChildren) {
-   return <Entities>{children}</Entities>
+Card.Entities = function CardEntities() {
+   const { movies } = useContext(FeatureContext)
+
+   return (
+      <Entities>
+         {movies?.map((movie) => (
+            <Card.Item key={movie.id} item={movie}>
+               <Card.Image
+                  src={`http://image.tmdb.org/t/p/w200/${movie.backdrop_path}`}
+                  hidden={!movie.backdrop_path}
+               />
+            </Card.Item>
+         ))}
+      </Entities>
+   )
 }
 
 Card.Item = function CardItem({ children, item }: PropsItem) {

@@ -9,4 +9,8 @@ export { default as Form } from './Form'
 export { default as Lists } from './Lists'
 export { default as ListsCard } from './ListsCard'
 export { default as Nav } from './Nav'
+<<<<<<< HEAD
 export { default as Card } from './Card'
+=======
+export { default as Browser } from './Browser'
+>>>>>>> 816fb780abbfdd1f2762c963e7a9e98e4fa2bf35

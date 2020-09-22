@@ -7,7 +7,7 @@ export const LinkButton = styled(Link)`
    display: inline-flex;
    align-items: center;
    justify-content: center;
-   color: #d6d3d0;
+   color: #efefef;
    font-size: 14px;
    padding: 0.5rem 1rem;
    border-radius: 5px;
@@ -20,12 +20,11 @@ export const LinkButton = styled(Link)`
 
 export const Container = styled.header`
    position: relative;
-   padding: 1rem 0;
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
    min-height: 100vh;
-
+   background-image: url('http://image.tmdb.org/t/p/original/zzWGRw277MNoCs3zhyG3YmYQsXv.jpg');
    &::before {
       content: '';
       position: absolute;
@@ -34,7 +33,7 @@ export const Container = styled.header`
       left: 0;
       right: 0;
       background-color: ${colors['color-primary']};
-      opacity: 0.2;
+      opacity: 0.5;
    }
 `
 
@@ -54,6 +53,13 @@ export const Grid = styled.div`
    justify-content: flex-start;
    align-items: center;
    z-index: 10;
+   padding-left: 60px;
+   padding-top: 20px;
+   background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5102415966386555) 0%,
+      rgba(158, 158, 168, 0) 100%
+   );
    & .Nav__Icons {
       position: absolute;
       right: 4%;
@@ -62,7 +68,7 @@ export const Grid = styled.div`
 
 export const Content = styled.div`
    position: relative;
-   padding: calc(20rem - 56.5px) 0 10rem 0;
+   padding: calc(20rem - 56.5px) 0 10rem 60px;
    z-index: 10;
    text-align: left;
 

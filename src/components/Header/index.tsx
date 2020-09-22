@@ -9,8 +9,13 @@ import ROUTES from '../../constants/routes'
 
 type PropsWithChildren = { children: ReactNode }
 
-function Header({ children }: PropsWithChildren): JSX.Element {
-   return <Container>{children}</Container>
+interface PropsHeaderContainer {
+   children: ReactNode
+   bg?: boolean
+}
+
+function Header({ children, bg = true }: PropsHeaderContainer): JSX.Element {
+   return <Container theme={{ bg }}>{children}</Container>
 }
 
 Header.Grid = function HeaderGrid({ children }: PropsWithChildren) {

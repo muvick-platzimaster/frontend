@@ -7,7 +7,9 @@ interface UseFetchDataReturn {
    error: Error | null
 }
 
-const useFetchData = (api: string): UseFetchDataReturn => {
+const useFetchData = (API: string): UseFetchDataReturn => {
+   const BASE_URL = 'https://api.themoviedb.org/3'
+
    const [data, setData] = useState<ApiResponse | null>(null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState(null)
@@ -15,7 +17,10 @@ const useFetchData = (api: string): UseFetchDataReturn => {
    useEffect(() => {
       const abortController = new AbortController()
       setLoading(true)
-      fetch(api, { method: 'GET', signal: abortController.signal })
+      fetch(`${BASE_URL}${API}`, {
+         method: 'GET',
+         signal: abortController.signal
+      })
          .then((res) => res.json())
          .then((response: ApiResponse) => {
             setData(response)

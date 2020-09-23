@@ -11,12 +11,13 @@ import { Search, Bell } from '../components/Icons/'
 
 interface Props {
    children: ReactNode
+   background: string
 }
 
-function NavContainer({ children }: Props): JSX.Element {
+function NavContainer({ children, background }: Props): JSX.Element {
    const ICONSIZE = { width: '17px', height: '22px' }
    return (
-      <Nav>
+      <Nav background={background}>
          <Nav.Grid>
             <Nav.Logo />
             <section>

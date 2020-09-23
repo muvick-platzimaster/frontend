@@ -12,10 +12,11 @@ import ROUTES from '../../constants/routes'
 interface Props {
    linkTo?: string
    children: ReactNode
+   background?: string
 }
 
-function Nav({ children }: Props): JSX.Element {
-   return <Container>{children}</Container>
+function Nav({ children, background }: Props): JSX.Element {
+   return <Container background={background}>{children}</Container>
 }
 
 Nav.Grid = function NavGrid({ children }: Props) {

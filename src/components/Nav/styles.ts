@@ -23,7 +23,9 @@ export const Container = styled.header`
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   background-image: url('http://image.tmdb.org/t/p/original/zzWGRw277MNoCs3zhyG3YmYQsXv.jpg');
+   background-image: ${(props) =>
+      `url('http://image.tmdb.org/t/p/original${props.background}')`};
+   height: 80vh;
    &::before {
       content: '';
       position: absolute;
@@ -33,6 +35,9 @@ export const Container = styled.header`
       right: 0;
       background-color: ${colors['color-primary']};
       opacity: 0.5;
+   }
+   @media (max-width: ${breakpoints.sm}) {
+      height: 40%;
    }
 `
 
@@ -67,7 +72,7 @@ export const Grid = styled.div`
 
 export const Content = styled.div`
    position: relative;
-   padding: calc(20rem - 56.5px) 0 10rem 60px;
+   padding: calc(15rem - 56.5px) 0 10rem 60px;
    z-index: 10;
    text-align: left;
 

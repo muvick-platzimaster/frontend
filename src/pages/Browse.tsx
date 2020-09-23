@@ -39,7 +39,6 @@ function Browse(): JSX.Element {
       getRandomMovie()
    }, [data])
 
-   console.log(randomMovie)
    return (
       <>
          <NavContainer background={randomMovie.backdrop_path}>
@@ -53,7 +52,7 @@ function Browse(): JSX.Element {
             </Browser.Frame>
          </NavContainer>
          {show && (
-            <ModalContainer handleClose={hideModal}>Mulán</ModalContainer>
+            <ModalContainer movie={randomMovie} handleClose={hideModal} />
          )}
          <BrowseContainer />
          {/* <ListsContainer /> */}

@@ -1,13 +1,30 @@
 import React from 'react'
+import { breakpoints } from '../styles/theme'
 
-import { Modal } from '../components'
+/* Components */
+import { Modal, Browser, Wrapper } from '../components'
 
-const ModalContainer = ({ handleClose, children }) => {
+/* Icons */
+import Close from '../components/Icons/Close'
+
+const ModalContainer = ({ movie, handleClose }) => {
    return (
       <Modal>
          <Modal.Section>
-            {children}
-            <Modal.Button onClick={handleClose}>Close</Modal.Button>
+            <Modal.Image background={movie.backdrop_path} />
+            <Wrapper maxWidth={breakpoints.md}>
+               <Modal.Title>{movie.title}</Modal.Title>
+
+               <Modal.Button>
+                  <Browser.Button background="white">Reproducir</Browser.Button>
+               </Modal.Button>
+               <Modal.CloseButton onClick={handleClose}>
+                  <Close />
+               </Modal.CloseButton>
+            </Wrapper>
+            <Wrapper maxWidth={breakpoints.md}>
+               <Modal.Text>{movie.overview}</Modal.Text>
+            </Wrapper>
          </Modal.Section>
       </Modal>
    )

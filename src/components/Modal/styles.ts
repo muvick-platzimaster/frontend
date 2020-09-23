@@ -13,11 +13,51 @@ export const Container = styled.div`
 export const Section = styled.section`
    position: fixed;
    background: #181818;
-   width: 50%;
    height: auto;
-   top: 50%;
+   top: 40%;
    left: 50%;
    transform: translate(-50%, -50%);
+   border-radius: 10px;
 `
 
-export const Button = styled.button``
+export const Button = styled.div`
+   position: absolute;
+   top: 400px;
+`
+
+export const Title = styled.h2`
+   position: absolute;
+   top: 300px;
+`
+export const Text = styled.p`
+   position: relative;
+   width: 60%;
+`
+export const Image = styled.div`
+   background-image: ${(props) =>
+      `url('http://image.tmdb.org/t/p/original${props.background.background}')`};
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   height: 480px;
+   width: 850px;
+   border-radius: 10px 10px 0 0;
+`
+
+export const CloseButton = styled.div`
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   width: 40px;
+   height: 40px;
+   background: #181818;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   & svg {
+      width: 60%;
+      height: 60%;
+   }
+`

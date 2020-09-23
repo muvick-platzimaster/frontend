@@ -42,7 +42,7 @@ Browser.Frame = function BrowserFrame({ children }: { children: ReactNode }) {
 }
 
 Browser.Title = function BrowserTitle({ children }: { children: ReactNode }) {
-   if ((`${children}`.length > 5) & (`${children}`.length < 10)) {
+   if (`${children}`.length > 5 && `${children}`.length < 10) {
       return <TitleStyled fontSize="5em">{children}</TitleStyled>
    } else if (`${children}`.length > 10) {
       return <TitleStyled fontSize="3em">{children}</TitleStyled>

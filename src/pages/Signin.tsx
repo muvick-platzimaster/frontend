@@ -3,12 +3,12 @@ import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
 import { Spinner } from '../components/Icons'
-import axios from 'axios'
+import axios, { AxiosAdapter, AxiosError } from 'axios'
 
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
    const [password, setPassword] = useState<string>('')
-   const [error, setError] = useState<null | Error>(null)
+   const [error, setError] = useState<null | AxiosError>(null)
    const [loading, setLoading] = useState<boolean>(false)
    const isInvalid = email === '' || password === ''
 
@@ -29,8 +29,9 @@ const Signin: FC = (): JSX.Element => {
             localStorage.setItem('TOKEN', data.accessToken)
          })
          .then(() => location.reload())
-         .catch((err) => {
+         .catch((err: AxiosError) => {
             setError(err)
+
             setEmail('')
             setPassword('')
          })
@@ -42,7 +43,13 @@ const Signin: FC = (): JSX.Element => {
          <HeaderContainer>
             <Form onSubmit={handleSubmit} action={ROUTES.SIGN_IN} method="POST">
                <Form.Title>Iniciar Sesión</Form.Title>
-               {error && <Form.Error>{error?.message}</Form.Error>}
+               {error && (
+                  <Form.Error>
+                     {error?.response?.data.message === 'invalid_credentials'
+                        ? 'Credenciales inválidas'
+                        : 'Error en el servidor'}
+                  </Form.Error>
+               )}
                <Form.FormGroup
                   value={email}
                   minLength={5}

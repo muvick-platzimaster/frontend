@@ -19,8 +19,6 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    background?: string
 }
 
-type PropsInput = InputHTMLAttributes<HTMLInputElement>
-
 function Browser({ children }: Props): JSX.Element {
    return <Container>{children}</Container>
 }
@@ -33,6 +31,9 @@ Browser.Button = function BrowserButton({
 }
 
 Browser.Text = function BrowserText({ children }: { children: ReactNode }) {
+   if (`${children}`.length > 100) {
+      return <Text>{`${children}`.substring(0, 100)}...</Text>
+   }
    return <Text>{children}</Text>
 }
 
@@ -41,7 +42,12 @@ Browser.Frame = function BrowserFrame({ children }: { children: ReactNode }) {
 }
 
 Browser.Title = function BrowserTitle({ children }: { children: ReactNode }) {
-   return <TitleStyled>{children}</TitleStyled>
+   if (`${children}`.length > 5 && `${children}`.length < 10) {
+      return <TitleStyled fontSize="5em">{children}</TitleStyled>
+   } else if (`${children}`.length > 10) {
+      return <TitleStyled fontSize="3em">{children}</TitleStyled>
+   }
+   return <TitleStyled fontSize="8em">{children}</TitleStyled>
 }
 
 export default Browser

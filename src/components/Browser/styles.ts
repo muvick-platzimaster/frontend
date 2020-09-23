@@ -23,6 +23,7 @@ export const Button = styled.button`
    font-size: 1.2rem;
    transition: all ${transitions.normal};
    margin-right: 15px;
+   margin-bottom: 15px;
    &:focus {
       filter: brightness(1.2);
    }
@@ -39,8 +40,18 @@ export const Button = styled.button`
 `
 
 export const Text = styled.span`
-   white-space: nowrap;
-   margin-right: 0.25rem;
+   display: inline-block;
+   width: 30%;
+   font-size: 2em;
+   margin-bottom: 20px;
+   @media (max-width: ${breakpoints.xl}) {
+      font-size: 1.5em;
+   }
+   @media (max-width: ${breakpoints.sm}) {
+      font-size: 1.2em;
+      width: 100%;
+      text-align: justify;
+   }
 `
 
 export const Frame = styled.div`
@@ -55,13 +66,15 @@ export const Frame = styled.div`
 `
 
 export const TitleStyled = styled.h1`
-   font-size: 8rem;
+   font-size: ${(props) => props.fontSize};
    margin-bottom: 3rem;
    line-height: 3.5rem;
-
+   width: 50%;
    @media (max-width: ${breakpoints.sm}) {
       font-size: 3rem;
       line-height: 3rem;
+      width: 100%;
+      text-align: center;
    }
 
    @media (max-width: ${breakpoints.xs}) {

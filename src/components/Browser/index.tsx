@@ -19,8 +19,6 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    background?: string
 }
 
-type PropsInput = InputHTMLAttributes<HTMLInputElement>
-
 function Browser({ children }: Props): JSX.Element {
    return <Container>{children}</Container>
 }

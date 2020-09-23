@@ -23,7 +23,6 @@ export const Container = styled.header`
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   min-height: 100vh;
    background-image: url('http://image.tmdb.org/t/p/original/zzWGRw277MNoCs3zhyG3YmYQsXv.jpg');
    &::before {
       content: '';

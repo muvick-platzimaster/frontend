@@ -13,7 +13,7 @@ const BrowseContainer: FC = () => {
             {genres.map(({ id, name }) => (
                <Card.RowContainer key={id} genreId={id}>
                   <Card.Title>{name}</Card.Title>
-                  <Card.Entities />
+                  <Card.Entities genre={name} />
                </Card.RowContainer>
             ))}
          </Card>

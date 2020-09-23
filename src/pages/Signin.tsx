@@ -3,7 +3,7 @@ import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
 import { Spinner } from '../components/Icons'
-import axios, { AxiosAdapter, AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')

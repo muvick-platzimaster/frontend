@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, {
+   createContext,
+   useContext,
+   useEffect,
+   useRef,
+   useState
+} from 'react'
 import useFetchData from '../../hooks/useFetchData'
 import { Movie } from '../../interfaces'
 
@@ -12,7 +18,10 @@ import {
    Text,
    Image,
    Item,
-   Details
+   Details,
+   Page,
+   ToPage,
+   ImageContainer
 } from './styles/card'
 
 /* Types */
@@ -75,24 +84,67 @@ Card.RowContainer = function CardRowContainer({
    )
 }
 
-Card.Entities = function CardEntities() {
+Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const { movies } = useContext(FeatureContext)
+   const ref = useRef<HTMLDivElement | null>(null)
+   const [scrollWidth, setscrollWidth] = useState(
+      ref?.current?.offsetWidth || 0
+   )
+
+   useEffect(() => {
+      setscrollWidth(ref?.current?.offsetWidth || 0)
+      window.addEventListener('resize', () => {
+         setscrollWidth(ref?.current?.offsetWidth || 0)
+      })
+
+      return () =>
+         window.removeEventListener('resize', () => {
+            setscrollWidth(ref?.current?.offsetWidth || 0)
+         })
+   }, [])
+
+   const handleClickNext = () => {
+      if (ref.current) {
+         /* ref.current?.scrollLeft = scrollWidth */
+         ref.current.scrollLeft += scrollWidth
+      }
+   }
+
+   const handleClickPrevious = () => {
+      if (ref.current) {
+         /* ref.current?.scrollLeft = scrollWidth */
+         ref.current.scrollLeft -= scrollWidth
+      }
+   }
 
    return (
-      <Entities>
-         {movies?.map((movie) => (
-            <Card.Item key={movie.id} item={movie}>
-               <Card.Image
-                  src={`http://image.tmdb.org/t/p/w200/${movie.backdrop_path}`}
+      <Page>
+         <Entities ref={ref}>
+            <ToPage onClick={handleClickPrevious}>&laquo;</ToPage>
+            {movies?.map((movie) => (
+               <Card.Item
+                  key={`${genre}-${movie.id}`}
+                  item={movie}
                   hidden={!movie.backdrop_path}
-               />
-            </Card.Item>
-         ))}
-      </Entities>
+               >
+                  <ImageContainer>
+                     <Card.Image
+                        src={`http://image.tmdb.org/t/p/w400/${movie.backdrop_path}`}
+                     />
+                  </ImageContainer>
+               </Card.Item>
+            ))}
+            <ToPage onClick={handleClickNext}>&raquo;</ToPage>
+         </Entities>
+      </Page>
    )
 }
 
-Card.Item = function CardItem({ children, item }: PropsItem) {
+Card.Page = function CardPage({ children }: PropsWithChildren) {
+   return <Page>{children}</Page>
+}
+
+Card.Item = function CardItem({ children, item, ...restProps }: PropsItem) {
    const { setItemFeature, setShowFeature } = useContext(FeatureContext)
    return (
       <Item
@@ -100,6 +152,7 @@ Card.Item = function CardItem({ children, item }: PropsItem) {
             setItemFeature && setItemFeature(item)
             setShowFeature && setShowFeature(true)
          }}
+         {...restProps}
       >
          {children}
       </Item>

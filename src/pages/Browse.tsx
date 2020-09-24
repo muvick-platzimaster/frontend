@@ -23,10 +23,16 @@ function Browse(): JSX.Element {
 
    const showModal = () => {
       setShow(true)
+      toggleScrollLock()
    }
 
    const hideModal = () => {
       setShow(false)
+      toggleScrollLock()
+   }
+
+   const toggleScrollLock = () => {
+      document.querySelector('html').classList.toggle('scroll-lock')
    }
 
    useEffect(() => {

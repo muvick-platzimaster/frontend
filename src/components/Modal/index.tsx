@@ -6,6 +6,7 @@ import {
    Button,
    Section,
    Title,
+   TitleContainer,
    Image,
    CloseButton,
    Text,
@@ -34,12 +35,20 @@ Modal.Title = function ModalTitle({ children }: { children: ReactNode }) {
    return <Title>{children}</Title>
 }
 
+Modal.TitleContainer = function ModalTitleContainer({
+   children
+}: {
+   children: ReactNode
+}) {
+   return <TitleContainer>{children}</TitleContainer>
+}
+
 Modal.Text = function ModalText({ children }: { children: ReactNode }) {
    return <Text>{children}</Text>
 }
 
-Modal.Tag = function ModalTag({ children }: { children: ReactNode }) {
-   return <Tag>{children}</Tag>
+Modal.Tag = function ModalTag({ children, ...restProps }: PropsButton) {
+   return <Tag {...restProps}>{children}</Tag>
 }
 
 Modal.Detail = function ModalDetail({ children }: { children: ReactNode }) {
@@ -50,8 +59,8 @@ Modal.More = function ModalMore({ children }: { children: ReactNode }) {
    return <More>{children}</More>
 }
 
-Modal.Image = function ModalSection(background: string) {
-   return <Image background={background} />
+Modal.Image = function ModalSection({ children, ...restProps }: PropsButton) {
+   return <Image {...restProps}>{children}</Image>
 }
 
 Modal.CloseButton = function ModalCloseButton({

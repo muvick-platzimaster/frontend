@@ -13,26 +13,41 @@ export const Container = styled.div`
 export const Section = styled.section`
    position: fixed;
    background: #181818;
-   height: auto;
-   top: 40%;
+   height: 800px;
+   top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
    border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   overflow: scroll;
 `
 
 export const Button = styled.div`
-   position: absolute;
-   top: 400px;
+   /* position: absolute;
+   top: 400px; */
+`
+
+export const TitleContainer = styled.div`
+   position: relative;
+   top: 330px;
+   height: 130px;
+   width: 100%;
+   background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.6839110644257703) 100%
+   );
 `
 
 export const Title = styled.h2`
-   position: absolute;
-   top: 300px;
+   margin-top: 20px;
 `
 
 export const Text = styled.p`
    position: relative;
    width: 60%;
+   padding-right: 10px;
 `
 
 export const Tag = styled.span`
@@ -40,6 +55,7 @@ export const Tag = styled.span`
    margin-right: 10px;
    margin-top: 10px;
    display: inline-block;
+   color: ${(props) => props.color};
 `
 
 export const Detail = styled.div`
@@ -52,16 +68,19 @@ export const More = styled.div`
    position: relative;
    width: 40%;
    display: flex;
-   justify-content: center;
-   align-items: center;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   padding-left: 10px;
 `
 
 export const Image = styled.div`
    background-image: ${(props) =>
-      `url('http://image.tmdb.org/t/p/original${props.background.background}')`};
+      `url('http://image.tmdb.org/t/p/original${props.background}')`};
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
+   min-height: 480px;
    height: 480px;
    width: 850px;
    border-radius: 10px 10px 0 0;

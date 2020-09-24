@@ -1,25 +1,36 @@
 import styled from 'styled-components/macro'
-import { breakpoints } from '../../../styles/theme'
+import { breakpoints, colors, transitions } from '../../../styles/theme'
 
-export const Container = styled.section`` /* Group */
+export const Container = styled.section`
+   margin: 2rem 1rem;
+` /* Group */
 
-export const Title = styled.p``
+export const Title = styled.h3`
+   margin-bottom: -0.5rem;
+   position: relative;
+   z-index: 2;
+`
 
 export const RowContainer = styled.div`
    position: relative;
+   margin-bottom: 3rem;
 `
 
 export const Item = styled.div`
    min-width: calc(100% / 6);
-   transition: all ease 200ms;
+   transition: transform ${transitions.normal}, opacity ${transitions.normal},
+      filter ${transitions.normal}, margin ${transitions.normal};
    cursor: pointer;
+   border: 1px solid ${colors['color-body-dark']};
+   position: relative;
+   transform-origin: center;
 
    &:hover {
       filter: blur(0) !important;
       opacity: 1 !important;
-      transform: scale(1.3);
-      margin-right: 0;
-      margin: 0 3%;
+      transform: scale(1.2);
+      margin: 0 2%;
+      z-index: 2;
    }
 
    &:first-of-type {
@@ -27,8 +38,8 @@ export const Item = styled.div`
    }
 
    &:first-of-type:hover {
-      margin-left: 0;
-      margin-right: 5.5%;
+      margin: 0;
+      margin-right: 4%;
    }
 
    @media (max-width: ${breakpoints.lg}) {
@@ -36,37 +47,11 @@ export const Item = styled.div`
 
       &:hover {
          transform: scale(1.1);
-         margin-right: 0;
-         margin: 0 2%;
-      }
-
-      &:first-of-type {
-         transform-origin: center left;
-      }
-
-      &:first-of-type:hover {
-         margin-left: 0;
-         margin-right: 3.5%;
       }
    }
 
    @media (max-width: ${breakpoints.md}) {
       min-width: calc(100% / 2);
-
-      &:hover {
-         transform: scale(1.1);
-         margin-right: 0;
-         margin: 0 2%;
-      }
-
-      &:first-of-type {
-         transform-origin: center left;
-      }
-
-      &:first-of-type:hover {
-         margin-left: 0;
-         margin-right: 5.5%;
-      }
    }
 `
 
@@ -76,7 +61,7 @@ export const Entities = styled.div`
    width: 100%;
    display: flex;
    flex-wrap: nowrap;
-   padding: 1.5rem 0;
+   padding: 2rem 0;
    scroll-behavior: smooth;
    transition: all ease 200ms;
 
@@ -108,7 +93,7 @@ export const Image = styled.img`
 export const ToPage = styled.a`
    position: absolute;
    display: flex;
-   color: #fff;
+   color: ${colors['color-font-base']};
    text-decoration: none;
    top: 0;
    bottom: 0;

@@ -14,7 +14,10 @@ import ModalContainer from '../containers/Modal'
 
 function Browse(): JSX.Element {
    const API_KEY = 'e5bbbe23be02b4a93f9a207728ca1844'
-   const { data, loading } = useFetchData(`/movie/popular?api_key=${API_KEY}`)
+   const { data: popular, loading } = useFetchData(
+      `/movie/popular?api_key=${API_KEY}`
+   )
+
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState('')
 
@@ -28,16 +31,15 @@ function Browse(): JSX.Element {
 
    useEffect(() => {
       const getRandomMovie = () => {
-         if (data) {
+         if (popular) {
             const randomNumber = Math.floor(
-               Math.random() * (data.results.length - 0) + 0
+               Math.random() * (popular.results.length - 0) + 0
             )
-
-            setRandomMovie(data.results[randomNumber])
+            setRandomMovie(popular.results[randomNumber])
          }
       }
       getRandomMovie()
-   }, [data])
+   }, [popular])
 
    return (
       <>
@@ -52,7 +54,7 @@ function Browse(): JSX.Element {
             </Browser.Frame>
          </NavContainer>
          {show && (
-            <ModalContainer movie={randomMovie} handleClose={hideModal} />
+            <ModalContainer movie={randomMovie.id} handleClose={hideModal} />
          )}
          <BrowseContainer />
          {/* <ListsContainer /> */}

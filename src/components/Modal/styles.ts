@@ -29,10 +29,33 @@ export const Title = styled.h2`
    position: absolute;
    top: 300px;
 `
+
 export const Text = styled.p`
    position: relative;
    width: 60%;
 `
+
+export const Tag = styled.span`
+   position: relative;
+   margin-right: 10px;
+   margin-top: 10px;
+   display: inline-block;
+`
+
+export const Detail = styled.div`
+   position: relative;
+   width: 100%;
+   display: flex;
+`
+
+export const More = styled.div`
+   position: relative;
+   width: 40%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`
+
 export const Image = styled.div`
    background-image: ${(props) =>
       `url('http://image.tmdb.org/t/p/original${props.background.background}')`};

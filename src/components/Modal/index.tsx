@@ -8,7 +8,10 @@ import {
    Title,
    Image,
    CloseButton,
-   Text
+   Text,
+   Detail,
+   More,
+   Tag
 } from './styles'
 
 interface Props {
@@ -33,6 +36,18 @@ Modal.Title = function ModalTitle({ children }: { children: ReactNode }) {
 
 Modal.Text = function ModalText({ children }: { children: ReactNode }) {
    return <Text>{children}</Text>
+}
+
+Modal.Tag = function ModalTag({ children }: { children: ReactNode }) {
+   return <Tag>{children}</Tag>
+}
+
+Modal.Detail = function ModalDetail({ children }: { children: ReactNode }) {
+   return <Detail>{children}</Detail>
+}
+
+Modal.More = function ModalMore({ children }: { children: ReactNode }) {
+   return <More>{children}</More>
 }
 
 Modal.Image = function ModalSection(background: string) {

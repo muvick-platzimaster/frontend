@@ -12,7 +12,8 @@ import {
    Text,
    Detail,
    More,
-   Tag
+   Tag,
+   Around
 } from './styles'
 
 interface Props {
@@ -21,10 +22,16 @@ interface Props {
 
 interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    children: ReactNode
+   background?: string
 }
 
-function Modal({ children }: Props): JSX.Element {
-   return <Container>{children}</Container>
+function Modal({ children, ...restProps }: PropsButton) {
+   return (
+      <Container>
+         {children}
+         <Around {...restProps}></Around>
+      </Container>
+   )
 }
 
 Modal.Section = function ModalSection({ children }: { children: ReactNode }) {

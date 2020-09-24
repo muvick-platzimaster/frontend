@@ -17,6 +17,12 @@ export interface Movie {
 }
 
 export interface ApiResponse {
+   release_date: any
+   runtime: number
+   backdrop_path: string
+   title: string
+   overview: ReactNode
+   genres: any
    page: number
    total_results: number
    total_pages: number

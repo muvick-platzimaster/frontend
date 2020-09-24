@@ -28,7 +28,7 @@ const ModalContainer = ({ movie, handleClose }) => {
 
    return (
       movieDetail && (
-         <Modal>
+         <Modal onClick={handleClose}>
             <Modal.Section>
                <Modal.Image background={movieDetail.backdrop_path || ''}>
                   <Modal.TitleContainer>

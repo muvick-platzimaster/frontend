@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro'
 
-export const Container = styled.div`
+export const Container = styled.div``
+
+export const Around = styled.div`
    position: fixed;
    top: 0;
    left: 0;
@@ -20,7 +22,23 @@ export const Section = styled.section`
    border-radius: 10px;
    display: flex;
    flex-direction: column;
-   overflow: scroll;
+   overflow-y: scroll;
+   z-index: 101;
+   ::-webkit-scrollbar {
+      width: 10px;
+   }
+
+   ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      background: #888;
+   }
+
+   ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+   }
 `
 
 export const Button = styled.div`

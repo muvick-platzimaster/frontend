@@ -29,4 +29,8 @@ export const GlobalStyle = createGlobalStyle`
       padding-left: 0;
    }
 
+   .scroll-lock {
+     overflow:hidden;
+}
+
 `

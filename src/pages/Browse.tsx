@@ -12,30 +12,35 @@ import BrowseContainer from '../containers/Browse'
 import ModalContainer from '../containers/Modal'
 
 function Browse(): JSX.Element {
-   const { data } = useFetchData('/movies/popular')
+   const { data: popular } = useFetchData('/movies/popular')
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState('')
 
    const showModal = () => {
       setShow(true)
+      toggleScrollLock()
    }
 
    const hideModal = () => {
       setShow(false)
+      toggleScrollLock()
+   }
+
+   const toggleScrollLock = () => {
+      document.querySelector('html').classList.toggle('scroll-lock')
    }
 
    useEffect(() => {
       const getRandomMovie = () => {
-         if (data) {
+         if (popular) {
             const randomNumber = Math.floor(
-               Math.random() * (data.results.length - 0) + 0
+               Math.random() * (popular.results.length - 0) + 0
             )
-
-            setRandomMovie(data.results[randomNumber])
+            setRandomMovie(popular.results[randomNumber])
          }
       }
       getRandomMovie()
-   }, [data])
+   }, [popular])
 
    return (
       <>
@@ -50,7 +55,7 @@ function Browse(): JSX.Element {
             </Browser.Frame>
          </NavContainer>
          {show && (
-            <ModalContainer movie={randomMovie} handleClose={hideModal} />
+            <ModalContainer movie={randomMovie.id} handleClose={hideModal} />
          )}
          <BrowseContainer />
          {/* <ListsContainer /> */}

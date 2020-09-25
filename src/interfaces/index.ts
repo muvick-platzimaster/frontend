@@ -19,7 +19,12 @@ export interface Movie {
 export interface MovieDetails {
    adult: boolean
    backdrop_path: string
-   belongs_to_collection: any
+   belongs_to_collection: {
+      backdrop_path: string
+      id: number
+      name: string
+      poster_path: string
+   }
    budget: number
    genres: { id: number; name: string }[]
    homepage: string
@@ -32,7 +37,7 @@ export interface MovieDetails {
    poster_path: string
    production_companies: {
       id: number
-      logo_path: any
+      logo_path: string
       name: string
       origin_country: string
    }[]

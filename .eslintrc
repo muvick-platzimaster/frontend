@@ -19,6 +19,8 @@
    "plugins": ["react", "@typescript-eslint"],
    "rules": {
       "indent": ["error", 3],
-      "space-before-function-paren": "off"
+      "space-before-function-paren": "off",
+      "no-unused-vars": "error",
+      "no-console": "error"
    }
 }

@@ -42,7 +42,7 @@ const Signin: FC = (): JSX.Element => {
       <Fragment>
          <HeaderContainer>
             <Form onSubmit={handleSubmit} action={ROUTES.SIGN_IN} method="POST">
-               <Form.Title>Iniciar Sesión</Form.Title>
+               <Form.Title>Sign In</Form.Title>
                {error && (
                   <Form.Error>
                      {error?.response?.data.message === 'invalid_credentials'
@@ -52,19 +52,20 @@ const Signin: FC = (): JSX.Element => {
                )}
                <Form.FormGroup
                   value={email}
-                  minLength={5}
                   name="email"
                   type="email"
                   onChange={({ target }) => setEmail(target.value)}
                   autoFocus
                   required
+                  autoComplete="off"
                >
                   Email
                </Form.FormGroup>
                <Form.FormGroup
                   value={password}
                   required
-                  minLength={5}
+                  minLength={10}
+                  maxLength={20}
                   name="password"
                   type="password"
                   autoComplete="off"
@@ -76,17 +77,17 @@ const Signin: FC = (): JSX.Element => {
                   {loading ? (
                      <Spinner color="#fff" width="1rem" height="100%" />
                   ) : (
-                     'Iniciar Sesión'
+                     'Sign In'
                   )}
                </Form.Submit>
                <Form.Text>
-                  ¿Primera vez en Muvick?{' '}
-                  <Form.Link to={ROUTES.SIGN_UP}>Suscríbete aquí</Form.Link>
+                  New to Netflix?{' '}
+                  <Form.Link to={ROUTES.SIGN_UP}>Sign up now</Form.Link>.
                </Form.Text>
 
                <Form.TextSmall>
-                  Esta página está protegida por Google reCAPTCHA para comprobar
-                  que no eres un robot.
+                  This page is protected by Google reCAPTCHA to ensure
+                  you&lsquo;re not a bot.
                </Form.TextSmall>
             </Form>
          </HeaderContainer>

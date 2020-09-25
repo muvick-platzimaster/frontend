@@ -34,7 +34,7 @@ const Signup: FC = (): JSX.Element => {
       <Fragment>
          <HeaderContainer>
             <Form onSubmit={handleSubmit} action={ROUTES.SIGN_IN} method="POST">
-               <Form.Title>Registrarse</Form.Title>
+               <Form.Title>Welcome back!</Form.Title>
                {error && <Form.Error>{error?.message}</Form.Error>}
                <Form.FormGroup
                   value={username}
@@ -45,13 +45,13 @@ const Signup: FC = (): JSX.Element => {
                   autoComplete="off"
                   autoFocus
                >
-                  Nombre de usuario
+                  Username
                </Form.FormGroup>
                <Form.FormGroup
                   value={email}
-                  minLength={5}
                   name="email"
                   type="email"
+                  autoComplete="off"
                   onChange={({ target }) => setEmail(target.value)}
                   required
                >
@@ -60,25 +60,25 @@ const Signup: FC = (): JSX.Element => {
                <Form.FormGroup
                   value={password}
                   required
-                  minLength={5}
+                  minLength={10}
+                  maxLength={20}
                   name="password"
                   type="password"
-                  autoComplete="off"
                   onChange={({ target }) => setPassword(target.value)}
                >
                   Password
                </Form.FormGroup>
                <Form.Submit type="submit" disabled={isInvalid}>
-                  Registrarse
+                  Sign Up
                </Form.Submit>
                <Form.Text>
-                  ¡Ya tengo una{' '}
-                  <Form.Link to={ROUTES.SIGN_IN}>cuenta</Form.Link>!
+                  I already have an{' '}
+                  <Form.Link to={ROUTES.SIGN_IN}>account</Form.Link>!
                </Form.Text>
 
                <Form.TextSmall>
-                  Esta página está protegida por Google reCAPTCHA para comprobar
-                  que no eres un robot.
+                  This page is protected by Google reCAPTCHA to ensure
+                  you&apos;re not a bot.
                </Form.TextSmall>
             </Form>
          </HeaderContainer>

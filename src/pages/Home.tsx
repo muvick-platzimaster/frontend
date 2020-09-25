@@ -25,12 +25,12 @@ function Home(): JSX.Element {
       <>
          <HeaderContainer>
             <Wrapper>
-               <Title>Programas y películas sin límite y mucho más.</Title>
+               <Title>Unlimited movies, TV shows, and more.</Title>
 
                <InputForm>
                   <InputForm.Label>
-                     ¿Quieres ver Netflix ya? Ingresa tu email para crear una
-                     cuenta o reiniciar tu membresía de Netflix.
+                     Ready to watch? Enter your email to create or restart your
+                     membership.
                   </InputForm.Label>
 
                   <Wrapper maxWidth={breakpoints.md}>
@@ -45,7 +45,7 @@ function Home(): JSX.Element {
                            disabled={!email}
                            onClick={handleClick}
                         >
-                           <InputForm.Text>Comienza Ya</InputForm.Text>
+                           <InputForm.Text>Get started</InputForm.Text>
                            <InputForm.Icon />
                         </InputForm.Button>
                      </InputForm.Frame>

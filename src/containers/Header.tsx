@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { useLocation } from 'react-router-dom'
 
 /* Components */
 import { Header, Wrapper } from '../components'
@@ -11,12 +12,16 @@ interface Props {
 }
 
 function HeaderContainer({ children }: Props): JSX.Element {
+   const { pathname } = useLocation()
+
    return (
       <Header>
          <Wrapper maxWidth={breakpoints.xl}>
             <Header.Grid>
                <Header.Logo />
-               <Header.Button>Inicia Sesión</Header.Button>
+               {pathname !== '/signin' && (
+                  <Header.Button>Sign In</Header.Button>
+               )}
             </Header.Grid>
          </Wrapper>
 

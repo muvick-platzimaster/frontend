@@ -17,7 +17,7 @@ function Faqs(): JSX.Element {
    return (
       <Accordion>
          <Wrapper maxWidth={breakpoints.md}>
-            <Accordion.Title>Preguntas frecuentes</Accordion.Title>
+            <Accordion.Title>Frequently Asked Questions</Accordion.Title>
             <Accordion.Frame>
                {faqs.map(({ body, header, id }) => (
                   <Accordion.Item key={id}>
@@ -32,8 +32,8 @@ function Faqs(): JSX.Element {
 
             <InputForm>
                <InputForm.Label>
-                  ¿Quieres ver Netflix ya? Ingresa tu email para crear una
-                  cuenta o reiniciar tu membresía de Netflix.
+                  Ready to watch? Enter your email to create or restart your
+                  membership.
                </InputForm.Label>
                <InputForm.Frame>
                   <InputForm.Input
@@ -43,7 +43,7 @@ function Faqs(): JSX.Element {
                      type="email"
                   />
                   <InputForm.Button disabled={!email} onClick={handleClick}>
-                     <InputForm.Text>Comienza Ya</InputForm.Text>
+                     <InputForm.Text>Get started</InputForm.Text>
                      <InputForm.Icon />
                   </InputForm.Button>
                </InputForm.Frame>

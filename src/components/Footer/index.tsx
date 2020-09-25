@@ -10,38 +10,38 @@ const Footer: FC = () => {
          <Wrapper>
             <Grid>
                <Title>
-                  ¿Preguntas? Llama al{' '}
+                  Questions? Call{' '}
                   <Anchor href="tel:57 321 231 24">+57 320 843 57 39</Anchor>
                </Title>
 
                <Row>
                   <Column>
-                     <Anchor>Preguntas frecuentes</Anchor>
-                     <Anchor>Relaciones con inversionistas</Anchor>
-                     <Anchor>Formas de ver</Anchor>
-                     <Anchor>Información corporativa</Anchor>
+                     <Anchor>FAQ</Anchor>
+                     <Anchor>Investor Relations</Anchor>
+                     <Anchor>Ways to Watch</Anchor>
+                     <Anchor>Corporate Information</Anchor>
+                     <Anchor>Netflix Originals</Anchor>
                   </Column>
                   <Column>
-                     <Anchor>Preguntas frecuentes</Anchor>
-                     <Anchor>Relaciones con inversionistas</Anchor>
-                     <Anchor>Formas de ver</Anchor>
-                     <Anchor>Información corporativa</Anchor>
+                     <Anchor>Help Center</Anchor>
+                     <Anchor>Terms of Use</Anchor>
+                     <Anchor>Contact Us</Anchor>
                   </Column>
                   <Column>
-                     <Anchor>Preguntas frecuentes</Anchor>
-                     <Anchor>Relaciones con inversionistas</Anchor>
-                     <Anchor>Formas de ver</Anchor>
-                     <Anchor>Información corporativa</Anchor>
+                     <Anchor>Account</Anchor>
+                     <Anchor>Redeem Gift Cards</Anchor>
+                     <Anchor>Privacy</Anchor>
+                     <Anchor>Speed Test</Anchor>
                   </Column>
                   <Column>
-                     <Anchor>Preguntas frecuentes</Anchor>
-                     <Anchor>Relaciones con inversionistas</Anchor>
-                     <Anchor>Formas de ver</Anchor>
-                     <Anchor>Información corporativa</Anchor>
+                     <Anchor>Media Center</Anchor>
+                     <Anchor>Buy Gift Cards</Anchor>
+                     <Anchor>Cookie Preferences</Anchor>
+                     <Anchor>Legal Notices</Anchor>
                   </Column>
                </Row>
 
-               <Text>Muvick Colombia</Text>
+               <Text>@Muvick</Text>
             </Grid>
          </Wrapper>
       </Container>

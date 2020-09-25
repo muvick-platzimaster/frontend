@@ -4,7 +4,7 @@ export const colors = {
    'color-primary': '#3D81D8',
    'color-error': '#e50914',
    'color-body-dark': '#000',
-   'color-font-muted': '#757575',
+   'color-font-muted': 'darkgray',
    'color-primary-muted': '#7b94ac',
    'color-warning': '#b7791f',
    'color-success': '#38a169'

@@ -42,7 +42,9 @@ export const Grid = styled.div`
    z-index: 10;
 `
 
-export const Pane = styled.div``
+export const Pane = styled.div`
+   width: 90%;
+`
 
 export const Badge = styled.span`
    font-size: 0.7rem;

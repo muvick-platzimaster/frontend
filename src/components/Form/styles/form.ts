@@ -88,7 +88,7 @@ export const Submit = styled.button`
    font-size: 1rem;
    border: none;
    outline: none;
-   border-radius: 0.4rem;
+   border-radius: 0.2rem;
    transition: all ${transitions.normal};
 
    &:disabled {

@@ -1,26 +1,26 @@
 [
    {
       "id": 1,
-      "title": "Disfruta en tu TV.",
-      "subTitle": "Ve en smart TV, PlayStation, Xbox, Chromecast, Apple TV, reproductores de Blu-ray y más.",
+      "title": "Enjoy on your TV.",
+      "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
       "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png",
-      "alt": "Tiger King on Muvick",
+      "alt": "Tiger King on Netflix",
       "direction": "row"
    },
    {
       "id": 2,
-      "title": "Descarga tus series para verlas offline.",
-      "subTitle": "Guarda tu contenido favorito y ten siempre algo para ver.",
-      "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg",
+      "title": "Download your programmes to watch on the go.",
+      "subTitle": "Save your data and watch all your favourites offline.",
+      "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png",
       "alt": "Watch on mobile",
       "direction": "row-reverse"
    },
    {
       "id": 3,
-      "title": "Disfruta donde quieras.",
-      "subTitle": "Películas y programas ilimitados en tu teléfono, tablet, computadora y TV sin costo extra.",
-      "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png",
-      "alt": "Money Heist on Muvick",
+      "title": "Watch everywhere.",
+      "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+      "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg",
+      "alt": "Money Heist on Netflix",
       "direction": "row"
    }
 ]

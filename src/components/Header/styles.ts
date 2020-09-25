@@ -11,7 +11,7 @@ export const LinkButton = styled(Link)`
    color: ${colors['color-font-base']};
    font-size: 20px;
    padding: 0.5rem 1rem;
-   border-radius: 5px;
+   border-radius: 0.2rem;
    white-space: nowrap;
 `
 

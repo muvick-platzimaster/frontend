@@ -1,11 +1,6 @@
-import React, {
-   ButtonHTMLAttributes,
-   InputHTMLAttributes,
-   ReactNode
-} from 'react'
+import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
 /* Icons */
-import ArrowRight from '../Icons/ArrowRight'
 
 /* Styles */
 import { Container, Button, Text, Frame, TitleStyled } from './styles'

@@ -8,7 +8,7 @@ interface UseFetchDataReturn {
 }
 
 const useFetchData = (API: string): UseFetchDataReturn => {
-   const BASE_URL = 'https://api.themoviedb.org/3'
+   const BASE_URL = 'http://localhost:5000'
 
    const [data, setData] = useState<ApiResponse | null>(null)
    const [loading, setLoading] = useState(true)

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-function SvgComponent(props: React.SVGProps<SVGSVGElement>) {
+function SvgComponent() {
    return (
       <svg viewBox="0 0 24 24" role="button" aria-label="close" fill="red">
          <path

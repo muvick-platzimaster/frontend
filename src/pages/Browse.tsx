@@ -4,17 +4,15 @@ import React, { useState, useEffect } from 'react'
 import useFetchData from '../hooks/useFetchData'
 
 /* Components */
-import { Footer, Title, Browser } from '../components'
+import { Footer, Browser } from '../components'
 
 /* Containers */
 import NavContainer from '../containers/Nav'
-import ListsContainer from '../containers/Lists'
 import BrowseContainer from '../containers/Browse'
 import ModalContainer from '../containers/Modal'
 
 function Browse(): JSX.Element {
-   const API_KEY = 'e5bbbe23be02b4a93f9a207728ca1844'
-   const { data, loading } = useFetchData(`/movie/popular?api_key=${API_KEY}`)
+   const { data } = useFetchData('/movies/popular')
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState('')
 

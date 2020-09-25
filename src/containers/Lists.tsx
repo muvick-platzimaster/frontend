@@ -6,8 +6,7 @@ import { Lists, ListsCard } from '../components'
 import useFetchData from '../hooks/useFetchData'
 
 const ListsContainer: FC = () => {
-   const API_KEY = 'e5bbbe23be02b4a93f9a207728ca1844'
-   const { data, loading } = useFetchData(`/movie/popular?api_key=${API_KEY}`)
+   const { data, loading } = useFetchData('/movies/popular')
 
    if (loading) {
       return <h1>Loading...</h1>

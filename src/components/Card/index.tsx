@@ -8,6 +8,10 @@ import React, {
 import useFetchData from '../../hooks/useFetchData'
 import { Movie } from '../../interfaces'
 
+/* Components */
+
+import { Feature } from '../'
+
 /* Styles */
 import {
    Container,
@@ -23,6 +27,7 @@ import {
    ToPage,
    ImageContainer
 } from './styles/card'
+import { Spinner } from '../Icons'
 
 /* Types */
 type PropsWithChildren = { children: React.ReactNode }
@@ -31,11 +36,15 @@ interface PropsItem {
    children: React.ReactNode
    item: Movie
 }
-interface Context {
+interface FeatureContext {
    showFeature: boolean
    setShowFeature: React.Dispatch<React.SetStateAction<boolean>>
    itemFeature: Movie | null
    setItemFeature: React.Dispatch<React.SetStateAction<Movie | null>>
+   movies: Movie[]
+}
+
+interface MovieContext {
    movies: Movie[]
 }
 
@@ -46,7 +55,8 @@ interface PropsRowContainer {
 
 /* Card Component */
 
-const FeatureContext = createContext<Partial<Context>>({})
+const FeatureContext = createContext<Partial<FeatureContext>>({})
+const MovieContext = createContext<Partial<MovieContext>>({})
 
 const Card = ({ children }: PropsWithChildren): JSX.Element => {
    return <Container>{children}</Container>
@@ -62,12 +72,7 @@ Card.RowContainer = function CardRowContainer({
 }: PropsRowContainer) {
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
-
-   const API_KEY = 'e5bbbe23be02b4a93f9a207728ca1844'
-
-   const { data } = useFetchData(
-      `/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
-   )
+   const { data, loading } = useFetchData(`/movies?genre=${genreId}`)
 
    return (
       <FeatureContext.Provider
@@ -79,7 +84,9 @@ Card.RowContainer = function CardRowContainer({
             movies: data?.results
          }}
       >
-         <RowContainer>{children}</RowContainer>
+         <RowContainer>
+            {loading ? <Spinner color="white" /> : children}
+         </RowContainer>
       </FeatureContext.Provider>
    )
 }
@@ -118,25 +125,31 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
    }
 
    return (
-      <Page>
-         <Entities ref={ref}>
-            <ToPage onClick={handleClickPrevious}>&laquo;</ToPage>
-            {movies?.map((movie) => (
-               <Card.Item
-                  key={`${genre}-${movie.id}`}
-                  item={movie}
-                  hidden={!movie.backdrop_path}
-               >
-                  <ImageContainer>
-                     <Card.Image
-                        src={`http://image.tmdb.org/t/p/w400/${movie.backdrop_path}`}
-                     />
-                  </ImageContainer>
-               </Card.Item>
-            ))}
-            <ToPage onClick={handleClickNext}>&raquo;</ToPage>
-         </Entities>
-      </Page>
+      <>
+         <Page>
+            <Entities ref={ref}>
+               <ToPage onClick={handleClickPrevious}>&laquo;</ToPage>
+               {movies?.map((movie) => {
+                  const { id, poster_path: poster } = movie
+                  return (
+                     <Card.Item key={`${genre}-${id}`} item={movie}>
+                        <ImageContainer>
+                           <Card.Image
+                              src={
+                                 poster
+                                    ? `http://image.tmdb.org/t/p/w400/${poster}`
+                                    : 'https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80'
+                              }
+                           />
+                        </ImageContainer>
+                     </Card.Item>
+                  )
+               })}
+               <ToPage onClick={handleClickNext}>&raquo;</ToPage>
+            </Entities>
+         </Page>
+         <Card.Feature />
+      </>
    )
 }
 
@@ -173,6 +186,25 @@ Card.Subtitle = function CardSubtitle({ children }: PropsWithChildren) {
 
 Card.Text = function CardText({ children }: PropsWithChildren) {
    return <Text>{children}</Text>
+}
+Card.Feature = function CardFeature() {
+   const { showFeature, itemFeature } = useContext(FeatureContext)
+
+   if (!showFeature || !itemFeature) return null
+   const { original_title: title, backdrop_path: image, overview } = itemFeature
+
+   return (
+      <Feature
+         src={
+            image
+               ? `http://image.tmdb.org/t/p/original${image}`
+               : 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+         }
+      >
+         <Feature.Title>{title}</Feature.Title>
+         <Feature.Subtitle>{overview}</Feature.Subtitle>
+      </Feature>
+   )
 }
 
 export default Card

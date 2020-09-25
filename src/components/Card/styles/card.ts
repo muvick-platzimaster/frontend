@@ -17,7 +17,7 @@ export const RowContainer = styled.div`
 `
 
 export const Item = styled.div`
-   min-width: calc(100% / 6);
+   min-width: calc(100% / 8);
    transition: transform ${transitions.normal}, opacity ${transitions.normal},
       filter ${transitions.normal}, margin ${transitions.normal};
    cursor: pointer;
@@ -29,21 +29,12 @@ export const Item = styled.div`
       filter: blur(0) !important;
       opacity: 1 !important;
       transform: scale(1.2);
-      margin: 0 2%;
+      margin: 0 1%;
       z-index: 2;
    }
 
-   &:first-of-type {
-      transform-origin: center left;
-   }
-
-   &:first-of-type:hover {
-      margin: 0;
-      margin-right: 4%;
-   }
-
    @media (max-width: ${breakpoints.lg}) {
-      min-width: calc(100% / 3);
+      min-width: calc(100% / 5);
 
       &:hover {
          transform: scale(1.1);
@@ -51,6 +42,10 @@ export const Item = styled.div`
    }
 
    @media (max-width: ${breakpoints.md}) {
+      min-width: calc(100% / 3);
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
       min-width: calc(100% / 2);
    }
 `
@@ -129,7 +124,7 @@ export const Page = styled.div`
 `
 
 export const ImageContainer = styled.figure`
-   padding-bottom: 56.25%;
+   padding-bottom: 133.33%;
    position: relative;
    width: 100%;
    margin: 0;

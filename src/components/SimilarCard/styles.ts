@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { breakpoints } from '../../styles/theme'
 
 export const Container = styled.div`
    position: fixed;
@@ -39,6 +40,12 @@ export const Detail = styled.div`
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    grid-gap: 10px;
+   @media (max-width: ${breakpoints.md}) {
+      grid-template-columns: repeat(2, 1fr);
+   }
+   @media (max-width: ${breakpoints.xs}) {
+      grid-template-columns: 1fr;
+   }
 `
 
 export const Image = styled.div`
@@ -48,6 +55,6 @@ export const Image = styled.div`
    background-size: cover;
    background-position: center;
    height: 130px;
-   width: 240px;
+   /* width: 240px; */
    border-radius: 10px 10px 0 0;
 `

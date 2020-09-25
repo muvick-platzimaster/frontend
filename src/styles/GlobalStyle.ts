@@ -14,6 +14,22 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+      
+   }
+   body::-webkit-scrollbar {
+      width: 10px;
+   }
+
+   body::-webkit-scrollbar-track {
+      background: #f1f1f1;
+   }
+
+   body::-webkit-scrollbar-thumb {
+      background: #888;
+   }
+
+   body::-webkit-scrollbar-thumb:hover {
+      background: #555;
    }
 
    button {
@@ -31,6 +47,8 @@ export const GlobalStyle = createGlobalStyle`
 
    .scroll-lock {
      overflow:hidden;
+
+     
 }
 
 `

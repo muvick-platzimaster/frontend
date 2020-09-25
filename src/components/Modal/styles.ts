@@ -1,4 +1,15 @@
-import styled from 'styled-components/macro'
+import styled, { keyframes } from 'styled-components/macro'
+import { breakpoints } from '../../styles/theme'
+
+/* keyframes  */
+export const opacityAnimation = keyframes`
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity: 100%;
+  }
+`
 
 export const Container = styled.div``
 
@@ -18,12 +29,25 @@ export const Section = styled.section`
    height: 800px;
    top: 50%;
    left: 50%;
+   padding-bottom: 10px;
    transform: translate(-50%, -50%);
    border-radius: 10px;
    display: flex;
    flex-direction: column;
    overflow-y: scroll;
    z-index: 101;
+   animation: ${opacityAnimation} 1s ease-in-out;
+
+   @media (max-width: ${breakpoints.md}) {
+      height: 600px;
+      width: 500px;
+   }
+
+   @media (max-width: ${breakpoints.xs}) {
+      height: 500px;
+      width: 300px;
+   }
+
    ::-webkit-scrollbar {
       width: 10px;
    }
@@ -56,16 +80,25 @@ export const TitleContainer = styled.div`
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.6839110644257703) 100%
    );
+   @media (max-width: ${breakpoints.xs}) {
+      top: 150px;
+   }
 `
 
 export const Title = styled.h2`
    margin-top: 20px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-height: 50px;
 `
 
 export const Text = styled.p`
    position: relative;
    width: 60%;
    padding-right: 10px;
+   @media (max-width: ${breakpoints.xs}) {
+      width: 100%;
+   }
 `
 
 export const Tag = styled.span`
@@ -80,6 +113,9 @@ export const Detail = styled.div`
    position: relative;
    width: 100%;
    display: flex;
+   @media (max-width: ${breakpoints.xs}) {
+      flex-direction: column;
+   }
 `
 
 export const More = styled.div`
@@ -90,6 +126,9 @@ export const More = styled.div`
    justify-content: flex-start;
    align-items: flex-start;
    padding-left: 10px;
+   @media (max-width: ${breakpoints.xs}) {
+      width: 100%;
+   }
 `
 
 export const Image = styled.div`
@@ -100,8 +139,12 @@ export const Image = styled.div`
    background-position: center;
    min-height: 480px;
    height: 480px;
-   width: 850px;
+   width: 100%;
    border-radius: 10px 10px 0 0;
+   @media (max-width: ${breakpoints.xs}) {
+      height: 300px;
+      min-height: 300px;
+   }
 `
 
 export const CloseButton = styled.div`

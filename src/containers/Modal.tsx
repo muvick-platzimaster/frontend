@@ -80,7 +80,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                <Modal.Title>Más títulos similares a este</Modal.Title>
                <SimilarCard.Detail>
                   {((similarMovies as unknown) as ApiResponse)?.results.map(
-                     // FIXME: Arreglar esto cuando haya un endpoint
+                     // FIXME: Arreglar as unknown) as ApiResponse cuando haya un endpoint
                      (movie) => (
                         <SimilarCard.Section key={movie.id}>
                            <SimilarCard.Image

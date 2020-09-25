@@ -94,20 +94,19 @@ Card.RowContainer = function CardRowContainer({
 Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const { movies } = useContext(FeatureContext)
    const ref = useRef<HTMLDivElement | null>(null)
+   const handleResize = () => {
+      setscrollWidth(ref?.current?.offsetWidth || 0)
+   }
    const [scrollWidth, setscrollWidth] = useState(
       ref?.current?.offsetWidth || 0
    )
 
    useEffect(() => {
-      setscrollWidth(ref?.current?.offsetWidth || 0)
-      window.addEventListener('resize', () => {
-         setscrollWidth(ref?.current?.offsetWidth || 0)
-      })
+      handleResize()
 
-      return () =>
-         window.removeEventListener('resize', () => {
-            setscrollWidth(ref?.current?.offsetWidth || 0)
-         })
+      window.addEventListener('resize', handleResize)
+
+      return () => window.removeEventListener('resize', handleResize)
    }, [])
 
    const handleClickNext = () => {

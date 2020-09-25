@@ -5,7 +5,9 @@ export const colors = {
    'color-error': '#e50914',
    'color-body-dark': '#000',
    'color-font-muted': '#757575',
-   'color-primary-muted': '#7b94ac'
+   'color-primary-muted': '#7b94ac',
+   'color-warning': '#b7791f',
+   'color-success': '#38a169'
 }
 
 export const breakpoints = {

@@ -112,14 +112,12 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
 
    const handleClickNext = () => {
       if (ref.current) {
-         /* ref.current?.scrollLeft = scrollWidth */
          ref.current.scrollLeft += scrollWidth
       }
    }
 
    const handleClickPrevious = () => {
       if (ref.current) {
-         /* ref.current?.scrollLeft = scrollWidth */
          ref.current.scrollLeft -= scrollWidth
       }
    }
@@ -188,10 +186,17 @@ Card.Text = function CardText({ children }: PropsWithChildren) {
    return <Text>{children}</Text>
 }
 Card.Feature = function CardFeature() {
-   const { showFeature, itemFeature } = useContext(FeatureContext)
+   const { showFeature, itemFeature, setShowFeature } = useContext(
+      FeatureContext
+   )
 
    if (!showFeature || !itemFeature) return null
-   const { original_title: title, backdrop_path: image, overview } = itemFeature
+   const {
+      backdrop_path: image,
+      overview,
+      vote_average: vote,
+      title
+   } = itemFeature
 
    return (
       <Feature
@@ -201,8 +206,14 @@ Card.Feature = function CardFeature() {
                : 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
          }
       >
-         <Feature.Title>{title}</Feature.Title>
-         <Feature.Subtitle>{overview}</Feature.Subtitle>
+         <Feature.Pane>
+            <Feature.Title>
+               {title} <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
+            </Feature.Title>
+            <Feature.Subtitle>{overview}</Feature.Subtitle>
+         </Feature.Pane>
+         {/* <Feature.Pane>2 pane</Feature.Pane> */}
+         <Feature.Close handleClose={setShowFeature} />
       </Feature>
    )
 }

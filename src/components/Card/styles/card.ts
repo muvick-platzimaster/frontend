@@ -8,6 +8,7 @@ export const Container = styled.section`
 export const Title = styled.h3`
    margin-bottom: -0.5rem;
    position: relative;
+   font-size: 1.8rem;
    z-index: 2;
 `
 

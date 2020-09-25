@@ -27,9 +27,7 @@ const Signup: FC = (): JSX.Element => {
             password,
             name: username
          }
-      })
-         .then(console.log)
-         .catch(setError)
+      }).catch(setError)
    }
 
    return (

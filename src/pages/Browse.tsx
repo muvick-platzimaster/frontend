@@ -10,11 +10,12 @@ import { Footer, Browser } from '../components'
 import NavContainer from '../containers/Nav'
 import BrowseContainer from '../containers/Browse'
 import ModalContainer from '../containers/Modal'
+import { Movie } from '../interfaces'
 
 function Browse(): JSX.Element {
    const { data: popular } = useFetchData('/movies/popular')
    const [show, setShow] = useState(false)
-   const [randomMovie, setRandomMovie] = useState('')
+   const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
 
    const showModal = () => {
       setShow(true)

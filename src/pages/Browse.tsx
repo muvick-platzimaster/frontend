@@ -55,7 +55,7 @@ function Browse(): JSX.Element {
             </Browser.Frame>
          </NavContainer>
          {show && (
-            <ModalContainer movie={randomMovie.id} handleClose={hideModal} />
+            <ModalContainer movieId={randomMovie.id} handleClose={hideModal} />
          )}
          <BrowseContainer />
          {/* <ListsContainer /> */}

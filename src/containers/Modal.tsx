@@ -9,6 +9,7 @@ import Close from '../components/Icons/Close'
 
 /* Hooks */
 import useFetchMovie from '../hooks/useFetchMovie'
+
 import { ApiResponse } from '../interfaces'
 
 interface Props {
@@ -23,7 +24,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
    )
 
    // TODO: Este hay que actualizarlo cuando ya tengamos un endpoint en MuvickAPI para hacer este llamado mientras tanto tendrá un any
-   const { data: similarMovies } = useFetchMovie(
+   const { data: similarMovies, loading: similarMoviesLoading } = useFetchMovie(
       `/movie/${movieId}/recommendations?api_key=${API_KEY}`
    )
 
@@ -34,7 +35,12 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
       ? `${Math.floor(movieDetail.runtime / 60)}h ${movieDetail.runtime % 60}m `
       : ''
 
-   if (movieDetailLoading || !movieDetail) {
+   if (
+      movieDetailLoading ||
+      !movieDetail ||
+      !similarMovies ||
+      similarMoviesLoading
+   ) {
       return <h1>Loading...</h1>
    }
 

@@ -21,11 +21,17 @@ function NavContainer({ children, background }: Props): JSX.Element {
          <Nav.Grid>
             <Nav.Logo />
             <section>
-               <Nav.Button linkTo="/browse">Inicio</Nav.Button>
-               <Nav.Button linkTo="/browse/programs">Programas</Nav.Button>
-               <Nav.Button linkTo="/browse/movies">Películas</Nav.Button>
-               <Nav.Button linkTo="/latest">Más recientes</Nav.Button>
-               <Nav.Button linkTo="/browse/my-list">Mi lista</Nav.Button>
+               <Nav.LinkButton linkTo="/browse/programs">Movies</Nav.LinkButton>
+               <Nav.LinkButton linkTo="/browse/movies">TV Shows</Nav.LinkButton>
+               <Nav.LinkButton linkTo="/browse/my-list">My list</Nav.LinkButton>
+               <Nav.Button
+                  onClick={() => {
+                     localStorage.removeItem('TOKEN')
+                     window.location.reload()
+                  }}
+               >
+                  Logout
+               </Nav.Button>
             </section>
             <section className="Nav__Icons">
                <Search width={ICONSIZE.width} height={ICONSIZE.height} />

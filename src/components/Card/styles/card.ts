@@ -99,6 +99,7 @@ export const ToPage = styled.a`
    align-items: center;
    width: 40px;
    z-index: 1;
+   transition: background ${transitions.normal};
 
    &:first-of-type {
       left: 0;
@@ -106,8 +107,16 @@ export const ToPage = styled.a`
       background: linear-gradient(
          90deg,
          rgba(0, 0, 0, 1) 0%,
-         rgba(255, 255, 255, 0) 100%
+         rgba(0, 0, 0, 0.1) 100%
       );
+
+      &:hover {
+         background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.8) 100%
+         );
+      }
    }
    &:last-of-type {
       right: 0;
@@ -115,8 +124,16 @@ export const ToPage = styled.a`
       background: linear-gradient(
          -90deg,
          rgba(0, 0, 0, 1) 0%,
-         rgba(255, 255, 255, 0) 100%
+         rgba(0, 0, 0, 0.1) 100%
       );
+
+      &:hover {
+         background: linear-gradient(
+            -90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.8) 100%
+         );
+      }
    }
 `
 

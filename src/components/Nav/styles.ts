@@ -109,6 +109,7 @@ export const Grid = styled.div`
 export const Content = styled.div`
    position: relative;
    padding: calc(15rem - 56.5px) 0 10rem 60px;
+   z-index: 10;
    text-align: left;
 
    @media (max-width: ${breakpoints.md}) {
@@ -119,3 +120,23 @@ export const Content = styled.div`
       padding: 5rem 0;
    }
 `
+
+export const Button = styled.button`
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   color: #efefef;
+   font-size: 14px;
+   padding: 0.5rem 1rem;
+   border-radius: 5px;
+   white-space: nowrap;
+   background: transparent;
+   border: none;
+   cursor: pointer;
+
+   &:hover {
+      color: #bbb8b5;
+      transition: 0.3s;
+   }
+`
+

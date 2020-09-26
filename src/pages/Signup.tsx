@@ -2,20 +2,25 @@ import React, { FC, Fragment, useState, FormEvent } from 'react'
 import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
+import { useHistory } from 'react-router-dom'
+import { Spinner } from '../components/Icons'
 
 const Signup: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
    const [password, setPassword] = useState<string>('')
    const [username, setUsername] = useState<string>('')
-   const [error, setError] = useState<null | Error>(null)
+   const [error, setError] = useState<null | AxiosError>(null)
+   const [loading, setLoading] = useState<boolean>(false)
    const isInvalid = email === '' || password === '' || username === ''
+   const history = useHistory()
 
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
       setEmail('')
       setPassword('')
       setUsername('')
+      setLoading(true)
       setError(null)
 
       axios({
@@ -27,7 +32,20 @@ const Signup: FC = (): JSX.Element => {
             password,
             name: username
          }
-      }).catch(setError)
+      })
+         .then(() => history.push('/signin'))
+         .catch((err: AxiosError) => {
+            setError(err)
+            setLoading(false)
+         })
+   }
+
+   const handleErrors = (messageError: string) => {
+      if (messageError === 'email_already_exists') {
+         return 'User already exists'
+      }
+
+      return 'Internal server error'
    }
 
    return (
@@ -35,7 +53,11 @@ const Signup: FC = (): JSX.Element => {
          <HeaderContainer>
             <Form onSubmit={handleSubmit} action={ROUTES.SIGN_IN} method="POST">
                <Form.Title>Welcome back!</Form.Title>
-               {error && <Form.Error>{error?.message}</Form.Error>}
+               {error && (
+                  <Form.Error>
+                     {handleErrors(error?.response?.data.message)}
+                  </Form.Error>
+               )}
                <Form.FormGroup
                   value={username}
                   name="username"
@@ -51,7 +73,6 @@ const Signup: FC = (): JSX.Element => {
                   value={email}
                   name="email"
                   type="email"
-                  autoComplete="off"
                   onChange={({ target }) => setEmail(target.value)}
                   required
                >
@@ -69,7 +90,11 @@ const Signup: FC = (): JSX.Element => {
                   Password
                </Form.FormGroup>
                <Form.Submit type="submit" disabled={isInvalid}>
-                  Sign Up
+                  {loading ? (
+                     <Spinner color="#fff" width="1rem" height="100%" />
+                  ) : (
+                     'Sign Up'
+                  )}
                </Form.Submit>
                <Form.Text>
                   I already have an{' '}

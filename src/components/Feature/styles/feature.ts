@@ -6,7 +6,7 @@ export const Container = styled.section`
    position: relative;
    background: url('${({ theme }) => theme.src}');
    background-repeat: no-repeat;
-   background-position: top center;
+   background-position: top left;
    background-size: cover;
    height: 420px;
    top: -1.5rem;
@@ -21,7 +21,9 @@ export const Container = styled.section`
       background: linear-gradient(
          90deg,
          rgba(0, 0, 0, 1) 0%,
-         rgba(0, 0, 0, 0.6) 100%
+         rgba(0, 0, 0, 1) 20%,
+         rgba(0, 0, 0, 0.5522584033613445) 70%,
+         rgba(0, 0, 0, 0.7763480392156863) 100%
       );
    }
 `
@@ -43,7 +45,7 @@ export const Grid = styled.div`
 `
 
 export const Pane = styled.div`
-   width: 90%;
+   width: 70%;
 `
 
 export const Badge = styled.span`

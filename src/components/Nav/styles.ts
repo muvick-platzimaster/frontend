@@ -68,12 +68,47 @@ export const Grid = styled.div`
       position: absolute;
       right: 4%;
    }
+   & .Nav__Menu--open {
+      @media (max-width: ${breakpoints.md}) {
+         display: none;
+      }
+   }
+   & .Nav__Menu--dropdown {
+      position: relative;
+      display: inline-block;
+      &:hover .dropdownContent {
+         display: block;
+      }
+      & .dropdownContent {
+         display: none;
+         position: absolute;
+         background-color: rgba(8, 9, 8, 0.85);
+         min-width: 200px;
+         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+         z-index: 3000;
+         text-align: center;
+         left: -55px;
+         & a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            &:hover {
+               background-color: rgba(100, 99, 99, 0.85);
+            }
+         }
+      }
+      @media (max-width: ${breakpoints.md}) {
+         display: block;
+         & .menu {
+         }
+      }
+   }
 `
 
 export const Content = styled.div`
    position: relative;
    padding: calc(15rem - 56.5px) 0 10rem 60px;
-   z-index: 10;
    text-align: left;
 
    @media (max-width: ${breakpoints.md}) {

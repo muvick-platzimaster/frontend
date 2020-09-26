@@ -10,6 +10,7 @@ import ROUTES from '../../constants/routes'
 // type PropsWithChildren = { children: ReactNode }
 
 interface Props {
+   className?: string
    linkTo?: string
    children: ReactNode
    background?: string
@@ -31,8 +32,12 @@ Nav.Logo = function NavLogo() {
    )
 }
 
-Nav.Button = function NavButton({ children, linkTo }: Props) {
-   return <LinkButton to={linkTo}>{children}</LinkButton>
+Nav.Button = function NavButton({ className, children, linkTo }: Props) {
+   return (
+      <LinkButton className={className} to={linkTo}>
+         {children}
+      </LinkButton>
+   )
 }
 
 Nav.Content = function NavContent({ children }: Props) {

@@ -20,12 +20,23 @@ function NavContainer({ children, background }: Props): JSX.Element {
       <Nav background={background}>
          <Nav.Grid>
             <Nav.Logo />
-            <section>
+            <section className="Nav__Menu--open">
                <Nav.Button linkTo="/browse">Inicio</Nav.Button>
                <Nav.Button linkTo="/browse/programs">Programas</Nav.Button>
                <Nav.Button linkTo="/browse/movies">Películas</Nav.Button>
                <Nav.Button linkTo="/latest">Más recientes</Nav.Button>
                <Nav.Button linkTo="/browse/my-list">Mi lista</Nav.Button>
+            </section>
+            <section className="Nav__Menu--dropdown">
+               <Nav.Button className="menu" linkTo="/browse">
+                  Explorar
+               </Nav.Button>
+               <div className="dropdownContent">
+                  <Nav.Button linkTo="/browse/programs">Programas</Nav.Button>
+                  <Nav.Button linkTo="/browse/movies">Películas</Nav.Button>
+                  <Nav.Button linkTo="/latest">Más recientes</Nav.Button>
+                  <Nav.Button linkTo="/browse/my-list">Mi lista</Nav.Button>
+               </div>
             </section>
             <section className="Nav__Icons">
                <Search width={ICONSIZE.width} height={ICONSIZE.height} />

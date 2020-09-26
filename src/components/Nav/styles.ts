@@ -74,8 +74,7 @@ export const Grid = styled.div`
       }
    }
    & .Nav__Menu--dropdown {
-      position: relative;
-      display: inline-block;
+      display: none;
       &:hover .dropdownContent {
          display: block;
       }
@@ -99,7 +98,8 @@ export const Grid = styled.div`
          }
       }
       @media (max-width: ${breakpoints.md}) {
-         display: block;
+         position: relative;
+         display: inline-block;
          & .menu {
          }
       }

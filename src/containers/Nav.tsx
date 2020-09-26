@@ -21,21 +21,21 @@ function NavContainer({ children, background }: Props): JSX.Element {
          <Nav.Grid>
             <Nav.Logo />
             <section className="Nav__Menu--open">
-               <Nav.Button linkTo="/browse">Inicio</Nav.Button>
-               <Nav.Button linkTo="/browse/programs">Programas</Nav.Button>
-               <Nav.Button linkTo="/browse/movies">Películas</Nav.Button>
-               <Nav.Button linkTo="/latest">Más recientes</Nav.Button>
-               <Nav.Button linkTo="/browse/my-list">Mi lista</Nav.Button>
+               <Nav.Button linkTo="/browse">Home</Nav.Button>
+               <Nav.Button linkTo="/browse/programs">Programs</Nav.Button>
+               <Nav.Button linkTo="/browse/movies">Movies</Nav.Button>
+               <Nav.Button linkTo="/latest">Most recent</Nav.Button>
+               <Nav.Button linkTo="/browse/my-list">My list</Nav.Button>
             </section>
             <section className="Nav__Menu--dropdown">
                <Nav.Button className="menu" linkTo="/browse">
-                  Explorar
+                  Explore
                </Nav.Button>
                <div className="dropdownContent">
-                  <Nav.Button linkTo="/browse/programs">Programas</Nav.Button>
-                  <Nav.Button linkTo="/browse/movies">Películas</Nav.Button>
-                  <Nav.Button linkTo="/latest">Más recientes</Nav.Button>
-                  <Nav.Button linkTo="/browse/my-list">Mi lista</Nav.Button>
+                  <Nav.Button linkTo="/browse/programs">Programs</Nav.Button>
+                  <Nav.Button linkTo="/browse/movies">Movies</Nav.Button>
+                  <Nav.Button linkTo="/latest">Most recent </Nav.Button>
+                  <Nav.Button linkTo="/browse/my-list">My list</Nav.Button>
                </div>
             </section>
             <section className="Nav__Icons">

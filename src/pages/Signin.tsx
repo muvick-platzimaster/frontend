@@ -46,8 +46,8 @@ const Signin: FC = (): JSX.Element => {
                {error && (
                   <Form.Error>
                      {error?.response?.data.message === 'invalid_credentials'
-                        ? 'Credenciales inválidas'
-                        : 'Error en el servidor'}
+                        ? 'Invalid Credencials'
+                        : 'Internal Server Error'}
                   </Form.Error>
                )}
                <Form.FormGroup

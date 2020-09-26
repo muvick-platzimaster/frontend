@@ -49,9 +49,9 @@ function Browse(): JSX.Element {
             <Browser.Title>{randomMovie.title}</Browser.Title>
             <Browser.Text>{randomMovie.overview}</Browser.Text>
             <Browser.Frame>
-               <Browser.Button background="white">Reproducir</Browser.Button>
+               <Browser.Button background="white">Play</Browser.Button>
                <Browser.Button background="#6C6E6D" onClick={showModal}>
-                  Más información
+                  More information...
                </Browser.Button>
             </Browser.Frame>
          </NavContainer>

@@ -57,7 +57,6 @@ const Signin: FC = (): JSX.Element => {
                   onChange={({ target }) => setEmail(target.value)}
                   autoFocus
                   required
-                  autoComplete="off"
                >
                   Email
                </Form.FormGroup>

@@ -53,7 +53,7 @@ export const Link = styled(ReactRouterDomLink)`
 export const Input = styled.input`
    width: 100%;
    height: 100%;
-   padding: 20px 0 5px;
+   padding: 20px 0.5rem 5px;
    background-color: transparent;
    outline: none;
    color: ${colors['color-font-base']};

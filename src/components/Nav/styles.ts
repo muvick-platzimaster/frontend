@@ -109,7 +109,6 @@ export const Grid = styled.div`
 export const Content = styled.div`
    position: relative;
    padding: calc(15rem - 56.5px) 0 10rem 60px;
-   z-index: 10;
    text-align: left;
 
    @media (max-width: ${breakpoints.md}) {
@@ -139,4 +138,3 @@ export const Button = styled.button`
       transition: 0.3s;
    }
 `
-

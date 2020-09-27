@@ -20,7 +20,7 @@ function NavContainer({ children, background }: Props): JSX.Element {
       <Nav background={background}>
          <Nav.Grid>
             <Nav.Logo />
-            <section>
+            <section className="Nav__Menu--open">
                <Nav.LinkButton linkTo="/browse/programs">Movies</Nav.LinkButton>
                <Nav.LinkButton linkTo="/browse/movies">TV Shows</Nav.LinkButton>
                <Nav.LinkButton linkTo="/browse/my-list">My list</Nav.LinkButton>
@@ -32,6 +32,30 @@ function NavContainer({ children, background }: Props): JSX.Element {
                >
                   Logout
                </Nav.Button>
+            </section>
+            <section className="Nav__Menu--dropdown">
+               <Nav.Button className="menu" linkTo="/browse">
+                  Explorar
+               </Nav.Button>
+               <div className="dropdownContent">
+                  <Nav.LinkButton linkTo="/browse/programs">
+                     Movies
+                  </Nav.LinkButton>
+                  <Nav.LinkButton linkTo="/browse/movies">
+                     TV Shows
+                  </Nav.LinkButton>
+                  <Nav.LinkButton linkTo="/browse/my-list">
+                     My list
+                  </Nav.LinkButton>
+                  <Nav.Button
+                     onClick={() => {
+                        localStorage.removeItem('TOKEN')
+                        window.location.reload()
+                     }}
+                  >
+                     Logout
+                  </Nav.Button>
+               </div>
             </section>
             <section className="Nav__Icons">
                <Search width={ICONSIZE.width} height={ICONSIZE.height} />

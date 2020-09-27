@@ -46,4 +46,3 @@ function NavContainer({ children, background }: Props): JSX.Element {
 }
 
 export default NavContainer
-

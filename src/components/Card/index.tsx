@@ -94,12 +94,13 @@ Card.RowContainer = function CardRowContainer({
 Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const { movies } = useContext(FeatureContext)
    const ref = useRef<HTMLDivElement | null>(null)
-   const handleResize = () => {
-      setscrollWidth(ref?.current?.offsetWidth || 0)
-   }
    const [scrollWidth, setscrollWidth] = useState(
       ref?.current?.offsetWidth || 0
    )
+
+   const handleResize = () => {
+      setscrollWidth(ref?.current?.offsetWidth || 0)
+   }
 
    useEffect(() => {
       handleResize()
@@ -107,7 +108,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
       window.addEventListener('resize', handleResize)
 
       return () => window.removeEventListener('resize', handleResize)
-   }, [])
+   }, [ref?.current?.scrollLeft])
 
    const handleClickNext = () => {
       if (ref.current) {
@@ -126,6 +127,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
          <Page>
             <Entities ref={ref}>
                <ToPage onClick={handleClickPrevious}>&laquo;</ToPage>
+
                {movies?.map((movie) => {
                   const { id, poster_path: poster } = movie
                   return (
@@ -168,7 +170,6 @@ Card.Item = function CardItem({ children, item, ...restProps }: PropsItem) {
       </Item>
    )
 }
-
 Card.Image = function CardImage({ ...restProps }: PropsImage) {
    return <Image {...restProps} />
 }

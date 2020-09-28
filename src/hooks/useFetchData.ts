@@ -29,7 +29,7 @@ const useFetchData = (API: string): UseFetchDataReturn => {
          .catch((err) => setError(err))
 
       return () => abortController.abort()
-   }, [])
+   }, [API])
    return { data, loading, error }
 }
 

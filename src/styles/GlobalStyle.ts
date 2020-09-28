@@ -47,8 +47,6 @@ export const GlobalStyle = createGlobalStyle`
 
    .scroll-lock {
      overflow:hidden;
-
-     
 }
 
 `

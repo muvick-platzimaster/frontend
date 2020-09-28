@@ -31,6 +31,9 @@ import {
 } from './styles/card'
 import { Spinner } from '../Icons'
 
+/* Context */
+import { useSwitch } from '../../context/switchContext'
+
 /* Types */
 type PropsWithChildren = { children: React.ReactNode }
 type PropsImage = React.ImgHTMLAttributes<HTMLImageElement>
@@ -78,7 +81,9 @@ Card.RowContainer = function CardRowContainer({
 }: PropsRowContainer) {
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
-   const { data, loading } = useFetchData(`/movies?genre=${genreId}`)
+   const { switchValue } = useSwitch()
+   const api = `/${switchValue}?genre=${genreId}`
+   const { data, loading } = useFetchData(api)
 
    return (
       <FeatureContext.Provider

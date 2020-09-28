@@ -9,20 +9,37 @@ import { breakpoints } from '../styles/theme'
 /* Icons */
 import { Search, Bell } from '../components/Icons/'
 
+/* Context */
+import { SwitchState, useSwitch } from '../context/switchContext'
+
 interface Props {
    children: ReactNode
    background: string
 }
 
 function NavContainer({ children, background }: Props): JSX.Element {
+   // const [browseSwitch, setBrowseSwitch] = React.useState(SwitchState.MOVIES)
+   const { setSwitchValue } = useSwitch()
    const ICONSIZE = { width: '17px', height: '22px' }
    return (
       <Nav background={background}>
          <Nav.Grid>
             <Nav.Logo />
             <section className="Nav__Menu--open">
-               <Nav.LinkButton linkTo="/browse/programs">Movies</Nav.LinkButton>
-               <Nav.LinkButton linkTo="/browse/movies">TV Shows</Nav.LinkButton>
+               <Nav.Button
+                  onClick={() => {
+                     setSwitchValue(SwitchState.MOVIES)
+                  }}
+               >
+                  Movies
+               </Nav.Button>
+               <Nav.Button
+                  onClick={() => {
+                     setSwitchValue(SwitchState.TV)
+                  }}
+               >
+                  TV Shows
+               </Nav.Button>
                <Nav.LinkButton linkTo="/browse/my-list">My list</Nav.LinkButton>
                <Nav.Button
                   onClick={() => {
@@ -38,12 +55,20 @@ function NavContainer({ children, background }: Props): JSX.Element {
                   Explorar
                </Nav.Button>
                <div className="dropdownContent">
-                  <Nav.LinkButton linkTo="/browse/programs">
+                  <Nav.Button
+                     onClick={() => {
+                        setSwitchValue(SwitchState.MOVIES)
+                     }}
+                  >
                      Movies
-                  </Nav.LinkButton>
-                  <Nav.LinkButton linkTo="/browse/movies">
+                  </Nav.Button>
+                  <Nav.Button
+                     onClick={() => {
+                        setSwitchValue(SwitchState.TV)
+                     }}
+                  >
                      TV Shows
-                  </Nav.LinkButton>
+                  </Nav.Button>
                   <Nav.LinkButton linkTo="/browse/my-list">
                      My list
                   </Nav.LinkButton>

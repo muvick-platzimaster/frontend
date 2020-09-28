@@ -19,6 +19,9 @@ import { Player } from './components/'
 /* Constants */
 import ROUTES from './constants/routes'
 
+/* Context */
+import { SwitchContext, SwitchState } from './context/switchContext'
+
 const App: React.FC = () => {
    const [user, setUser] = useState(() => {
       return localStorage.getItem('TOKEN') || null
@@ -34,28 +37,32 @@ const App: React.FC = () => {
          })
    }, [])
 
+   const [switchValue, setSwitchValue] = useState(SwitchState.MOVIES)
+
    return (
       <>
-         <GlobalStyle />
-         <Router>
-            <Switch>
-               <Route exact path={ROUTES.HOME}>
-                  {user ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
-               </Route>
-               <Route exact path={ROUTES.SIGN_IN}>
-                  {user ? <Redirect to={ROUTES.BROWSE} /> : <Signin />}
-               </Route>
-               <Route exact path={ROUTES.BROWSE}>
-                  {user ? <Browse /> : <Redirect to={ROUTES.SIGN_IN} />}
-               </Route>
-               <Route exact path={ROUTES.SIGN_UP}>
-                  {user ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
-               </Route>
-               <Route exact path={ROUTES.MOVIE}>
-                  {user ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
-               </Route>
-            </Switch>
-         </Router>
+         <SwitchContext.Provider value={{ switchValue, setSwitchValue }}>
+            <GlobalStyle />
+            <Router>
+               <Switch>
+                  <Route exact path={ROUTES.HOME}>
+                     {user ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
+                  </Route>
+                  <Route exact path={ROUTES.SIGN_IN}>
+                     {user ? <Redirect to={ROUTES.BROWSE} /> : <Signin />}
+                  </Route>
+                  <Route exact path={ROUTES.BROWSE}>
+                     {user ? <Browse /> : <Redirect to={ROUTES.SIGN_IN} />}
+                  </Route>
+                  <Route exact path={ROUTES.SIGN_UP}>
+                     {user ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
+                  </Route>
+                  <Route exact path={ROUTES.MOVIE}>
+                     {user ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
+                  </Route>
+               </Switch>
+            </Router>
+         </SwitchContext.Provider>
       </>
    )
 }

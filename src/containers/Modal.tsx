@@ -8,7 +8,7 @@ import { Modal, Browser, Wrapper, SimilarCard } from '../components'
 import Close from '../components/Icons/Close'
 
 /* Hooks */
-import useFetchMovie from '../hooks/useFetchMovie'
+import useFetchData from '../hooks/useFetchData'
 
 import { ApiResponse } from '../interfaces'
 
@@ -18,14 +18,13 @@ interface Props {
 }
 
 const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
-   const API_KEY = 'e5bbbe23be02b4a93f9a207728ca1844'
-   const { data: movieDetail, loading: movieDetailLoading } = useFetchMovie(
-      `/movie/${movieId}?api_key=${API_KEY}`
+   const { data: movieDetail, loading: movieDetailLoading } = useFetchData(
+      `/movies/${movieId}/detail`
    )
 
    // TODO: Este hay que actualizarlo cuando ya tengamos un endpoint en MuvickAPI para hacer este llamado mientras tanto tendrá un any
-   const { data: similarMovies, loading: similarMoviesLoading } = useFetchMovie(
-      `/movie/${movieId}/recommendations?api_key=${API_KEY}`
+   const { data: similarMovies, loading: similarMoviesLoading } = useFetchData(
+      `/movies/${movieId}/recommendations`
    )
 
    const year = movieDetail
@@ -85,8 +84,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
             <Wrapper maxWidth={breakpoints.md}>
                <Modal.Title>Más títulos similares a este</Modal.Title>
                <SimilarCard.Detail>
-                  {((similarMovies as unknown) as ApiResponse)?.results.map(
-                     // FIXME: Arreglar as unknown) as ApiResponse cuando haya un endpoint
+                  {((similarMovies as ApiResponse) as ApiResponse)?.results.map(
                      (movie) => (
                         <SimilarCard.Section key={movie.id}>
                            <SimilarCard.Image

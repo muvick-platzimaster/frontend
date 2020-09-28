@@ -25,7 +25,7 @@ export const IconContainer = styled.button`
    width: 5rem;
    height: 3rem;
    top: 4rem;
-   left: 1rem;
+   left: .5%;
    z-index: 10;
    cursor: pointer;
    background-color: transparent;

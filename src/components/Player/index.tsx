@@ -5,10 +5,11 @@ import axios, { AxiosError } from 'axios'
 /* styles */
 import { Container, Video, IconContainer } from './styles/player'
 import { ArrowRight } from '../Icons'
+import { Videos } from '../../interfaces'
 
 const Player = (): JSX.Element => {
-   const match = useRouteMatch('/browse/movie/:id')
-   const [videos, setVideos] = useState<any>({ id: 0, results: [] })
+   const match = useRouteMatch<{ id: string }>('/browse/movie/:id')
+   const [videos, setVideos] = useState<Videos | null>(null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState<null | AxiosError>(null)
    const history = useHistory()
@@ -26,15 +27,26 @@ const Player = (): JSX.Element => {
          .finally(() => setLoading(false))
    }, [])
 
+   const getVideos = (arrayVideos: Videos) => {
+      const videos: string[] = []
+
+      for (const video of arrayVideos.results) {
+         videos.push(`https://www.youtube.com/embed/${video.key}?autoplay=1`)
+      }
+
+      return videos
+   }
+
    if (error) return <h1>{error.message}</h1>
-   if (loading || !match?.params || !videos.results[0].key) {
+
+   if (loading || !match?.params || !videos) {
       return <h1>Loading...</h1>
    }
 
    return (
       <Container>
          <Video
-            url={`https://www.youtube.com/embed/${videos.results[0].key}?autoplay=1`}
+            url={getVideos(videos)}
             controls={true}
             playing={true}
             width="100%"

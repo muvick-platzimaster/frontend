@@ -6,16 +6,12 @@ import { Nav, Wrapper } from '../components'
 /* Styles */
 import { breakpoints } from '../styles/theme'
 
-/* Icons */
-import { Search, Bell } from '../components/Icons/'
-
 interface Props {
    children: ReactNode
    background: string
 }
 
 function NavContainer({ children, background }: Props): JSX.Element {
-   const ICONSIZE = { width: '17px', height: '22px' }
    return (
       <Nav background={background}>
          <Nav.Grid>
@@ -58,8 +54,7 @@ function NavContainer({ children, background }: Props): JSX.Element {
                </div>
             </section>
             <section className="Nav__Icons">
-               <Search width={ICONSIZE.width} height={ICONSIZE.height} />
-               <Bell width={ICONSIZE.width} height={ICONSIZE.height} />
+               <Nav.Search />
             </section>
          </Nav.Grid>
          <Wrapper maxWidth={breakpoints.responsive}>

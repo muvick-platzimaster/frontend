@@ -19,13 +19,15 @@ import {
    RowContainer,
    Entities,
    Subtitle,
-   Text,
+   Description,
    Image,
    Item,
    Details,
    Page,
    ToPage,
-   ImageContainer
+   ImageContainer,
+   Pane,
+   Badge
 } from './styles/card'
 import { Spinner } from '../Icons'
 
@@ -35,6 +37,10 @@ type PropsImage = React.ImgHTMLAttributes<HTMLImageElement>
 interface PropsItem {
    children: React.ReactNode
    item: Movie
+}
+interface PropsBadge {
+   children: React.ReactNode
+   rating: number
 }
 interface FeatureContext {
    showFeature: boolean
@@ -129,7 +135,13 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                <ToPage onClick={handleClickPrevious}>&laquo;</ToPage>
 
                {movies?.map((movie) => {
-                  const { id, poster_path: poster } = movie
+                  const {
+                     id,
+                     poster_path: poster,
+                     title,
+                     overview,
+                     vote_average: votes
+                  } = movie
                   return (
                      <Card.Item key={`${genre}-${id}`} item={movie}>
                         <ImageContainer>
@@ -141,6 +153,19 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                               }
                            />
                         </ImageContainer>
+                        <Card.Details>
+                           <Card.Pane>
+                              <Card.Subtitle>
+                                 {title}{' '}
+                                 <Card.Badge rating={votes}>
+                                    {votes * 10}%
+                                 </Card.Badge>
+                              </Card.Subtitle>
+                           </Card.Pane>
+                           <Card.Pane>
+                              <Card.Description>{overview}</Card.Description>
+                           </Card.Pane>
+                        </Card.Details>
                      </Card.Item>
                   )
                })}
@@ -154,6 +179,9 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
 
 Card.Page = function CardPage({ children }: PropsWithChildren) {
    return <Page>{children}</Page>
+}
+Card.Badge = function CardBadge({ children, rating }: PropsBadge) {
+   return <Badge theme={{ rating }}>{children}</Badge>
 }
 
 Card.Item = function CardItem({ children, item, ...restProps }: PropsItem) {
@@ -182,8 +210,11 @@ Card.Subtitle = function CardSubtitle({ children }: PropsWithChildren) {
    return <Subtitle>{children}</Subtitle>
 }
 
-Card.Text = function CardText({ children }: PropsWithChildren) {
-   return <Text>{children}</Text>
+Card.Description = function CardDescription({ children }: PropsWithChildren) {
+   return <Description>{children}</Description>
+}
+Card.Pane = function CardPane({ children }: PropsWithChildren) {
+   return <Pane>{children}</Pane>
 }
 Card.Feature = function CardFeature() {
    const { showFeature, itemFeature, setShowFeature } = useContext(
@@ -195,7 +226,8 @@ Card.Feature = function CardFeature() {
       backdrop_path: image,
       overview,
       vote_average: vote,
-      title
+      title,
+      id
    } = itemFeature
 
    return (
@@ -211,6 +243,7 @@ Card.Feature = function CardFeature() {
                {title} <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
             </Feature.Title>
             <Feature.Subtitle>{overview}</Feature.Subtitle>
+            <Feature.Button to={`/browse/movie/${id}`}>Play</Feature.Button>
          </Feature.Pane>
          {/* <Feature.Pane>2 pane</Feature.Pane> */}
          <Feature.Close handleClose={setShowFeature} />

@@ -14,7 +14,7 @@ import { GlobalStyle } from './styles/GlobalStyle'
 import './styles/main.styl'
 
 /* Components */
-/* import Layout from './components/Layout' */
+import { Player } from './components/'
 
 /* Constants */
 import ROUTES from './constants/routes'
@@ -50,6 +50,9 @@ const App: React.FC = () => {
                </Route>
                <Route exact path={ROUTES.SIGN_UP}>
                   {user ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
+               </Route>
+               <Route exact path={ROUTES.MOVIE}>
+                  {user ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
                </Route>
             </Switch>
          </Router>

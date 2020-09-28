@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { colors } from '../../../styles/theme'
 
@@ -8,7 +9,7 @@ export const Container = styled.section`
    background-repeat: no-repeat;
    background-position: top left;
    background-size: cover;
-   height: 420px;
+   min-height: 380px;
    top: -1.5rem;
    z-index: 1;
    &::after {
@@ -45,7 +46,7 @@ export const Grid = styled.div`
 `
 
 export const Pane = styled.div`
-   width: 70%;
+   width: 90%;
 `
 
 export const Badge = styled.span`
@@ -75,4 +76,18 @@ export const CloseContainer = styled.button`
       width: 100%;
       height: 100%;
    }
+`
+export const Button = styled(Link)`
+   display: inline-block;
+   margin: 0 auto;
+   height: 40px;
+   cursor: pointer;
+   background-color: ${colors['color-primary']};
+   color: ${colors['color-font-base']};
+   font-size: 1rem;
+   border: none;
+   border-radius: 0.2rem;
+   padding: 0.7rem 3rem;
+   text-transform: uppercase;
+   margin-top: 1rem;
 `

@@ -11,7 +11,8 @@ import {
    Subtitle,
    Pane,
    Badge,
-   CloseContainer
+   CloseContainer,
+   Button
 } from './styles/feature'
 
 /* types */
@@ -24,6 +25,11 @@ interface PropsFeature {
 interface PropsBadge {
    children: React.ReactNode
    rating: number
+}
+
+interface PropsButton {
+   children: React.ReactNode
+   to: string
 }
 
 interface PropsClose extends React.SVGProps<SVGSVGElement> {
@@ -53,6 +59,17 @@ Feature.Pane = function FeaturePane({ children }: PropsWithChildren) {
 }
 Feature.Badge = function FeatureBadge({ children, rating }: PropsBadge) {
    return <Badge theme={{ rating }}>{children}</Badge>
+}
+Feature.Button = function FeatureButton({
+   children,
+   to,
+   ...restProps
+}: PropsButton) {
+   return (
+      <Button to={to} {...restProps}>
+         {children}
+      </Button>
+   )
 }
 
 Feature.Close = function FeatureClose({

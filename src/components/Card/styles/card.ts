@@ -17,6 +17,26 @@ export const RowContainer = styled.div`
    margin-bottom: 3rem;
 `
 
+export const Details = styled.div`
+   opacity: 0;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background: rgb(0, 0, 0);
+   background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 25%,
+      rgba(0, 0, 0, 0) 100%
+   );
+   padding: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   transition: opacity ${transitions.normal};
+`
+
 export const Item = styled.div`
    min-width: calc(100% / 8);
    transition: transform ${transitions.normal}, opacity ${transitions.normal},
@@ -32,6 +52,10 @@ export const Item = styled.div`
       transform: scale(1.2);
       margin: 0 1%;
       z-index: 2;
+   }
+
+   &:hover ${Details} {
+      opacity: 1;
    }
 
    @media (max-width: ${breakpoints.lg}) {
@@ -71,9 +95,34 @@ export const Entities = styled.div`
    }
 `
 
-export const Subtitle = styled.p``
+export const Subtitle = styled.p`
+   font-weight: bold;
+   margin: 0.5rem 0;
+`
 
-export const Text = styled.p``
+export const Description = styled.p`
+   margin: 0;
+   font-size: 0.8rem;
+   display: -webkit-box;
+   -webkit-line-clamp: 6;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   color: ${colors['color-font-muted']};
+
+   @media (max-width: ${breakpoints.lg}) {
+      font-size: 0.6rem;
+   }
+`
+
+export const Badge = styled.span`
+   color: ${({ theme }) => {
+      if (theme.rating >= 9) return colors['color-success']
+      if (theme.rating > 6 && theme.rating < 9) return colors['color-primary']
+      if (theme.rating <= 6 && theme.rating > 5) return colors['color-warning']
+      if (theme.rating <= 5) return colors['color-error']
+   }};
+   font-weight: bolder;
+`
 
 export const Image = styled.img`
    position: absolute;
@@ -149,7 +198,7 @@ export const ImageContainer = styled.figure`
    height: 0;
 `
 
-export const Details = styled.div``
+export const Pane = styled.div``
 
 /*
  * Fetaure

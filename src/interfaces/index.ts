@@ -60,3 +60,17 @@ export interface ApiResponse {
    total_pages: number
    results: Array<Movie>
 }
+
+export interface Videos {
+   id: number
+   results: {
+      id: string
+      iso_639_1: string
+      iso_3166_1: string
+      key: string
+      name: string
+      site: string
+      size: number
+      type: string
+   }[]
+}

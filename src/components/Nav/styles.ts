@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { breakpoints, colors } from '../../styles/theme'
+import { breakpoints, colors, transitions } from '../../styles/theme'
 import { Logo as LogoMuvick } from '../Icons'
 
 export const LinkButton = styled(Link)`
@@ -47,11 +47,6 @@ export const Container = styled.header`
 export const Logo = styled(LogoMuvick)`
    width: 95px;
    height: 25px;
-
-   @media (min-width: ${breakpoints.xl}) {
-      width: 95px;
-      height: 25px;
-   }
 `
 
 export const Grid = styled.div`
@@ -64,7 +59,7 @@ export const Grid = styled.div`
    padding-top: 20px;
    background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.5102415966386555) 0%,
+      rgba(0, 0, 0, 0.5) 0%,
       rgba(158, 158, 168, 0) 100%
    );
    & .Nav__Icons {
@@ -139,5 +134,51 @@ export const Button = styled.button`
    &:hover {
       color: #bbb8b5;
       transition: 0.3s;
+   }
+`
+
+export const Label = styled.button`
+   position: absolute;
+   outline: none;
+   border: 0;
+   right: 0;
+   width: 2.5rem;
+   height: 2.5rem;
+   background-color: ${colors['color-primary']};
+   cursor: pointer;
+
+   &:disabled {
+      background-color: ${colors['color-primary-muted']};
+      cursor: default;
+   }
+`
+
+export const SearchContainer = styled.div`
+   position: relative;
+   width: 100%;
+   height: 2.5rem;
+   max-width: 2.5rem;
+   overflow: hidden;
+   transition: all ${transitions.normal};
+
+   &:focus-within {
+      max-width: 300px;
+   }
+
+   &:hover {
+      max-width: 300px;
+   }
+`
+
+export const Search = styled.input`
+   width: 100%;
+   padding: 0.5rem 1rem;
+   height: 100%;
+   border: none;
+   background-color: #00000033;
+   color: ${colors['color-font-base']};
+
+   &::placeholder {
+      color: ${colors['color-font-muted']};
    }
 `

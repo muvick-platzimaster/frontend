@@ -1,7 +1,5 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
-/* Icons */
-
 /* Styles */
 import { Container, Button, Text, Frame, TitleStyled } from './styles'
 

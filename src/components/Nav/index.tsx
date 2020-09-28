@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Search as SearchIcon } from '../Icons'
+import { ModalMovies } from '../'
+import axios, { AxiosError } from 'axios'
 
 /* Styles */
 import {
@@ -17,8 +19,7 @@ import {
 
 /* Contants */
 import ROUTES from '../../constants/routes'
-
-// type PropsWithChildren = { children: ReactNode }
+import { ApiResponse } from '../../interfaces'
 
 interface Props {
    linkTo?: string
@@ -66,18 +67,25 @@ Nav.Content = function NavContent({ children }: Props) {
 Nav.Search = function NavSearch() {
    const ICON_SIZE = '100%'
    const [value, setValue] = useState('')
-   const [findedMovies, setfindedMovies] = useState(null)
+   const [findedMovies, setfindedMovies] = useState<ApiResponse | null>(null)
    const isValid = value !== ''
+   const [modalIsOpen, setIsOpen] = useState(false)
+   const [error, setError] = useState<AxiosError | null>(null)
 
    const handleClick = () => {
       if (!value) return
       const API_KEY = 'ad7bc0ccac5da809744fb1fe94ccd84c'
       const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${value}`
 
-      fetch(URL)
-         .then((res) => res.json())
-         .then((data) => setfindedMovies(data))
+      axios({
+         url: URL,
+         method: 'GET'
+      })
+         .then(({ data }) => setfindedMovies(data))
+         .catch(setError)
    }
+
+   if (error) return <h1>{error.message}</h1>
 
    return (
       <SearchContainer>
@@ -86,10 +94,35 @@ Nav.Search = function NavSearch() {
             value={value}
             placeholder="Search..."
          />
-         <Label disabled={!isValid} onClick={handleClick}>
+         <Label
+            disabled={!isValid}
+            onClick={() => {
+               handleClick()
+               setIsOpen(true)
+            }}
+         >
             <SearchIcon color="white" width={ICON_SIZE} height={ICON_SIZE} />
          </Label>
-         {findedMovies && <p>Movies</p>}
+         <ModalMovies isOpen={modalIsOpen}>
+            <ModalMovies.Title>Search: {value}</ModalMovies.Title>
+            <ModalMovies.Close setIsOpen={setIsOpen} />
+            <ModalMovies.RowContainer>
+               {findedMovies?.results?.map((movie) => (
+                  <ModalMovies.Item
+                     key={movie.id}
+                     background={movie.poster_path}
+                  >
+                     <ModalMovies.Title>{movie.title}</ModalMovies.Title>
+                     <ModalMovies.Description>
+                        {movie.overview}
+                     </ModalMovies.Description>
+                     <ModalMovies.PlayButton to={`browse/movie/${movie.id}`}>
+                        Play
+                     </ModalMovies.PlayButton>
+                  </ModalMovies.Item>
+               ))}
+            </ModalMovies.RowContainer>
+         </ModalMovies>
       </SearchContainer>
    )
 }

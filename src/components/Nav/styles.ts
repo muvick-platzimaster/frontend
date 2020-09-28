@@ -23,8 +23,11 @@ export const Container = styled.header`
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   background-image: ${(props) =>
-      `url('http://image.tmdb.org/t/p/original${props.background}')`};
+   background-image: ${(props) => {
+      return props.background
+         ? `url('http://image.tmdb.org/t/p/original${props.background}')`
+         : 'url("")'
+   }};
    height: 80vh;
    &::before {
       content: '';

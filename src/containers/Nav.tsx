@@ -18,7 +18,6 @@ interface Props {
 }
 
 function NavContainer({ children, background }: Props): JSX.Element {
-   // const [browseSwitch, setBrowseSwitch] = React.useState(SwitchState.MOVIES)
    const { setSwitchValue } = useSwitch()
    const ICONSIZE = { width: '17px', height: '22px' }
    return (

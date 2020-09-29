@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import ROUTES from '../constants/routes'
 
 /* Hooks */
 import useFetchData from '../hooks/useFetchData'
@@ -29,18 +30,18 @@ function NotFoundPage(): JSX.Element {
    return (
       <>
          <NavContainer error404 background={randomMovie.backdrop_path}>
-            <NotFound.Title>¿Te perdiste?</NotFound.Title>
+            <NotFound.Title>Seems like you got lost...</NotFound.Title>
             <NotFound.Text>
-               No encontramos esa página. Encontrarás muchos títulos para
-               explorar en nuestra página de inicio.
+               The page you are looking for was moved, removed, renamed or might
+               never existed
             </NotFound.Text>
             <NotFound.Frame>
-               <NotFound.Button to="/browse" background="white">
-                  Inicio de Muvick
+               <NotFound.Button to={ROUTES.BROWSE} background="white">
+                  Go home
                </NotFound.Button>
             </NotFound.Frame>
             <NotFound.Error>
-               <span className="error">Código de error</span>
+               <span className="error">PAGE NOT FOUND</span>
                <span className="code404">404</span>
             </NotFound.Error>
          </NavContainer>

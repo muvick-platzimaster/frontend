@@ -60,13 +60,7 @@ const App: React.FC = () => {
                   <Route exact path={ROUTES.MOVIE}>
                      {user ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
                   </Route>
-                  <Route path="*">
-                     {user ? (
-                        <NotFoundPage />
-                     ) : (
-                        <Redirect to={ROUTES.SIGN_IN} />
-                     )}
-                  </Route>
+                  <Route component={NotFoundPage} />
                </Switch>
             </Router>
          </SwitchContext.Provider>

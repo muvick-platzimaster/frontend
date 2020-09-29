@@ -59,7 +59,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                   <Wrapper maxWidth={breakpoints.md}>
                      <Modal.Title>{title || ''}</Modal.Title>
                      <Browser.LinkButton
-                        to={`/browse/movie/${movieId}`}
+                        to={`/browse/${title ? 'movie' : 'tv'}/${movieId}`}
                         background="white"
                      >
                         Play
@@ -95,7 +95,9 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                      (movie) => (
                         <SimilarCard.Section key={movie.id}>
                            <SimilarCard.Image
-                              to={`/browse/movie/${movie.id}`}
+                              to={`/browse/${movie.title ? 'movie' : 'tv'}/${
+                                 movie.id
+                              }`}
                               background={movie.backdrop_path || ''}
                            >
                               <Play />

@@ -25,7 +25,7 @@ const Jumbotron: FC<Props> = (props: Props) => {
                   <SubTitle>{subTitle}</SubTitle>
                </Pane>
                <Pane>
-                  <Image src={image} alt={alt} />
+                  <Image src={image} alt={alt} loading="lazy" />
                </Pane>
             </Grid>
          </Wrapper>

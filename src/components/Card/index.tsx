@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import useFetchData from '../../hooks/useFetchData'
 import { Movie } from '../../interfaces'
-
+import { useInView } from 'react-intersection-observer'
 /* Components */
 
 import { Feature } from '../'
@@ -82,7 +82,10 @@ Card.RowContainer = function CardRowContainer({
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
    const { switchValue } = useSwitch()
+
+   const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
    const api = `/${switchValue}?genre=${genreId}`
+
    const { data, loading } = useFetchData(api)
 
    return (
@@ -95,8 +98,8 @@ Card.RowContainer = function CardRowContainer({
             movies: data?.results
          }}
       >
-         <RowContainer>
-            {loading ? <Spinner color="white" /> : children}
+         <RowContainer ref={ref}>
+            {loading ? <Spinner color="white" /> : inView && children}
          </RowContainer>
       </FeatureContext.Provider>
    )
@@ -144,6 +147,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                      id,
                      poster_path: poster,
                      title,
+                     name,
                      overview,
                      vote_average: votes
                   } = movie
@@ -156,12 +160,13 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                                     ? `http://image.tmdb.org/t/p/w400/${poster}`
                                     : 'https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80'
                               }
+                              loading="lazy"
                            />
                         </ImageContainer>
                         <Card.Details>
                            <Card.Pane>
                               <Card.Subtitle>
-                                 {title}{' '}
+                                 {name || title}{' '}
                                  <Card.Badge rating={votes}>
                                     {votes * 10}%
                                  </Card.Badge>
@@ -232,6 +237,7 @@ Card.Feature = function CardFeature() {
       overview,
       vote_average: vote,
       title,
+      name,
       id
    } = itemFeature
 
@@ -245,10 +251,13 @@ Card.Feature = function CardFeature() {
       >
          <Feature.Pane>
             <Feature.Title>
-               {title} <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
+               {title || name}{' '}
+               <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
             </Feature.Title>
             <Feature.Subtitle>{overview}</Feature.Subtitle>
-            <Feature.Button to={`/browse/movie/${id}`}>Play</Feature.Button>
+            <Feature.Button to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
+               Play
+            </Feature.Button>
          </Feature.Pane>
          {/* <Feature.Pane>2 pane</Feature.Pane> */}
          <Feature.Close handleClose={setShowFeature} />

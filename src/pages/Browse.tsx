@@ -50,7 +50,9 @@ function Browse(): JSX.Element {
             <Browser.Text>{randomMovie.overview}</Browser.Text>
             <Browser.Frame>
                <Browser.LinkButton
-                  to={`/browse/movie/${randomMovie.id}`}
+                  to={`/browse/${randomMovie.title ? 'movie' : 'tv'}/${
+                     randomMovie.id
+                  }`}
                   background="white"
                >
                   Play

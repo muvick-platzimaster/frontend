@@ -15,6 +15,7 @@ export const Title = styled.h3`
 export const RowContainer = styled.div`
    position: relative;
    margin-bottom: 3rem;
+   min-height: 200px;
 `
 
 export const Details = styled.div`

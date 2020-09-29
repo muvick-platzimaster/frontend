@@ -3,5 +3,5 @@ export default {
    SIGN_UP: '/signup',
    SIGN_IN: '/signin',
    BROWSE: '/browse',
-   MOVIE: '/browse/movie/:id'
+   MOVIE: '/browse/:isMovie/:id'
 }

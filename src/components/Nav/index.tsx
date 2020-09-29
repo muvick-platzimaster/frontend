@@ -116,7 +116,11 @@ Nav.Search = function NavSearch() {
                      <ModalMovies.Description>
                         {movie.overview}
                      </ModalMovies.Description>
-                     <ModalMovies.PlayButton to={`browse/movie/${movie.id}`}>
+                     <ModalMovies.PlayButton
+                        to={`browse/${movie.title ? 'movie' : 'tv'}/${
+                           movie.id
+                        }`}
+                     >
                         Play
                      </ModalMovies.PlayButton>
                   </ModalMovies.Item>

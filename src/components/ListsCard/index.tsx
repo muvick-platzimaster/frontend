@@ -13,7 +13,7 @@ const Lists: FC<Props> = (props: Props) => {
 
    return (
       <Container>
-         <Image src={image} alt={title} />
+         <Image src={image} alt={title} loading="lazy" />
       </Container>
    )
 }

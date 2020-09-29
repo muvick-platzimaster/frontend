@@ -1,5 +1,4 @@
 import React, { FC, Fragment } from 'react'
-/* import ProfilesContainer from './Profiles' */
 import { genres } from '../fixtures/genres.json'
 
 /* Components */

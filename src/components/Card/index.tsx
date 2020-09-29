@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import useFetchData from '../../hooks/useFetchData'
 import { Movie } from '../../interfaces'
-
+import { useInView } from 'react-intersection-observer'
 /* Components */
 
 import { Feature } from '../'
@@ -82,7 +82,10 @@ Card.RowContainer = function CardRowContainer({
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
    const { switchValue } = useSwitch()
+
+   const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
    const api = `/${switchValue}?genre=${genreId}`
+
    const { data, loading } = useFetchData(api)
 
    return (
@@ -95,8 +98,8 @@ Card.RowContainer = function CardRowContainer({
             movies: data?.results
          }}
       >
-         <RowContainer>
-            {loading ? <Spinner color="white" /> : children}
+         <RowContainer ref={ref}>
+            {loading ? <Spinner color="white" /> : inView && children}
          </RowContainer>
       </FeatureContext.Provider>
    )
@@ -157,6 +160,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                                     ? `http://image.tmdb.org/t/p/w400/${poster}`
                                     : 'https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80'
                               }
+                              loading="lazy"
                            />
                         </ImageContainer>
                         <Card.Details>

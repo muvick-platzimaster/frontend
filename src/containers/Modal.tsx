@@ -53,9 +53,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                   <Wrapper maxWidth={breakpoints.md}>
                      <Modal.Title>{title || ''}</Modal.Title>
                      <Modal.Button>
-                        <Browser.Button background="white">
-                           Reproducir
-                        </Browser.Button>
+                        <Browser.Button background="white">Play</Browser.Button>
                      </Modal.Button>
                   </Wrapper>
                </Modal.TitleContainer>
@@ -68,7 +66,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
             </Wrapper>
             <Wrapper maxWidth={breakpoints.md}>
                <Modal.Tag color="#46D369">
-                  {year === '2020' && 'NUEVO '}
+                  {year === '2020' && 'NEW '}
                </Modal.Tag>
                <Modal.Tag color="white">
                   {year} {duration}
@@ -76,13 +74,13 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                <Modal.Detail>
                   <Modal.Text>{overview}</Modal.Text>
                   <Modal.More>
-                     Generos:
+                     Genres:
                      {genres.map((genre) => ` ${genre.name} `)}
                   </Modal.More>
                </Modal.Detail>
             </Wrapper>
             <Wrapper maxWidth={breakpoints.md}>
-               <Modal.Title>Más títulos similares a este</Modal.Title>
+               <Modal.Title>More titles like this</Modal.Title>
                <SimilarCard.Detail>
                   {((similarMovies as ApiResponse) as ApiResponse)?.results.map(
                      (movie) => (

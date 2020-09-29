@@ -8,13 +8,15 @@ import { ArrowRight } from '../Icons'
 import { Videos } from '../../interfaces'
 
 const Player = (): JSX.Element => {
-   const match = useRouteMatch<{ id: string }>('/browse/movie/:id')
+   const match = useRouteMatch<{ id: string; isMovie: string }>(
+      '/browse/:isMovie/:id'
+   )
    const [videos, setVideos] = useState<Videos | null>(null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState<null | AxiosError>(null)
    const history = useHistory()
 
-   const URL = `https://api.themoviedb.org/3/movie/${match?.params.id}/videos?api_key=ad7bc0ccac5da809744fb1fe94ccd84c`
+   const URL = `https://api.themoviedb.org/3/${match?.params.isMovie}/${match?.params.id}/videos?api_key=ad7bc0ccac5da809744fb1fe94ccd84c`
 
    useEffect(() => {
       setLoading(true)

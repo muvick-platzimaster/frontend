@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { colors } from '../../../styles/theme'
+import { colors, transitions } from '../../../styles/theme'
 
 export const Container = styled.section`
    position: relative;
@@ -17,20 +17,10 @@ export const RowContainer = styled.div`
 export const Item = styled.div`
    height: 425px;
    position: relative;
-
-   &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      background: #00000077;
-   }
 `
 
 export const Description = styled.p`
-   color: ${colors['color-font-base']};
+   color: ${colors['color-font-muted']};
    display: -webkit-box;
    -webkit-line-clamp: 7;
    -webkit-box-orient: vertical;
@@ -48,9 +38,31 @@ export const Title = styled.h4`
 `
 
 export const Content = styled.div`
-   position: relative;
    padding: 1rem;
    z-index: 10;
+   opacity: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   transition: opacity ${transitions.normal};
+   background: rgb(0, 0, 0);
+   background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 25%,
+      rgba(0, 0, 0, 0) 100%
+   );
+
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+
+   &:hover {
+      opacity: 1;
+   }
 `
 
 export const Image = styled.div`

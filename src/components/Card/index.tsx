@@ -144,6 +144,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                      id,
                      poster_path: poster,
                      title,
+                     name,
                      overview,
                      vote_average: votes
                   } = movie
@@ -161,7 +162,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                         <Card.Details>
                            <Card.Pane>
                               <Card.Subtitle>
-                                 {title}{' '}
+                                 {name || title}{' '}
                                  <Card.Badge rating={votes}>
                                     {votes * 10}%
                                  </Card.Badge>
@@ -232,6 +233,7 @@ Card.Feature = function CardFeature() {
       overview,
       vote_average: vote,
       title,
+      name,
       id
    } = itemFeature
 
@@ -245,10 +247,13 @@ Card.Feature = function CardFeature() {
       >
          <Feature.Pane>
             <Feature.Title>
-               {title} <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
+               {title || name}{' '}
+               <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
             </Feature.Title>
             <Feature.Subtitle>{overview}</Feature.Subtitle>
-            <Feature.Button to={`/browse/movie/${id}`}>Play</Feature.Button>
+            <Feature.Button to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
+               Play
+            </Feature.Button>
          </Feature.Pane>
          {/* <Feature.Pane>2 pane</Feature.Pane> */}
          <Feature.Close handleClose={setShowFeature} />

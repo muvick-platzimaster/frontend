@@ -13,7 +13,6 @@ const BrowseContainer: FC = () => {
                <Card.RowContainer key={id} genreId={id}>
                   <Card.Title>{name}</Card.Title>
                   <Card.Entities genre={name} />
-                  {/* <Card.Feature /> */}
                </Card.RowContainer>
             ))}
          </Card>

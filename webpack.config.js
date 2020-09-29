@@ -59,6 +59,13 @@ module.exports = {
                options: {
                   cacheName: 'images'
                }
+            },
+            {
+               urlPattern: new RegExp('(html|css|js)'),
+               handler: 'CacheFirst',
+               options: {
+                  cacheName: 'statics'
+               }
             }
          ]
       })

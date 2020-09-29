@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import {
    BrowserRouter as Router,
    Route,
@@ -14,7 +14,7 @@ import { GlobalStyle } from './styles/GlobalStyle'
 import './styles/main.styl'
 
 /* Components */
-import { Player } from './components/'
+import { Player, Fallback } from './components/'
 
 /* Constants */
 import ROUTES from './constants/routes'
@@ -40,7 +40,13 @@ const App: React.FC = () => {
    const [switchValue, setSwitchValue] = useState(SwitchState.MOVIES)
 
    return (
-      <>
+      <Suspense
+         fallback={
+            <Fallback>
+               <Fallback.Spinner />
+            </Fallback>
+         }
+      >
          <SwitchContext.Provider value={{ switchValue, setSwitchValue }}>
             <GlobalStyle />
             <Router>
@@ -64,7 +70,7 @@ const App: React.FC = () => {
                </Switch>
             </Router>
          </SwitchContext.Provider>
-      </>
+      </Suspense>
    )
 }
 

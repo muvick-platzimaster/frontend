@@ -23,7 +23,7 @@ export const ToggleContext = createContext<Partial<Context>>({})
 
 type PropsWithChildren = { children: ReactNode }
 
-function Accordion({ children }: PropsWithChildren): JSX.Element {
+const Accordion = ({ children }: PropsWithChildren): JSX.Element => {
    return <Container>{children}</Container>
 }
 

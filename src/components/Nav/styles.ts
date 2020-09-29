@@ -135,6 +135,10 @@ export const Button = styled.button`
       color: #bbb8b5;
       transition: 0.3s;
    }
+
+   & svg {
+      margin-left: 0.5rem;
+   }
 `
 
 export const Label = styled.button`

@@ -15,10 +15,6 @@ import {
    Around
 } from './styles'
 
-interface Props {
-   children: ReactNode
-}
-
 interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    children: ReactNode
    background?: string

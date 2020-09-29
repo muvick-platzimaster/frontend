@@ -21,6 +21,9 @@ import {
 import ROUTES from '../../constants/routes'
 import { ApiResponse } from '../../interfaces'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 interface Props {
    linkTo?: string
    children: React.ReactNode
@@ -65,6 +68,7 @@ Nav.Content = function NavContent({ children }: Props) {
 }
 
 Nav.Search = function NavSearch() {
+   const { t } = useTranslation(['search'])
    const ICON_SIZE = '100%'
    const [value, setValue] = useState('')
    const [findedMovies, setfindedMovies] = useState<ApiResponse | null>(null)
@@ -92,7 +96,7 @@ Nav.Search = function NavSearch() {
          <Search
             onChange={(e) => setValue(e.target.value)}
             value={value}
-            placeholder="Search..."
+            placeholder={t('search:text', 'Search')}
          />
          <Label
             disabled={!isValid}
@@ -104,7 +108,9 @@ Nav.Search = function NavSearch() {
             <SearchIcon color="white" width={ICON_SIZE} height={ICON_SIZE} />
          </Label>
          <ModalMovies isOpen={modalIsOpen}>
-            <ModalMovies.Title>Search: {value}</ModalMovies.Title>
+            <ModalMovies.Title>
+               {t('search:text', 'Search')}: {value}
+            </ModalMovies.Title>
             <ModalMovies.Close setIsOpen={setIsOpen} />
             <ModalMovies.RowContainer>
                {findedMovies?.results?.map((movie) => (
@@ -121,7 +127,7 @@ Nav.Search = function NavSearch() {
                            movie.id
                         }`}
                      >
-                        Play
+                        {t('search:play', 'Play')}
                      </ModalMovies.PlayButton>
                   </ModalMovies.Item>
                ))}

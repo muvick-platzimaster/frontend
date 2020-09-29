@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Accordion, Wrapper, InputForm } from '../components'
 import ROUTES from '../constants/routes'
 
 import faqs from '../fixtures/faqs.json'
 import { breakpoints } from '../styles/theme'
+
+/* i18n */
+import { useTranslation } from 'react-i18next'
 
 function Faqs(): JSX.Element {
    const [email, setEmail] = useState('')
@@ -14,12 +17,24 @@ function Faqs(): JSX.Element {
          history.push(ROUTES.SIGN_UP)
       }
    }
+
+   const { i18n } = useTranslation(['footer'])
+   const [faq, setFaq] = useState(faqs.english)
+
+   useEffect(() => {
+      if (i18n.language === 'es') {
+         setFaq(faqs.spanish)
+      } else if (i18n.language === 'en') {
+         setFaq(faqs.english)
+      }
+   }, [i18n.language])
+
    return (
       <Accordion>
          <Wrapper maxWidth={breakpoints.md}>
             <Accordion.Title>Frequently Asked Questions</Accordion.Title>
             <Accordion.Frame>
-               {faqs.map(({ body, header, id }) => (
+               {faq.map(({ body, header, id }) => (
                   <Accordion.Item key={id}>
                      <Accordion.Button>
                         <Accordion.Text>{header}</Accordion.Text>

@@ -1,0 +1,11 @@
+{
+  "form": {
+    "account": "account",
+    "already": "I already have an",
+    "email": "Email",
+    "password": "Password",
+    "recaptcha": "This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot.",
+    "user": "Username",
+    "welcome": "Welcome back!"
+  }
+}

@@ -13,6 +13,9 @@ import Faqs from '../containers/Faqs'
 import HeaderContainer from '../containers/Header'
 import { useHistory } from 'react-router-dom'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 function Home(): JSX.Element {
    const [email, setEmail] = useState('')
    const history = useHistory()
@@ -21,23 +24,29 @@ function Home(): JSX.Element {
          history.push(ROUTES.SIGN_UP)
       }
    }
+   const { t } = useTranslation(['home'])
+
    return (
       <>
          <HeaderContainer>
             <Wrapper>
-               <Title>Unlimited movies, TV shows, and more.</Title>
+               <Title>
+                  {t('home:title', 'Unlimited movies, TV shows, and more.')}
+               </Title>
 
                <InputForm>
                   <InputForm.Label>
-                     Ready to watch? Enter your email to create or restart your
-                     membership.
+                     {t(
+                        'home:subtitle',
+                        'Ready to watch? Enter your email to create or restart your membership.'
+                     )}
                   </InputForm.Label>
 
                   <Wrapper maxWidth={breakpoints.md}>
                      <InputForm.Frame>
                         <InputForm.Input
                            onChange={({ target }) => setEmail(target.value)}
-                           placeholder="Email"
+                           placeholder={t('home:form.email', 'Email')}
                            value={email}
                            type="email"
                         />
@@ -45,7 +54,9 @@ function Home(): JSX.Element {
                            disabled={!email}
                            onClick={handleClick}
                         >
-                           <InputForm.Text>Get started</InputForm.Text>
+                           <InputForm.Text>
+                              {t('home:form.button', 'Get started')}
+                           </InputForm.Text>
                            <InputForm.Icon />
                         </InputForm.Button>
                      </InputForm.Frame>

@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
    entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -68,6 +69,9 @@ module.exports = {
                }
             }
          ]
+      }),
+      new CopyPlugin({
+         patterns: [{ from: './public/locales', to: './locales' }]
       })
    ]
 }

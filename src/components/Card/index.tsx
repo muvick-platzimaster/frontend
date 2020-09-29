@@ -34,6 +34,9 @@ import { Spinner } from '../Icons'
 /* Context */
 import { useSwitch } from '../../context/switchContext'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 /* Types */
 type PropsWithChildren = { children: React.ReactNode }
 type PropsImage = React.ImgHTMLAttributes<HTMLImageElement>
@@ -227,6 +230,7 @@ Card.Pane = function CardPane({ children }: PropsWithChildren) {
    return <Pane>{children}</Pane>
 }
 Card.Feature = function CardFeature() {
+   const { t } = useTranslation(['feature'])
    const { showFeature, itemFeature, setShowFeature } = useContext(
       FeatureContext
    )
@@ -256,7 +260,7 @@ Card.Feature = function CardFeature() {
             </Feature.Title>
             <Feature.Subtitle>{overview}</Feature.Subtitle>
             <Feature.Button to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
-               Play
+               {t('feature:play', 'Play')}
             </Feature.Button>
          </Feature.Pane>
          {/* <Feature.Pane>2 pane</Feature.Pane> */}

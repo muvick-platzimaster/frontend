@@ -5,12 +5,16 @@ import ROUTES from '../constants/routes'
 import { Spinner } from '../components/Icons'
 import axios, { AxiosError } from 'axios'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
    const [password, setPassword] = useState<string>('')
    const [error, setError] = useState<null | AxiosError>(null)
    const [loading, setLoading] = useState<boolean>(false)
    const isInvalid = email === '' || password === ''
+   const { t } = useTranslation(['signin'])
 
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
@@ -42,7 +46,7 @@ const Signin: FC = (): JSX.Element => {
       <Fragment>
          <HeaderContainer>
             <Form onSubmit={handleSubmit} action={ROUTES.SIGN_IN} method="POST">
-               <Form.Title>Sign In</Form.Title>
+               <Form.Title> {t('signin:form.sign', 'Sign In')}</Form.Title>
                {error && (
                   <Form.Error>
                      {error?.response?.data.message === 'invalid_credentials'
@@ -58,7 +62,7 @@ const Signin: FC = (): JSX.Element => {
                   autoFocus
                   required
                >
-                  Email
+                  {t('signin:form.email', 'Email')}
                </Form.FormGroup>
                <Form.FormGroup
                   value={password}
@@ -70,23 +74,28 @@ const Signin: FC = (): JSX.Element => {
                   autoComplete="off"
                   onChange={({ target }) => setPassword(target.value)}
                >
-                  Password
+                  {t('signin:form.password', 'Password')}
                </Form.FormGroup>
                <Form.Submit type="submit" disabled={isInvalid || loading}>
                   {loading ? (
                      <Spinner color="#fff" width="1rem" height="100%" />
                   ) : (
-                     'Sign In'
+                     `${t('signin:form.signin', 'Sign in')}`
                   )}
                </Form.Submit>
                <Form.Text>
-                  New to Netflix?{' '}
-                  <Form.Link to={ROUTES.SIGN_UP}>Sign up now</Form.Link>.
+                  {t('signin:form.new', 'New to Netflix?')}{' '}
+                  <Form.Link to={ROUTES.SIGN_UP}>
+                     {t('signin:form.signup', 'Sign up now')}
+                  </Form.Link>
+                  .
                </Form.Text>
 
                <Form.TextSmall>
-                  This page is protected by Google reCAPTCHA to ensure
-                  you&lsquo;re not a bot.
+                  {t(
+                     'signin:form.recaptcha',
+                     'This page is protected by Google reCAPTCHA to ensure you&lsquo;re not a bot.'
+                  )}
                </Form.TextSmall>
             </Form>
          </HeaderContainer>

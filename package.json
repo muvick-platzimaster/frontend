@@ -8,7 +8,8 @@
       "dev": "webpack-dev-server --mode development --open",
       "build": "webpack --mode production",
       "npm:check-updates": "ncu",
-      "npm:update": "ncu -u && npm install"
+      "npm:update": "ncu -u && npm install",
+      "extract": "i18next --config i18next-parser.config.js"
    },
    "keywords": [
       "reactjs",
@@ -19,8 +20,13 @@
    "dependencies": {
       "@babel/runtime": "^7.11.2",
       "axios": "^0.20.0",
+      "i18next": "^19.7.0",
+      "i18next-browser-languagedetector": "^6.0.1",
+      "i18next-parser": "^3.3.0",
+      "i18next-xhr-backend": "^3.2.2",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
+      "react-i18next": "^11.7.3",
       "react-intersection-observer": "^8.29.0",
       "react-modal": "^3.11.2",
       "react-player": "^2.6.2",
@@ -43,6 +49,7 @@
       "babel-loader": "^8.1.0",
       "babel-plugin-macros": "^2.8.0",
       "babel-plugin-styled-components": "^1.11.1",
+      "copy-webpack-plugin": "^6.1.1",
       "css-loader": "^4.3.0",
       "eslint": "^7.9.0",
       "eslint-config-airbnb": "^18.2.0",

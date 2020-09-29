@@ -1,7 +1,14 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
 /* Styles */
-import { Container, Button, Text, Frame, TitleStyled } from './styles'
+import {
+   Container,
+   Button,
+   LinkButton,
+   Text,
+   Frame,
+   TitleStyled
+} from './styles'
 
 interface Props {
    children: ReactNode
@@ -14,6 +21,13 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 function Browser({ children }: Props): JSX.Element {
    return <Container>{children}</Container>
+}
+
+Browser.LinkButton = function BrowserLinkButton({
+   children,
+   ...restProps
+}: PropsButton) {
+   return <LinkButton {...restProps}>{children}</LinkButton>
 }
 
 Browser.Button = function BrowserButton({

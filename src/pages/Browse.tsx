@@ -49,7 +49,12 @@ function Browse(): JSX.Element {
             <Browser.Title>{randomMovie.title}</Browser.Title>
             <Browser.Text>{randomMovie.overview}</Browser.Text>
             <Browser.Frame>
-               <Browser.Button background="white">Play</Browser.Button>
+               <Browser.LinkButton
+                  to={`/browse/movie/${randomMovie.id}`}
+                  background="white"
+               >
+                  Play
+               </Browser.LinkButton>
                <Browser.Button background="#6C6E6D" onClick={showModal}>
                   More information...
                </Browser.Button>

@@ -6,6 +6,7 @@ import { Modal, Browser, Wrapper, SimilarCard } from '../components'
 
 /* Icons */
 import Close from '../components/Icons/Close'
+import Play from '../components/Icons/Play'
 
 /* Hooks */
 import useFetchData from '../hooks/useFetchData'
@@ -43,7 +44,12 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
       return <h1>Loading...</h1>
    }
 
-   const { backdrop_path: imageUrl, title, overview, genres } = movieDetail
+   const {
+      backdrop_path: imageUrl,
+      original_title: title,
+      overview,
+      genres
+   } = movieDetail
 
    return (
       <Modal onClick={handleClose}>
@@ -52,9 +58,12 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                <Modal.TitleContainer>
                   <Wrapper maxWidth={breakpoints.md}>
                      <Modal.Title>{title || ''}</Modal.Title>
-                     <Modal.Button>
-                        <Browser.Button background="white">Play</Browser.Button>
-                     </Modal.Button>
+                     <Browser.LinkButton
+                        to={`/browse/movie/${movieId}`}
+                        background="white"
+                     >
+                        Play
+                     </Browser.LinkButton>
                   </Wrapper>
                </Modal.TitleContainer>
             </Modal.Image>
@@ -86,8 +95,11 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                      (movie) => (
                         <SimilarCard.Section key={movie.id}>
                            <SimilarCard.Image
+                              to={`/browse/movie/${movie.id}`}
                               background={movie.backdrop_path || ''}
-                           />
+                           >
+                              <Play />
+                           </SimilarCard.Image>
                            <Wrapper maxWidth={breakpoints.md}>
                               <SimilarCard.Text>{movie.title}</SimilarCard.Text>
                               <SimilarCard.Tag>

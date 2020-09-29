@@ -3,7 +3,6 @@ import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 /* Styles */
 import {
    Container,
-   Button,
    Section,
    Title,
    TitleContainer,
@@ -75,10 +74,6 @@ Modal.CloseButton = function ModalCloseButton({
    ...restProps
 }: PropsButton) {
    return <CloseButton {...restProps}>{children}</CloseButton>
-}
-
-Modal.Button = function ModalButton({ children }: PropsButton) {
-   return <Button>{children}</Button>
 }
 
 export default Modal

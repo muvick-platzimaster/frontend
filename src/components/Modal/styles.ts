@@ -65,11 +65,6 @@ export const Section = styled.section`
    }
 `
 
-export const Button = styled.div`
-   /* position: absolute;
-   top: 400px; */
-`
-
 export const TitleContainer = styled.div`
    position: relative;
    top: 330px;

@@ -12,6 +12,7 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 interface PropsImage {
    background: string
+   children: ReactNode
 }
 
 function SimilarCard({ children }: Props): JSX.Element {
@@ -58,10 +59,15 @@ SimilarCard.Detail = function SimilarCardDetail({
 }
 
 SimilarCard.Image = function SimilarCardSection({
+   children,
    background,
    ...restProps
 }: PropsImage) {
-   return <Image theme={{ background }} {...restProps} />
+   return (
+      <Image theme={{ background }} {...restProps}>
+         {children}
+      </Image>
+   )
 }
 
 export default SimilarCard

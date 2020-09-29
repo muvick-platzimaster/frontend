@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
 import { breakpoints } from '../../styles/theme'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
    position: fixed;
@@ -48,13 +49,26 @@ export const Detail = styled.div`
    }
 `
 
-export const Image = styled.div`
+export const Image = styled(Link)`
    background-image: ${({ theme }) =>
       `url('http://image.tmdb.org/t/p/original${theme.background}')`};
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
    height: 130px;
-   /* width: 240px; */
    border-radius: 10px 10px 0 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   & p {
+      display: none;
+   }
+   &:hover svg {
+      display: block;
+      transition: 0.3s;
+      background-color: rgba(30, 30, 20, 0.5);
+      border-radius: 2em;
+      width: 3em;
+      height: 3em;
+   }
 `

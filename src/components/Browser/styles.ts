@@ -1,8 +1,43 @@
 import styled from 'styled-components/macro'
 import { breakpoints, colors, transitions } from '../../styles/theme'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
    padding: 2rem 0;
+`
+
+export const LinkButton = styled(Link)`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-transform: uppercase;
+   height: 55px;
+   padding: 0 2rem;
+   width: max-content;
+   cursor: pointer;
+   border: none;
+   border-radius: 5px;
+   background: ${(props) => props.background && props.background};
+   color: ${(props) => (props.background === 'white' ? 'black' : 'white')};
+   font-weight: 700;
+   line-height: 2.4rem;
+   font-size: 1.2rem;
+   transition: all ${transitions.normal};
+   margin-right: 15px;
+   margin-bottom: 15px;
+   &:focus {
+      filter: brightness(1.2);
+   }
+
+   &:hover {
+      background: #d6d3d0;
+   }
+
+   &:disabled {
+      background-color: ${colors['color-primary-muted']};
+      cursor: default;
+      opacity: 0.8;
+   }
 `
 
 export const Button = styled.button`

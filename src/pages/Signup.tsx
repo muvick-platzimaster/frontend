@@ -6,6 +6,9 @@ import axios, { AxiosError } from 'axios'
 import { useHistory } from 'react-router-dom'
 import { Spinner } from '../components/Icons'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 const Signup: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
    const [password, setPassword] = useState<string>('')
@@ -14,6 +17,7 @@ const Signup: FC = (): JSX.Element => {
    const [loading, setLoading] = useState<boolean>(false)
    const isInvalid = email === '' || password === '' || username === ''
    const history = useHistory()
+   const { t } = useTranslation(['signup'])
 
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
@@ -52,7 +56,9 @@ const Signup: FC = (): JSX.Element => {
       <Fragment>
          <HeaderContainer>
             <Form onSubmit={handleSubmit} action={ROUTES.SIGN_IN} method="POST">
-               <Form.Title>Welcome back!</Form.Title>
+               <Form.Title>
+                  {t('signup:form.welcome', 'Welcome back!')}
+               </Form.Title>
                {error && (
                   <Form.Error>
                      {handleErrors(error?.response?.data.message)}
@@ -67,7 +73,7 @@ const Signup: FC = (): JSX.Element => {
                   autoComplete="off"
                   autoFocus
                >
-                  Username
+                  {t('signup:form.user', 'Username')}
                </Form.FormGroup>
                <Form.FormGroup
                   value={email}
@@ -76,7 +82,7 @@ const Signup: FC = (): JSX.Element => {
                   onChange={({ target }) => setEmail(target.value)}
                   required
                >
-                  Email
+                  {t('signup:form.email', 'Email')}
                </Form.FormGroup>
                <Form.FormGroup
                   value={password}
@@ -87,7 +93,7 @@ const Signup: FC = (): JSX.Element => {
                   type="password"
                   onChange={({ target }) => setPassword(target.value)}
                >
-                  Password
+                  {t('signup:form.password', 'Password')}
                </Form.FormGroup>
                <Form.Submit type="submit" disabled={isInvalid}>
                   {loading ? (
@@ -97,13 +103,18 @@ const Signup: FC = (): JSX.Element => {
                   )}
                </Form.Submit>
                <Form.Text>
-                  I already have an{' '}
-                  <Form.Link to={ROUTES.SIGN_IN}>account</Form.Link>!
+                  {t('signup:form.already', 'I already have an')}{' '}
+                  <Form.Link to={ROUTES.SIGN_IN}>
+                     {t('signup:form.account', 'account')}
+                  </Form.Link>
+                  !
                </Form.Text>
 
                <Form.TextSmall>
-                  This page is protected by Google reCAPTCHA to ensure
-                  you&apos;re not a bot.
+                  {t(
+                     'signup:form.recaptcha',
+                     'This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot.'
+                  )}
                </Form.TextSmall>
             </Form>
          </HeaderContainer>

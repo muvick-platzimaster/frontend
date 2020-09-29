@@ -9,6 +9,9 @@ import { breakpoints } from '../styles/theme'
 /* Context */
 import { SwitchState, useSwitch } from '../context/switchContext'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 interface Props {
    children: ReactNode
    background: string
@@ -17,6 +20,7 @@ interface Props {
 
 function NavContainer({ children, error404, background }: Props): JSX.Element {
    const { setSwitchValue } = useSwitch()
+   const { t } = useTranslation(['nav'])
 
    return (
       <Nav background={background}>
@@ -30,17 +34,17 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                            setSwitchValue(SwitchState.MOVIES)
                         }}
                      >
-                        Movies
+                        {t('nav:movies', 'Movies')}
                      </Nav.Button>
                      <Nav.Button
                         onClick={() => {
                            setSwitchValue(SwitchState.TV)
                         }}
                      >
-                        TV Shows
+                        {t('nav:tvshows', 'TV Shows')}
                      </Nav.Button>
                      <Nav.LinkButton linkTo="/browse/my-list">
-                        My list
+                        {t('nav:list', 'My list')}
                      </Nav.LinkButton>
                      <Nav.Button
                         onClick={() => {
@@ -48,12 +52,12 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                            window.location.reload()
                         }}
                      >
-                        Logout
+                        {t('nav:logout', 'Logout')}
                      </Nav.Button>
                   </section>
                   <section className="Nav__Menu--dropdown">
                      <Nav.Button className="menu" linkTo="/browse">
-                        Explorar
+                        {t('nav:explore', 'Explore')}
                      </Nav.Button>
                      <div className="dropdownContent">
                         <Nav.Button
@@ -61,17 +65,17 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                               setSwitchValue(SwitchState.MOVIES)
                            }}
                         >
-                           Movies
+                           {t('nav:movies', 'Movies')}
                         </Nav.Button>
                         <Nav.Button
                            onClick={() => {
                               setSwitchValue(SwitchState.TV)
                            }}
                         >
-                           TV Shows
+                           {t('nav:tvshows', 'TV Shows')}
                         </Nav.Button>
                         <Nav.LinkButton linkTo="/browse/my-list">
-                           My list
+                           {t('nav:list', 'My list')}
                         </Nav.LinkButton>
                         <Nav.Button
                            onClick={() => {
@@ -79,7 +83,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                               window.location.reload()
                            }}
                         >
-                           Logout
+                           {t('nav:logout', 'Logout')}
                         </Nav.Button>
                      </div>
                   </section>

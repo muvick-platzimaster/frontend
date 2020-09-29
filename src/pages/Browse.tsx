@@ -12,10 +12,14 @@ import BrowseContainer from '../containers/Browse'
 import ModalContainer from '../containers/Modal'
 import { Movie } from '../interfaces'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 function Browse(): JSX.Element {
    const { data: popular } = useFetchData('/movies/popular')
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
+   const { t } = useTranslation(['browse'])
 
    const showModal = () => {
       setShow(true)
@@ -55,10 +59,10 @@ function Browse(): JSX.Element {
                   }`}
                   background="white"
                >
-                  Play
+                  {t('browse:button.play', 'Play')}
                </Browser.LinkButton>
                <Browser.Button background="#6C6E6D" onClick={showModal}>
-                  More information...
+                  {t('browse:button.more', 'More information...')}
                </Browser.Button>
             </Browser.Frame>
          </NavContainer>

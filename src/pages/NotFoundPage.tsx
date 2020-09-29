@@ -11,9 +11,13 @@ import { Footer, NotFound } from '../components'
 import NavContainer from '../containers/Nav'
 import { Movie } from '../interfaces'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 function NotFoundPage(): JSX.Element {
    const { data: popular } = useFetchData('/movies/popular')
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
+   const { t } = useTranslation(['notfound'])
 
    useEffect(() => {
       const getRandomMovie = () => {
@@ -30,18 +34,24 @@ function NotFoundPage(): JSX.Element {
    return (
       <>
          <NavContainer error404 background={randomMovie.backdrop_path}>
-            <NotFound.Title>Seems like you got lost...</NotFound.Title>
+            <NotFound.Title>
+               {t('notfound:title', 'Seems like you got lost...')}
+            </NotFound.Title>
             <NotFound.Text>
-               The page you are looking for was moved, removed, renamed or might
-               never existed
+               {t(
+                  'notfound:subtitle',
+                  'The page you are looking for was moved, removed, renamed or might never existed'
+               )}
             </NotFound.Text>
             <NotFound.Frame>
                <NotFound.Button to={ROUTES.BROWSE} background="white">
-                  Go home
+                  {t('notfound:home', 'Go home')}
                </NotFound.Button>
             </NotFound.Frame>
             <NotFound.Error>
-               <span className="error">PAGE NOT FOUND</span>
+               <span className="error">
+                  {t('notfound:code', 'PAGE NOT FOUND')}
+               </span>
                <span className="code404">404</span>
             </NotFound.Error>
          </NavContainer>

@@ -13,12 +13,16 @@ import useFetchData from '../hooks/useFetchData'
 
 import { ApiResponse } from '../interfaces'
 
+/* i18n */
+import { useTranslation } from 'react-i18next'
+
 interface Props {
    movieId: string | number
    handleClose: () => void
 }
 
 const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
+   const { t } = useTranslation(['modal'])
    const { data: movieDetail, loading: movieDetailLoading } = useFetchData(
       `/movies/${movieId}/detail`
    )
@@ -41,7 +45,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
       !similarMovies ||
       similarMoviesLoading
    ) {
-      return <h1>Loading...</h1>
+      return <h1>{t('modal:loading', 'Loading...')}</h1>
    }
 
    const {
@@ -62,7 +66,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                         to={`/browse/${title ? 'movie' : 'tv'}/${movieId}`}
                         background="white"
                      >
-                        Play
+                        {t('modal:play', 'Play')}
                      </Browser.LinkButton>
                   </Wrapper>
                </Modal.TitleContainer>
@@ -75,7 +79,7 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
             </Wrapper>
             <Wrapper maxWidth={breakpoints.md}>
                <Modal.Tag color="#46D369">
-                  {year === '2020' && 'NEW '}
+                  {year === '2020' && `${t('modal:new', 'NEW')}`}
                </Modal.Tag>
                <Modal.Tag color="white">
                   {year} {duration}
@@ -83,13 +87,15 @@ const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
                <Modal.Detail>
                   <Modal.Text>{overview}</Modal.Text>
                   <Modal.More>
-                     Genres:
+                     {t('modal:genres', 'Genres:')}
                      {genres.map((genre) => ` ${genre.name} `)}
                   </Modal.More>
                </Modal.Detail>
             </Wrapper>
             <Wrapper maxWidth={breakpoints.md}>
-               <Modal.Title>More titles like this</Modal.Title>
+               <Modal.Title>
+                  {t('modal:more', 'More titles like this')}
+               </Modal.Title>
                <SimilarCard.Detail>
                   {((similarMovies as ApiResponse) as ApiResponse)?.results.map(
                      (movie) => (

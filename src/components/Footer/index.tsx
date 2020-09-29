@@ -1,6 +1,9 @@
 import React, { FC } from 'react'
 import { Wrapper } from '../'
 
+/* components */
+import LanguageButton from '../LanguageButton/index'
+
 /* Styles */
 import { Container, Grid, Title, Anchor, Column, Row, Text } from './styles'
 
@@ -8,10 +11,8 @@ import { Container, Grid, Title, Anchor, Column, Row, Text } from './styles'
 import { useTranslation } from 'react-i18next'
 
 const Footer: FC = () => {
-   const { t, i18n } = useTranslation(['footer'])
-   const changeLanguage = (code: string) => {
-      i18n.changeLanguage(code)
-   }
+   const { t } = useTranslation(['footer'])
+
    return (
       <Container>
          <Wrapper>
@@ -52,15 +53,9 @@ const Footer: FC = () => {
                         {t('footer:faq.cookie', 'Cookie Preferences')}
                      </Anchor>
                      <Anchor>{t('footer:faq.legal', 'Legal Notices')}</Anchor>
-                     <button type="button" onClick={() => changeLanguage('es')}>
-                        {t('footer:faq.spanish', 'Spanish')}
-                     </button>
-                     <button type="button" onClick={() => changeLanguage('en')}>
-                        {t('footer:faq.english', 'English')}
-                     </button>
                   </Column>
                </Row>
-
+               <LanguageButton />
                <Text>@Muvick</Text>
             </Grid>
          </Wrapper>

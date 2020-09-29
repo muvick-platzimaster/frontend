@@ -1,21 +1,22 @@
 {
-  "faq": {
-     "account": "Cuenta",
-     "buy": "Compra Tarjetas de Regalo",
-     "contact": "Contáctanos",
-     "cookie": "Preferencias de Cookies",
-     "corporate": "Corporación",
-     "english": "Inglés",
-     "help": "Centro de Ayuda",
-     "investor": "Relaciones de Inversión",
-     "legal": "Noticias Legales",
-     "media": "Centro de Medios",
-     "originals": "Originales de Netflix",
-     "privacy": "Privacidad",
-     "questions": "Preguntas? Llama",
-     "redeem": "Canjear Tarjetas de Regalo",
-     "spanish": "Español",
-     "speed": "Test de Velocidad",
-     "terms": "Términos de Uso",
-     "ways": "Maneras de Ver"
-  }
+   "faq": {
+      "account": "Cuenta",
+      "buy": "Compra Tarjetas de Regalo",
+      "contact": "Contáctanos",
+      "cookie": "Preferencias de Cookies",
+      "corporate": "Corporación",
+      "english": "Inglés",
+      "help": "Centro de Ayuda",
+      "investor": "Relaciones de Inversión",
+      "legal": "Noticias Legales",
+      "media": "Centro de Medios",
+      "originals": "Originales de Netflix",
+      "privacy": "Privacidad",
+      "questions": "Preguntas? Llama",
+      "redeem": "Canjear Tarjetas de Regalo",
+      "spanish": "Español",
+      "speed": "Test de Velocidad",
+      "terms": "Términos de Uso",
+      "ways": "Maneras de Ver"
+   }
+}

@@ -12,6 +12,7 @@ import JumbotronContainer from '../containers/Jumbotron'
 import Faqs from '../containers/Faqs'
 import HeaderContainer from '../containers/Header'
 import { useHistory } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function Home(): JSX.Element {
    const [email, setEmail] = useState('')
@@ -21,11 +22,22 @@ function Home(): JSX.Element {
          history.push(ROUTES.SIGN_UP)
       }
    }
+   const { t } = useTranslation(['home'])
+
+   // const changeLanguage = (code) => {
+   //    i18n.changeLanguage(
+   //       code
+   //    ) /* Sends i81n the code of the language to change and the function in i18n.js takes this code and sets
+   //                              it to the local storage variable. The language detector detects this and translates the text that
+   //                              is either in a "t" function or inside a "Trans" component */
+   // }
    return (
       <>
          <HeaderContainer>
             <Wrapper>
-               <Title>Unlimited movies, TV shows, and more.</Title>
+               <Title>
+                  {t('home:title', 'Unlimited movies, TV shows, and more.')}
+               </Title>
 
                <InputForm>
                   <InputForm.Label>

@@ -27,6 +27,10 @@ module.exports = {
          {
             test: /\.styl$/,
             use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader']
+         },
+         {
+            test: /locales/,
+            loader: '@alienfast/i18next-loader'
          }
       ]
    },

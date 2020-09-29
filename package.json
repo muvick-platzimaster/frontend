@@ -19,8 +19,12 @@
    "dependencies": {
       "@babel/runtime": "^7.11.2",
       "axios": "^0.20.0",
+      "i18next": "^19.7.0",
+      "i18next-browser-languagedetector": "^6.0.1",
+      "i18next-xhr-backend": "^3.2.2",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
+      "react-i18next": "^11.7.3",
       "react-modal": "^3.11.2",
       "react-player": "^2.6.2",
       "react-router-dom": "^5.2.0",
@@ -66,7 +70,8 @@
       "typescript": "^4.0.2",
       "webpack": "^4.44.1",
       "webpack-cli": "^3.3.12",
-      "webpack-dev-server": "^3.11.0"
+      "webpack-dev-server": "^3.11.0",
+      "ya-i18next-webpack-plugin": "^0.4.2"
    },
    "husky": {
       "hooks": {

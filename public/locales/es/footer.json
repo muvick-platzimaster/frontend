@@ -1,22 +1,22 @@
 {
-   "faq": {
-      "account": "Cuenta",
-      "buy": "Bompra Tarjetas de Regalo",
-      "contact": "Contactanos",
-      "cookie": "Preferencias de Cookies",
-      "corporate": "Coorporación",
-      "english": "Inglés",
-      "help": "Centro de Ayuda",
-      "investor": "Relaciones de Inversión",
-      "legal": "Noticias Legales",
-      "media": "Centro de Medios",
-      "originals": "Originales de Netflix",
-      "privacy": "Privacidad",
-      "questions": "Preguntas? Llama",
-      "redeem": "Canjear Tarjetas de Regalo",
-      "spanish": "Español",
-      "speed": "Test de Velocidad",
-      "terms": "Terminos de Uso",
-      "ways": "Maneras de Ver"
-   }
+  "faq": {
+    "account": "Cuenta",
+    "buy": "Bompra Tarjetas de Regalo",
+    "contact": "Contactanos",
+    "cookie": "Preferencias de Cookies",
+    "corporate": "Coorporación",
+    "english": "Inglés",
+    "help": "Centro de Ayuda",
+    "investor": "Relaciones de Inversión",
+    "legal": "Noticias Legales",
+    "media": "Centro de Medios",
+    "originals": "Originales de Netflix",
+    "privacy": "Privacidad",
+    "questions": "Preguntas? Llama",
+    "redeem": "Canjear Tarjetas de Regalo",
+    "spanish": "Español",
+    "speed": "Test de Velocidad",
+    "terms": "Terminos de Uso",
+    "ways": "Maneras de Ver"
+  }
 }

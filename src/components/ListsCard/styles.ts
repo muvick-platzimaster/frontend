@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { radius } from '../../styles/theme'
+
 export const Container = styled.div`
    display: flex;
    flex-direction: column;
@@ -12,5 +14,5 @@ export const Container = styled.div`
 
 export const Image = styled.img`
    width: 300px;
-   border-radius: 5px;
+   border-radius: ${radius.standard};
 `

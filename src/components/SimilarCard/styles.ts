@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { breakpoints } from '../../styles/theme'
+import { breakpoints, radius } from '../../styles/theme'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
@@ -56,7 +56,7 @@ export const Image = styled(Link)`
    background-size: cover;
    background-position: center;
    height: 130px;
-   border-radius: 10px 10px 0 0;
+   border-radius: ${radius.standard} ${radius.standard} 0 0;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -67,7 +67,7 @@ export const Image = styled(Link)`
       display: block;
       transition: 0.3s;
       background-color: rgba(30, 30, 20, 0.5);
-      border-radius: 2em;
+      border-radius: ${radius.circle};
       width: 3em;
       height: 3em;
    }

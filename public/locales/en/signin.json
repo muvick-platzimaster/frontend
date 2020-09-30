@@ -1,11 +1,11 @@
 {
-  "form": {
-    "email": "Email",
-    "new": "New to Netflix?",
-    "password": "Password",
-    "recaptcha": "This page is protected by Google reCAPTCHA to ensure you&lsquo;re not a bot.",
-    "sign": "Sign In",
-    "signin": "Sign in",
-    "signup": "Sign up now"
-  }
+   "form": {
+      "email": "Email",
+      "new": "New to Muvick?",
+      "password": "Password",
+      "recaptcha": "This page is protected by Google reCAPTCHA to ensure you&lsquo;re not a bot.",
+      "sign": "Sign In",
+      "signin": "Sign in",
+      "signup": "Sign up now"
+   }
 }

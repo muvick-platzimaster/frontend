@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { colors } from '../../../styles/theme'
+import { colors, radius } from '../../../styles/theme'
 
 export const Container = styled.section`
    padding: 1rem;
@@ -59,7 +59,7 @@ export const Badge = styled.span`
    }};
    padding: 0.5rem;
    margin-left: 0.5rem;
-   border-radius: 0.3rem;
+   border-radius: ${radius.standard};
 `
 export const CloseContainer = styled.button`
    position: absolute;
@@ -67,7 +67,7 @@ export const CloseContainer = styled.button`
    right: -20px;
    width: 2.5rem;
    height: 2.5rem;
-   border-radius: 50%;
+   border-radius: ${radius.circle};
    background: none;
    border: 1px solid ${colors['color-font-base']};
    cursor: pointer;
@@ -86,7 +86,7 @@ export const Button = styled(Link)`
    color: ${colors['color-font-base']};
    font-size: 1rem;
    border: none;
-   border-radius: 0.2rem;
+   border-radius: ${radius.standard};
    padding: 0.7rem 3rem;
    text-transform: uppercase;
    margin-top: 1rem;

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { breakpoints, colors, transitions } from '../../styles/theme'
+import { breakpoints, colors, transitions, radius } from '../../styles/theme'
 import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
@@ -15,7 +15,7 @@ export const Button = styled(Link)`
    width: max-content;
    cursor: pointer;
    border: none;
-   border-radius: 5px;
+   border-radius: ${radius.standard};
    background: white;
    color: black;
    font-weight: 700;

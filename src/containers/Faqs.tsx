@@ -18,7 +18,7 @@ function Faqs(): JSX.Element {
       }
    }
 
-   const { i18n } = useTranslation(['footer'])
+   const { t, i18n } = useTranslation(['footer, home'])
    const [faq, setFaq] = useState(faqs.english)
 
    useEffect(() => {
@@ -32,7 +32,9 @@ function Faqs(): JSX.Element {
    return (
       <Accordion>
          <Wrapper maxWidth={breakpoints.md}>
-            <Accordion.Title>Frequently Asked Questions</Accordion.Title>
+            <Accordion.Title>
+               {t('home:faq', 'Frequently Asked Questions')}
+            </Accordion.Title>
             <Accordion.Frame>
                {faq.map(({ body, header, id }) => (
                   <Accordion.Item key={id}>
@@ -47,8 +49,10 @@ function Faqs(): JSX.Element {
 
             <InputForm>
                <InputForm.Label>
-                  Ready to watch? Enter your email to create or restart your
-                  membership.
+                  {t(
+                     'home:subtitle',
+                     'Ready to watch? Enter your email to create or restart your membership.'
+                  )}
                </InputForm.Label>
                <InputForm.Frame>
                   <InputForm.Input
@@ -58,7 +62,9 @@ function Faqs(): JSX.Element {
                      type="email"
                   />
                   <InputForm.Button disabled={!email} onClick={handleClick}>
-                     <InputForm.Text>Get started</InputForm.Text>
+                     <InputForm.Text>
+                        {t('home:form.button', 'Get started')}
+                     </InputForm.Text>
                      <InputForm.Icon />
                   </InputForm.Button>
                </InputForm.Frame>

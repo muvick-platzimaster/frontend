@@ -11,11 +11,6 @@ export const Grid = styled.div``
 export const Column = styled.div`
    display: flex;
    flex-direction: column;
-   & button {
-      width: 100px;
-      height: 20px;
-      display: block;
-   }
 `
 
 export const Row = styled.div`

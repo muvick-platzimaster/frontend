@@ -22,14 +22,14 @@ interface Props {
 }
 
 const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
-   const { t } = useTranslation(['modal'])
+   const { t, i18n } = useTranslation(['modal'])
    const { data: movieDetail, loading: movieDetailLoading } = useFetchData(
-      `/movies/${movieId}/detail`
+      `/movies/${movieId}/detail?language=${i18n.language}`
    )
 
    // TODO: Este hay que actualizarlo cuando ya tengamos un endpoint en MuvickAPI para hacer este llamado mientras tanto tendrá un any
    const { data: similarMovies, loading: similarMoviesLoading } = useFetchData(
-      `/movies/${movieId}/recommendations`
+      `/movies/${movieId}/recommendations?language=${i18n.language}`
    )
 
    const year = movieDetail

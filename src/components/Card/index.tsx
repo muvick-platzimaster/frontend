@@ -85,9 +85,10 @@ Card.RowContainer = function CardRowContainer({
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
    const { switchValue } = useSwitch()
+   const { i18n } = useTranslation(['header'])
 
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
-   const api = `/${switchValue}?genre=${genreId}`
+   const api = `/${switchValue}?genre=${genreId}&language=${i18n.language}`
 
    const { data, loading } = useFetchData(api)
 

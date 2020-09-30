@@ -18,6 +18,7 @@ const LanguageButton: FC = () => {
       } else if (i18n.language === 'en') {
          changeLanguage('es')
       }
+      return true
    }
 
    return (

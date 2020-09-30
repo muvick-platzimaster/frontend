@@ -68,7 +68,7 @@ Nav.Content = function NavContent({ children }: Props) {
 }
 
 Nav.Search = function NavSearch() {
-   const { t } = useTranslation(['search'])
+   const { t, i18n } = useTranslation(['search'])
    const ICON_SIZE = '100%'
    const [value, setValue] = useState('')
    const [findedMovies, setfindedMovies] = useState<ApiResponse | null>(null)
@@ -79,7 +79,7 @@ Nav.Search = function NavSearch() {
    const handleClick = () => {
       if (!value) return
       const API_KEY = 'ad7bc0ccac5da809744fb1fe94ccd84c'
-      const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${value}`
+      const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=${i18n.language}&page=1&include_adult=false&query=${value}`
 
       axios({
          url: URL,

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 /* Components */
-import { Nav, Wrapper } from '../components'
+import { Nav, Wrapper, LanguageButton } from '../components'
 
 /* Styles */
 import { breakpoints } from '../styles/theme'
@@ -92,6 +92,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
 
             <section className="Nav__Icons">
                <Nav.Search />
+               <LanguageButton />
             </section>
          </Nav.Grid>
          <Wrapper maxWidth={breakpoints.responsive}>

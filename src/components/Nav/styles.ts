@@ -65,6 +65,7 @@ export const Grid = styled.div`
    & .Nav__Icons {
       position: absolute;
       right: 4%;
+      display: flex;
    }
    & .Nav__Menu--open {
       @media (max-width: ${breakpoints.md}) {

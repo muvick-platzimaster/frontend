@@ -16,7 +16,10 @@ import { Movie } from '../interfaces'
 import { useTranslation } from 'react-i18next'
 
 function Browse(): JSX.Element {
-   const { data: popular } = useFetchData('/movies/popular')
+   const { i18n } = useTranslation()
+   const { data: popular } = useFetchData(
+      `/movies/popular?language=${i18n.language}`
+   )
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
    const { t } = useTranslation(['browse'])

@@ -38,6 +38,7 @@ module.exports = {
          name: 'commons',
          chunks: 'initial',
          minSize: 0,
+         maxSize: 240000,
          filename: '[name].js'
       }
    },
@@ -51,6 +52,9 @@ module.exports = {
          filename: '[name].css'
       }),
       new WorkboxWebpackPlugin.GenerateSW({
+         clientsClaim: true,
+         skipWaiting: true,
+         navigateFallback: '/',
          runtimeCaching: [
             {
                urlPattern: new RegExp(

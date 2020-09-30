@@ -11,7 +11,6 @@ import { Home, Signin, Browse, Signup, NotFoundPage } from './pages/'
 
 /* Styles */
 import { GlobalStyle } from './styles/GlobalStyle'
-import './styles/main.styl'
 
 /* Components */
 import { Player, Fallback } from './components/'

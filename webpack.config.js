@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
    entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -46,6 +47,20 @@ module.exports = {
       new HtmlWebpackPlugin({
          template: path.resolve(__dirname, 'public', 'index.html'),
          filename: 'index.html'
+      }),
+      new FaviconsWebpackPlugin({
+         logo: './public/muvick-icon.png',
+         start_url: './',
+         favicons: {
+            appName: 'Muvick - Movies and TV Shows',
+            appDescription: 'A Netflix clone',
+            background: '#000',
+            theme_color: '#000',
+            appShortName: 'Muvick',
+            start_url: '.',
+            orientation: 'any'
+         },
+         publicPath: '/'
       }),
       new MiniCssExtractPlugin({
          chunkFilename: '[name].chunk.css',

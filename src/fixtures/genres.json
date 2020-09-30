@@ -1,6 +1,10 @@
 {
    "genres": [
       {
+         "id": 1,
+         "name": "Populares"
+      },
+      {
          "id": 28,
          "name": "Action"
       },

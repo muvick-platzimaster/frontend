@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { breakpoints } from '../../styles/theme'
+import { breakpoints, radius } from '../../styles/theme'
 
 /* keyframes  */
 export const opacityAnimation = keyframes`
@@ -31,7 +31,7 @@ export const Section = styled.section`
    left: 50%;
    padding-bottom: 10px;
    transform: translate(-50%, -50%);
-   border-radius: 10px;
+   border-radius: ${radius.standard};
    display: flex;
    flex-direction: column;
    overflow-y: scroll;
@@ -135,7 +135,7 @@ export const Image = styled.div`
    min-height: 480px;
    height: 480px;
    width: 100%;
-   border-radius: 10px 10px 0 0;
+   border-radius: ${radius.standard} ${radius.standard} 0 0;
    @media (max-width: ${breakpoints.xs}) {
       height: 300px;
       min-height: 300px;
@@ -149,7 +149,7 @@ export const CloseButton = styled.div`
    width: 40px;
    height: 40px;
    background: #181818;
-   border-radius: 50%;
+   border-radius: ${radius.circle};
    display: flex;
    justify-content: center;
    align-items: center;

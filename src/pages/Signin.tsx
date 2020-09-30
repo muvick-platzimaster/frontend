@@ -84,7 +84,7 @@ const Signin: FC = (): JSX.Element => {
                   )}
                </Form.Submit>
                <Form.Text>
-                  {t('signin:form.new', 'New to Netflix?')}{' '}
+                  {t('signin:form.new', 'New to Muvick?')}{' '}
                   <Form.Link to={ROUTES.SIGN_UP}>
                      {t('signin:form.signup', 'Sign up now')}
                   </Form.Link>

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { breakpoints, colors, transitions } from '../../styles/theme'
+import { breakpoints, colors, transitions, radius } from '../../styles/theme'
 import { Logo as LogoMuvick } from '../Icons'
 
 export const LinkButton = styled(Link)`
@@ -10,7 +10,7 @@ export const LinkButton = styled(Link)`
    color: #efefef;
    font-size: 14px;
    padding: 0.5rem 1rem;
-   border-radius: 5px;
+   border-radius: ${radius.standard};
    white-space: nowrap;
    &:hover {
       color: #bbb8b5;
@@ -126,7 +126,7 @@ export const Button = styled.button`
    color: #efefef;
    font-size: 14px;
    padding: 0.5rem 1rem;
-   border-radius: 5px;
+   border-radius: ${radius.standard};
    white-space: nowrap;
    background: transparent;
    border: none;

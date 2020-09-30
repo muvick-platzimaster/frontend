@@ -28,3 +28,8 @@ export const colorOpacity = (color: string, opacity: Opacity): string => {
 export const transitions = {
    normal: 'ease 300ms'
 }
+
+export const radius = {
+   standard: '0.2rem',
+   circle: '50%'
+}

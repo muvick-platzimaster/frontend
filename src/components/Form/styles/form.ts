@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import { Link as ReactRouterDomLink } from 'react-router-dom'
-import { breakpoints, colors, transitions } from '../../../styles/theme'
+import { breakpoints, colors, transitions, radius } from '../../../styles/theme'
 
 export const Container = styled.form``
 
@@ -9,7 +9,7 @@ export const Error = styled.div`
    padding: 0.125rem 1rem;
    background-color: ${colors['color-error']};
    margin-bottom: 1rem;
-   border-radius: 0.25rem;
+   border-radius: ${radius.standard};
 
    p {
       font-size: 1rem;
@@ -88,7 +88,7 @@ export const Submit = styled.button`
    font-size: 1rem;
    border: none;
    outline: none;
-   border-radius: 0.2rem;
+   border-radius: ${radius.standard};
    transition: all ${transitions.normal};
 
    &:disabled {

@@ -23,7 +23,7 @@ const LanguageButton: FC = () => {
 
    return (
       <Button type="button" onClick={() => handleLanguage()}>
-         {i18n.language === 'en' ? 'Español' : 'English'}
+         {i18n.language === 'en' ? 'Es' : 'En'}
       </Button>
    )
 }

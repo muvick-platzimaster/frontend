@@ -13,6 +13,6 @@ export const Button = styled.button`
    margin-left: 5px;
    cursor: pointer;
    &:hover {
-      background: #373c42;
+      background: ${colors['color-gray-dark']};
    }
 `

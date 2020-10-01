@@ -14,6 +14,7 @@ import { Movie } from '../interfaces'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
+import UserVerificationContainer from '../containers/UserVerification'
 
 function Browse(): JSX.Element {
    const { i18n } = useTranslation()
@@ -52,6 +53,7 @@ function Browse(): JSX.Element {
 
    return (
       <>
+         <UserVerificationContainer />
          <NavContainer background={randomMovie.backdrop_path}>
             <Browser.Title>{randomMovie.title}</Browser.Title>
             <Browser.Text>{randomMovie.overview}</Browser.Text>

@@ -3,5 +3,6 @@ export default {
    SIGN_UP: '/signup',
    SIGN_IN: '/signin',
    BROWSE: '/browse',
-   MOVIE: '/browse/:isMovie/:id'
+   MOVIE: '/browse/:isMovie/:id',
+   VERIFY: '/confirm'
 }

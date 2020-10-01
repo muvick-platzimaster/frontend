@@ -7,7 +7,14 @@ import {
 } from 'react-router-dom'
 
 /* pages */
-import { Home, Signin, Browse, Signup, NotFoundPage } from './pages/'
+import {
+   Home,
+   Signin,
+   Browse,
+   Signup,
+   NotFoundPage,
+   UserVerification
+} from './pages/'
 
 /* Styles */
 import { GlobalStyle } from './styles/GlobalStyle'
@@ -64,6 +71,13 @@ const App: React.FC = () => {
                   </Route>
                   <Route exact path={ROUTES.MOVIE}>
                      {user ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
+                  </Route>
+                  <Route exact path={ROUTES.VERIFY}>
+                     {user ? (
+                        <UserVerification />
+                     ) : (
+                        <Redirect to={ROUTES.SIGN_IN} />
+                     )}
                   </Route>
                   <Route component={NotFoundPage} />
                </Switch>

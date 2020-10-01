@@ -30,7 +30,7 @@ export const LinkButton = styled(Link)`
    }
 
    &:hover {
-      background: #d6d3d0;
+      background: ${colors['color-font-muted']};
    }
 
    &:disabled {
@@ -64,7 +64,7 @@ export const Button = styled.button`
    }
 
    &:hover {
-      background: #d6d3d0;
+      background: ${colors['color-font-muted']};
    }
 
    &:disabled {

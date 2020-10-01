@@ -7,7 +7,8 @@ export const colors = {
    'color-font-muted': 'darkgray',
    'color-primary-muted': '#7b94ac',
    'color-warning': '#b7791f',
-   'color-success': '#38a169'
+   'color-success': '#38a169',
+   'color-gray-dark': '#373c42'
 }
 
 export const breakpoints = {
@@ -17,12 +18,6 @@ export const breakpoints = {
    lg: '1024px',
    xl: '1280px',
    responsive: '100%'
-}
-
-type Opacity = '2A' | '55' | '7E' | 'AA' | 'D4'
-
-export const colorOpacity = (color: string, opacity: Opacity): string => {
-   return `${color}${opacity}`
 }
 
 export const transitions = {

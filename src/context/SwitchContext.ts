@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 
 export enum SwitchState {
-   TV = 'tvs',
+   TV = 'series',
    MOVIES = 'movies'
 }
 

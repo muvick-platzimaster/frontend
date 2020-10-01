@@ -88,7 +88,10 @@ Card.RowContainer = function CardRowContainer({
    const { i18n } = useTranslation(['header'])
 
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
-   const api = `/${switchValue}?genre=${genreId}&language=${i18n.language}`
+   const api =
+      genreId === 1
+         ? `/${switchValue}/popular?language=${i18n.language}`
+         : `/${switchValue}?genre=${genreId}&language=${i18n.language}`
 
    const { data, loading } = useFetchData(api)
 

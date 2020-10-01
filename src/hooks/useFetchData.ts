@@ -7,7 +7,11 @@ interface UseFetchDataReturn {
    error: Error | null
 }
 
-const useFetchData = (API: string): UseFetchDataReturn => {
+const useFetchData = (
+   API: string,
+   headers = [],
+   method = 'GET'
+): UseFetchDataReturn => {
    const BASE_URL = 'http://localhost:5000'
 
    const [data, setData] = useState<ApiResponse | null>(null)
@@ -18,7 +22,8 @@ const useFetchData = (API: string): UseFetchDataReturn => {
       const abortController = new AbortController()
       setLoading(true)
       fetch(`${BASE_URL}${API}`, {
-         method: 'GET',
+         headers,
+         method,
          signal: abortController.signal
       })
          .then((res) => res.json())
@@ -27,7 +32,6 @@ const useFetchData = (API: string): UseFetchDataReturn => {
             setLoading(false)
          })
          .catch((err) => setError(err))
-
       return () => abortController.abort()
    }, [API])
    return { data, loading, error }

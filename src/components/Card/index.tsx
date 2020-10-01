@@ -10,7 +10,7 @@ import { Movie } from '../../interfaces'
 import { useInView } from 'react-intersection-observer'
 /* Components */
 
-import { Feature } from '../'
+import { Feature, MyListButton } from '../'
 
 /* Styles */
 import {
@@ -88,12 +88,34 @@ Card.RowContainer = function CardRowContainer({
    const { i18n } = useTranslation(['header'])
 
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
-   const api =
-      genreId === 1
-         ? `/${switchValue}/popular?language=${i18n.language}`
-         : `/${switchValue}?genre=${genreId}&language=${i18n.language}`
+   let api
+   const headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
+   }
 
-   const { data, loading } = useFetchData(api)
+   switch (genreId) {
+   case 1:
+      api = '/my-lists'
+
+      break
+   case 2:
+      api = `/${switchValue}/popular?language=${i18n.language}`
+
+      break
+   default:
+      api = `/${switchValue}?genre=${genreId}&language=${i18n.language}`
+
+      break
+   }
+
+   let { data, loading } = useFetchData(api, headers)
+   if (api === '/my-lists' && switchValue === 'movies') {
+      data = { results: data?.movies }
+   } else if (api === '/my-lists' && switchValue === 'series') {
+      data = { results: data?.series }
+   }
 
    return (
       <FeatureContext.Provider
@@ -154,6 +176,8 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                      id,
                      poster_path: poster,
                      title,
+                     // eslint-disable-next-line camelcase
+                     original_title: originalTitle,
                      name,
                      overview,
                      vote_average: votes
@@ -173,7 +197,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                         <Card.Details>
                            <Card.Pane>
                               <Card.Subtitle>
-                                 {name || title}{' '}
+                                 {name || title || originalTitle}
                                  <Card.Badge rating={votes}>
                                     {votes * 10}%
                                  </Card.Badge>
@@ -238,6 +262,7 @@ Card.Feature = function CardFeature() {
    const { showFeature, itemFeature, setShowFeature } = useContext(
       FeatureContext
    )
+   const { switchValue } = useSwitch()
 
    if (!showFeature || !itemFeature) return null
    const {
@@ -266,6 +291,7 @@ Card.Feature = function CardFeature() {
             <Feature.Button to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
                {t('feature:play', 'Play')}
             </Feature.Button>
+            <MyListButton switchValue={switchValue} id={id} />
          </Feature.Pane>
          {/* <Feature.Pane>2 pane</Feature.Pane> */}
          <Feature.Close handleClose={setShowFeature} />

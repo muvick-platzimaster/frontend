@@ -29,7 +29,7 @@ export const Button = styled(Link)`
    }
 
    &:hover {
-      background: #d6d3d0;
+      background: ${colors['color-gray-dark']};
    }
 
    &:disabled {

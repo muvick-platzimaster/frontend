@@ -50,14 +50,13 @@ module.exports = {
       }),
       new FaviconsWebpackPlugin({
          logo: './public/muvick-icon.png',
-         start_url: './',
          favicons: {
             appName: 'Muvick - Movies and TV Shows',
             appDescription: 'A Netflix clone',
             background: '#000',
             theme_color: '#000',
             appShortName: 'Muvick',
-            start_url: '.',
+            start_url: '/',
             orientation: 'any'
          },
          publicPath: '/'

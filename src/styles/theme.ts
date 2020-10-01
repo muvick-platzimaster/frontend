@@ -30,6 +30,6 @@ export const transitions = {
 }
 
 export const radius = {
-   standard: '0.2rem',
+   standard: '0.1rem',
    circle: '50%'
 }

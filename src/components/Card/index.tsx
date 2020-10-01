@@ -98,15 +98,12 @@ Card.RowContainer = function CardRowContainer({
    switch (genreId) {
    case 1:
       api = '/my-lists'
-
       break
    case 2:
       api = `/${switchValue}/popular?language=${i18n.language}`
-
       break
    default:
       api = `/${switchValue}?genre=${genreId}&language=${i18n.language}`
-
       break
    }
 
@@ -273,7 +270,6 @@ Card.Feature = function CardFeature() {
       name,
       id
    } = itemFeature
-
    return (
       <Feature
          src={

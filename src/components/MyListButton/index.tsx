@@ -5,6 +5,7 @@ import { Button } from './styles'
 
 const MyListButton: FC = ({ switchValue, id }: any) => {
    const handleMyList = () => {
+      //   console.log(handleDependency)
       const API = `/${switchValue}/${id}`
       const headers = {
          Accept: 'application/json',
@@ -29,7 +30,12 @@ const MyListButton: FC = ({ switchValue, id }: any) => {
    }
 
    return (
-      <Button type="button" onClick={() => handleMyList()}>
+      <Button
+         type="button"
+         onClick={() => {
+            handleMyList()
+         }}
+      >
          +
       </Button>
    )

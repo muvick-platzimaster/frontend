@@ -14,13 +14,14 @@ interface Options {
    headers: { Authorization: string }
    method: Method
    dependencies: Array<string | any>
+   initialState: any
 }
 
 const useFetchData = (
    API: string,
    options?: Partial<Options>
 ): UseFetchDataReturn => {
-   const [data, setData] = useState<Data>(null)
+   const [data, setData] = useState<Data>(options?.initialState || null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState(null)
 

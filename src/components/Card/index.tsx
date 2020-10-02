@@ -89,7 +89,10 @@ Card.RowContainer = function CardRowContainer({
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
    const headers = { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` }
 
-   const { data, loading } = useFetchData(API, headers)
+   const { data, loading } = useFetchData(API, {
+      headers,
+      dependencies: [switchValue]
+   })
 
    return (
       <FeatureContext.Provider

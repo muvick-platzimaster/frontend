@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ApiResponse, MyList } from '../interfaces/'
 import Axios, { Method } from 'axios'
+import config from '../config'
 
 type Data = ApiResponse | MyList | null
 interface UseFetchDataReturn {
@@ -9,10 +10,15 @@ interface UseFetchDataReturn {
    error: Error | null
 }
 
+interface Options {
+   headers: { Authorization: string }
+   method: Method
+   dependencies: Array<any>
+}
+
 const useFetchData = (
    API: string,
-   headers = {},
-   method: Method = 'GET'
+   options?: Partial<Options>
 ): UseFetchDataReturn => {
    const [data, setData] = useState<Data>(null)
    const [loading, setLoading] = useState(true)
@@ -22,17 +28,17 @@ const useFetchData = (
       const signal = Axios.CancelToken.source()
       setLoading(true)
       Axios({
-         baseURL: 'http://localhost:5000',
+         baseURL: config.API_URL_SERVER,
          url: API,
-         headers,
-         method,
+         headers: options?.headers || {},
+         method: options?.method || 'GET',
          cancelToken: signal.token
       })
          .then(({ data }) => setData(data))
          .catch((err) => setError(err))
          .finally(() => setLoading(false))
       return () => signal.cancel()
-   }, [])
+   }, options?.dependencies || [])
 
    return { data, loading, error }
 }

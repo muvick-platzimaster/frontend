@@ -4,6 +4,7 @@ import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
 import { Spinner } from '../components/Icons'
 import axios, { AxiosError } from 'axios'
+import config from '../config'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -21,7 +22,7 @@ const Signin: FC = (): JSX.Element => {
       setError(null)
       setLoading(true)
       axios({
-         baseURL: 'http://localhost:5000',
+         baseURL: config.API_URL_SERVER,
          url: '/auth/signin',
          method: 'POST',
          data: {

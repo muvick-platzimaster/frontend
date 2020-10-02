@@ -6,6 +6,7 @@ import { colors } from '../styles/theme'
 import ROUTES from '../constants/routes'
 import jwtDecode from 'jwt-decode'
 import Axios, { AxiosError } from 'axios'
+import config from '../config'
 
 const UserVerificationPage: FC = () => {
    const { Button, Text, Title, Input, Error } = UserVerification
@@ -22,7 +23,7 @@ const UserVerificationPage: FC = () => {
 
       Axios({
          method: 'POST',
-         baseURL: 'http://localhost:5000/',
+         baseURL: config.API_URL_SERVER,
          url: '/auth/confirm',
          headers: { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` },
          data: {

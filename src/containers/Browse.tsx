@@ -14,12 +14,13 @@ const BrowseContainer: FC = () => {
       <Fragment>
          <Card>
             {/* FIXME: Poner en español e inglés */}
+
             <Card.RowContainer API="/my-lists">
                <Card.Title>My List</Card.Title>{' '}
                <Card.Entities genre="my-list" />
             </Card.RowContainer>
 
-            <Card.RowContainer API="/movies/popular">
+            <Card.RowContainer API={`/${switchValue}/popular`}>
                <Card.Title>Popular</Card.Title>{' '}
                <Card.Entities genre="popular" />
             </Card.RowContainer>

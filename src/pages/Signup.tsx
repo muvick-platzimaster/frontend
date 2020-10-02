@@ -8,6 +8,7 @@ import { Spinner } from '../components/Icons'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
+import config from '../config'
 
 const Signup: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
@@ -28,7 +29,7 @@ const Signup: FC = (): JSX.Element => {
       setError(null)
 
       axios({
-         baseURL: 'http://localhost:5000',
+         baseURL: config.API_URL_SERVER,
          method: 'POST',
          url: '/auth/signup',
          data: {

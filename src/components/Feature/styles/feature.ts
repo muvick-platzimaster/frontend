@@ -36,6 +36,7 @@ export const Title = styled.h2`
 
 export const Subtitle = styled.p`
    color: ${colors['color-font-muted']};
+   margin-bottom: 1rem;
 `
 
 export const Grid = styled.div`
@@ -77,7 +78,7 @@ export const CloseContainer = styled.button`
       height: 100%;
    }
 `
-export const Button = styled(Link)`
+export const PlayButton = styled(Link)`
    display: inline-block;
    margin: 0 auto;
    height: 40px;
@@ -89,5 +90,19 @@ export const Button = styled(Link)`
    border-radius: ${radius.standard};
    padding: 0.7rem 3rem;
    text-transform: uppercase;
-   margin-top: 1rem;
+`
+
+export const Button = styled.button`
+   border: none;
+   padding: 0 0.7rem;
+   height: 40px;
+   background: ${colors['color-primary']};
+   color: white;
+   margin-left: 0.5rem;
+   border-radius: ${radius.standard};
+   cursor: pointer;
+
+   &:hover {
+      background: #373c42;
+   }
 `

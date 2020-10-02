@@ -10,7 +10,7 @@ import { ApiResponse, Movie, MyList } from '../../interfaces'
 import { useInView } from 'react-intersection-observer'
 /* Components */
 
-import { Feature, MyListButton } from '../'
+import { Feature } from '../'
 
 /* Styles */
 import {
@@ -29,13 +29,14 @@ import {
    Pane,
    Badge
 } from './styles/card'
-import { Spinner } from '../Icons'
+import { Plus, Spinner } from '../Icons'
 
 /* Context */
 import { SwitchContext } from '../../context/SwitchContext'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
+import { MyListContext } from '../../context/MyListContext'
 
 /* Types */
 type PropsWithChildren = { children: React.ReactNode }
@@ -244,7 +245,7 @@ Card.Feature = function CardFeature() {
    const { showFeature, itemFeature, setShowFeature } = useContext(
       FeatureContext
    )
-   const { switchValue } = useContext(SwitchContext)
+   const { actions } = useContext(MyListContext)
 
    if (!showFeature || !itemFeature) return null
    const {
@@ -269,12 +270,13 @@ Card.Feature = function CardFeature() {
                <Feature.Badge rating={vote}>{vote}/10</Feature.Badge>
             </Feature.Title>
             <Feature.Subtitle>{overview}</Feature.Subtitle>
-            <Feature.Button to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
+            <Feature.PlayButton to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
                {t('feature:play', 'Play')}
+            </Feature.PlayButton>
+            <Feature.Button onClick={() => actions.addMovieToMyList(id)}>
+               <Plus height="1rem" width="1rem" />
             </Feature.Button>
-            <MyListButton switchValue={switchValue} id={id} />
          </Feature.Pane>
-         {/* <Feature.Pane>2 pane</Feature.Pane> */}
          <Feature.Close handleClose={setShowFeature} />
       </Feature>
    )

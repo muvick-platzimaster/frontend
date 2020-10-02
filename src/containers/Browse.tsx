@@ -14,7 +14,6 @@ const BrowseContainer: FC = () => {
       <Fragment>
          <Card>
             {/* FIXME: Poner en español e inglés */}
-
             <Card.RowContainer API="/my-lists">
                <Card.Title>My List</Card.Title>{' '}
                <Card.Entities genre="my-list" />

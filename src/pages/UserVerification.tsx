@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Footer, UserVerification } from '../components'
 import NavContainer from '../containers/Nav'
 import { colors } from '../styles/theme'
@@ -12,7 +12,6 @@ const UserVerificationPage: FC = () => {
    const { Button, Text, Title, Input, Error } = UserVerification
    const [pin, setPin] = React.useState<string>('')
    const [error, setError] = React.useState<AxiosError | null>(null)
-   const history = useHistory()
 
    const handleVerify = () => {
       setError(null)
@@ -31,7 +30,10 @@ const UserVerificationPage: FC = () => {
             pin
          }
       })
-         .then(() => history.replace(ROUTES.BROWSE))
+         .then(() => {
+            localStorage.removeItem('TOKEN')
+            window.location.reload()
+         })
          .catch(setError)
    }
 

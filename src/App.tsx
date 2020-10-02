@@ -27,7 +27,7 @@ import ROUTES from './constants/routes'
 
 /* Context */
 import { SwitchContext, SwitchState } from './context/SwitchContext'
-import MyListContextProvider from './context/MyListContext/index.'
+import MyListContextProvider from './context/MyListContext'
 
 /* Hooks */
 import useGetToken from './hooks/useGetToken'

@@ -8,6 +8,7 @@ interface Actions {
 }
 
 export const ADD_MOVIE_TO_MY_LIST = 'ADD_MOVIE_TO_MY_LIST'
+export const REMOVE_MOVIE_FROM_MY_LIST = 'REMOVE_MOVIE_FROM_MY_LIST'
 export const GET_MY_LIST = 'GET_MY_LIST'
 
 const initialState = {
@@ -31,6 +32,16 @@ const reducer = (
             }
          }).then(({ data }) => resolve(data))
 
+         break
+      case REMOVE_MOVIE_FROM_MY_LIST:
+         Axios({
+            baseURL: config.API_URL_SERVER,
+            url: `/movies/${payload}`,
+            method: 'DELETE',
+            headers: {
+               Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
+            }
+         }).then(({ data }) => resolve(data))
          break
       default: {
          return state

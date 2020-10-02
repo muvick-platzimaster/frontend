@@ -1,8 +1,9 @@
-import { ADD_MOVIE_TO_MY_LIST } from './reducer'
+import { ADD_MOVIE_TO_MY_LIST, REMOVE_MOVIE_FROM_MY_LIST } from './reducer'
 
 /* types */
 interface CreateActionsReturn {
    addMovieToMyList: (movieId: number | string) => void
+   removeMovieFromMyList: (movieId: number | string) => void
 }
 
 interface Action {
@@ -16,6 +17,9 @@ const createActions = (
    return {
       addMovieToMyList: (movieId) => {
          dispatch({ type: ADD_MOVIE_TO_MY_LIST, payload: movieId })
+      },
+      removeMovieFromMyList: (movieId) => {
+         dispatch({ type: REMOVE_MOVIE_FROM_MY_LIST, payload: movieId })
       }
    }
 }

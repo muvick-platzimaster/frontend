@@ -29,7 +29,7 @@ import {
    Pane,
    Badge
 } from './styles/card'
-import { Plus, Spinner } from '../Icons'
+import { Plus, Spinner, Trash } from '../Icons'
 
 /* Context */
 import { SwitchContext } from '../../context/SwitchContext'
@@ -55,10 +55,7 @@ interface FeatureContext {
    itemFeature: Movie | null
    setItemFeature: React.Dispatch<React.SetStateAction<Movie | null>>
    movies: Movie[]
-}
-
-interface MovieContext {
-   movies: Movie[]
+   isMyList: boolean
 }
 
 interface PropsRowContainer {
@@ -69,7 +66,6 @@ interface PropsRowContainer {
 /* Card Component */
 
 const FeatureContext = createContext<Partial<FeatureContext>>({})
-const MovieContext = createContext<Partial<MovieContext>>({})
 
 const Card = ({ children }: PropsWithChildren): JSX.Element => {
    return <Container>{children}</Container>
@@ -102,6 +98,7 @@ Card.RowContainer = function CardRowContainer({
             setShowFeature,
             itemFeature,
             setItemFeature,
+            isMyList: API === '/my-lists',
             movies:
                API === '/my-lists'
                   ? switchValue === 'movies'
@@ -147,6 +144,12 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
       if (ref.current) {
          ref.current.scrollLeft -= scrollWidth
       }
+   }
+
+   const hasSomething = movies?.length !== 0
+
+   if (!hasSomething) {
+      return <p>Puedes agregar tus películas favoritas acá!</p>
    }
 
    return (
@@ -242,7 +245,7 @@ Card.Pane = function CardPane({ children }: PropsWithChildren) {
 }
 Card.Feature = function CardFeature() {
    const { t } = useTranslation(['feature'])
-   const { showFeature, itemFeature, setShowFeature } = useContext(
+   const { showFeature, itemFeature, setShowFeature, isMyList } = useContext(
       FeatureContext
    )
    const { actions } = useContext(MyListContext)
@@ -273,9 +276,25 @@ Card.Feature = function CardFeature() {
             <Feature.PlayButton to={`/browse/${title ? 'movie' : 'tv'}/${id}`}>
                {t('feature:play', 'Play')}
             </Feature.PlayButton>
-            <Feature.Button onClick={() => actions.addMovieToMyList(id)}>
-               <Plus height="1rem" width="1rem" />
-            </Feature.Button>
+            {isMyList ? (
+               <Feature.Button
+                  onClick={() => {
+                     actions.removeMovieFromMyList(id)
+                     window.location.reload()
+                  }}
+               >
+                  <Trash height="1rem" width="1rem" />
+               </Feature.Button>
+            ) : (
+               <Feature.Button
+                  onClick={() => {
+                     actions.addMovieToMyList(id)
+                     window.location.reload()
+                  }}
+               >
+                  <Plus height="1rem" width="1rem" />
+               </Feature.Button>
+            )}
          </Feature.Pane>
          <Feature.Close handleClose={setShowFeature} />
       </Feature>

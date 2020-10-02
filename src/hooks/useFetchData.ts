@@ -1,35 +1,46 @@
 import { useState, useEffect } from 'react'
-import { ApiResponse } from '../interfaces/'
+import { ApiResponse, MyList } from '../interfaces/'
+import Axios, { Method } from 'axios'
+import config from '../config'
 
+type Data = ApiResponse | MyList | null
 interface UseFetchDataReturn {
-   data: ApiResponse | null
+   data: Data
    loading: boolean
    error: Error | null
 }
 
-const useFetchData = (API: string): UseFetchDataReturn => {
-   const BASE_URL = 'http://localhost:5000'
+interface Options {
+   headers: { Authorization: string }
+   method: Method
+   dependencies: Array<string | any>
+   initialState: any
+}
 
-   const [data, setData] = useState<ApiResponse | null>(null)
+const useFetchData = (
+   API: string,
+   options?: Partial<Options>
+): UseFetchDataReturn => {
+   const [data, setData] = useState<Data>(options?.initialState || null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState(null)
 
    useEffect(() => {
-      const abortController = new AbortController()
+      const signal = Axios.CancelToken.source()
       setLoading(true)
-      fetch(`${BASE_URL}${API}`, {
-         method: 'GET',
-         signal: abortController.signal
+      Axios({
+         baseURL: config.API_URL_SERVER,
+         url: API,
+         headers: options?.headers || {},
+         method: options?.method || 'GET',
+         cancelToken: signal.token
       })
-         .then((res) => res.json())
-         .then((response: ApiResponse) => {
-            setData(response)
-            setLoading(false)
-         })
-         .catch((err) => setError(err))
+         .then(({ data }) => setData(data))
+         .catch(setError)
+         .finally(() => setLoading(false))
+      return () => signal.cancel()
+   }, options?.dependencies || [])
 
-      return () => abortController.abort()
-   }, [API])
    return { data, loading, error }
 }
 

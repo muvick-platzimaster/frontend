@@ -1,17 +1,17 @@
 import React, { FC } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Footer, UserVerification } from '../components'
 import NavContainer from '../containers/Nav'
 import { colors } from '../styles/theme'
 import ROUTES from '../constants/routes'
 import jwtDecode from 'jwt-decode'
 import Axios, { AxiosError } from 'axios'
+import config from '../config'
 
 const UserVerificationPage: FC = () => {
    const { Button, Text, Title, Input, Error } = UserVerification
    const [pin, setPin] = React.useState<string>('')
    const [error, setError] = React.useState<AxiosError | null>(null)
-   const history = useHistory()
 
    const handleVerify = () => {
       setError(null)
@@ -22,7 +22,7 @@ const UserVerificationPage: FC = () => {
 
       Axios({
          method: 'POST',
-         baseURL: 'http://localhost:5000/',
+         baseURL: config.API_URL_SERVER,
          url: '/auth/confirm',
          headers: { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` },
          data: {
@@ -30,10 +30,11 @@ const UserVerificationPage: FC = () => {
             pin
          }
       })
-         .then(() => history.replace(ROUTES.BROWSE))
-         .catch((err: AxiosError) => {
-            setError(err)
+         .then(() => {
+            localStorage.removeItem('TOKEN')
+            window.location.reload()
          })
+         .catch(setError)
    }
 
    const handleErrors = (err: AxiosError) => {

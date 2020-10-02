@@ -12,6 +12,7 @@ import {
    Pane,
    Badge,
    CloseContainer,
+   PlayButton,
    Button
 } from './styles/feature'
 
@@ -27,9 +28,13 @@ interface PropsBadge {
    rating: number
 }
 
-interface PropsButton {
+interface PropsPlayButton {
    children: React.ReactNode
    to: string
+}
+
+interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+   children: React.ReactNode
 }
 
 interface PropsClose extends React.SVGProps<SVGSVGElement> {
@@ -57,18 +62,27 @@ Feature.Subtitle = function FeatureSubtitle({ children }: PropsWithChildren) {
 Feature.Pane = function FeaturePane({ children }: PropsWithChildren) {
    return <Pane>{children}</Pane>
 }
+
+Feature.Button = function FeatureButton({
+   children,
+   ...restProps
+}: PropsButton) {
+   return <Button {...restProps}>{children}</Button>
+}
+
 Feature.Badge = function FeatureBadge({ children, rating }: PropsBadge) {
    return <Badge theme={{ rating }}>{children}</Badge>
 }
-Feature.Button = function FeatureButton({
+
+Feature.PlayButton = function FeaturePlayButton({
    children,
    to,
    ...restProps
-}: PropsButton) {
+}: PropsPlayButton) {
    return (
-      <Button to={to} {...restProps}>
+      <PlayButton to={to} {...restProps}>
          {children}
-      </Button>
+      </PlayButton>
    )
 }
 

@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
    entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -90,6 +91,7 @@ module.exports = {
       }),
       new CopyPlugin({
          patterns: [{ from: './public/locales', to: './locales' }]
-      })
+      }),
+      new Dotenv()
    ]
 }

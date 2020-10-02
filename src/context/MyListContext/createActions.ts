@@ -2,8 +2,20 @@ import { ADD_MOVIE_TO_MY_LIST, REMOVE_MOVIE_FROM_MY_LIST } from './reducer'
 
 /* types */
 interface CreateActionsReturn {
-   addMovieToMyList: (movieId: number | string) => void
-   removeMovieFromMyList: (movieId: number | string) => void
+   addMovieToMyList: ({
+      movieId,
+      switchValue
+   }: {
+      movieId: number | string
+      switchValue: string
+   }) => void
+   removeMovieFromMyList: ({
+      movieId,
+      switchValue
+   }: {
+      movieId: number | string
+      switchValue: string
+   }) => void
 }
 
 interface Action {
@@ -15,11 +27,17 @@ const createActions = (
    dispatch: ({ type, payload }: Action) => void
 ): CreateActionsReturn => {
    return {
-      addMovieToMyList: (movieId) => {
-         dispatch({ type: ADD_MOVIE_TO_MY_LIST, payload: movieId })
+      addMovieToMyList: ({ movieId, switchValue }) => {
+         dispatch({
+            type: ADD_MOVIE_TO_MY_LIST,
+            payload: { movieId, switchValue }
+         })
       },
-      removeMovieFromMyList: (movieId) => {
-         dispatch({ type: REMOVE_MOVIE_FROM_MY_LIST, payload: movieId })
+      removeMovieFromMyList: ({ movieId, switchValue }) => {
+         dispatch({
+            type: REMOVE_MOVIE_FROM_MY_LIST,
+            payload: { movieId, switchValue }
+         })
       }
    }
 }

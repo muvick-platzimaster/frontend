@@ -249,7 +249,7 @@ Card.Feature = function CardFeature() {
       FeatureContext
    )
    const { actions } = useContext(MyListContext)
-
+   const { switchValue } = useContext(SwitchContext)
    if (!showFeature || !itemFeature) return null
    const {
       backdrop_path: image,
@@ -279,8 +279,7 @@ Card.Feature = function CardFeature() {
             {isMyList ? (
                <Feature.Button
                   onClick={() => {
-                     actions.removeMovieFromMyList(id)
-                     window.location.reload()
+                     actions.removeMovieFromMyList({ movieId: id, switchValue })
                   }}
                >
                   <Trash height="1rem" width="1rem" />
@@ -288,8 +287,7 @@ Card.Feature = function CardFeature() {
             ) : (
                <Feature.Button
                   onClick={() => {
-                     actions.addMovieToMyList(id)
-                     window.location.reload()
+                     actions.addMovieToMyList({ movieId: id, switchValue })
                   }}
                >
                   <Plus height="1rem" width="1rem" />

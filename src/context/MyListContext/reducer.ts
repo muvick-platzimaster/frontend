@@ -25,23 +25,23 @@ const reducer = (
       case ADD_MOVIE_TO_MY_LIST:
          Axios({
             baseURL: config.API_URL_SERVER,
-            url: `/movies/${payload}`,
+            url: `/${payload.switchValue}/${payload.movieId}`,
             method: 'POST',
             headers: {
                Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
             }
-         }).then(({ data }) => resolve(data))
+         }).then(() => window.location.reload())
 
          break
       case REMOVE_MOVIE_FROM_MY_LIST:
          Axios({
             baseURL: config.API_URL_SERVER,
-            url: `/movies/${payload}`,
+            url: `/${payload.switchValue}/${payload.movieId}`,
             method: 'DELETE',
             headers: {
                Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
             }
-         }).then(({ data }) => resolve(data))
+         }).then(() => window.location.reload())
          break
       default: {
          return state

@@ -75,7 +75,6 @@ function Browse(): JSX.Element {
             <ModalContainer movieId={randomMovie.id} handleClose={hideModal} />
          )}
          <BrowseContainer />
-         {/* <ListsContainer /> */}
          <Footer />
       </>
    )

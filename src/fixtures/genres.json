@@ -1,14 +1,6 @@
 {
    "genres": [
       {
-         "id": 1,
-         "name": "My List"
-      },
-      {
-         "id": 2,
-         "name": "Populares"
-      },
-      {
          "id": 28,
          "name": "Action"
       },

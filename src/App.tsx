@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react'
+import React, { useState, Suspense } from 'react'
 import {
    BrowserRouter as Router,
    Route,
@@ -26,24 +26,14 @@ import { Player, Fallback } from './components/'
 import ROUTES from './constants/routes'
 
 /* Context */
-import { SwitchContext, SwitchState } from './context/switchContext'
+import { SwitchContext, SwitchState } from './context/SwitchContext'
+
+/* Hooks */
+import useGetToken from './hooks/useGetToken'
 
 const App: React.FC = () => {
-   const [user, setUser] = useState(() => {
-      return localStorage.getItem('TOKEN') || null
-   })
-   useEffect(() => {
-      window.addEventListener('storage', () => {
-         setUser(localStorage.getItem('TOKEN') || null)
-      })
-
-      return () =>
-         window.removeEventListener('storage', () => {
-            setUser(localStorage.getItem('TOKEN') || null)
-         })
-   }, [])
-
-   const [switchValue, setSwitchValue] = useState(SwitchState.MOVIES)
+   const { token } = useGetToken()
+   const [switchValue, setSwitchValue] = useState<SwitchState>('movies')
 
    return (
       <Suspense
@@ -58,22 +48,22 @@ const App: React.FC = () => {
             <Router>
                <Switch>
                   <Route exact path={ROUTES.HOME}>
-                     {user ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
+                     {token ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
                   </Route>
                   <Route exact path={ROUTES.SIGN_IN}>
-                     {user ? <Redirect to={ROUTES.BROWSE} /> : <Signin />}
+                     {token ? <Redirect to={ROUTES.BROWSE} /> : <Signin />}
                   </Route>
                   <Route exact path={ROUTES.BROWSE}>
-                     {user ? <Browse /> : <Redirect to={ROUTES.SIGN_IN} />}
+                     {token ? <Browse /> : <Redirect to={ROUTES.SIGN_IN} />}
                   </Route>
                   <Route exact path={ROUTES.SIGN_UP}>
-                     {user ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
+                     {token ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
                   </Route>
                   <Route exact path={ROUTES.MOVIE}>
-                     {user ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
+                     {token ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
                   </Route>
                   <Route exact path={ROUTES.VERIFY}>
-                     {user ? (
+                     {token ? (
                         <UserVerification />
                      ) : (
                         <Redirect to={ROUTES.SIGN_IN} />

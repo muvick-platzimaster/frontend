@@ -75,3 +75,9 @@ export interface Videos {
       type: string
    }[]
 }
+
+export interface MyList {
+   email: string
+   movies: Movie[]
+   series: Movie[]
+}

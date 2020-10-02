@@ -1,9 +1,9 @@
-import { createContext, useContext } from 'react'
+import { createContext, Dispatch, SetStateAction } from 'react'
+export type SwitchState = 'series' | 'movies'
 
-export enum SwitchState {
-   TV = 'series',
-   MOVIES = 'movies'
+interface SwitchContext {
+   setSwitchValue: Dispatch<SetStateAction<SwitchState>>
+   switchValue: SwitchState
 }
 
-export const SwitchContext = createContext([])
-export const useSwitch = () => useContext(SwitchContext)
+export const SwitchContext = createContext<Partial<SwitchContext>>({})

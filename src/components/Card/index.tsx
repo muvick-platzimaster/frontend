@@ -6,7 +6,7 @@ import React, {
    useState
 } from 'react'
 import useFetchData from '../../hooks/useFetchData'
-import { Movie } from '../../interfaces'
+import { ApiResponse, Movie, MyList } from '../../interfaces'
 import { useInView } from 'react-intersection-observer'
 /* Components */
 
@@ -32,7 +32,7 @@ import {
 import { Spinner } from '../Icons'
 
 /* Context */
-import { useSwitch } from '../../context/switchContext'
+import { SwitchContext } from '../../context/SwitchContext'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -62,7 +62,7 @@ interface MovieContext {
 
 interface PropsRowContainer {
    children: React.ReactNode
-   genreId: number | string
+   API: string
 }
 
 /* Card Component */
@@ -80,39 +80,16 @@ Card.Title = function CardTitle({ children }: PropsWithChildren) {
 
 Card.RowContainer = function CardRowContainer({
    children,
-   genreId
+   API
 }: PropsRowContainer) {
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
-   const { switchValue } = useSwitch()
-   const { i18n } = useTranslation(['header'])
+   const { switchValue } = useContext(SwitchContext)
 
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
-   let api
-   const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
-   }
+   const headers = { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` }
 
-   switch (genreId) {
-   case 1:
-      api = '/my-lists'
-      break
-   case 2:
-      api = `/${switchValue}/popular?language=${i18n.language}`
-      break
-   default:
-      api = `/${switchValue}?genre=${genreId}&language=${i18n.language}`
-      break
-   }
-
-   let { data, loading } = useFetchData(api, headers)
-   if (api === '/my-lists' && switchValue === 'movies') {
-      data = { results: data?.movies }
-   } else if (api === '/my-lists' && switchValue === 'series') {
-      data = { results: data?.series }
-   }
+   const { data, loading } = useFetchData(API, headers)
 
    return (
       <FeatureContext.Provider
@@ -121,7 +98,12 @@ Card.RowContainer = function CardRowContainer({
             setShowFeature,
             itemFeature,
             setItemFeature,
-            movies: data?.results
+            movies:
+               API === '/my-lists'
+                  ? switchValue === 'movies'
+                     ? (data as MyList)?.movies || []
+                     : (data as MyList)?.series || []
+                  : (data as ApiResponse)?.results || []
          }}
       >
          <RowContainer ref={ref}>
@@ -133,6 +115,7 @@ Card.RowContainer = function CardRowContainer({
 
 Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const { movies } = useContext(FeatureContext)
+
    const ref = useRef<HTMLDivElement | null>(null)
    const [scrollWidth, setscrollWidth] = useState(
       ref?.current?.offsetWidth || 0
@@ -148,7 +131,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
       window.addEventListener('resize', handleResize)
 
       return () => window.removeEventListener('resize', handleResize)
-   }, [ref?.current?.scrollLeft])
+   }, [])
 
    const handleClickNext = () => {
       if (ref.current) {
@@ -173,7 +156,6 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                      id,
                      poster_path: poster,
                      title,
-                     // eslint-disable-next-line camelcase
                      original_title: originalTitle,
                      name,
                      overview,
@@ -259,7 +241,7 @@ Card.Feature = function CardFeature() {
    const { showFeature, itemFeature, setShowFeature } = useContext(
       FeatureContext
    )
-   const { switchValue } = useSwitch()
+   const { switchValue } = useContext(SwitchContext)
 
    if (!showFeature || !itemFeature) return null
    const {

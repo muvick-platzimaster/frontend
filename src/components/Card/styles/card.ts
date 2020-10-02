@@ -123,6 +123,7 @@ export const Badge = styled.span`
       if (theme.rating <= 5) return colors['color-error']
    }};
    font-weight: bolder;
+   margin-left: 0.25rem;
 `
 
 export const Image = styled.img`

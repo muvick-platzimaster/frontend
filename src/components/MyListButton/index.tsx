@@ -1,32 +1,26 @@
-import React, { FC } from 'react'
+import React from 'react'
+/* import Axios, { AxiosError } from 'axios' */
 
 /* Styles */
 import { Button } from './styles'
 
-const MyListButton: FC = ({ switchValue, id }: any) => {
-   const handleMyList = () => {
-      //   console.log(handleDependency)
-      const API = `/${switchValue}/${id}`
-      const headers = {
-         Accept: 'application/json',
-         'Content-Type': 'application/json',
-         Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
-      }
-      const method = 'POST'
-      const BASE_URL = 'http://localhost:5000'
+const MyListButton = (/* { switchValue, id } */): JSX.Element => {
+   /* const [myList, setMyList] = useState([])
+   const [error, setError] = useState<AxiosError | null>(null) */
 
-      const abortController = new AbortController()
-      fetch(`${BASE_URL}${API}`, {
-         headers,
-         method,
-         signal: abortController.signal
+   const handleMyList = () => {
+      /* Axios({
+         baseURL: 'http://localhost:5000',
+         url: `/${switchValue}/${id}`,
+         headers: { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` },
+         method: 'POST'
       })
-         .then((res) => res.json())
-         .then((response) => {
-            return response
+         .then(({ data }) => {
+            setMyList(data)
          })
-         .catch((err) => err)
-      return () => abortController.abort()
+         .catch((err: AxiosError) => {
+            setError(err)
+         }) */
    }
 
    return (

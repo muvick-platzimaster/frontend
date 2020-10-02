@@ -1,39 +1,38 @@
 import { useState, useEffect } from 'react'
-import { ApiResponse } from '../interfaces/'
+import { ApiResponse, MyList } from '../interfaces/'
+import Axios, { Method } from 'axios'
 
+type Data = ApiResponse | MyList | null
 interface UseFetchDataReturn {
-   data: ApiResponse | null
+   data: Data
    loading: boolean
    error: Error | null
 }
 
 const useFetchData = (
    API: string,
-   headers = [],
-   method = 'GET'
+   headers = {},
+   method: Method = 'GET'
 ): UseFetchDataReturn => {
-   const BASE_URL = 'http://localhost:5000'
-
-   const [data, setData] = useState<ApiResponse | null>(null)
+   const [data, setData] = useState<Data>(null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState(null)
 
    useEffect(() => {
-      const abortController = new AbortController()
+      const signal = Axios.CancelToken.source()
       setLoading(true)
-      fetch(`${BASE_URL}${API}`, {
+      Axios({
+         baseURL: 'http://localhost:5000',
+         url: API,
          headers,
          method,
-         signal: abortController.signal
+         cancelToken: signal.token
       })
-         .then((res) => res.json())
-         .then((response: ApiResponse) => {
-            setData(response)
-            setLoading(false)
-         })
+         .then(({ data }) => setData(data))
          .catch((err) => setError(err))
-      return () => abortController.abort()
-   }, [API])
+         .finally(() => setLoading(false))
+      return () => signal.cancel()
+   }, [])
 
    return { data, loading, error }
 }

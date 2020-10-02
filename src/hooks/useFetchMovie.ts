@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+/* import { useState, useEffect } from 'react'
 import { MovieDetails } from '../interfaces/'
 
 interface UseFetchMovieReturn {
@@ -33,4 +33,4 @@ const useFetchMovie = (API: string): UseFetchMovieReturn => {
    return { data, loading, error }
 }
 
-export default useFetchMovie
+export default useFetchMovie */

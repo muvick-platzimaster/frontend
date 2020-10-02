@@ -32,9 +32,7 @@ const UserVerificationPage: FC = () => {
          }
       })
          .then(() => history.replace(ROUTES.BROWSE))
-         .catch((err: AxiosError) => {
-            setError(err)
-         })
+         .catch(setError)
    }
 
    const handleErrors = (err: AxiosError) => {

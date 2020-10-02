@@ -35,12 +35,11 @@ const Signin: FC = (): JSX.Element => {
          })
          .then(() => location.reload())
          .catch((err: AxiosError) => {
+            setLoading(false)
             setError(err)
-
             setEmail('')
             setPassword('')
          })
-         .finally(() => setLoading(false))
    }
 
    return (

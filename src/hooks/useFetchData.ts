@@ -13,7 +13,7 @@ interface UseFetchDataReturn {
 interface Options {
    headers: { Authorization: string }
    method: Method
-   dependencies: Array<any>
+   dependencies: Array<string | any>
 }
 
 const useFetchData = (
@@ -35,7 +35,7 @@ const useFetchData = (
          cancelToken: signal.token
       })
          .then(({ data }) => setData(data))
-         .catch((err) => setError(err))
+         .catch(setError)
          .finally(() => setLoading(false))
       return () => signal.cancel()
    }, options?.dependencies || [])

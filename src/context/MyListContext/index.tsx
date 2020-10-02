@@ -1,5 +1,7 @@
-import React, { createContext, useReducer } from 'react'
-/* import reducer from './reducer' */
+import React, { createContext } from 'react'
+import useAsyncReducer from '../../hooks/useAsyncReducer'
+import reducer from './reducer'
+import createActions from './createActions'
 import { Movie } from '../../interfaces'
 
 /* Types */
@@ -9,8 +11,8 @@ interface MyList {
 }
 
 interface MyListContext {
-   myList: MyList
-   getMyList: () => any
+   state: MyList
+   actions: any
 }
 
 interface Props {
@@ -26,14 +28,11 @@ const MyListContextProvider = ({ children }: Props): JSX.Element => {
       series: []
    }
 
-   const [state] = useReducer(() => {
-      return initialState
-   }, initialState)
-   /* const getMyList = () => {
-      dispatch({ type: 'GET_MY_LIST' })
-   } */
+   const [state, dispatch] = useAsyncReducer(reducer, initialState)
+   const actions = createActions(dispatch)
+
    return (
-      <MyListContext.Provider value={{ myList: state }}>
+      <MyListContext.Provider value={{ state, actions }}>
          {children}
       </MyListContext.Provider>
    )

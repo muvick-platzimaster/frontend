@@ -164,7 +164,6 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                      id,
                      poster_path: poster,
                      title,
-                     original_title: originalTitle,
                      name,
                      overview,
                      vote_average: votes
@@ -184,7 +183,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                         <Card.Details>
                            <Card.Pane>
                               <Card.Subtitle>
-                                 {name || title || originalTitle}
+                                 {name || title}
                                  <Card.Badge rating={votes}>
                                     {votes * 10}%
                                  </Card.Badge>

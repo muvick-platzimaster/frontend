@@ -283,6 +283,7 @@ Card.Feature = function CardFeature() {
                         movieId: id,
                         switchValue: switchValue || 'movies'
                      })
+                     setShowFeature && setShowFeature(false)
                   }}
                >
                   <Trash height="1rem" width="1rem" />

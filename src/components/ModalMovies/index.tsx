@@ -25,6 +25,7 @@ interface Props {
 interface PropsItem {
    children: React.ReactNode
    background: string
+   hidden: boolean
 }
 interface PropsPlayButton {
    children: React.ReactNode
@@ -59,10 +60,11 @@ const ModalMovies = ({ children, isOpen }: Props): JSX.Element => {
 
 ModalMovies.Item = function ModalMoviesItem({
    children,
-   background
+   background,
+   hidden
 }: PropsItem) {
    return (
-      <Item>
+      <Item hidden={hidden}>
          <Image theme={{ background }}>
             <Content>{children}</Content>
          </Image>

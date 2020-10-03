@@ -12,7 +12,23 @@ interface MyList {
 
 interface MyListContext {
    state: MyList
-   actions: any
+   actions: {
+      addMovieToMyList: ({
+         movieId,
+         switchValue
+      }: {
+         movieId: number | string
+         switchValue: string
+      }) => void
+      removeMovieFromMyList: ({
+         movieId,
+         switchValue
+      }: {
+         movieId: number | string
+         switchValue: string
+      }) => void
+      getMyList: () => void
+   }
 }
 
 interface Props {

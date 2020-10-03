@@ -38,7 +38,7 @@ function Browse(): JSX.Element {
    }
 
    const toggleScrollLock = () => {
-      document.querySelector('html').classList.toggle('scroll-lock')
+      document.querySelector('html')?.classList.toggle('scroll-lock')
    }
 
    useEffect(() => {

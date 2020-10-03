@@ -1,14 +1,17 @@
-import React, { FC, Fragment, useContext } from 'react'
+import React, { FC, Fragment, useContext, useEffect } from 'react'
 import { genres } from '../fixtures/genres.json'
 
 /* Components */
 import { Card } from '../components'
 import { SwitchContext } from '../context/SwitchContext'
 import { useTranslation } from 'react-i18next'
+import { MyListContext } from '../context/MyListContext'
 
 const BrowseContainer: FC = () => {
    const { switchValue } = useContext(SwitchContext)
    const { i18n } = useTranslation(['header'])
+   const { actions } = useContext(MyListContext)
+   useEffect(() => actions?.getMyList(), [])
 
    return (
       <Fragment>

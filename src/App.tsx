@@ -35,7 +35,7 @@ import useGetToken from './hooks/useGetToken'
 const App: React.FC = () => {
    const { token } = useGetToken()
    const [switchValue, setSwitchValue] = useState<SwitchState>('movies')
-   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '')
+   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '{}')
 
    return (
       <Suspense

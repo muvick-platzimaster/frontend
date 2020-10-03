@@ -71,8 +71,9 @@ export const Image = styled.div`
    bottom: 0;
    right: 0;
    left: 0;
-   background: ${({ theme }) =>
-      `url('http://image.tmdb.org/t/p/w300${theme.background}')`};
+   background: ${({ theme }) => {
+      return `url('http://image.tmdb.org/t/p/w300${theme.background}')`
+   }};
    background-size: cover;
    background-repeat: no-repeat;
    background-position: center top;

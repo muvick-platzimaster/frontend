@@ -36,6 +36,7 @@ import useGetToken from './hooks/useGetToken'
 const App: React.FC = () => {
    const { token } = useGetToken()
    const [switchValue, setSwitchValue] = useState<SwitchState>('movies')
+   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '')
 
    return (
       <Suspense
@@ -70,7 +71,11 @@ const App: React.FC = () => {
                      </Route>
                      <Route exact path={ROUTES.VERIFY}>
                         {token ? (
-                           <UserVerification />
+                           !confirmed ? (
+                              <UserVerification />
+                           ) : (
+                              <NotFoundPage />
+                           )
                         ) : (
                            <Redirect to={ROUTES.SIGN_IN} />
                         )}

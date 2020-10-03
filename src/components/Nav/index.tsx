@@ -79,7 +79,7 @@ Nav.Search = function NavSearch() {
    const handleClick = () => {
       if (!value) return
       const API_KEY = 'ad7bc0ccac5da809744fb1fe94ccd84c'
-      const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=${i18n.language}&page=1&include_adult=false&query=${value}`
+      const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=${i18n.language}&page=1&include_adult=false&query=${value}`
 
       axios({
          url: URL,
@@ -117,6 +117,7 @@ Nav.Search = function NavSearch() {
                   <ModalMovies.Item
                      key={movie.id}
                      background={movie.poster_path}
+                     hidden={!movie.poster_path}
                   >
                      <ModalMovies.Title>{movie.title}</ModalMovies.Title>
                      <ModalMovies.Description>

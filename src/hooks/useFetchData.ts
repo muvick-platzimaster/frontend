@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { ApiResponse, MyList } from '../interfaces/'
+import { ApiResponse, MovieDetails, MyList } from '../interfaces/'
 import Axios, { Method } from 'axios'
 import config from '../config'
 
-type Data = ApiResponse | MyList | null
+type Data = ApiResponse | MyList | null | MovieDetails
 interface UseFetchDataReturn {
    data: Data
    loading: boolean

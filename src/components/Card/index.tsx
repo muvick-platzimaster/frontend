@@ -6,7 +6,7 @@ import React, {
    useState
 } from 'react'
 import useFetchData from '../../hooks/useFetchData'
-import { ApiResponse, Movie, MyList } from '../../interfaces'
+import { ApiResponse, Movie } from '../../interfaces'
 import { useInView } from 'react-intersection-observer'
 /* Components */
 
@@ -82,6 +82,7 @@ Card.RowContainer = function CardRowContainer({
    const [showFeature, setShowFeature] = useState<boolean>(false)
    const [itemFeature, setItemFeature] = useState<Movie | null>(null)
    const { switchValue } = useContext(SwitchContext)
+   const { state } = useContext(MyListContext)
 
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
    const headers = { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` }
@@ -102,8 +103,8 @@ Card.RowContainer = function CardRowContainer({
             movies:
                API === '/my-lists'
                   ? switchValue === 'movies'
-                     ? (data as MyList)?.movies || []
-                     : (data as MyList)?.series || []
+                     ? state?.movies || []
+                     : state?.series || []
                   : (data as ApiResponse)?.results || []
          }}
       >
@@ -149,7 +150,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const hasSomething = movies?.length !== 0
 
    if (!hasSomething) {
-      return <p>Puedes agregar tus películas favoritas acá!</p>
+      return <p>No tenemos nunguna película de este género.</p>
    }
 
    return (
@@ -163,7 +164,6 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                      id,
                      poster_path: poster,
                      title,
-                     original_title: originalTitle,
                      name,
                      overview,
                      vote_average: votes
@@ -183,7 +183,7 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                         <Card.Details>
                            <Card.Pane>
                               <Card.Subtitle>
-                                 {name || title || originalTitle}
+                                 {name || title}
                                  <Card.Badge rating={votes}>
                                     {votes * 10}%
                                  </Card.Badge>
@@ -279,7 +279,11 @@ Card.Feature = function CardFeature() {
             {isMyList ? (
                <Feature.Button
                   onClick={() => {
-                     actions.removeMovieFromMyList({ movieId: id, switchValue })
+                     actions?.removeMovieFromMyList({
+                        movieId: id,
+                        switchValue: switchValue || 'movies'
+                     })
+                     setShowFeature && setShowFeature(false)
                   }}
                >
                   <Trash height="1rem" width="1rem" />
@@ -287,7 +291,10 @@ Card.Feature = function CardFeature() {
             ) : (
                <Feature.Button
                   onClick={() => {
-                     actions.addMovieToMyList({ movieId: id, switchValue })
+                     actions?.addMovieToMyList({
+                        movieId: id,
+                        switchValue: switchValue || 'movies'
+                     })
                   }}
                >
                   <Plus height="1rem" width="1rem" />

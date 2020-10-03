@@ -11,7 +11,7 @@ import Play from '../components/Icons/Play'
 /* Hooks */
 import useFetchData from '../hooks/useFetchData'
 
-import { ApiResponse } from '../interfaces'
+import { ApiResponse, MovieDetails } from '../interfaces'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -38,10 +38,12 @@ const ModalContainer = ({
    )
 
    const year = movieDetail
-      ? `${movieDetail.release_date}`.substring(0, 4) || ''
+      ? `${(movieDetail as MovieDetails).release_date}`.substring(0, 4) || ''
       : ''
    const duration = movieDetail
-      ? `${Math.floor(movieDetail.runtime / 60)}h ${movieDetail.runtime % 60}m `
+      ? `${Math.floor((movieDetail as MovieDetails).runtime / 60)}h ${
+         (movieDetail as MovieDetails).runtime % 60
+      }m `
       : ''
 
    if (
@@ -55,10 +57,10 @@ const ModalContainer = ({
 
    const {
       backdrop_path: imageUrl,
-      original_title: title,
+      title,
       overview,
       genres
-   } = movieDetail
+   } = movieDetail as MovieDetails
 
    return (
       <Modal onClick={handleClose}>

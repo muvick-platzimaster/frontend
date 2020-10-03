@@ -19,17 +19,22 @@ import { useTranslation } from 'react-i18next'
 interface Props {
    movieId: string | number
    handleClose: () => void
+   type: string
 }
 
-const ModalContainer = ({ movieId, handleClose }: Props): JSX.Element => {
+const ModalContainer = ({
+   movieId,
+   handleClose,
+   type = 'movies'
+}: Props): JSX.Element => {
    const { t, i18n } = useTranslation(['modal'])
    const { data: movieDetail, loading: movieDetailLoading } = useFetchData(
-      `/movies/${movieId}/detail?language=${i18n.language}`
+      `/${type}/${movieId}/detail?language=${i18n.language}`
    )
 
    // TODO: Este hay que actualizarlo cuando ya tengamos un endpoint en MuvickAPI para hacer este llamado mientras tanto tendrá un any
    const { data: similarMovies, loading: similarMoviesLoading } = useFetchData(
-      `/movies/${movieId}/recommendations?language=${i18n.language}`
+      `/${type}/${movieId}/recommendations?language=${i18n.language}`
    )
 
    const year = movieDetail

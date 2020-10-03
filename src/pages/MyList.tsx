@@ -30,7 +30,6 @@ function MyList(): JSX.Element {
       switchValue === 'movies'
          ? (data as MyListInterface)?.movies || []
          : (data as MyListInterface)?.series || []
-
    return (
       <>
          <NavContainer />

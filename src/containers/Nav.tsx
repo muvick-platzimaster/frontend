@@ -30,7 +30,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
       <Nav background={finalBackground}>
          <Nav.Grid>
             <Nav.Logo />
-            {!error404 && pathname === '/browse' && (
+            {!error404 && (
                <>
                   <section className="Nav__Menu--open">
                      <Nav.Button

@@ -15,8 +15,6 @@ import { Movie } from '../interfaces'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import UserVerificationContainer from '../containers/UserVerification'
-import useGetToken from '../hooks/useGetToken'
-import JwtDecode from 'jwt-decode'
 
 function Browse(): JSX.Element {
    const { i18n } = useTranslation()
@@ -26,9 +24,8 @@ function Browse(): JSX.Element {
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
    const { t } = useTranslation(['browse'])
-   const { token } = useGetToken()
 
-   const tokenDecoded = JwtDecode<{ confirmed: boolean }>(token || '')
+   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '')
 
    const showModal = () => {
       setShow(true)
@@ -58,7 +55,7 @@ function Browse(): JSX.Element {
 
    return (
       <>
-         {!tokenDecoded.confirmed && <UserVerificationContainer />}
+         {!confirmed && <UserVerificationContainer />}
 
          <NavContainer background={randomMovie.backdrop_path}>
             <Browser.Title>{randomMovie.title}</Browser.Title>

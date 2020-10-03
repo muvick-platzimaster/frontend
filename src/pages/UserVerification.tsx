@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Footer, UserVerification } from '../components'
 import NavContainer from '../containers/Nav'
 import { colors } from '../styles/theme'
@@ -12,13 +12,11 @@ const UserVerificationPage: FC = () => {
    const { Button, Text, Title, Input, Error } = UserVerification
    const [pin, setPin] = React.useState<string>('')
    const [error, setError] = React.useState<AxiosError | null>(null)
+   const history = useHistory()
 
    const handleVerify = () => {
       setError(null)
-      const tokenDecode: { email: string } = jwtDecode(
-         localStorage.getItem('TOKEN') || ''
-      )
-      const email = tokenDecode.email
+      const { email } = jwtDecode(localStorage.getItem('TOKEN') || '')
 
       Axios({
          method: 'POST',
@@ -31,8 +29,16 @@ const UserVerificationPage: FC = () => {
          }
       })
          .then(() => {
-            localStorage.removeItem('TOKEN')
-            window.location.reload()
+            const { suspended } = JSON.parse(
+               localStorage.getItem('VERIFY') || ''
+            )
+
+            localStorage.setItem(
+               'VERIFY',
+               JSON.stringify({ confirmed: true, suspended })
+            )
+
+            history.replace(ROUTES.BROWSE)
          })
          .catch(setError)
    }

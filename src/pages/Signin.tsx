@@ -8,6 +8,7 @@ import config from '../config'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
+import JwtDecode from 'jwt-decode'
 
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
@@ -31,7 +32,12 @@ const Signin: FC = (): JSX.Element => {
          }
       })
          .then(({ data }) => {
+            const { confirmed, suspended } = JwtDecode(data.accessToken)
             localStorage.setItem('TOKEN', data.accessToken)
+            localStorage.setItem(
+               'VERIFY',
+               JSON.stringify({ confirmed, suspended })
+            )
          })
          .then(() => location.reload())
          .catch((err: AxiosError) => {

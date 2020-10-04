@@ -79,7 +79,6 @@ export const Text = styled.span`
    -webkit-line-clamp: 4;
    -webkit-box-orient: vertical;
    overflow: hidden;
-   /* width: 50%; */
    font-size: 2rem;
    margin-bottom: 20px;
 
@@ -105,19 +104,19 @@ export const Frame = styled.div`
 `
 
 export const TitleStyled = styled.h1`
-   font-size: ${(props) => props.fontSize};
-   margin-bottom: 3rem;
-   /* width: 50%; */
+   font-size: 5rem;
+   margin: 1rem 0;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
 
-   @media (max-width: ${breakpoints.sm}) {
-      font-size: 3rem;
-      line-height: 3rem;
-      /* width: 100%; */
+   @media (max-width: ${breakpoints.md}) {
       text-align: center;
+      font-size: 3rem;
    }
 
    @media (max-width: ${breakpoints.xs}) {
-      font-size: 1.75rem;
-      line-height: 1.75rem;
+      font-size: 2rem;
    }
 `

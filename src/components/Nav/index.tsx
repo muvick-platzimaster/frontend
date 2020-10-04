@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Search as SearchIcon } from '../Icons'
 import { ModalMovies } from '../'
-import axios, { AxiosError } from 'axios'
+import Axios, { AxiosError } from 'axios'
 
 /* Styles */
 import {
@@ -25,6 +25,7 @@ import { ApiResponse } from '../../interfaces'
 import { useTranslation } from 'react-i18next'
 import { MyListContext } from '../../context/MyListContext'
 import { SwitchContext } from '../../context/SwitchContext'
+import config from '../../config'
 
 interface Props {
    linkTo?: string
@@ -92,19 +93,21 @@ Nav.Search = function NavSearch() {
    } = ModalMovies
    const handleClick = () => {
       if (!value) return
-      const API_KEY = 'ad7bc0ccac5da809744fb1fe94ccd84c'
+      setError(null)
+      setfindedMovies(null)
 
       // TODO: Cambiar este endpoint y controlar el cancelToken
-      const URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=${i18n.language}&page=1&include_adult=false&query=${value}`
-      axios({
+      const URL = `/${switchValue}?query=${value}&language=${i18n.language}&page=1`
+      Axios({
+         baseURL: config.API_URL_SERVER,
          url: URL,
          method: 'GET'
       })
          .then(({ data }) => setfindedMovies(data))
-         .catch(setError)
+         .catch((err: AxiosError) => {
+            setError(err)
+         })
    }
-
-   if (error) return <h1>{error.message}</h1>
 
    return (
       <SearchContainer>
@@ -124,7 +127,8 @@ Nav.Search = function NavSearch() {
          </Label>
          <ModalMovies isOpen={modalIsOpen}>
             <Title>
-               {t('search:text', 'Search')}: {value}
+               {t('search:text', 'Search')}:{' '}
+               {error ? error.response?.data.message : value}
             </Title>
             <Close setIsOpen={setIsOpen} />
             <RowContainer>

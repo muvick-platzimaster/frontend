@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 import Axios from 'axios'
 import config from '../../config'
+import { TOKEN } from '../../constants/itemsLocalStorage'
 
 /* Types */
 interface Actions {
@@ -24,36 +25,50 @@ const reducer = (
    return new Promise((resolve) => {
       switch (type) {
          case ADD_MOVIE_TO_MY_LIST:
-            Axios({
-               baseURL: config.API_URL_SERVER,
-               url: `/${payload.switchValue}/${payload.movieId}`,
-               method: 'POST',
-               headers: {
-                  Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
-               }
-            }).then(({ data }) => resolve(data))
+            {
+               const source = Axios.CancelToken.source()
+               Axios({
+                  baseURL: config.API_URL_SERVER,
+                  url: `/${payload.switchValue}/${payload.movieId}`,
+                  method: 'POST',
+                  cancelToken: source.token,
+                  headers: {
+                     Authorization: `Bearer ${localStorage.getItem(TOKEN)}`
+                  }
+               }).then(({ data }) => resolve(data))
+            }
 
             break
          case REMOVE_MOVIE_FROM_MY_LIST:
-            Axios({
-               baseURL: config.API_URL_SERVER,
-               url: `/${payload.switchValue}/${payload.movieId}`,
-               method: 'DELETE',
-               headers: {
-                  Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
-               }
-            }).then(({ data }) => resolve(data))
+            {
+               const source = Axios.CancelToken.source()
+
+               Axios({
+                  baseURL: config.API_URL_SERVER,
+                  url: `/${payload.switchValue}/${payload.movieId}`,
+                  method: 'DELETE',
+                  cancelToken: source.token,
+                  headers: {
+                     Authorization: `Bearer ${localStorage.getItem(TOKEN)}`
+                  }
+               }).then(({ data }) => resolve(data))
+            }
             break
 
          case GET_MY_LIST:
-            Axios({
-               baseURL: config.API_URL_SERVER,
-               url: '/my-lists',
-               method: 'GET',
-               headers: {
-                  Authorization: `Bearer ${localStorage.getItem('TOKEN')}`
-               }
-            }).then(({ data }) => resolve(data))
+            {
+               const source = Axios.CancelToken.source()
+
+               Axios({
+                  baseURL: config.API_URL_SERVER,
+                  url: '/my-lists',
+                  method: 'GET',
+                  cancelToken: source.token,
+                  headers: {
+                     Authorization: `Bearer ${localStorage.getItem(TOKEN)}`
+                  }
+               }).then(({ data }) => resolve(data))
+            }
             break
          default: {
             return state

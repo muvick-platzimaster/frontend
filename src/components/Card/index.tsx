@@ -37,6 +37,7 @@ import { SwitchContext } from '../../context/SwitchContext'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import { MyListContext } from '../../context/MyListContext'
+import { TOKEN } from '../../constants/itemsLocalStorage'
 
 /* Types */
 type PropsWithChildren = { children: React.ReactNode }
@@ -86,7 +87,7 @@ Card.RowContainer = function CardRowContainer({
    const { state } = useContext(MyListContext)
 
    const { ref, inView } = useInView({ rootMargin: '50px', triggerOnce: true })
-   const headers = { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` }
+   const headers = { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }
 
    const { data, loading } = useFetchData(API, {
       headers,

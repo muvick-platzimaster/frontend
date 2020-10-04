@@ -12,6 +12,8 @@ import { SwitchContext } from '../context/SwitchContext'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
+import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
+import ROUTES from '../constants/routes'
 
 interface Props {
    children?: ReactNode
@@ -47,12 +49,12 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                      >
                         {t('nav:tvshows', 'TV Shows')}
                      </Nav.Button>
-                     <Nav.LinkButton linkTo="/browse/my-list">
+                     <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                         {t('nav:list', 'My list')}
                      </Nav.LinkButton>
                      <Nav.Button
                         onClick={() => {
-                           localStorage.removeItem('TOKEN')
+                           localStorage.removeItem(TOKEN)
                            window.location.reload()
                         }}
                      >
@@ -60,9 +62,9 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                      </Nav.Button>
                   </section>
                   <section className="Nav__Menu--dropdown">
-                     <Nav.Button className="menu" linkTo="/browse">
+                     <Nav.LinkButton className="menu" linkTo={ROUTES.BROWSE}>
                         {t('nav:explore', 'Explore')}
-                     </Nav.Button>
+                     </Nav.LinkButton>
                      <div className="dropdownContent">
                         <Nav.Button
                            onClick={() => {
@@ -78,13 +80,13 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                         >
                            {t('nav:tvshows', 'TV Shows')}
                         </Nav.Button>
-                        <Nav.LinkButton linkTo="/browse/my-list">
+                        <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                            {t('nav:list', 'My list')}
                         </Nav.LinkButton>
                         <Nav.Button
                            onClick={() => {
-                              localStorage.removeItem('TOKEN')
-                              localStorage.removeItem('VERIFY')
+                              localStorage.removeItem(TOKEN)
+                              localStorage.removeItem(VERIFY)
                               window.location.reload()
                            }}
                         >

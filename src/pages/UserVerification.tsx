@@ -1,12 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Footer, UserVerification } from '../components'
 import NavContainer from '../containers/Nav'
 import { colors } from '../styles/theme'
 import ROUTES from '../constants/routes'
 import jwtDecode from 'jwt-decode'
-import Axios, { AxiosError } from 'axios'
+import Axios, { AxiosError, CancelTokenSource } from 'axios'
 import config from '../config'
+import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 import { useTranslation } from 'react-i18next'
 
 const UserVerificationPage: FC = () => {
@@ -15,16 +16,23 @@ const UserVerificationPage: FC = () => {
    const [pin, setPin] = React.useState<string>('')
    const [error, setError] = React.useState<AxiosError | null>(null)
    const history = useHistory()
+   let source: CancelTokenSource
+
+   /* Limpia cualquier request cuando se esté desmontando el componente */
+   useEffect(() => {
+      return source.cancel()
+   })
 
    const handleVerify = () => {
       setError(null)
-      const { email } = jwtDecode(localStorage.getItem('TOKEN') || '')
-
+      const { email } = jwtDecode(localStorage.getItem(TOKEN) || '')
+      source = Axios.CancelToken.source()
       Axios({
          method: 'POST',
          baseURL: config.API_URL_SERVER,
          url: '/auth/confirm',
-         headers: { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` },
+         cancelToken: source.token,
+         headers: { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` },
          data: {
             email,
             pin
@@ -32,11 +40,11 @@ const UserVerificationPage: FC = () => {
       })
          .then(() => {
             const { suspended } = JSON.parse(
-               localStorage.getItem('VERIFY') || '{}'
+               localStorage.getItem(VERIFY) || '{}'
             )
 
             localStorage.setItem(
-               'VERIFY',
+               VERIFY,
                JSON.stringify({ confirmed: true, suspended })
             )
 

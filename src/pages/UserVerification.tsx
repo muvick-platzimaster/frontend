@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Footer, UserVerification } from '../components'
 import NavContainer from '../containers/Nav'
@@ -17,11 +17,6 @@ const UserVerificationPage: FC = () => {
    const [error, setError] = React.useState<AxiosError | null>(null)
    const history = useHistory()
    let source: CancelTokenSource
-
-   /* Limpia cualquier request cuando se esté desmontando el componente */
-   useEffect(() => {
-      return source.cancel()
-   })
 
    const handleVerify = () => {
       setError(null)

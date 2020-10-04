@@ -27,7 +27,7 @@ import { useTranslation } from 'react-i18next'
 interface Props {
    linkTo?: string
    children: React.ReactNode
-   background?: string
+   background?: string | null
 }
 
 interface PropsLinkButton {
@@ -40,7 +40,7 @@ interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 function Nav({ children, background }: Props): JSX.Element {
-   return <Container background={background}>{children}</Container>
+   return <Container theme={{ background }}>{children}</Container>
 }
 
 Nav.Grid = function NavGrid({ children }: Props) {

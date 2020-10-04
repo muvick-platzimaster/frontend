@@ -38,9 +38,6 @@ Browser.Button = function BrowserButton({
 }
 
 Browser.Text = function BrowserText({ children }: { children: ReactNode }) {
-   if (`${children}`.length > 100) {
-      return <Text>{`${children}`.substring(0, 100)}...</Text>
-   }
    return <Text>{children}</Text>
 }
 

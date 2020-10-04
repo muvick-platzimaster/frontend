@@ -23,14 +23,13 @@ export const Container = styled.header`
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   background-image: ${(props) => {
-      return props.background
-         ? `url('http://image.tmdb.org/t/p/original${props.background}')`
+   padding: 1rem 0;
+   background-image: ${({ theme }) => {
+      return theme.background
+         ? `url('http://image.tmdb.org/t/p/original${theme.background}')`
          : 'url("")'
    }};
-   height: ${(props) => {
-      return props.background ? '80vh' : '7vh'
-   }};
+
    &::before {
       content: '';
       position: absolute;
@@ -41,8 +40,19 @@ export const Container = styled.header`
       background-color: ${colors['color-primary']};
       opacity: 0.5;
    }
-   @media (max-width: ${breakpoints.sm}) {
-      height: 40%;
+
+   &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(
+         180deg,
+         rgba(0, 0, 0, 0.5) 0,
+         rgba(158, 158, 168, 0) 6rem
+      );
    }
 `
 
@@ -57,13 +67,7 @@ export const Grid = styled.div`
    justify-content: flex-start;
    align-items: center;
    z-index: 10;
-   padding-left: 60px;
-   padding-top: 20px;
-   background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(158, 158, 168, 0) 100%
-   );
+
    & .Nav__Icons {
       position: absolute;
       right: 4%;
@@ -109,15 +113,18 @@ export const Grid = styled.div`
 
 export const Content = styled.div`
    position: relative;
-   padding: calc(15rem - 56.5px) 0 10rem 60px;
+   padding: calc(15rem - 56.5px) 0;
    text-align: left;
+   z-index: 10;
+   width: 60%;
 
    @media (max-width: ${breakpoints.md}) {
-      padding: calc(7rem - 56.5px) 0 7rem 0;
+      width: 100%;
+      padding: calc(7rem - 56.5px) 0;
    }
 
    @media (max-width: ${breakpoints.sm}) {
-      padding: 5rem 0;
+      padding: 4rem 0;
    }
 `
 

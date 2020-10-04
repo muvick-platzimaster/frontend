@@ -11,7 +11,7 @@ import { TOKEN } from '../constants/itemsLocalStorage'
 
 const BrowseContainer: FC = () => {
    const { switchValue } = useContext(SwitchContext)
-   const { i18n } = useTranslation(['header'])
+   const { t, i18n } = useTranslation(['browse'])
    const { actions } = useContext(MyListContext)
    useEffect(() => actions?.getMyList(), [])
 
@@ -29,12 +29,12 @@ const BrowseContainer: FC = () => {
          <Card>
             {/* TODO: Poner en español e inglés */}
             <Card.RowContainer API="/my-lists">
-               <Card.Title>My List</Card.Title>{' '}
+               <Card.Title>{t('browse:mylist', 'My List')}</Card.Title>{' '}
                <Card.Entities genre="my-list" />
             </Card.RowContainer>
 
             <Card.RowContainer API={`/${switchValue}/popular`}>
-               <Card.Title>Popular</Card.Title>{' '}
+               <Card.Title>{t('browse:popular', 'Popular')}</Card.Title>{' '}
                <Card.Entities genre="popular" />
             </Card.RowContainer>
 

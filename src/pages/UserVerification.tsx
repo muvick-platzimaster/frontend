@@ -8,8 +8,10 @@ import jwtDecode from 'jwt-decode'
 import Axios, { AxiosError, CancelTokenSource } from 'axios'
 import config from '../config'
 import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
+import { useTranslation } from 'react-i18next'
 
 const UserVerificationPage: FC = () => {
+   const { t } = useTranslation(['verify'])
    const { Button, Text, Title, Input, Error } = UserVerification
    const [pin, setPin] = React.useState<string>('')
    const [error, setError] = React.useState<AxiosError | null>(null)
@@ -63,12 +65,18 @@ const UserVerificationPage: FC = () => {
       <>
          <NavContainer>
             <UserVerification>
-               <Title>Verificar tu cuenta</Title>
+               <Title>{t('verify:title', 'Verificar tu cuenta')}</Title>
                <Text>
-                  Enviamos un código de verificación a tu correo electrónico.
-                  Ingrésalo a continuación para verificar tu cuenta.
+                  {t(
+                     'verify:text',
+                     'Enviamos un código de verificación a tu correo electrónico. Ingrésalo a continuación para verificar tu cuenta.'
+                  )}
                </Text>
-               {error && <Error>Error: {handleErrors(error)}</Error>}
+               {error && (
+                  <Error>
+                     {t('verify:error', 'Error')}: {handleErrors(error)}
+                  </Error>
+               )}
                <Input
                   placeholder="Código de verificación"
                   size={4}
@@ -85,10 +93,12 @@ const UserVerificationPage: FC = () => {
                   disabled={pin === '' || pin.length !== 4}
                   color={colors['color-primary']}
                >
-                  Verificar
+                  {t('verify:veri', 'Verificar')}
                </Button>
                <Link to={ROUTES.BROWSE}>
-                  <Button color={colors['color-gray-dark']}>Cancelar</Button>
+                  <Button color={colors['color-gray-dark']}>
+                     {t('verify:cancel', 'Cancelar')}
+                  </Button>
                </Link>
             </UserVerification>
          </NavContainer>

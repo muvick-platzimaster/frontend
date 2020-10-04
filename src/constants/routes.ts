@@ -4,5 +4,6 @@ export default {
    SIGN_IN: '/signin',
    BROWSE: '/browse',
    MOVIE: '/browse/:isMovie/:id',
-   VERIFY: '/confirm'
+   VERIFY: '/confirm',
+   MY_LIST: '/browse/my-list'
 }

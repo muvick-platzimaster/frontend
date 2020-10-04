@@ -13,22 +13,26 @@ import { SwitchContext } from '../context/SwitchContext'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
+import ROUTES from '../constants/routes'
 
 interface Props {
-   children: ReactNode
+   children?: ReactNode
    background?: string
    error404?: boolean
+   myList?: boolean
 }
 
 function NavContainer({ children, error404, background }: Props): JSX.Element {
    const { setSwitchValue } = useContext(SwitchContext)
    const { t } = useTranslation(['nav'])
    const { pathname } = useLocation()
+   const finalBackground =
+      pathname !== '/browse/my-list' ? background : undefined
    return (
-      <Nav background={background}>
+      <Nav background={finalBackground}>
          <Nav.Grid>
             <Nav.Logo />
-            {!error404 && pathname === '/browse' && (
+            {!error404 && (
                <>
                   <section className="Nav__Menu--open">
                      <Nav.Button
@@ -45,7 +49,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                      >
                         {t('nav:tvshows', 'TV Shows')}
                      </Nav.Button>
-                     <Nav.LinkButton linkTo="/browse/my-list">
+                     <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                         {t('nav:list', 'My list')}
                      </Nav.LinkButton>
                      <Nav.Button
@@ -58,9 +62,9 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                      </Nav.Button>
                   </section>
                   <section className="Nav__Menu--dropdown">
-                     <Nav.Button className="menu" linkTo="/browse">
+                     <Nav.LinkButton className="menu" linkTo={ROUTES.BROWSE}>
                         {t('nav:explore', 'Explore')}
-                     </Nav.Button>
+                     </Nav.LinkButton>
                      <div className="dropdownContent">
                         <Nav.Button
                            onClick={() => {
@@ -76,7 +80,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                         >
                            {t('nav:tvshows', 'TV Shows')}
                         </Nav.Button>
-                        <Nav.LinkButton linkTo="/browse/my-list">
+                        <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                            {t('nav:list', 'My list')}
                         </Nav.LinkButton>
                         <Nav.Button
@@ -99,9 +103,11 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                </section>
             )}
          </Nav.Grid>
-         <Wrapper maxWidth={breakpoints.responsive}>
-            <Nav.Content>{children}</Nav.Content>
-         </Wrapper>
+         {pathname !== '/browse/my-list' && (
+            <Wrapper maxWidth={breakpoints.responsive}>
+               <Nav.Content>{children}</Nav.Content>
+            </Wrapper>
+         )}
       </Nav>
    )
 }

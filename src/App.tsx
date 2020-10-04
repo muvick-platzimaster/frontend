@@ -13,7 +13,8 @@ import {
    Browse,
    Signup,
    NotFoundPage,
-   UserVerification
+   UserVerification,
+   MyList
 } from './pages/'
 
 /* Styles */
@@ -65,6 +66,9 @@ const App: React.FC = () => {
                      </Route>
                      <Route exact path={ROUTES.MOVIE}>
                         {token ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
+                     </Route>
+                     <Route exact path={ROUTES.MY_LIST}>
+                        {token ? <MyList /> : <Redirect to={ROUTES.SIGN_IN} />}
                      </Route>
                      <Route exact path={ROUTES.VERIFY}>
                         {token ? (

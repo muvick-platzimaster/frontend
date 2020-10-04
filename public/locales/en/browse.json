@@ -2,5 +2,7 @@
   "button": {
     "more": "More information...",
     "play": "Play"
-  }
+  },
+  "mylist": "My List",
+  "popular": "Popular"
 }

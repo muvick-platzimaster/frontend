@@ -18,13 +18,15 @@ import UserVerificationContainer from '../containers/UserVerification'
 import { VERIFY } from '../constants/itemsLocalStorage'
 
 function Browse(): JSX.Element {
-   const { i18n } = useTranslation()
-   const { data: popular } = useFetchData(
-      `/movies/popular?language=${i18n.language}`
-   )
+   const { t, i18n } = useTranslation(['browse'])
+
+   const API = `/movies/popular?language=${i18n.language}`
+   const options = {
+      dependencies: [API]
+   }
+   const { data: popular } = useFetchData(API, options)
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
-   const { t } = useTranslation(['browse'])
 
    const { confirmed } = JSON.parse(localStorage.getItem(VERIFY) || '{}')
 

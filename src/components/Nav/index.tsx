@@ -114,7 +114,11 @@ Nav.Search = function NavSearch() {
          <Search
             onChange={(e) => setValue(e.target.value)}
             value={value}
-            placeholder={t('search:text', 'Search')}
+            placeholder={
+               t('search:text', 'Search') +
+               ' ' +
+               t(`nav:${switchValue === 'movies' ? switchValue : 'tvshows'}`)
+            }
          />
          <Label
             disabled={!isValid}

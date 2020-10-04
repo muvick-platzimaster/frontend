@@ -13,6 +13,7 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 interface PropsImage {
    background: string
    children: ReactNode
+   to: string
 }
 
 function SimilarCard({ children }: Props): JSX.Element {
@@ -61,10 +62,11 @@ SimilarCard.Detail = function SimilarCardDetail({
 SimilarCard.Image = function SimilarCardSection({
    children,
    background,
+   to,
    ...restProps
 }: PropsImage) {
    return (
-      <Image theme={{ background }} {...restProps}>
+      <Image to={to} theme={{ background }} {...restProps}>
          {children}
       </Image>
    )

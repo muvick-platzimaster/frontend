@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 /* Styles */
 import {
@@ -14,9 +14,10 @@ interface Props {
    children: ReactNode
 }
 
-interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface PropsButton {
    children: ReactNode
    background?: string
+   to: string
 }
 
 function Browser({ children }: Props): JSX.Element {
@@ -25,9 +26,14 @@ function Browser({ children }: Props): JSX.Element {
 
 Browser.LinkButton = function BrowserLinkButton({
    children,
+   to,
    ...restProps
 }: PropsButton) {
-   return <LinkButton {...restProps}>{children}</LinkButton>
+   return (
+      <LinkButton to={to} {...restProps}>
+         {children}
+      </LinkButton>
+   )
 }
 
 Browser.Button = function BrowserButton({

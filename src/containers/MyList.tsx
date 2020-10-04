@@ -51,9 +51,9 @@ const MyListContainer: FC = ({ movies }: MyListInterface) => {
                      alt=""
                   />
                   <h2>
-                     {item.original_title
-                        ? `${item.original_title.substring(0, 15)}`
-                        : `${item.original_name.substring(0, 15)}`}
+                     {item.title
+                        ? `${item.title.substring(0, 15)}`
+                        : `${item.name.substring(0, 15)}`}
                   </h2>
                   <div className="icons">
                      <div className="icons--play">

@@ -23,7 +23,7 @@ export const Container = styled.header`
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
-   padding: 1rem 0;
+   padding: 1.5rem 0;
    background-image: ${({ theme }) => {
       return theme.background
          ? `url('http://image.tmdb.org/t/p/original${theme.background}')`
@@ -50,8 +50,8 @@ export const Container = styled.header`
       right: 0;
       background: linear-gradient(
          180deg,
-         rgba(0, 0, 0, 0.5) 0,
-         rgba(158, 158, 168, 0) 6rem
+         rgba(0, 0, 0, 0.8) 0,
+         rgba(158, 158, 168, 0) 20rem
       );
    }
 `
@@ -74,6 +74,7 @@ export const Grid = styled.div`
       display: flex;
    }
    & .Nav__Menu--open {
+      margin-left: 1rem;
       @media (max-width: ${breakpoints.md}) {
          display: none;
       }

@@ -92,7 +92,6 @@ export const Close = styled.button`
 
 export const PlayButton = styled(Link)`
    display: inline-block;
-   margin: 0 auto;
    height: 40px;
    cursor: pointer;
    background-color: ${colors['color-primary']};
@@ -100,7 +99,27 @@ export const PlayButton = styled(Link)`
    font-size: 1rem;
    border: none;
    border-radius: ${radius.standard};
-   padding: 0.7rem 3rem;
+   padding: 0.7rem 1rem;
    text-transform: uppercase;
+`
+export const Button = styled.button`
+   border: none;
+   padding: 0 1rem;
+   height: 40px;
+   background: ${colors['color-primary']};
+   color: white;
+   border-radius: ${radius.standard};
+   cursor: pointer;
+   margin-left: 0.5rem;
+
+   &:hover {
+      background: #373c42;
+   }
+`
+
+export const IconsContainer = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
    margin-top: 1rem;
 `

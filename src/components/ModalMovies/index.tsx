@@ -11,6 +11,8 @@ import {
    Title,
    Image,
    Content,
+   IconsContainer,
+   Button,
    Close,
    RowContainer,
    PlayButton
@@ -30,6 +32,9 @@ interface PropsItem {
 interface PropsPlayButton {
    children: React.ReactNode
    to: string
+}
+interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+   children: React.ReactNode
 }
 
 interface PropsClose {
@@ -95,6 +100,19 @@ ModalMovies.RowContainer = function ModalMoviesRowContainer({
    children
 }: PropsWithChildren) {
    return <RowContainer>{children}</RowContainer>
+}
+
+ModalMovies.IconsContainer = function ModalMoviesIconsContainer({
+   children
+}: PropsWithChildren) {
+   return <IconsContainer>{children}</IconsContainer>
+}
+
+ModalMovies.Buttton = function ModalMovies({
+   children,
+   ...restProps
+}: PropsButton) {
+   return <Button {...restProps}>{children}</Button>
 }
 
 ModalMovies.PlayButton = function ModalMoviesPlayButton({

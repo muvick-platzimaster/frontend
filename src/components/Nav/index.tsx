@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Search as SearchIcon } from '../Icons'
 import { ModalMovies } from '../'
@@ -23,6 +23,8 @@ import { ApiResponse } from '../../interfaces'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
+import { MyListContext } from '../../context/MyListContext'
+import { SwitchContext } from '../../context/SwitchContext'
 
 interface Props {
    linkTo?: string
@@ -75,7 +77,19 @@ Nav.Search = function NavSearch() {
    const isValid = value !== ''
    const [modalIsOpen, setIsOpen] = useState(false)
    const [error, setError] = useState<AxiosError | null>(null)
+   const { actions } = useContext(MyListContext)
+   const { switchValue } = useContext(SwitchContext)
 
+   const {
+      Close,
+      Title,
+      Description,
+      Item,
+      PlayButton,
+      RowContainer,
+      IconsContainer,
+      Buttton
+   } = ModalMovies
    const handleClick = () => {
       if (!value) return
       const API_KEY = 'ad7bc0ccac5da809744fb1fe94ccd84c'
@@ -109,31 +123,41 @@ Nav.Search = function NavSearch() {
             <SearchIcon color="white" width={ICON_SIZE} height={ICON_SIZE} />
          </Label>
          <ModalMovies isOpen={modalIsOpen}>
-            <ModalMovies.Title>
+            <Title>
                {t('search:text', 'Search')}: {value}
-            </ModalMovies.Title>
-            <ModalMovies.Close setIsOpen={setIsOpen} />
-            <ModalMovies.RowContainer>
+            </Title>
+            <Close setIsOpen={setIsOpen} />
+            <RowContainer>
                {findedMovies?.results?.map((movie) => (
-                  <ModalMovies.Item
+                  <Item
                      key={movie.id}
                      background={movie.poster_path}
                      hidden={!movie.poster_path}
                   >
-                     <ModalMovies.Title>{movie.title}</ModalMovies.Title>
-                     <ModalMovies.Description>
-                        {movie.overview}
-                     </ModalMovies.Description>
-                     <ModalMovies.PlayButton
-                        to={`browse/${movie.title ? 'movie' : 'tv'}/${
-                           movie.id
-                        }`}
-                     >
-                        {t('search:play', 'Play')}
-                     </ModalMovies.PlayButton>
-                  </ModalMovies.Item>
+                     <Title>{movie.title}</Title>
+                     <Description>{movie.overview}</Description>
+                     <IconsContainer>
+                        <PlayButton
+                           to={`browse/${movie.title ? 'movie' : 'tv'}/${
+                              movie.id
+                           }`}
+                        >
+                           {t('search:play', 'Play')}
+                        </PlayButton>
+                        <Buttton
+                           onClick={() => {
+                              actions?.addMovieToMyList({
+                                 movieId: movie.id,
+                                 switchValue: switchValue || 'movies'
+                              })
+                           }}
+                        >
+                           +
+                        </Buttton>
+                     </IconsContainer>
+                  </Item>
                ))}
-            </ModalMovies.RowContainer>
+            </RowContainer>
          </ModalMovies>
       </SearchContainer>
    )

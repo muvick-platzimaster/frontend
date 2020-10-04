@@ -1,11 +1,11 @@
 {
-   "form": {
-      "account": "cuenta",
-      "already": "Ya tengo una",
-      "email": "Correo electrónico",
-      "password": "Contraseña",
-      "recaptcha": "Esta página está protegida con un reCAPTCHA de Google para asegurar que no eres un robot.",
-      "user": "Nombre de usuario",
-      "welcome": "Bienvenido de vuelta!"
-   }
+  "form": {
+    "account": "cuenta",
+    "already": "Ya tengo una",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "recaptcha": "Esta página está protegida con un reCAPTCHA de Google para asegurar que no eres un robot.",
+    "user": "Nombre de usuario",
+    "welcome": "Bienvenido de vuelta!"
+  }
 }

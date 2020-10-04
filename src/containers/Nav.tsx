@@ -81,6 +81,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                         <Nav.Button
                            onClick={() => {
                               localStorage.removeItem('TOKEN')
+                              localStorage.removeItem('VERIFY')
                               window.location.reload()
                            }}
                         >

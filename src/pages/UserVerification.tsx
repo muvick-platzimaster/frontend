@@ -30,7 +30,7 @@ const UserVerificationPage: FC = () => {
       })
          .then(() => {
             const { suspended } = JSON.parse(
-               localStorage.getItem('VERIFY') || ''
+               localStorage.getItem('VERIFY') || '{}'
             )
 
             localStorage.setItem(

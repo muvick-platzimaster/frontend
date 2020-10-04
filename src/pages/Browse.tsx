@@ -10,7 +10,7 @@ import { Footer, Browser } from '../components'
 import NavContainer from '../containers/Nav'
 import BrowseContainer from '../containers/Browse'
 import ModalContainer from '../containers/Modal'
-import { Movie } from '../interfaces'
+import { ApiResponse, Movie } from '../interfaces'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -25,7 +25,7 @@ function Browse(): JSX.Element {
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
    const { t } = useTranslation(['browse'])
 
-   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '')
+   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '{}')
 
    const showModal = () => {
       setShow(true)
@@ -45,9 +45,10 @@ function Browse(): JSX.Element {
       const getRandomMovie = () => {
          if (popular) {
             const randomNumber = Math.floor(
-               Math.random() * (popular.results.length - 0) + 0
+               Math.random() * ((popular as ApiResponse)?.results.length - 0) +
+                  0
             )
-            setRandomMovie(popular.results[randomNumber])
+            setRandomMovie((popular as ApiResponse).results[randomNumber])
          }
       }
       getRandomMovie()

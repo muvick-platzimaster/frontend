@@ -12,6 +12,7 @@ import { SwitchContext } from '../context/SwitchContext'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
+import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 
 interface Props {
    children: ReactNode
@@ -49,7 +50,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                      </Nav.LinkButton>
                      <Nav.Button
                         onClick={() => {
-                           localStorage.removeItem('TOKEN')
+                           localStorage.removeItem(TOKEN)
                            window.location.reload()
                         }}
                      >
@@ -80,8 +81,8 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                         </Nav.LinkButton>
                         <Nav.Button
                            onClick={() => {
-                              localStorage.removeItem('TOKEN')
-                              localStorage.removeItem('VERIFY')
+                              localStorage.removeItem(TOKEN)
+                              localStorage.removeItem(VERIFY)
                               window.location.reload()
                            }}
                         >

@@ -2,13 +2,13 @@ import React, { FC, Fragment, useState, FormEvent } from 'react'
 import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
-import axios, { AxiosError } from 'axios'
+import Axios, { AxiosError } from 'axios'
 import { useHistory } from 'react-router-dom'
 import { Spinner } from '../components/Icons'
+import config from '../config'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
-import config from '../config'
 
 const Signup: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
@@ -28,10 +28,13 @@ const Signup: FC = (): JSX.Element => {
       setLoading(true)
       setError(null)
 
-      axios({
+      const source = Axios.CancelToken.source()
+
+      Axios({
          baseURL: config.API_URL_SERVER,
          method: 'POST',
          url: '/auth/signup',
+         cancelToken: source.token,
          data: {
             email,
             password,

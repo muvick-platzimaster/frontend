@@ -15,6 +15,7 @@ import { ApiResponse, Movie } from '../interfaces'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import UserVerificationContainer from '../containers/UserVerification'
+import { VERIFY } from '../constants/itemsLocalStorage'
 
 function Browse(): JSX.Element {
    const { i18n } = useTranslation()
@@ -25,7 +26,7 @@ function Browse(): JSX.Element {
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
    const { t } = useTranslation(['browse'])
 
-   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '{}')
+   const { confirmed } = JSON.parse(localStorage.getItem(VERIFY) || '{}')
 
    const showModal = () => {
       setShow(true)

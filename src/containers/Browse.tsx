@@ -6,6 +6,8 @@ import { Card } from '../components'
 import { SwitchContext } from '../context/SwitchContext'
 import { useTranslation } from 'react-i18next'
 import { MyListContext } from '../context/MyListContext'
+import JwtDecode from 'jwt-decode'
+import { TOKEN } from '../constants/itemsLocalStorage'
 
 const BrowseContainer: FC = () => {
    const { switchValue } = useContext(SwitchContext)
@@ -13,10 +15,19 @@ const BrowseContainer: FC = () => {
    const { actions } = useContext(MyListContext)
    useEffect(() => actions?.getMyList(), [])
 
+   /* Si el token está vencido se elimina del localStorage lo que hace que se cierre la sesión actual */
+   const token = localStorage.getItem(TOKEN) || ''
+   const timestamp = JwtDecode<{ exp: number }>(token).exp * 1000
+
+   if (new Date(timestamp) < new Date()) {
+      localStorage.removeItem(TOKEN)
+      window.location.reload()
+   }
+
    return (
       <Fragment>
          <Card>
-            {/* FIXME: Poner en español e inglés */}
+            {/* TODO: Poner en español e inglés */}
             <Card.RowContainer API="/my-lists">
                <Card.Title>My List</Card.Title>{' '}
                <Card.Entities genre="my-list" />

@@ -14,20 +14,23 @@ import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
 interface Props {
-   children: ReactNode
+   children?: ReactNode
    background?: string
    error404?: boolean
+   myList?: boolean
 }
 
 function NavContainer({ children, error404, background }: Props): JSX.Element {
    const { setSwitchValue } = useContext(SwitchContext)
    const { t } = useTranslation(['nav'])
    const { pathname } = useLocation()
+   const finalBackground =
+      pathname !== '/browse/my-list' ? background : undefined
    return (
-      <Nav background={background}>
+      <Nav background={finalBackground}>
          <Nav.Grid>
             <Nav.Logo />
-            {!error404 && pathname === '/browse' && (
+            {!error404 && (
                <>
                   <section className="Nav__Menu--open">
                      <Nav.Button
@@ -98,9 +101,11 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                </section>
             )}
          </Nav.Grid>
-         <Wrapper maxWidth={breakpoints.responsive}>
-            <Nav.Content>{children}</Nav.Content>
-         </Wrapper>
+         {pathname !== '/browse/my-list' && (
+            <Wrapper maxWidth={breakpoints.responsive}>
+               <Nav.Content>{children}</Nav.Content>
+            </Wrapper>
+         )}
       </Nav>
    )
 }

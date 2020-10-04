@@ -28,7 +28,9 @@ export const Container = styled.header`
          ? `url('http://image.tmdb.org/t/p/original${props.background}')`
          : 'url("")'
    }};
-   height: 80vh;
+   height: ${(props) => {
+      return props.background ? '80vh' : '7vh'
+   }};
    &::before {
       content: '';
       position: absolute;

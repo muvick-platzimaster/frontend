@@ -72,7 +72,8 @@ const Card = ({ children }: PropsWithChildren): JSX.Element => {
 }
 
 Card.Title = function CardTitle({ children }: PropsWithChildren) {
-   return <Title>{children}</Title>
+   const { t } = useTranslation(['card'])
+   return <Title>{t(`card:${children}`, `${children}`)}</Title>
 }
 
 Card.RowContainer = function CardRowContainer({
@@ -117,6 +118,7 @@ Card.RowContainer = function CardRowContainer({
 
 Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const { movies } = useContext(FeatureContext)
+   const { t } = useTranslation(['entities'])
 
    const ref = useRef<HTMLDivElement | null>(null)
    const [scrollWidth, setscrollWidth] = useState(
@@ -150,7 +152,12 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
    const hasSomething = movies?.length !== 0
 
    if (!hasSomething) {
-      return <p>No tenemos nunguna película de este género.</p>
+      return (
+         <p>
+            {' '}
+            {t('entities:title', 'No tenemos nunguna película de este género.')}
+         </p>
+      )
    }
 
    return (

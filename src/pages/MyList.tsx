@@ -13,6 +13,9 @@ import { SwitchContext } from '../context/SwitchContext'
 /* Hooks */
 import useFetchData from '../hooks/useFetchData'
 
+/* Icons */
+import { Spinner } from '../components/Icons'
+
 /* Interfaces */
 import { MyList as MyListInterface } from '../interfaces/index'
 import { TOKEN } from '../constants/itemsLocalStorage'
@@ -22,7 +25,7 @@ function MyList(): JSX.Element {
    const headers = { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }
    const API = '/my-lists'
 
-   const { data } = useFetchData(API, {
+   const { data, loading } = useFetchData(API, {
       headers,
       dependencies: [switchValue]
    })
@@ -34,7 +37,12 @@ function MyList(): JSX.Element {
    return (
       <>
          <NavContainer />
-         <MyListContainer movies={movies}>Hola</MyListContainer>
+         {!loading ? (
+            <MyListContainer movies={movies}>Hola</MyListContainer>
+         ) : (
+            <Spinner color="white" />
+         )}
+
          <Footer />
       </>
    )

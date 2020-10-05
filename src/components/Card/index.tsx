@@ -74,8 +74,7 @@ const Card = ({ children }: PropsWithChildren): JSX.Element => {
 }
 
 Card.Title = function CardTitle({ children }: PropsWithChildren) {
-   const { t } = useTranslation(['card'])
-   return <Title>{t(`card:${children}`, `${children}`)}</Title>
+   return <Title>{children}</Title>
 }
 
 Card.RowContainer = function CardRowContainer({

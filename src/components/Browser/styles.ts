@@ -75,16 +75,19 @@ export const Button = styled.button`
 `
 
 export const Text = styled.span`
-   display: inline-block;
-   width: 30%;
-   font-size: 2em;
+   display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   font-size: 2rem;
    margin-bottom: 20px;
+
    @media (max-width: ${breakpoints.xl}) {
-      font-size: 1.5em;
+      font-size: 1.5rem;
    }
    @media (max-width: ${breakpoints.sm}) {
-      font-size: 1.2em;
-      width: 100%;
+      font-size: 1.2rem;
+      /* width: 100%; */
       text-align: justify;
    }
 `
@@ -101,19 +104,19 @@ export const Frame = styled.div`
 `
 
 export const TitleStyled = styled.h1`
-   font-size: ${(props) => props.fontSize};
-   margin-bottom: 3rem;
-   line-height: 3.5rem;
-   width: 50%;
-   @media (max-width: ${breakpoints.sm}) {
-      font-size: 3rem;
-      line-height: 3rem;
-      width: 100%;
+   font-size: 5rem;
+   margin: 1rem 0;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+
+   @media (max-width: ${breakpoints.md}) {
       text-align: center;
+      font-size: 3rem;
    }
 
    @media (max-width: ${breakpoints.xs}) {
-      font-size: 1.75rem;
-      line-height: 1.75rem;
+      font-size: 2rem;
    }
 `

@@ -25,18 +25,19 @@ import { Player, Fallback } from './components/'
 
 /* Constants */
 import ROUTES from './constants/routes'
+import { TOKEN, VERIFY } from './constants/itemsLocalStorage'
 
 /* Context */
 import { SwitchContext, SwitchState } from './context/SwitchContext'
 import MyListContextProvider from './context/MyListContext'
 
 /* Hooks */
-import useGetToken from './hooks/useGetToken'
+import useGetItemFromLocalStorage from './hooks/useGetItemFromLocalStorage'
 
 const App: React.FC = () => {
-   const { token } = useGetToken()
+   const [token] = useGetItemFromLocalStorage(TOKEN)
    const [switchValue, setSwitchValue] = useState<SwitchState>('movies')
-   const { confirmed } = JSON.parse(localStorage.getItem('VERIFY') || '{}')
+   const { confirmed } = JSON.parse(localStorage.getItem(VERIFY) || '{}')
 
    return (
       <Suspense

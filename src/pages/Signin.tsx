@@ -3,12 +3,13 @@ import { Footer, Form } from '../components'
 import HeaderContainer from '../containers/Header'
 import ROUTES from '../constants/routes'
 import { Spinner } from '../components/Icons'
-import axios, { AxiosError } from 'axios'
+import Axios, { AxiosError } from 'axios'
 import config from '../config'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import JwtDecode from 'jwt-decode'
+import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')
@@ -17,15 +18,18 @@ const Signin: FC = (): JSX.Element => {
    const [loading, setLoading] = useState<boolean>(false)
    const isInvalid = email === '' || password === ''
    const { t } = useTranslation(['signin'])
+   const source = Axios.CancelToken.source()
 
    const handleSubmit = (e: FormEvent) => {
       e.preventDefault()
       setError(null)
       setLoading(true)
-      axios({
+
+      Axios({
          baseURL: config.API_URL_SERVER,
          url: '/auth/signin',
          method: 'POST',
+         cancelToken: source.token,
          data: {
             email,
             password
@@ -33,9 +37,9 @@ const Signin: FC = (): JSX.Element => {
       })
          .then(({ data }) => {
             const { confirmed, suspended } = JwtDecode(data.accessToken)
-            localStorage.setItem('TOKEN', data.accessToken)
+            localStorage.setItem(TOKEN, data.accessToken)
             localStorage.setItem(
-               'VERIFY',
+               VERIFY,
                JSON.stringify({ confirmed, suspended })
             )
          })

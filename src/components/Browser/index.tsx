@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 /* Styles */
 import {
@@ -14,9 +14,10 @@ interface Props {
    children: ReactNode
 }
 
-interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface PropsButton {
    children: ReactNode
    background?: string
+   to: string
 }
 
 function Browser({ children }: Props): JSX.Element {
@@ -25,9 +26,14 @@ function Browser({ children }: Props): JSX.Element {
 
 Browser.LinkButton = function BrowserLinkButton({
    children,
+   to,
    ...restProps
 }: PropsButton) {
-   return <LinkButton {...restProps}>{children}</LinkButton>
+   return (
+      <LinkButton to={to} {...restProps}>
+         {children}
+      </LinkButton>
+   )
 }
 
 Browser.Button = function BrowserButton({
@@ -38,9 +44,6 @@ Browser.Button = function BrowserButton({
 }
 
 Browser.Text = function BrowserText({ children }: { children: ReactNode }) {
-   if (`${children}`.length > 100) {
-      return <Text>{`${children}`.substring(0, 100)}...</Text>
-   }
    return <Text>{children}</Text>
 }
 
@@ -49,12 +52,7 @@ Browser.Frame = function BrowserFrame({ children }: { children: ReactNode }) {
 }
 
 Browser.Title = function BrowserTitle({ children }: { children: ReactNode }) {
-   if (`${children}`.length > 5 && `${children}`.length < 10) {
-      return <TitleStyled fontSize="5em">{children}</TitleStyled>
-   } else if (`${children}`.length > 10) {
-      return <TitleStyled fontSize="3em">{children}</TitleStyled>
-   }
-   return <TitleStyled fontSize="8em">{children}</TitleStyled>
+   return <TitleStyled>{children}</TitleStyled>
 }
 
 export default Browser

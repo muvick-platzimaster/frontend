@@ -1,5 +1,5 @@
 
-![https://cdn.discordapp.com/attachments/757620664265080905/762684908330024990/69372445.png](https://cdn.discordapp.com/attachments/757620664265080905/762684908330024990/69372445.png)
+# Muvick
 
 _Muvick es una plataforma de streaming on demand donde cada usuario puede ver sus películas y series favoritas y puede obtener recomendaciones dependiendo de sus películas o series vistas._
 

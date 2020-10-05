@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useState } from 'react'
+import React, { ReactNode, useContext, useState, useRef } from 'react'
 
 /* Components */
 import { Nav, Wrapper, LanguageButton } from '../components'
@@ -8,6 +8,9 @@ import { breakpoints } from '../styles/theme'
 
 /* Context */
 import { SwitchContext } from '../context/SwitchContext'
+
+/* Hooks */
+import useOnClickOutside from '../hooks/useOnClickOutside'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -28,10 +31,9 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
    const { pathname } = useLocation()
    const finalBackground = pathname !== ROUTES.MY_LIST ? background : null
    const [showMenu, setShowMenu] = useState(false)
+   const ref = useRef()
 
-   const handleMenu = () => {
-      setShowMenu(!showMenu)
-   }
+   useOnClickOutside(ref, () => setShowMenu(false))
 
    return (
       <Nav error404 background={finalBackground}>
@@ -67,8 +69,8 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                            {t('nav:logout', 'Logout')}
                         </Nav.Button>
                      </section>
-                     <section className="Nav__Menu--dropdown">
-                        <Nav.Button onClick={() => handleMenu()}>
+                     <section className="Nav__Menu--dropdown" ref={ref}>
+                        <Nav.Button onClick={() => setShowMenu(true)}>
                            {t('nav:explore', 'Explore')}
                         </Nav.Button>
                         {showMenu && (

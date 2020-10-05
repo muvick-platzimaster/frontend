@@ -46,6 +46,8 @@ const MyListContainer: FC = ({ movies }: MyListInterface) => {
       document.querySelector('html').classList.toggle('scroll-lock')
    }
 
+   const category = switchValue === 'movies' ? 'movie' : 'tv'
+
    return (
       <Wrapper maxWidth={breakpoints.responsive}>
          <h1> {t('mylist:title', 'My list')}</h1>
@@ -65,7 +67,7 @@ const MyListContainer: FC = ({ movies }: MyListInterface) => {
                      <div className="icons">
                         <div className="icons--play">
                            <MyList.LinkButton
-                              to={`/browse/${switchValue}/${item.id}`}
+                              to={`/browse/${category}/${item.id}`}
                            >
                               <Play />
                            </MyList.LinkButton>

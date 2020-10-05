@@ -43,7 +43,7 @@ const BrowseContainer: FC = () => {
                   key={id}
                   API={`/${switchValue}?genre=${id}&language=${i18n.language}`}
                >
-                  <Card.Title>{name}</Card.Title>
+                  <Card.Title>{t(`card:${name}`, `${name}`)}</Card.Title>
                   <Card.Entities genre={name} />
                </Card.RowContainer>
             ))}

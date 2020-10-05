@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { colors, radius } from '../../../styles/theme'
+import { colors, radius, transitions } from '../../../styles/theme'
 
 export const Container = styled.section`
    padding: 1rem;
@@ -90,6 +90,11 @@ export const PlayButton = styled(Link)`
    border-radius: ${radius.standard};
    padding: 0.7rem 3rem;
    text-transform: uppercase;
+   transition: background ${transitions.normal};
+
+   &:hover {
+      background: ${colors['color-gray-dark']};
+   }
 `
 
 export const Button = styled.button`
@@ -101,8 +106,9 @@ export const Button = styled.button`
    margin-left: 0.5rem;
    border-radius: ${radius.standard};
    cursor: pointer;
+   transition: background ${transitions.normal};
 
    &:hover {
-      background: #373c42;
+      background: ${({ theme }) => theme.colorHover};
    }
 `

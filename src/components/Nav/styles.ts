@@ -22,10 +22,11 @@ export const Container = styled.header`
    position: relative;
    background-repeat: no-repeat;
    background-size: cover;
-   background-position: center;
-   background-image: ${(props) => {
-      return props.background
-         ? `url('http://image.tmdb.org/t/p/original${props.background}')`
+   background-position: center top;
+   padding: 1.5rem 0;
+   background-image: ${({ theme }) => {
+      return theme.background
+         ? `url('http://image.tmdb.org/t/p/original${theme.background}')`
          : 'url("")'
    }};
    height: ${(props) => {
@@ -39,7 +40,7 @@ export const Container = styled.header`
       left: 0;
       right: 0;
       background-color: ${colors['color-primary']};
-      opacity: 0.5;
+      opacity: 0.7;
    }
    @media (max-width: ${breakpoints.sm}) {
       height: 40%;

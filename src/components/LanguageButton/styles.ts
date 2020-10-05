@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../styles/theme'
+import { colors, transitions } from '../../styles/theme'
 
 export const Button = styled.button`
    padding: 5px 10px;
@@ -12,6 +12,8 @@ export const Button = styled.button`
    height: 40px;
    margin-left: 5px;
    cursor: pointer;
+   transition: background ${transitions.normal};
+
    &:hover {
       background: ${colors['color-gray-dark']};
    }

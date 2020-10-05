@@ -35,6 +35,7 @@ interface PropsPlayButton {
 
 interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    children: React.ReactNode
+   colorHover: string
 }
 
 interface PropsClose extends React.SVGProps<SVGSVGElement> {
@@ -65,9 +66,14 @@ Feature.Pane = function FeaturePane({ children }: PropsWithChildren) {
 
 Feature.Button = function FeatureButton({
    children,
+   colorHover,
    ...restProps
 }: PropsButton) {
-   return <Button {...restProps}>{children}</Button>
+   return (
+      <Button theme={{ colorHover }} {...restProps}>
+         {children}
+      </Button>
+   )
 }
 
 Feature.Badge = function FeatureBadge({ children, rating }: PropsBadge) {

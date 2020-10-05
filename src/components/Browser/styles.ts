@@ -17,11 +17,11 @@ export const LinkButton = styled(Link)`
    cursor: pointer;
    border: none;
    border-radius: ${radius.standard};
-   background: ${(props) => props.background && props.background};
-   color: ${(props) => (props.background === 'white' ? 'black' : 'white')};
-   font-weight: 700;
+   background: ${colors['color-font-base']};
+   color: ${colors['color-gray-dark']};
    line-height: 2.4rem;
    font-size: 1.2rem;
+   font-weight: bold;
    transition: all ${transitions.normal};
    margin-right: 15px;
    margin-bottom: 15px;
@@ -30,7 +30,8 @@ export const LinkButton = styled(Link)`
    }
 
    &:hover {
-      background: ${colors['color-font-muted']};
+      background: ${({ theme }) => theme.color};
+      color: ${colors['color-font-base']};
    }
 
    &:disabled {
@@ -51,8 +52,8 @@ export const Button = styled.button`
    cursor: pointer;
    border: none;
    border-radius: ${radius.standard};
-   background: ${(props) => props.background && props.background};
-   color: ${(props) => (props.background === 'white' ? 'black' : 'white')};
+   background: ${({ theme }) => theme.color};
+   color: ${colors['color-font-base']};
    font-weight: 700;
    line-height: 2.4rem;
    font-size: 1.2rem;
@@ -64,7 +65,7 @@ export const Button = styled.button`
    }
 
    &:hover {
-      background: ${colors['color-font-muted']};
+      background: ${colors['color-body-base']};
    }
 
    &:disabled {
@@ -81,14 +82,13 @@ export const Text = styled.span`
    overflow: hidden;
    font-size: 2rem;
    margin-bottom: 20px;
+   text-align: left;
 
    @media (max-width: ${breakpoints.xl}) {
       font-size: 1.5rem;
    }
    @media (max-width: ${breakpoints.sm}) {
       font-size: 1.2rem;
-      /* width: 100%; */
-      text-align: justify;
    }
 `
 

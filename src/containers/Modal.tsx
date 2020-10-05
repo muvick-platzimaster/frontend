@@ -1,5 +1,5 @@
 import React from 'react'
-import { breakpoints } from '../styles/theme'
+import { breakpoints, colors } from '../styles/theme'
 
 /* Components */
 import { Modal, Browser, Wrapper, SimilarCard } from '../components'
@@ -19,7 +19,7 @@ import { useTranslation } from 'react-i18next'
 interface Props {
    movieId: string | number
    handleClose: () => void
-   type: string
+   type?: string
 }
 
 const ModalContainer = ({
@@ -71,7 +71,7 @@ const ModalContainer = ({
                      <Modal.Title>{title || ''}</Modal.Title>
                      <Browser.LinkButton
                         to={`/browse/${title ? 'movie' : 'tv'}/${movieId}`}
-                        background="white"
+                        color={colors['color-primary']}
                      >
                         {t('modal:play', 'Play')}
                      </Browser.LinkButton>

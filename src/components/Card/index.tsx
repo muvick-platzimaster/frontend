@@ -37,6 +37,7 @@ import { SwitchContext } from '../../context/SwitchContext'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import { MyListContext } from '../../context/MyListContext'
+import { colors } from '../../styles/theme'
 import { TOKEN } from '../../constants/itemsLocalStorage'
 
 /* Types */
@@ -286,6 +287,7 @@ Card.Feature = function CardFeature() {
             </Feature.PlayButton>
             {isMyList ? (
                <Feature.Button
+                  colorHover={colors['color-error']}
                   onClick={() => {
                      actions?.removeMovieFromMyList({
                         movieId: id,
@@ -298,6 +300,7 @@ Card.Feature = function CardFeature() {
                </Feature.Button>
             ) : (
                <Feature.Button
+                  colorHover={colors['color-success']}
                   onClick={() => {
                      actions?.addMovieToMyList({
                         movieId: id,

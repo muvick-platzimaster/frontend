@@ -16,6 +16,7 @@ import { ApiResponse, Movie } from '../interfaces'
 import { useTranslation } from 'react-i18next'
 import UserVerificationContainer from '../containers/UserVerification'
 import { VERIFY } from '../constants/itemsLocalStorage'
+import { colors } from '../styles/theme'
 
 function Browse(): JSX.Element {
    const { t, i18n } = useTranslation(['browse'])
@@ -24,7 +25,7 @@ function Browse(): JSX.Element {
    const options = {
       dependencies: [API]
    }
-   const { data: popular } = useFetchData(API, options)
+   const { data: popular, loading } = useFetchData(API, options)
    const [show, setShow] = useState(false)
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
 
@@ -62,23 +63,30 @@ function Browse(): JSX.Element {
          {!confirmed && <UserVerificationContainer />}
 
          <NavContainer background={randomMovie.backdrop_path}>
-            <Browser.Title>{randomMovie.title}</Browser.Title>
+            <Browser.Title>
+               {loading ? 'Muvick...' : randomMovie.title}
+            </Browser.Title>
             <Browser.Text>{randomMovie.overview}</Browser.Text>
-            <Browser.Frame>
-               <Browser.LinkButton
-                  to={`/browse/${randomMovie.title ? 'movie' : 'tv'}/${
-                     randomMovie.id
-                  }`}
-                  background="white"
-               >
-                  {t('browse:button.play', 'Play')}
-               </Browser.LinkButton>
-               <Browser.Button background="#6C6E6D" onClick={showModal}>
-                  {t('browse:button.more', 'More information...')}
-               </Browser.Button>
-            </Browser.Frame>
+            {!loading && (
+               <Browser.Frame>
+                  <Browser.LinkButton
+                     to={`/browse/${randomMovie.title ? 'movie' : 'tv'}/${
+                        randomMovie.id
+                     }`}
+                     color={colors['color-primary']}
+                  >
+                     {t('browse:button.play', 'Play')}
+                  </Browser.LinkButton>
+                  <Browser.Button
+                     color={colors['color-gray-dark']}
+                     onClick={showModal}
+                  >
+                     {t('browse:button.more', 'More information...')}
+                  </Browser.Button>
+               </Browser.Frame>
+            )}
          </NavContainer>
-         {show && (
+         {show && randomMovie.id && (
             <ModalContainer movieId={randomMovie.id} handleClose={hideModal} />
          )}
          <BrowseContainer />

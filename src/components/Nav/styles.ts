@@ -47,7 +47,7 @@ export const Grid = styled.div`
          display: block;
       }
       & .dropdownContent {
-         display: none;
+         display: block;
          position: absolute;
          background-color: rgba(8, 9, 8, 0.85);
          min-width: 200px;
@@ -78,7 +78,7 @@ export const Content = styled.div`
    position: relative;
    padding: calc(15rem - 56.5px) 0;
    text-align: left;
-   z-index: 10;
+   z-index: 1;
    width: ${({ theme }) => (theme.notFound ? '100%' : '60%')};
 
    @media (max-width: ${breakpoints.md}) {

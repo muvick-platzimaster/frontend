@@ -88,7 +88,7 @@ export const PlayButton = styled(Link)`
    font-size: 1rem;
    border: none;
    border-radius: ${radius.standard};
-   padding: 0.7rem 3rem;
+   padding: 0.7rem 1rem;
    text-transform: uppercase;
    transition: background ${transitions.normal};
 

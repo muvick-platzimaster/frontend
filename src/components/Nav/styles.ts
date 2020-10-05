@@ -43,6 +43,8 @@ export const Grid = styled.div`
    }
    & .Nav__Menu--dropdown {
       display: none;
+      position: relative;
+
       &:hover .dropdownContent {
          display: block;
       }
@@ -52,16 +54,18 @@ export const Grid = styled.div`
          background-color: rgba(8, 9, 8, 0.85);
          min-width: 200px;
          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-         z-index: 3000;
+         z-index: 10;
          text-align: center;
          left: -55px;
-         & a {
+         & a,
+         button {
+            width: 100%;
             color: white;
             padding: 12px 16px;
             text-decoration: none;
-            display: block;
+            display: inline-block;
             &:hover {
-               background-color: rgba(100, 99, 99, 0.85);
+               background-color: ${colors['color-gray-dark']};
             }
          }
       }
@@ -78,7 +82,7 @@ export const Content = styled.div`
    position: relative;
    padding: calc(15rem - 56.5px) 0;
    text-align: left;
-   z-index: 1;
+   z-index: 5;
    width: ${({ theme }) => (theme.notFound ? '100%' : '60%')};
 
    @media (max-width: ${breakpoints.md}) {

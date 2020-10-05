@@ -93,11 +93,11 @@ export const Frame = styled.div`
 `
 
 export const TitleStyled = styled.h1`
-   font-size: ${(props) => props.fontSize};
+   font-size: 5rem;
    margin-bottom: 3rem;
    line-height: 3.5rem;
-   width: 100%;
    text-align: center;
+
    @media (max-width: ${breakpoints.sm}) {
       font-size: 3rem;
       line-height: 3rem;

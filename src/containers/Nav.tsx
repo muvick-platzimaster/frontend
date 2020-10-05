@@ -27,8 +27,9 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
    const { t } = useTranslation(['nav'])
    const { pathname } = useLocation()
    const finalBackground = pathname !== ROUTES.MY_LIST ? background : null
+
    return (
-      <Nav background={finalBackground}>
+      <Nav error404 background={finalBackground}>
          <Wrapper maxWidth={breakpoints.xl}>
             <Nav.Grid>
                <Nav.Logo />
@@ -106,7 +107,9 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
          </Wrapper>
          {pathname !== ROUTES.MY_LIST && (
             <Wrapper maxWidth={breakpoints.xl}>
-               <Nav.Content>{children}</Nav.Content>
+               <Nav.Content notFound={error404 || false}>
+                  {children}
+               </Nav.Content>
             </Wrapper>
          )}
       </Nav>

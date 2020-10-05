@@ -18,44 +18,6 @@ export const LinkButton = styled(Link)`
    }
 `
 
-export const Container = styled.header`
-   position: relative;
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center top;
-   padding: 1.5rem 0;
-   background-image: ${({ theme }) => {
-      return theme.background
-         ? `url('http://image.tmdb.org/t/p/original${theme.background}')`
-         : 'url("")'
-   }};
-
-   &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: ${colors['color-primary']};
-      opacity: 0.7;
-   }
-
-   &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(
-         180deg,
-         rgba(0, 0, 0, 0.8) 0,
-         rgba(158, 158, 168, 0) 20rem
-      );
-   }
-`
-
 export const Logo = styled(LogoMuvick)`
    width: 95px;
    height: 25px;
@@ -117,7 +79,7 @@ export const Content = styled.div`
    padding: calc(15rem - 56.5px) 0;
    text-align: left;
    z-index: 10;
-   width: 60%;
+   width: ${({ theme }) => (theme.notFound ? '100%' : '60%')};
 
    @media (max-width: ${breakpoints.md}) {
       width: 100%;
@@ -126,6 +88,44 @@ export const Content = styled.div`
 
    @media (max-width: ${breakpoints.sm}) {
       padding: 4rem 0;
+   }
+`
+
+export const Container = styled.header`
+   position: relative;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center top;
+   padding: 1.5rem 0;
+   background-image: ${({ theme }) => {
+      return theme.background
+         ? `url('http://image.tmdb.org/t/p/original${theme.background}')`
+         : 'url("")'
+   }};
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: ${colors['color-primary']};
+      opacity: 0.7;
+   }
+
+   &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(
+         180deg,
+         rgba(0, 0, 0, 0.8) 0,
+         rgba(158, 158, 168, 0) 20rem
+      );
    }
 `
 

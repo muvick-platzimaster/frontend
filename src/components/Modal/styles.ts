@@ -128,7 +128,7 @@ export const More = styled.div`
 
 export const Image = styled.div`
    background-image: ${(props) =>
-      `url('http://image.tmdb.org/t/p/original${props.background}')`};
+      `url('https://image.tmdb.org/t/p/original${props.background}')`};
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
@@ -142,7 +142,7 @@ export const Image = styled.div`
    }
 `
 
-export const CloseButton = styled.div`
+export const CloseButton = styled.button`
    position: absolute;
    top: 20px;
    right: 20px;

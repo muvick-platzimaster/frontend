@@ -31,6 +31,7 @@ interface Props {
    linkTo?: string
    children: React.ReactNode
    background?: string | null
+   error404?: boolean
 }
 
 interface PropsLinkButton {
@@ -38,6 +39,10 @@ interface PropsLinkButton {
    linkTo: string
 }
 
+interface PropsContent {
+   children: React.ReactNode
+   notFound: boolean
+}
 interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    children: React.ReactNode
 }
@@ -66,8 +71,8 @@ Nav.Button = function NavButton({ children, ...props }: PropsButton) {
    return <Button {...props}>{children}</Button>
 }
 
-Nav.Content = function NavContent({ children }: Props) {
-   return <Content>{children}</Content>
+Nav.Content = function NavContent({ children, notFound }: PropsContent) {
+   return <Content theme={{ notFound }}>{children}</Content>
 }
 
 Nav.Search = function NavSearch() {

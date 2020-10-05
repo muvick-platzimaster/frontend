@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ApiResponse, MovieDetails, MyList } from '../interfaces/'
-import Axios, { Method } from 'axios'
+import Axios, { AxiosError, Method } from 'axios'
 import config from '../config'
 
 type Data = ApiResponse | MyList | null | MovieDetails
@@ -23,22 +23,27 @@ const useFetchData = (
 ): UseFetchDataReturn => {
    const [data, setData] = useState<Data>(options?.initialState || null)
    const [loading, setLoading] = useState(true)
-   const [error, setError] = useState(null)
+   const [error, setError] = useState<null | AxiosError>(null)
 
    useEffect(() => {
-      const signal = Axios.CancelToken.source()
+      const source = Axios.CancelToken.source()
       setLoading(true)
       Axios({
          baseURL: config.API_URL_SERVER,
          url: API,
          headers: options?.headers || {},
          method: options?.method || 'GET',
-         cancelToken: signal.token
+         cancelToken: source.token
       })
          .then(({ data }) => setData(data))
-         .catch(setError)
+         .catch((err: AxiosError) => {
+            if (Axios.isCancel(err)) {
+            } else {
+               setError(err)
+            }
+         })
          .finally(() => setLoading(false))
-      return () => signal.cancel()
+      return () => source.cancel()
    }, options?.dependencies || [])
 
    return { data, loading, error }

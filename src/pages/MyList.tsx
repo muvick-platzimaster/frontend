@@ -15,10 +15,11 @@ import useFetchData from '../hooks/useFetchData'
 
 /* Interfaces */
 import { MyList as MyListInterface } from '../interfaces/index'
+import { TOKEN } from '../constants/itemsLocalStorage'
 
 function MyList(): JSX.Element {
    const { switchValue } = useContext(SwitchContext)
-   const headers = { Authorization: `Bearer ${localStorage.getItem('TOKEN')}` }
+   const headers = { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }
    const API = '/my-lists'
 
    const { data } = useFetchData(API, {

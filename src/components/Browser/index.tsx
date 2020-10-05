@@ -10,13 +10,13 @@ import {
    TitleStyled
 } from './styles'
 
-interface Props {
+interface PropsWithChildren {
    children: React.ReactNode
 }
 
 interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    children: React.ReactNode
-   background?: string
+   color: string
 }
 
 interface PropsLinkButton {
@@ -25,7 +25,7 @@ interface PropsLinkButton {
    color: string
 }
 
-function Browser({ children }: Props): JSX.Element {
+function Browser({ children }: PropsWithChildren): JSX.Element {
    return <Container>{children}</Container>
 }
 
@@ -54,18 +54,15 @@ Browser.Button = function BrowserButton({
    )
 }
 
-Browser.Text = function BrowserText({ children }: { children: ReactNode }) {
-   if (`${children}`.length > 100) {
-      return <Text>{`${children}`.substring(0, 100)}...</Text>
-   }
+Browser.Text = function BrowserText({ children }: PropsWithChildren) {
    return <Text>{children}</Text>
 }
 
-Browser.Frame = function BrowserFrame({ children }: { children: ReactNode }) {
+Browser.Frame = function BrowserFrame({ children }: PropsWithChildren) {
    return <Frame>{children}</Frame>
 }
 
-Browser.Title = function BrowserTitle({ children }: { children: ReactNode }) {
+Browser.Title = function BrowserTitle({ children }: PropsWithChildren) {
    return <TitleStyled>{children}</TitleStyled>
 }
 

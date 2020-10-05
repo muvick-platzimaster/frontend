@@ -3,7 +3,7 @@ import { breakpoints, colors, transitions } from '../../../styles/theme'
 
 export const Container = styled.section`
    margin: 2rem 1rem;
-` /* Group */
+`
 
 export const Title = styled.h3`
    margin-bottom: -0.5rem;
@@ -28,7 +28,7 @@ export const Details = styled.div`
    background: rgb(0, 0, 0);
    background: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.8) 25%,
+      rgba(0, 0, 0, 0.9) 25%,
       rgba(0, 0, 0, 0) 100%
    );
    padding: 1rem;
@@ -201,11 +201,3 @@ export const ImageContainer = styled.figure`
 `
 
 export const Pane = styled.div``
-
-/*
- * Fetaure
- * Feature Title
- * Feature Close - buttom
- * Maturity
- * Content
- */

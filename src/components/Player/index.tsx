@@ -16,6 +16,7 @@ const Player = (): JSX.Element => {
    const [error, setError] = useState<null | AxiosError>(null)
    const history = useHistory()
 
+   // TODO: Cambiar este endpoint y controlar el cancelToken
    const URL = `https://api.themoviedb.org/3/${match?.params.isMovie}/${match?.params.id}/videos?api_key=ad7bc0ccac5da809744fb1fe94ccd84c`
 
    useEffect(() => {

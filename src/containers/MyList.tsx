@@ -91,7 +91,7 @@ const MyListContainer: FC = ({ movies }: MyListInterface) => {
                      </div>
                   </MyList.Item>
                ))
-               : 'No hay nada en tu lista.'}
+               : t('mylist:nothing', 'No hay nada en tu lista.')}
          </MyList>
          {show && (
             <ModalContainer

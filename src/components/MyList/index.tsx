@@ -5,8 +5,16 @@ interface Props {
    linkTo?: string
    children: React.ReactNode
    background?: string
-   src?: any
-   onClick?: any
+   src?: string
+}
+
+interface PropsLinkButton {
+   to: string
+   children: React.ReactNode
+}
+
+interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+   children: React.ReactNode
 }
 
 type PropsImage = React.ImgHTMLAttributes<HTMLImageElement>
@@ -21,12 +29,20 @@ MyList.Image = function MyListImage({ ...restProps }: PropsImage) {
 MyList.Item = function MyListItem({ children }: Props) {
    return <Item>{children}</Item>
 }
-MyList.Button = function MyListItem({ children, ...restProps }: Props) {
+MyList.Button = function MyListItem({ children, ...restProps }: PropsButton) {
    return <Button {...restProps}>{children}</Button>
 }
 
-MyList.LinkButton = function MyListItem({ children, ...restProps }: Props) {
-   return <LinkButton {...restProps}>{children}</LinkButton>
+MyList.LinkButton = function MyListItem({
+   children,
+   to,
+   ...restProps
+}: PropsLinkButton) {
+   return (
+      <LinkButton to={to} {...restProps}>
+         {children}
+      </LinkButton>
+   )
 }
 
 export default MyList

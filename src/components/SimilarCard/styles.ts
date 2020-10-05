@@ -51,7 +51,7 @@ export const Detail = styled.div`
 
 export const Image = styled(Link)`
    background-image: ${({ theme }) =>
-      `url('http://image.tmdb.org/t/p/original${theme.background}')`};
+      `url('https://image.tmdb.org/t/p/original${theme.background}')`};
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;

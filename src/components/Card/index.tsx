@@ -183,10 +183,11 @@ Card.Entities = function CardEntities({ genre }: { genre: string }) {
                            <Card.Image
                               src={
                                  poster
-                                    ? `http://image.tmdb.org/t/p/w400/${poster}`
+                                    ? `https://image.tmdb.org/t/p/w400/${poster}`
                                     : 'https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80'
                               }
                               loading="lazy"
+                              alt={`Poster image ${title}`}
                            />
                         </ImageContainer>
                         <Card.Details>
@@ -272,7 +273,7 @@ Card.Feature = function CardFeature() {
       <Feature
          src={
             image
-               ? `http://image.tmdb.org/t/p/original${image}`
+               ? `https://image.tmdb.org/t/p/original${image}`
                : 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
          }
       >

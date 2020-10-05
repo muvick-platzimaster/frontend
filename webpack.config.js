@@ -53,7 +53,8 @@ module.exports = {
          logo: './public/muvick-icon.png',
          favicons: {
             appName: 'Muvick - Movies and TV Shows',
-            appDescription: 'A Netflix clone',
+            appDescription:
+               'Muvick es una plataforma de streaming on demand donde cada usuario puede ver sus películas y series favoritas y puede obtener recomendaciones dependiendo de sus películas o series vistas. ',
             background: '#000',
             theme_color: '#000',
             appShortName: 'Muvick',

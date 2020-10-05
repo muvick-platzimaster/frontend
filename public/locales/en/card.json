@@ -1,0 +1,21 @@
+{
+   "Action": "Action",
+   "Adventure": "Adventure",
+   "Animation": "Animation",
+   "Comedy": "Comedy",
+   "Crime": "Crime",
+   "Documentary": "Documentary",
+   "Drama": "Drama",
+   "Family": "Family",
+   "Fantary": "Fantasy",
+   "History": "History",
+   "Horror": "Horrorr",
+   "Music": "Music",
+   "Mystery": "Mystery",
+   "Romance": "Romance",
+   "Science Fiction": "Science Fiction",
+   "TV Movie": "Television Movie",
+   "Thriller": "Suspense",
+   "War": "War",
+   "Western": "Western"
+}

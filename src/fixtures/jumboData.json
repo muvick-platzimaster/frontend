@@ -1,0 +1,54 @@
+{
+   "english": [
+      {
+         "id": 1,
+         "title": "Enjoy on your TV.",
+         "subTitle": "Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.",
+         "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png",
+         "alt": "Tiger King on Netflix",
+         "direction": "row"
+      },
+      {
+         "id": 2,
+         "title": "Download your programmes to watch on the go.",
+         "subTitle": "Save your data and watch all your favourites offline.",
+         "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png",
+         "alt": "Watch on mobile",
+         "direction": "row-reverse"
+      },
+      {
+         "id": 3,
+         "title": "Watch everywhere.",
+         "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+         "image": "https://i.ibb.co/fGdMZ1z/iphone-muvick.png",
+         "alt": "Money Heist on Netflix",
+         "direction": "row"
+      }
+   ],
+   "spanish": [
+      {
+         "id": 1,
+         "title": "Disfruta en tú TV.",
+         "subTitle": "Mira en smart TVs, PlayStation, Xbox, Chromecast, Apple TV, reproductores Blu-ray y más.",
+         "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png",
+         "alt": "Tiger King on Netflix",
+         "direction": "row"
+      },
+      {
+         "id": 2,
+         "title": "Descarga tus programas para ver en el camino.",
+         "subTitle": "Guarda tus datos y mira todos tus favoritos fuera de linea.",
+         "image": "https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png",
+         "alt": "Watch on mobile",
+         "direction": "row-reverse"
+      },
+      {
+         "id": 3,
+         "title": "Mira en todas partes.",
+         "subTitle": "Reproduce películas y programas de televisión ilimitados en tu teléfono, tablet, laptop y en TV sin pagar más.",
+         "image": "https://i.ibb.co/fGdMZ1z/iphone-muvick.png",
+         "alt": "Money Heist on Netflix",
+         "direction": "row"
+      }
+   ]
+}

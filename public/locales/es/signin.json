@@ -1,0 +1,11 @@
+{
+  "form": {
+    "email": "Correo Electrónico",
+    "new": "Nuevo en Muvick?",
+    "password": "Contraseña",
+    "recaptcha": "Esta página está protegida con un reCAPTCHA de Google para asegurar que no eres un robot.",
+    "sign": "Iniciar sesión",
+    "signin": "Iniciar sesión",
+    "signup": "Regístrate ahora"
+  }
+}

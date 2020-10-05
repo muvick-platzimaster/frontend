@@ -1,4 +1,5 @@
-# Muvick
+
+![https://cdn.discordapp.com/attachments/757620664265080905/762684908330024990/69372445.png](https://cdn.discordapp.com/attachments/757620664265080905/762684908330024990/69372445.png)
 
 _Muvick es una plataforma de streaming on demand donde cada usuario puede ver sus películas y series favoritas y puede obtener recomendaciones dependiendo de sus películas o series vistas._
 
@@ -14,6 +15,12 @@ _Instala las dependencias necesarias en la raíz del proyecto._
 
 ```bash
 npm install
+```
+
+Corre el siguiente comando para iniciar el proyecto en modo desarrollo:
+
+```bash
+npm run dev
 ```
 
 ## Deploy 

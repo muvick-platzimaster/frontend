@@ -142,7 +142,7 @@ export const Image = styled.div`
    }
 `
 
-export const CloseButton = styled.div`
+export const CloseButton = styled.button`
    position: absolute;
    top: 20px;
    right: 20px;

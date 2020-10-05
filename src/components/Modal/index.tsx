@@ -20,20 +20,29 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
    background?: string
 }
 
-function Modal({ children, ...restProps }: PropsButton) {
+interface PropsImage extends React.ImgHTMLAttributes<HTMLImageElement> {
+   children: ReactNode
+   background?: string
+}
+
+interface PropsWithChildren {
+   children: ReactNode
+}
+
+const Modal = ({ children }: PropsButton): JSX.Element => {
    return (
       <Container>
          {children}
-         <Around {...restProps}></Around>
+         <Around></Around>
       </Container>
    )
 }
 
-Modal.Section = function ModalSection({ children }: { children: ReactNode }) {
+Modal.Section = function ModalSection({ children }: PropsWithChildren) {
    return <Section>{children}</Section>
 }
 
-Modal.Title = function ModalTitle({ children }: { children: ReactNode }) {
+Modal.Title = function ModalTitle({ children }: PropsWithChildren) {
    return <Title>{children}</Title>
 }
 
@@ -45,7 +54,7 @@ Modal.TitleContainer = function ModalTitleContainer({
    return <TitleContainer>{children}</TitleContainer>
 }
 
-Modal.Text = function ModalText({ children }: { children: ReactNode }) {
+Modal.Text = function ModalText({ children }: PropsWithChildren) {
    return <Text>{children}</Text>
 }
 
@@ -61,7 +70,7 @@ Modal.More = function ModalMore({ children }: { children: ReactNode }) {
    return <More>{children}</More>
 }
 
-Modal.Image = function ModalSection({ children, ...restProps }: PropsButton) {
+Modal.Image = function ModalSection({ children, ...restProps }: PropsImage) {
    return <Image {...restProps}>{children}</Image>
 }
 

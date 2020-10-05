@@ -20,6 +20,11 @@ import { Spinner } from '../components/Icons'
 import { MyList as MyListInterface } from '../interfaces/index'
 import { TOKEN } from '../constants/itemsLocalStorage'
 
+/* Google Analytics */
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-42421772-6')
+ReactGA.pageview(window.location.pathname + window.location.search)
+
 function MyList(): JSX.Element {
    const { switchValue } = useContext(SwitchContext)
    const headers = { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }

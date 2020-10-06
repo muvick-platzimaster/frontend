@@ -78,7 +78,6 @@ const Signup: FC = (): JSX.Element => {
                   type="text"
                   onChange={({ target }) => setUsername(target.value)}
                   required
-                  autoComplete="off"
                   autoFocus
                >
                   {t('signup:form.user', 'Username')}
@@ -86,7 +85,7 @@ const Signup: FC = (): JSX.Element => {
                <Form.FormGroup
                   value={email}
                   name="email"
-                  type="email"
+                  type="text"
                   onChange={({ target }) => setEmail(target.value)}
                   required
                >
@@ -95,8 +94,6 @@ const Signup: FC = (): JSX.Element => {
                <Form.FormGroup
                   value={password}
                   required
-                  minLength={10}
-                  maxLength={20}
                   name="password"
                   type="password"
                   onChange={({ target }) => setPassword(target.value)}

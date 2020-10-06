@@ -12,9 +12,8 @@ import JwtDecode from 'jwt-decode'
 import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 
 /* Google Analytics */
-import ReactGA from 'react-ga'
-ReactGA.initialize('UA-42421772-6')
-ReactGA.pageview(window.location.pathname + window.location.search)
+import { Analytics } from '../analytics'
+Analytics(window.location.pathname + window.location.search)
 
 const Signin: FC = (): JSX.Element => {
    const [email, setEmail] = useState<string>('')

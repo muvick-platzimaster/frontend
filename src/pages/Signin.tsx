@@ -71,7 +71,7 @@ const Signin: FC = (): JSX.Element => {
                <Form.FormGroup
                   value={email}
                   name="email"
-                  type="email"
+                  type="text"
                   onChange={({ target }) => setEmail(target.value)}
                   autoFocus
                   required
@@ -81,8 +81,6 @@ const Signin: FC = (): JSX.Element => {
                <Form.FormGroup
                   value={password}
                   required
-                  minLength={10}
-                  maxLength={20}
                   name="password"
                   type="password"
                   autoComplete="off"

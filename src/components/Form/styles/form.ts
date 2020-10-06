@@ -62,7 +62,7 @@ export const Input = styled.input`
 
    &:focus + label span,
    &:valid + label span {
-      transform: translateY(-10px);
+      transform: translate(5px, -5px);
       font-size: 0.8rem;
       color: ${colors['color-primary']};
    }
@@ -75,6 +75,12 @@ export const Input = styled.input`
    &:invalid:focus + label::after {
       transform: translateX(0);
       border-bottom: 1px solid ${colors['color-error']};
+   }
+
+   &:invalid:focus + label span {
+      transform: translate(5px, -5px);
+      font-size: 0.8rem;
+      color: ${colors['color-error']};
    }
 `
 

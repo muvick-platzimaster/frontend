@@ -41,6 +41,8 @@ _Technologies used in the frontend.:_
 * **Prettier** An opinionated code formatter; Supports many languages; Integrates with most editors.
 * **Husky** can prevent bad git commit, git push and more.
 * **Lighthouse** is an open-source, automated tool for improving the performance, quality, and correctness of your web apps. 
+* **Webpack** is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+* **Babel** is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. 
 
 
 ## Authors 

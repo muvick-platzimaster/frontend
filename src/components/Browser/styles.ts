@@ -39,6 +39,10 @@ export const LinkButton = styled(Link)`
       cursor: default;
       opacity: 0.8;
    }
+
+   @media (max-width: ${breakpoints.sm}) {
+      margin-right: 0;
+   }
 `
 
 export const Button = styled.button`
@@ -72,6 +76,10 @@ export const Button = styled.button`
       background-color: ${colors['color-primary-muted']};
       cursor: default;
       opacity: 0.8;
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
+      margin-right: 0;
    }
 `
 

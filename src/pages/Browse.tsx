@@ -19,9 +19,8 @@ import { VERIFY } from '../constants/itemsLocalStorage'
 import { colors } from '../styles/theme'
 
 /* Google Analytics */
-import ReactGA from 'react-ga'
-ReactGA.initialize('UA-42421772-6')
-ReactGA.pageview(window.location.pathname + window.location.search)
+import { Analytics } from '../analytics'
+Analytics(window.location.pathname + window.location.search)
 
 function Browse(): JSX.Element {
    const { t, i18n } = useTranslation(['browse'])

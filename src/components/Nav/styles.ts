@@ -156,6 +156,35 @@ export const Button = styled.button`
    }
 `
 
+export const SwitchButton = styled.button`
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   background: #2b5891;
+   width: 100px;
+   height: 40px;
+   color: #efefef;
+   font-size: 14px;
+   padding: 0.5rem 1rem;
+   margin: 10px;
+   border-radius: ${radius.standard};
+   white-space: nowrap;
+   border: none;
+   cursor: pointer;
+   &:hover {
+      color: #bbb8b5;
+      transition: 0.3s;
+      background: ${colors['color-gray-dark']};
+   }
+   &.active {
+      background: ${colors['color-primary']};
+   }
+
+   & svg {
+      margin-left: 0.5rem;
+   }
+`
+
 export const Label = styled.button`
    position: absolute;
    outline: none;

@@ -43,20 +43,6 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                {!error404 && (
                   <>
                      <section className="Nav__Menu--open">
-                        <Nav.Button
-                           onClick={() => {
-                              setSwitchValue && setSwitchValue('movies')
-                           }}
-                        >
-                           {t('nav:movies', 'Movies')}
-                        </Nav.Button>
-                        <Nav.Button
-                           onClick={() => {
-                              setSwitchValue && setSwitchValue('series')
-                           }}
-                        >
-                           {t('nav:tvshows', 'TV Shows')}
-                        </Nav.Button>
                         <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                            {t('nav:list', 'My list')}
                         </Nav.LinkButton>

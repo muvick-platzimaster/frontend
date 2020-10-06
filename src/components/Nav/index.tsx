@@ -14,7 +14,8 @@ import {
    Button,
    Search,
    SearchContainer,
-   Label
+   Label,
+   SwitchButton
 } from './styles'
 
 /* Contants */
@@ -69,6 +70,13 @@ Nav.LinkButton = function NavLinkButton({ children, linkTo }: PropsLinkButton) {
 
 Nav.Button = function NavButton({ children, ...props }: PropsButton) {
    return <Button {...props}>{children}</Button>
+}
+
+Nav.SwitchButton = function NavSwitchButton({
+   children,
+   ...props
+}: PropsButton) {
+   return <SwitchButton {...props}>{children}</SwitchButton>
 }
 
 Nav.Content = function NavContent({ children, notFound }: PropsContent) {

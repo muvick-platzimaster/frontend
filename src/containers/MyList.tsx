@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 
 /* Components */
-import { Wrapper, MyList } from '../components/'
+import { Wrapper, MyList, Nav } from '../components/'
 
 /* Styles */
 import { breakpoints } from '../styles/theme'
@@ -25,7 +25,7 @@ import { MyListContext } from '../context/MyListContext'
 import { SwitchContext } from '../context/SwitchContext'
 
 const MyListContainer = ({ movies }: MyListInterface): JSX.Element => {
-   const { switchValue } = useContext(SwitchContext)
+   const { switchValue, setSwitchValue } = useContext(SwitchContext)
    const { actions } = useContext(MyListContext)
    const [show, setShow] = useState(false)
    const [movie, setMovie] = useState('')
@@ -49,65 +49,83 @@ const MyListContainer = ({ movies }: MyListInterface): JSX.Element => {
    const category = switchValue === 'movies' ? 'movie' : 'tv'
 
    return (
-      <Wrapper maxWidth={breakpoints.responsive}>
-         <h1> {t('mylist:title', 'My list')}</h1>
-         <MyList>
-            {movies.length > 0 ? (
-               <React.Fragment>
-                  {' '}
-                  {movies.map((item) => (
-                     <MyList.Item key={item.id}>
-                        <MyList.Image
-                           src={`https://image.tmdb.org/t/p/w300${item.backdrop_path}`}
-                           alt={`Image of ${item.title} movie`}
-                        />
-                        <h2>
-                           {item.title
-                              ? `${item.title.substring(0, 15)}`
-                              : `${item.name.substring(0, 15)}`}
-                        </h2>
-                        <div className="icons">
-                           <div className="icons--play">
-                              <MyList.LinkButton
-                                 to={`/browse/${category}/${item.id}`}
-                              >
-                                 <Play />
-                              </MyList.LinkButton>
+      <Fragment>
+         <Nav.SwitchButton
+            className={switchValue === 'movies' && 'active'}
+            onClick={() => {
+               setSwitchValue && setSwitchValue('movies')
+            }}
+         >
+            {t('nav:movies', 'Movies')}
+         </Nav.SwitchButton>
+         <Nav.SwitchButton
+            className={switchValue === 'series' && 'active'}
+            onClick={() => {
+               setSwitchValue && setSwitchValue('series')
+            }}
+         >
+            {t('nav:tvshows', 'TV Shows')}
+         </Nav.SwitchButton>
+         <Wrapper maxWidth={breakpoints.responsive}>
+            <h1> {t('mylist:title', 'My list')}</h1>
+            <MyList>
+               {movies.length > 0 ? (
+                  <React.Fragment>
+                     {' '}
+                     {movies.map((item) => (
+                        <MyList.Item key={item.id}>
+                           <MyList.Image
+                              src={`https://image.tmdb.org/t/p/w300${item.backdrop_path}`}
+                              alt={`Image of ${item.title} movie`}
+                           />
+                           <h2>
+                              {item.title
+                                 ? `${item.title.substring(0, 15)}`
+                                 : `${item.name.substring(0, 15)}`}
+                           </h2>
+                           <div className="icons">
+                              <div className="icons--play">
+                                 <MyList.LinkButton
+                                    to={`/browse/${category}/${item.id}`}
+                                 >
+                                    <Play />
+                                 </MyList.LinkButton>
 
-                              <MyList.Button
-                                 onClick={() => {
-                                    actions?.removeMovieFromMyList({
-                                       movieId: item.id,
-                                       switchValue: switchValue || 'movies'
-                                    })
-                                 }}
-                              >
-                                 <Trash />
-                              </MyList.Button>
+                                 <MyList.Button
+                                    onClick={() => {
+                                       actions?.removeMovieFromMyList({
+                                          movieId: item.id,
+                                          switchValue: switchValue || 'movies'
+                                       })
+                                    }}
+                                 >
+                                    <Trash />
+                                 </MyList.Button>
+                              </div>
+                              <div className="icons--more">
+                                 <MyList.Button
+                                    onClick={() => showModal(`${item.id}`)}
+                                 >
+                                    <Menu />
+                                 </MyList.Button>
+                              </div>
                            </div>
-                           <div className="icons--more">
-                              <MyList.Button
-                                 onClick={() => showModal(`${item.id}`)}
-                              >
-                                 <Menu />
-                              </MyList.Button>
-                           </div>
-                        </div>
-                     </MyList.Item>
-                  ))}
-               </React.Fragment>
-            ) : (
-               t('mylist:nothing', 'No hay nada en tu lista.')
+                        </MyList.Item>
+                     ))}
+                  </React.Fragment>
+               ) : (
+                  t('mylist:nothing', 'No hay nada en tu lista.')
+               )}
+            </MyList>
+            {show && (
+               <ModalContainer
+                  movieId={movie}
+                  handleClose={hideModal}
+                  type={switchValue}
+               />
             )}
-         </MyList>
-         {show && (
-            <ModalContainer
-               movieId={movie}
-               handleClose={hideModal}
-               type={switchValue}
-            />
-         )}
-      </Wrapper>
+         </Wrapper>
+      </Fragment>
    )
 }
 

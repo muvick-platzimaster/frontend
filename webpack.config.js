@@ -82,10 +82,17 @@ module.exports = {
                }
             },
             {
-               urlPattern: new RegExp('(html|css|js)'),
-               handler: 'CacheFirst',
+               urlPattern: new RegExp('(html|css|js|json)'),
+               handler: 'NetworkFirst',
                options: {
                   cacheName: 'statics'
+               }
+            },
+            {
+               urlPattern: new RegExp('https://muvick-backend.herokuapp.com'),
+               handler: 'NetworkFirst',
+               options: {
+                  cacheName: 'api'
                }
             }
          ]

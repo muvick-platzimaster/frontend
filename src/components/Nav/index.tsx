@@ -27,6 +27,7 @@ import { useTranslation } from 'react-i18next'
 import { MyListContext } from '../../context/MyListContext'
 import { SwitchContext } from '../../context/SwitchContext'
 import config from '../../config'
+import { TOKEN } from '../../constants/itemsLocalStorage'
 
 interface Props {
    linkTo?: string
@@ -114,7 +115,8 @@ Nav.Search = function NavSearch() {
       Axios({
          baseURL: config.API_URL_SERVER,
          url: URL,
-         method: 'GET'
+         method: 'GET',
+         headers: { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }
       })
          .then(({ data }) => setfindedMovies(data))
          .catch((err: AxiosError) => {

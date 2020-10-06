@@ -15,7 +15,7 @@ import { ApiResponse, Movie } from '../interfaces'
 /* i18n */
 import { useTranslation } from 'react-i18next'
 import UserVerificationContainer from '../containers/UserVerification'
-import { VERIFY } from '../constants/itemsLocalStorage'
+import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 import { colors } from '../styles/theme'
 
 /* Google Analytics */
@@ -27,7 +27,8 @@ function Browse(): JSX.Element {
 
    const API = `/movies/popular?language=${i18n.language}`
    const options = {
-      dependencies: [API]
+      dependencies: [API],
+      headers: { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }
    }
    const { data: popular, loading } = useFetchData(API, options)
    const [show, setShow] = useState(false)

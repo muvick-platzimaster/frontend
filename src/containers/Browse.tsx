@@ -2,7 +2,7 @@ import React, { FC, Fragment, useContext, useEffect } from 'react'
 import { genres } from '../fixtures/genres.json'
 
 /* Components */
-import { Card } from '../components'
+import { Card, Nav } from '../components'
 import { SwitchContext } from '../context/SwitchContext'
 import { useTranslation } from 'react-i18next'
 import { MyListContext } from '../context/MyListContext'
@@ -10,8 +10,8 @@ import JwtDecode from 'jwt-decode'
 import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 
 const BrowseContainer: FC = () => {
-   const { switchValue } = useContext(SwitchContext)
-   const { t, i18n } = useTranslation(['browse', 'card'])
+   const { switchValue, setSwitchValue } = useContext(SwitchContext)
+   const { t, i18n } = useTranslation(['browse', 'card', 'nav'])
    const { actions } = useContext(MyListContext)
    useEffect(() => actions?.getMyList(), [])
 
@@ -27,6 +27,22 @@ const BrowseContainer: FC = () => {
 
    return (
       <Fragment>
+         <Nav.SwitchButton
+            className={switchValue === 'movies' && 'active'}
+            onClick={() => {
+               setSwitchValue && setSwitchValue('movies')
+            }}
+         >
+            {t('nav:movies', 'Movies')}
+         </Nav.SwitchButton>
+         <Nav.SwitchButton
+            className={switchValue === 'series' && 'active'}
+            onClick={() => {
+               setSwitchValue && setSwitchValue('series')
+            }}
+         >
+            {t('nav:tvshows', 'TV Shows')}
+         </Nav.SwitchButton>
          <Card>
             <Card.RowContainer API="/my-lists">
                <Card.Title>{t('browse:mylist', 'My List')}</Card.Title>{' '}

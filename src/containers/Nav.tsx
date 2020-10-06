@@ -1,13 +1,10 @@
-import React, { ReactNode, useContext, useState, useRef } from 'react'
+import React, { ReactNode, useState, useRef } from 'react'
 
 /* Components */
 import { Nav, Wrapper, LanguageButton } from '../components'
 
 /* Styles */
 import { breakpoints } from '../styles/theme'
-
-/* Context */
-import { SwitchContext } from '../context/SwitchContext'
 
 /* Hooks */
 import useOnClickOutside from '../hooks/useOnClickOutside'
@@ -26,7 +23,6 @@ interface Props {
 }
 
 function NavContainer({ children, error404, background }: Props): JSX.Element {
-   const { setSwitchValue } = useContext(SwitchContext)
    const { t } = useTranslation(['nav'])
    const { pathname } = useLocation()
    const finalBackground = pathname !== ROUTES.MY_LIST ? background : null
@@ -43,20 +39,6 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                {!error404 && (
                   <>
                      <section className="Nav__Menu--open">
-                        <Nav.Button
-                           onClick={() => {
-                              setSwitchValue && setSwitchValue('movies')
-                           }}
-                        >
-                           {t('nav:movies', 'Movies')}
-                        </Nav.Button>
-                        <Nav.Button
-                           onClick={() => {
-                              setSwitchValue && setSwitchValue('series')
-                           }}
-                        >
-                           {t('nav:tvshows', 'TV Shows')}
-                        </Nav.Button>
                         <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                            {t('nav:list', 'My list')}
                         </Nav.LinkButton>
@@ -75,20 +57,6 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                         </Nav.Button>
                         {showMenu && (
                            <div className="dropdownContent">
-                              <Nav.Button
-                                 onClick={() => {
-                                    setSwitchValue && setSwitchValue('movies')
-                                 }}
-                              >
-                                 {t('nav:movies', 'Movies')}
-                              </Nav.Button>
-                              <Nav.Button
-                                 onClick={() => {
-                                    setSwitchValue && setSwitchValue('series')
-                                 }}
-                              >
-                                 {t('nav:tvshows', 'TV Shows')}
-                              </Nav.Button>
                               <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
                                  {t('nav:list', 'My list')}
                               </Nav.LinkButton>

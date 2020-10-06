@@ -50,22 +50,26 @@ const MyListContainer = ({ movies }: MyListInterface): JSX.Element => {
 
    return (
       <Fragment>
-         <Nav.SwitchButton
-            className={switchValue === 'movies' && 'active'}
-            onClick={() => {
-               setSwitchValue && setSwitchValue('movies')
-            }}
-         >
-            {t('nav:movies', 'Movies')}
-         </Nav.SwitchButton>
-         <Nav.SwitchButton
-            className={switchValue === 'series' && 'active'}
-            onClick={() => {
-               setSwitchValue && setSwitchValue('series')
-            }}
-         >
-            {t('nav:tvshows', 'TV Shows')}
-         </Nav.SwitchButton>
+         <Wrapper maxWidth={breakpoints.responsive}>
+            <Nav.Text>{t('nav:whatdoyousee')}</Nav.Text>
+            <Nav.SwitchButton
+               className={switchValue === 'movies' ? 'active' : ''}
+               onClick={() => {
+                  setSwitchValue && setSwitchValue('movies')
+               }}
+            >
+               {t('nav:movies', 'Movies')}
+            </Nav.SwitchButton>
+            <Nav.SwitchButton
+               className={switchValue === 'series' ? 'active' : ''}
+               onClick={() => {
+                  setSwitchValue && setSwitchValue('series')
+               }}
+            >
+               {t('nav:tvshows', 'TV Shows')}
+            </Nav.SwitchButton>
+         </Wrapper>
+
          <Wrapper maxWidth={breakpoints.responsive}>
             <h1> {t('mylist:title', 'My list')}</h1>
             <MyList>

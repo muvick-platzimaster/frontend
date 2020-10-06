@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useContext, useEffect } from 'react'
+import React, { FC, useContext, useEffect } from 'react'
 import { genres } from '../fixtures/genres.json'
 
 /* Components */
@@ -26,9 +26,10 @@ const BrowseContainer: FC = () => {
    }
 
    return (
-      <Fragment>
+      <Card>
+         <Nav.Text>{t('nav:whatdoyousee')}</Nav.Text>
          <Nav.SwitchButton
-            className={switchValue === 'movies' && 'active'}
+            className={switchValue === 'movies' ? 'active' : ''}
             onClick={() => {
                setSwitchValue && setSwitchValue('movies')
             }}
@@ -36,35 +37,33 @@ const BrowseContainer: FC = () => {
             {t('nav:movies', 'Movies')}
          </Nav.SwitchButton>
          <Nav.SwitchButton
-            className={switchValue === 'series' && 'active'}
+            className={switchValue === 'series' ? 'active' : ''}
             onClick={() => {
                setSwitchValue && setSwitchValue('series')
             }}
          >
             {t('nav:tvshows', 'TV Shows')}
          </Nav.SwitchButton>
-         <Card>
-            <Card.RowContainer API="/my-lists">
-               <Card.Title>{t('browse:mylist', 'My List')}</Card.Title>{' '}
-               <Card.Entities genre="my-list" />
-            </Card.RowContainer>
+         <Card.RowContainer API="/my-lists">
+            <Card.Title>{t('browse:mylist', 'My List')}</Card.Title>{' '}
+            <Card.Entities genre="my-list" />
+         </Card.RowContainer>
 
-            <Card.RowContainer API={`/${switchValue}/popular`}>
-               <Card.Title>{t('browse:popular', 'Popular')}</Card.Title>{' '}
-               <Card.Entities genre="popular" />
-            </Card.RowContainer>
+         <Card.RowContainer API={`/${switchValue}/popular`}>
+            <Card.Title>{t('browse:popular', 'Popular')}</Card.Title>{' '}
+            <Card.Entities genre="popular" />
+         </Card.RowContainer>
 
-            {genres.map(({ id, name }) => (
-               <Card.RowContainer
-                  key={id}
-                  API={`/${switchValue}?genre=${id}&language=${i18n.language}`}
-               >
-                  <Card.Title>{t(`card:${name}`, `${name}`)}</Card.Title>
-                  <Card.Entities genre={name} />
-               </Card.RowContainer>
-            ))}
-         </Card>
-      </Fragment>
+         {genres.map(({ id, name }) => (
+            <Card.RowContainer
+               key={id}
+               API={`/${switchValue}?genre=${id}&language=${i18n.language}`}
+            >
+               <Card.Title>{t(`card:${name}`, `${name}`)}</Card.Title>
+               <Card.Entities genre={name} />
+            </Card.RowContainer>
+         ))}
+      </Card>
    )
 }
 

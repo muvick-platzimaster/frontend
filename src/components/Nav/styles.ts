@@ -160,24 +160,27 @@ export const SwitchButton = styled.button`
    display: inline-flex;
    align-items: center;
    justify-content: center;
-   background: #2b5891;
+   background: ${colors['color-primary']};
    width: 100px;
    height: 40px;
-   color: #efefef;
+   color: ${colors['color-font-base']};
    font-size: 14px;
    padding: 0.5rem 1rem;
-   margin: 10px;
+   margin-right: 0.5rem;
+   margin-bottom: 1rem;
    border-radius: ${radius.standard};
    white-space: nowrap;
-   border: none;
+   border: 1px solid transparent;
    cursor: pointer;
+   transition: background ${transitions.normal},
+      border-color ${transitions.normal};
+
    &:hover {
-      color: #bbb8b5;
-      transition: 0.3s;
       background: ${colors['color-gray-dark']};
    }
    &.active {
-      background: ${colors['color-primary']};
+      background: ${colors['color-gray-dark']};
+      border-color: ${colors['color-font-base']};
    }
 
    & svg {
@@ -229,4 +232,8 @@ export const Search = styled.input`
    &::placeholder {
       color: ${colors['color-font-muted']};
    }
+`
+
+export const Text = styled.p`
+   margin: 1rem 0 0.5rem 0;
 `

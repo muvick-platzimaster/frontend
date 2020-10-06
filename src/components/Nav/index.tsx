@@ -15,7 +15,8 @@ import {
    Search,
    SearchContainer,
    Label,
-   SwitchButton
+   SwitchButton,
+   Text
 } from './styles'
 
 /* Contants */
@@ -48,12 +49,15 @@ interface PropsContent {
 interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    children: React.ReactNode
 }
+interface PropsWithChildren {
+   children: React.ReactNode
+}
 
 function Nav({ children, background }: Props): JSX.Element {
    return <Container theme={{ background }}>{children}</Container>
 }
 
-Nav.Grid = function NavGrid({ children }: Props) {
+Nav.Grid = function NavGrid({ children }: PropsWithChildren) {
    return <Grid>{children}</Grid>
 }
 
@@ -63,6 +67,10 @@ Nav.Logo = function NavLogo() {
          <Logo />
       </Link>
    )
+}
+
+Nav.Text = function NavText({ children }: Props) {
+   return <Text>{children}</Text>
 }
 
 Nav.LinkButton = function NavLinkButton({ children, linkTo }: PropsLinkButton) {

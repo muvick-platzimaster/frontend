@@ -11,7 +11,7 @@ import { TOKEN, VERIFY } from '../constants/itemsLocalStorage'
 
 const BrowseContainer: FC = () => {
    const { switchValue } = useContext(SwitchContext)
-   const { t, i18n } = useTranslation(['browse'])
+   const { t, i18n } = useTranslation(['browse', 'card'])
    const { actions } = useContext(MyListContext)
    useEffect(() => actions?.getMyList(), [])
 

@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode, useContext, useState, useRef } from 'react'
 
 /* Components */
 import { Nav, Wrapper, LanguageButton } from '../components'
@@ -8,6 +8,9 @@ import { breakpoints } from '../styles/theme'
 
 /* Context */
 import { SwitchContext } from '../context/SwitchContext'
+
+/* Hooks */
+import useOnClickOutside from '../hooks/useOnClickOutside'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -27,6 +30,10 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
    const { t } = useTranslation(['nav'])
    const { pathname } = useLocation()
    const finalBackground = pathname !== ROUTES.MY_LIST ? background : null
+   const [showMenu, setShowMenu] = useState(false)
+   const ref = useRef()
+
+   useOnClickOutside(ref, () => setShowMenu(false))
 
    return (
       <Nav error404 background={finalBackground}>
@@ -62,38 +69,40 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                            {t('nav:logout', 'Logout')}
                         </Nav.Button>
                      </section>
-                     <section className="Nav__Menu--dropdown">
-                        <Nav.LinkButton linkTo={ROUTES.BROWSE}>
+                     <section className="Nav__Menu--dropdown" ref={ref}>
+                        <Nav.Button onClick={() => setShowMenu(true)}>
                            {t('nav:explore', 'Explore')}
-                        </Nav.LinkButton>
-                        <div className="dropdownContent">
-                           <Nav.Button
-                              onClick={() => {
-                                 setSwitchValue && setSwitchValue('movies')
-                              }}
-                           >
-                              {t('nav:movies', 'Movies')}
-                           </Nav.Button>
-                           <Nav.Button
-                              onClick={() => {
-                                 setSwitchValue && setSwitchValue('series')
-                              }}
-                           >
-                              {t('nav:tvshows', 'TV Shows')}
-                           </Nav.Button>
-                           <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
-                              {t('nav:list', 'My list')}
-                           </Nav.LinkButton>
-                           <Nav.Button
-                              onClick={() => {
-                                 localStorage.removeItem(TOKEN)
-                                 localStorage.removeItem(VERIFY)
-                                 window.location.reload()
-                              }}
-                           >
-                              {t('nav:logout', 'Logout')}
-                           </Nav.Button>
-                        </div>
+                        </Nav.Button>
+                        {showMenu && (
+                           <div className="dropdownContent">
+                              <Nav.Button
+                                 onClick={() => {
+                                    setSwitchValue && setSwitchValue('movies')
+                                 }}
+                              >
+                                 {t('nav:movies', 'Movies')}
+                              </Nav.Button>
+                              <Nav.Button
+                                 onClick={() => {
+                                    setSwitchValue && setSwitchValue('series')
+                                 }}
+                              >
+                                 {t('nav:tvshows', 'TV Shows')}
+                              </Nav.Button>
+                              <Nav.LinkButton linkTo={ROUTES.MY_LIST}>
+                                 {t('nav:list', 'My list')}
+                              </Nav.LinkButton>
+                              <Nav.Button
+                                 onClick={() => {
+                                    localStorage.removeItem(TOKEN)
+                                    localStorage.removeItem(VERIFY)
+                                    window.location.reload()
+                                 }}
+                              >
+                                 {t('nav:logout', 'Logout')}
+                              </Nav.Button>
+                           </div>
+                        )}
                      </section>
                   </>
                )}

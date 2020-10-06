@@ -74,8 +74,7 @@ const Card = ({ children }: PropsWithChildren): JSX.Element => {
 }
 
 Card.Title = function CardTitle({ children }: PropsWithChildren) {
-   const { t } = useTranslation(['card'])
-   return <Title>{t(`card:${children}`, `${children}`)}</Title>
+   return <Title>{children}</Title>
 }
 
 Card.RowContainer = function CardRowContainer({
@@ -258,6 +257,7 @@ Card.Feature = function CardFeature() {
    const { showFeature, itemFeature, setShowFeature, isMyList } = useContext(
       FeatureContext
    )
+   const [added, setAdded] = useState<string | null>(null)
    const { actions } = useContext(MyListContext)
    const { switchValue } = useContext(SwitchContext)
    if (!showFeature || !itemFeature) return null
@@ -269,6 +269,17 @@ Card.Feature = function CardFeature() {
       name,
       id
    } = itemFeature
+
+   const handleAdd = () => {
+      actions?.addMovieToMyList({
+         movieId: id,
+         switchValue: switchValue || 'movies'
+      })
+      setAdded('✔')
+      setTimeout(() => {
+         setAdded(null)
+      }, 2000)
+   }
    return (
       <Feature
          src={
@@ -297,19 +308,14 @@ Card.Feature = function CardFeature() {
                      setShowFeature && setShowFeature(false)
                   }}
                >
-                  <Trash height="1rem" width="1rem" />
+                  {added || <Trash height="1rem" width="1rem" />}
                </Feature.Button>
             ) : (
                <Feature.Button
                   colorHover={colors['color-success']}
-                  onClick={() => {
-                     actions?.addMovieToMyList({
-                        movieId: id,
-                        switchValue: switchValue || 'movies'
-                     })
-                  }}
+                  onClick={handleAdd}
                >
-                  <Plus height="1rem" width="1rem" />
+                  {added || <Plus height="1rem" width="1rem" />}
                </Feature.Button>
             )}
          </Feature.Pane>

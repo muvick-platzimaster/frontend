@@ -12,7 +12,7 @@ export const Error = styled.div`
    border-radius: ${radius.standard};
 
    p {
-      font-size: 1rem;
+      font-size: 0.8rem;
       text-align: left;
    }
 `

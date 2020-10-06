@@ -1,10 +1,18 @@
 import React, { FC, Fragment, useState, FormEvent } from 'react'
-import { Footer, Form } from '../components'
-import HeaderContainer from '../containers/Header'
-import ROUTES from '../constants/routes'
-import Axios, { AxiosError } from 'axios'
 import { useHistory } from 'react-router-dom'
+import Axios, { AxiosError } from 'axios'
+
+/* Components */
+import { Footer, Form } from '../components'
+
+/* Icons */
 import { Spinner } from '../components/Icons'
+
+/* Containers */
+import HeaderContainer from '../containers/Header'
+
+/* Constants */
+import ROUTES from '../constants/routes'
 import config from '../config'
 
 /* i18n */
@@ -54,7 +62,11 @@ const Signup: FC = (): JSX.Element => {
 
    const handleErrors = (messageError: string) => {
       if (messageError === 'email_already_exists') {
-         return 'User already exists'
+         return t('signup:errors.user', 'This user already exists')
+      }
+
+      if (messageError === 'password_not_secure') {
+         return t('signup:errors.password', 'The password must have a minimum of 10 characters, maximum 20. Among them there must be at least one uppercase, one lowercase, one digit and some special character.')
       }
 
       return 'Internal server error'

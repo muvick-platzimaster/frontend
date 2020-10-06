@@ -4,9 +4,9 @@
       "already": "I already have an",
       "email": "Email",
       "password": "Password",
-      "recaptcha": "This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot.",
+      "recaptcha": "This page is protected by Google reCAPTCHA to ensure you're not a bot.",
       "user": "Username",
-      "welcome": "Welcome back!"
+      "welcome": "Sign Up!"
    },
    "errors": {
       "password": "The password must have a minimum of 10 characters, maximum 20. Among them there must be at least one uppercase, one lowercase, one digit and some special character.",

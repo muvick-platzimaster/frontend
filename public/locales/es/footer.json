@@ -1,20 +1,20 @@
 {
-  "faq": {
-    "account": "Cuenta",
-    "buy": "Compra Tarjetas de Regalo",
-    "contact": "Contáctanos",
-    "cookie": "Preferencias de Cookies",
-    "corporate": "Corporación",
-    "help": "Centro de Ayuda",
-    "investor": "Relaciones de Inversión",
-    "legal": "Noticias Legales",
-    "media": "Centro de Medios",
-    "originals": "Originales de Muvick",
-    "privacy": "Privacidad",
-    "questions": "Preguntas? Llama",
-    "redeem": "Canjear Tarjetas de Regalo",
-    "speed": "Test de Velocidad",
-    "terms": "Términos de Uso",
-    "ways": "Maneras de Ver"
-  }
+   "faq": {
+      "account": "Cuenta",
+      "buy": "Compra tarjetas de regalo",
+      "contact": "Contáctanos",
+      "cookie": "Preferencias de cookies",
+      "corporate": "Corporación",
+      "help": "Centro de ayuda",
+      "investor": "Relaciones de inversión",
+      "legal": "Noticias legales",
+      "media": "Centro de médios",
+      "originals": "Originales de Muvick",
+      "privacy": "Privacidad",
+      "questions": "¿Preguntas? Llama a ",
+      "redeem": "Canjear tarjetas de regalo",
+      "speed": "Test de velocidad",
+      "terms": "Términos de uso",
+      "ways": "Maneras de ver"
+   }
 }

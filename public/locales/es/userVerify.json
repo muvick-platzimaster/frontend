@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
   "text": "Te enviamos un código a tu correo electrónico para ayudarnos a asegurarnos de que eres el propietario",
   "title": "Verifica tu cuenta",
   "verfi": "Verificar cuenta"
+=======
+   "text": "Te hemos enviado un código a tu correo electrónico para que puedas realizar la verificación de tu cuenta.",
+   "title": "Verifica tu cuenta",
+   "verfi": "Verificar cuenta"
+>>>>>>> e4f5f95ab1f3cbf64535381c1929ac6a6d85a02a
 }

@@ -66,7 +66,10 @@ const Signup: FC = (): JSX.Element => {
       }
 
       if (messageError === 'password_not_secure') {
-         return t('signup:errors.password', 'The password must have a minimum of 10 characters, maximum 20. Among them there must be at least one uppercase, one lowercase, one digit and some special character.')
+         return t(
+            'signup:errors.password',
+            'The password must have a minimum of 10 characters, maximum 20. Among them there must be at least one uppercase, one lowercase, one digit and some special character.'
+         )
       }
 
       return 'Internal server error'

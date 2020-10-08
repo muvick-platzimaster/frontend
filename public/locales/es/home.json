@@ -1,9 +1,9 @@
 {
-  "faq": "Preguntas frecuentes",
-  "form": {
-    "button": "Comenzar",
-    "email": "Correo Electrónico"
-  },
-  "subtitle": "¿Listo para ver? Ingresa tu correo electrónico para crear o reestablecer tu memebresia.",
-  "title": "Películas ilimitadas, shows de televisión y más."
+   "faq": "Preguntas frecuentes",
+   "form": {
+      "button": "Comenzar",
+      "email": "Correo Electrónico"
+   },
+   "subtitle": "¿Listo para ver? Ingresa tu correo electrónico para crear o reestablecer tu membresía.",
+   "title": "Películas ilimitadas, shows de televisión y más."
 }

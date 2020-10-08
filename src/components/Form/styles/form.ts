@@ -2,7 +2,13 @@ import styled from 'styled-components/macro'
 import { Link as ReactRouterDomLink } from 'react-router-dom'
 import { breakpoints, colors, transitions, radius } from '../../../styles/theme'
 
-export const Container = styled.form``
+export const Container = styled.form`
+   @media (max-width: ${breakpoints.xs}) {
+      & > div {
+         padding: 0;
+      }
+   }
+`
 
 export const Error = styled.div`
    width: 100%;
@@ -110,10 +116,6 @@ export const Grid = styled.div`
 
    @media (max-width: ${breakpoints.sm}) {
       padding: 2rem;
-   }
-
-   @media (max-width: ${breakpoints.xs}) {
-      padding: 2rem 1rem;
    }
 `
 export const Label = styled.label`

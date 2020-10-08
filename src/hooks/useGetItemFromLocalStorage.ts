@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const useGetItemFromLocalStorage = (ITEM: string) => {
+const useGetItemFromLocalStorage = (ITEM: string): Array<string | null> => {
    const [item, setItem] = useState(() => {
       return localStorage.getItem(ITEM) || null
    })

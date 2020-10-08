@@ -1,15 +1,17 @@
 {
+   "errors": {
+      "password": "La contraseña debe tener mínimo 10 carácteres máximo 20. Entre ellos debe haber al menos una mayúscula, una minúscula, un dígito y algún carácter especial.",
+      "user": "Este usuario ya existe.",
+      "must_be_an_email": "El correo es inválido.",
+      "internal_error": "Error interno en el servidor"
+   },
    "form": {
       "account": "cuenta",
-      "already": "Ya tengo una",
+      "already": "¡Ya tengo una",
       "email": "Correo electrónico",
       "password": "Contraseña",
       "recaptcha": "Esta página está protegida con un reCAPTCHA de Google para asegurar que no eres un robot.",
       "user": "Nombre de usuario",
       "welcome": "¡Bienvenido a Muvick!"
-   },
-   "errors": {
-      "password": "La contraseña debe tener mínimo 10 carácteres máximo 20. Entre ellos debe haber al menos una mayúscula, una minúscula, un dígito y algún carácter especial.",
-      "user": "Este usuario ya existe."
    }
 }

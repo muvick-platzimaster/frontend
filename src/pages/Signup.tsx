@@ -60,7 +60,7 @@ const Signup: FC = (): JSX.Element => {
          })
    }
 
-   const handleErrors = (messageError: string) => {
+   const handleErrors = (messageError: string | Array<string>) => {
       if (messageError === 'email_already_exists') {
          return t('signup:errors.user', 'This user already exists')
       }
@@ -72,7 +72,11 @@ const Signup: FC = (): JSX.Element => {
          )
       }
 
-      return 'Internal server error'
+      if (messageError[0] === 'email must be an email') {
+         return t('signup:errors.must_be_an_email')
+      }
+
+      return t('signup:errors.internal_error')
    }
 
    return (

@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
-import { ApiResponse, MovieDetails, MyList } from '../interfaces/'
 import Axios, { AxiosError, Method } from 'axios'
 import config from '../config'
 
-type Data = ApiResponse | MyList | null | MovieDetails
 interface UseFetchDataReturn {
-   data: Data
+   data: any
    loading: boolean
    error: Error | null
 }
@@ -21,7 +19,7 @@ const useFetchData = (
    API: string,
    options?: Partial<Options>
 ): UseFetchDataReturn => {
-   const [data, setData] = useState<Data>(options?.initialState || null)
+   const [data, setData] = useState(options?.initialState || null)
    const [loading, setLoading] = useState(true)
    const [error, setError] = useState<null | AxiosError>(null)
 

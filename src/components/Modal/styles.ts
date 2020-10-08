@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components/macro'
-import { breakpoints, radius } from '../../styles/theme'
+import { breakpoints, colors, radius } from '../../styles/theme'
 
 /* keyframes  */
 export const opacityAnimation = keyframes`
@@ -148,7 +148,8 @@ export const CloseButton = styled.button`
    right: 20px;
    width: 40px;
    height: 40px;
-   background: #181818;
+   border: 1px solid ${colors['color-font-base']};
+   background-color: #00000099;
    border-radius: ${radius.circle};
    display: flex;
    justify-content: center;

@@ -1,11 +1,16 @@
 {
-  "form": {
-    "email": "Email",
-    "new": "New to Muvick?",
-    "password": "Password",
-    "recaptcha": "This page is protected by Google reCAPTCHA to ensure you&lsquo;re not a bot.",
-    "sign": "Sign In",
-    "signin": "Sign in",
-    "signup": "Sign up now"
-  }
+   "form": {
+      "email": "Email",
+      "new": "New to Muvick?",
+      "password": "Password",
+      "recaptcha": "This page is protected by Google reCAPTCHA to ensure you&lsquo;re not a bot.",
+      "sign": "Sign In",
+      "signin": "Sign in",
+      "signup": "Sign up now"
+   },
+   "errors": {
+      "invalid_credentials": "The email or password are invalid.",
+      "must_be_an_email": "The email is invalid.",
+      "internal_error": "Internal server error"
+   }
 }

@@ -30,6 +30,7 @@ import { SwitchContext } from '../../context/SwitchContext'
 import config from '../../config'
 import { TOKEN } from '../../constants/itemsLocalStorage'
 
+/* Types */
 interface Props {
    linkTo?: string
    children: React.ReactNode
@@ -159,35 +160,37 @@ Nav.Search = function NavSearch() {
             </Title>
             <Close setIsOpen={setIsOpen} />
             <RowContainer>
-               {findedMovies?.results?.map((movie) => (
-                  <Item
-                     key={movie.id}
-                     background={movie.poster_path}
-                     hidden={!movie.poster_path}
-                  >
-                     <Title>{movie.title}</Title>
-                     <Description>{movie.overview}</Description>
-                     <IconsContainer>
-                        <PlayButton
-                           to={`browse/${movie.title ? 'movie' : 'tv'}/${
-                              movie.id
-                           }`}
-                        >
-                           {t('search:play', 'Play')}
-                        </PlayButton>
-                        <Buttton
-                           onClick={() => {
-                              actions?.addMovieToMyList({
-                                 movieId: movie.id,
-                                 switchValue: switchValue || 'movies'
-                              })
-                           }}
-                        >
-                           +
-                        </Buttton>
-                     </IconsContainer>
-                  </Item>
-               ))}
+               {findedMovies?.results?.length !== 0
+                  ? findedMovies?.results?.map((movie) => (
+                     <Item
+                        key={movie.id}
+                        background={movie.poster_path}
+                        hidden={!movie.poster_path}
+                     >
+                        <Title>{movie.title}</Title>
+                        <Description>{movie.overview}</Description>
+                        <IconsContainer>
+                           <PlayButton
+                              to={`browse/${movie.title ? 'movie' : 'tv'}/${
+                                 movie.id
+                              }`}
+                           >
+                              {t('search:play', 'Play')}
+                           </PlayButton>
+                           <Buttton
+                              onClick={() => {
+                                   actions?.addMovieToMyList({
+                                      movieId: movie.id,
+                                      switchValue: switchValue || 'movies'
+                                   })
+                              }}
+                           >
+                                +
+                           </Buttton>
+                        </IconsContainer>
+                     </Item>
+                  ))
+                  : t('search:nothing', 'No hubo resultados...')}
             </RowContainer>
          </ModalMovies>
       </SearchContainer>

@@ -5,7 +5,16 @@ import { Wrapper } from '../'
 import LanguageButton from '../LanguageButton/index'
 
 /* Styles */
-import { Container, Grid, Title, Anchor, Column, Row, Text } from './styles'
+import {
+   Container,
+   Grid,
+   Title,
+   LinkAnchor,
+   Anchor,
+   Column,
+   Row,
+   Text
+} from './styles'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
@@ -23,36 +32,26 @@ const Footer: FC = () => {
                </Title>
                <Row>
                   <Column>
-                     <Anchor>FAQ</Anchor>
-                     <Anchor>
-                        {t('footer:faq.investor', 'Investor Relations')}
-                     </Anchor>
-                     <Anchor>{t('footer:faq.ways', 'Ways to Watch')}</Anchor>
-                     <Anchor>{t('footer:faq.corporate', 'Corporate')}</Anchor>
-                     <Anchor>
-                        {t('footer:faq.originals', 'Netflix Originals')}
+                     <Text>
+                        {t(
+                           'footer:description',
+                           'Muvick es una plataforma de streaming on demand donde cada usuario puede ver sus películas y series favoritas y puede obtener recomendaciones dependiendo de sus películas o series vistas.'
+                        )}
+                     </Text>
+                  </Column>
+                  <Column>
+                     <LinkAnchor to="/">{t('footer:home', 'Home')}</LinkAnchor>
+                     <Anchor href="https://help.netflix.com/legal/termsofuse">
+                        {t('footer:list', 'Terms of Use')}
                      </Anchor>
                   </Column>
                   <Column>
-                     <Anchor>{t('footer:faq.help', 'Help Center')}</Anchor>
-                     <Anchor>{t('footer:faq.terms', 'Terms of Use')}</Anchor>
-                     <Anchor>{t('footer:faq.contact', 'Contact Us')}</Anchor>
-                  </Column>
-                  <Column>
-                     <Anchor>{t('footer:faq.account', 'Account')}</Anchor>
-                     <Anchor>
-                        {t('footer:faq.redeem', 'Redeem Gift Cards')}
+                     <Anchor href="https://help.netflix.com/legal/privacy">
+                        {t('footer:privacy', 'Privacy')}
                      </Anchor>
-                     <Anchor>{t('footer:faq.privacy', 'Privacy')}</Anchor>
-                     <Anchor>{t('footer:faq.speed', 'Speed Test')}</Anchor>
-                  </Column>
-                  <Column>
-                     <Anchor>{t('footer:faq.media', 'Media Center')}</Anchor>
-                     <Anchor>{t('footer:faq.buy', 'Buy Gift Cards')}</Anchor>
-                     <Anchor>
-                        {t('footer:faq.cookie', 'Cookie Preferences')}
+                     <Anchor href="https://github.com/muvick-platzimaster">
+                        {t('footer:about', 'About')}
                      </Anchor>
-                     <Anchor>{t('footer:faq.legal', 'Legal Notices')}</Anchor>
                   </Column>
                </Row>
                <LanguageButton />

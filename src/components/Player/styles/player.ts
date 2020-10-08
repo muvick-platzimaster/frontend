@@ -25,11 +25,12 @@ export const IconContainer = styled.button`
    width: 5rem;
    height: 3rem;
    top: 4rem;
-   left: .5%;
+   left: 0.5%;
    z-index: 10;
    cursor: pointer;
    background-color: transparent;
-   border: 1px solid transparent};
+   border: 1px solid transparent;
+
    &:hover {
       border-color: ${colors['color-font-muted']};
    }

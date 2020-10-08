@@ -1,20 +1,10 @@
 {
-  "faq": {
-    "account": "Account",
-    "buy": "Buy Gift Cards",
-    "contact": "Contact Us",
-    "cookie": "Cookie Preferences",
-    "corporate": "Corporate",
-    "help": "Help Center",
-    "investor": "Investor Relations",
-    "legal": "Legal Notices",
-    "media": "Media Center",
-    "originals": "Muvick Originals",
-    "privacy": "Privacy",
-    "questions": "Questions? Call",
-    "redeem": "Redeem Gift Cards",
-    "speed": "Speed Test",
-    "terms": "Terms of Use",
-    "ways": "Ways to Watch"
-  }
+   "about": "About",
+   "description": "Muvick is an on demand streaming platform where each user can watch their favorite movies and series and can get recommendations depending on their movies or series watched.",
+   "faq": {
+      "questions": "Questions? Call"
+   },
+   "home": "Home",
+   "list": "Terms of Use",
+   "privacy": "Privacy"
 }

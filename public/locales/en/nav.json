@@ -1,8 +1,8 @@
 {
-   "explore": "Explore",
-   "list": "My list",
-   "logout": "Logout",
-   "movies": "Movies",
-   "tvshows": "TV Shows",
-   "whatdoyousee": "What do you see?"
+  "explore": "Explore",
+  "list": "My list",
+  "logout": "Logout",
+  "movies": "Movies",
+  "tvshows": "TV Shows",
+  "whatdoyousee": "What do you see?"
 }

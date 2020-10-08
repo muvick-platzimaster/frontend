@@ -56,6 +56,18 @@ const Signin: FC = (): JSX.Element => {
          })
    }
 
+   const handleErrors = (messageError: string | Array<string>) => {
+      if (messageError === 'invalid_credentials') {
+         return t('signin:errors.invalid_credentials')
+      }
+
+      if (messageError[0] === 'email must be an email') {
+         return t('signin:errors.must_be_an_email')
+      }
+
+      return t('signin:errors.internal_error')
+   }
+
    return (
       <Fragment>
          <HeaderContainer>
@@ -63,9 +75,7 @@ const Signin: FC = (): JSX.Element => {
                <Form.Title> {t('signin:form.sign', 'Sign In')}</Form.Title>
                {error && (
                   <Form.Error>
-                     {error?.response?.data.message === 'invalid_credentials'
-                        ? 'Invalid Credencials'
-                        : 'Internal Server Error'}
+                     {handleErrors(error.response?.data.message)}
                   </Form.Error>
                )}
                <Form.FormGroup

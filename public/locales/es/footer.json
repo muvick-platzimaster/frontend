@@ -1,31 +1,10 @@
 {
-<<<<<<< HEAD
-  "about": "Sobre nosotros",
-  "description": "Muvick es una plataforma de streaming on demand donde cada usuario puede ver sus películas y series favoritas y puede obtener recomendaciones dependiendo de sus películas o series vistas.",
-  "faq": {
-    "questions": "¿Preguntas? Llama"
-  },
-  "home": "Inicio",
-  "list": "Términos de Uso",
-  "privacy": "Privacidad"
-=======
+   "about": "Sobre nosotros",
+   "description": "Muvick es una plataforma de streaming on demand donde cada usuario puede ver sus películas y series favoritas y puede obtener recomendaciones dependiendo de sus películas o series vistas.",
    "faq": {
-      "account": "Cuenta",
-      "buy": "Compra tarjetas de regalo",
-      "contact": "Contáctanos",
-      "cookie": "Preferencias de cookies",
-      "corporate": "Corporación",
-      "help": "Centro de ayuda",
-      "investor": "Relaciones de inversión",
-      "legal": "Noticias legales",
-      "media": "Centro de médios",
-      "originals": "Originales de Muvick",
-      "privacy": "Privacidad",
-      "questions": "¿Preguntas? Llama a ",
-      "redeem": "Canjear tarjetas de regalo",
-      "speed": "Test de velocidad",
-      "terms": "Términos de uso",
-      "ways": "Maneras de ver"
-   }
->>>>>>> e4f5f95ab1f3cbf64535381c1929ac6a6d85a02a
+      "questions": "¿Preguntas? Llama"
+   },
+   "home": "Inicio",
+   "list": "Términos de Uso",
+   "privacy": "Privacidad"
 }

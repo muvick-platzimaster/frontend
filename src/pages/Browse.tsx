@@ -23,7 +23,7 @@ import { Analytics } from '../analytics'
 Analytics(window.location.pathname + window.location.search)
 
 function Browse(): JSX.Element {
-   const { t, i18n } = useTranslation(['browse'])
+   const { t, i18n } = useTranslation(['browse', 'modal'])
 
    const API = `/movies/popular?language=${i18n.language}`
    const options = {
@@ -69,26 +69,28 @@ function Browse(): JSX.Element {
 
          <NavContainer background={randomMovie.backdrop_path}>
             <Browser.Title>
-               {loading ? 'Muvick...' : randomMovie.title}
+               {loading ? `${t('modal:loading')}...` : randomMovie.title}
             </Browser.Title>
-            <Browser.Text>{randomMovie.overview}</Browser.Text>
             {!loading && (
-               <Browser.Frame>
-                  <Browser.LinkButton
-                     to={`/browse/${randomMovie.title ? 'movie' : 'tv'}/${
-                        randomMovie.id
-                     }`}
-                     color={colors['color-primary']}
-                  >
-                     {t('browse:button.play', 'Play')}
-                  </Browser.LinkButton>
-                  <Browser.Button
-                     color={colors['color-gray-dark']}
-                     onClick={showModal}
-                  >
-                     {t('browse:button.more', 'More information...')}
-                  </Browser.Button>
-               </Browser.Frame>
+               <>
+                  <Browser.Text>{randomMovie.overview}</Browser.Text>
+                  <Browser.Frame>
+                     <Browser.LinkButton
+                        to={`/browse/${randomMovie.title ? 'movie' : 'tv'}/${
+                           randomMovie.id
+                        }`}
+                        color={colors['color-primary']}
+                     >
+                        {t('browse:button.play', 'Play')}
+                     </Browser.LinkButton>
+                     <Browser.Button
+                        color={colors['color-gray-dark']}
+                        onClick={showModal}
+                     >
+                        {t('browse:button.more', 'More information...')}
+                     </Browser.Button>
+                  </Browser.Frame>
+               </>
             )}
          </NavContainer>
          {show && randomMovie.id && (

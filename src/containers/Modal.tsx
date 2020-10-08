@@ -15,6 +15,7 @@ import { ApiResponse, MovieDetails } from '../interfaces'
 
 /* i18n */
 import { useTranslation } from 'react-i18next'
+import { TOKEN } from '../constants/itemsLocalStorage'
 
 interface Props {
    movieId: string | number
@@ -28,13 +29,17 @@ const ModalContainer = ({
    type = 'movies'
 }: Props): JSX.Element => {
    const { t, i18n } = useTranslation(['modal'])
+   const options = {
+      headers: { Authorization: `Bearer ${localStorage.getItem(TOKEN)}` }
+   }
    const { data: movieDetail, loading: movieDetailLoading } = useFetchData(
-      `/${type}/${movieId}/detail?language=${i18n.language}`
+      `/${type}/${movieId}/detail?language=${i18n.language}`,
+      options
    )
 
-   // TODO: Este hay que actualizarlo cuando ya tengamos un endpoint en MuvickAPI para hacer este llamado mientras tanto tendrá un any
    const { data: similarMovies, loading: similarMoviesLoading } = useFetchData(
-      `/${type}/${movieId}/recommendations?language=${i18n.language}`
+      `/${type}/${movieId}/recommendations?language=${i18n.language}`,
+      options
    )
 
    const year = movieDetail
@@ -46,13 +51,8 @@ const ModalContainer = ({
       }m `
       : ''
 
-   if (
-      movieDetailLoading ||
-      !movieDetail ||
-      !similarMovies ||
-      similarMoviesLoading
-   ) {
-      return <h1>{t('modal:loading', 'Loading...')}</h1>
+   if (movieDetailLoading || similarMoviesLoading) {
+      return <span></span>
    }
 
    const {
@@ -81,11 +81,11 @@ const ModalContainer = ({
 
             <Wrapper maxWidth={breakpoints.md}>
                <Modal.CloseButton onClick={handleClose}>
-                  <Close />
+                  <Close color="white" />
                </Modal.CloseButton>
             </Wrapper>
             <Wrapper maxWidth={breakpoints.md}>
-               <Modal.Tag color="#46D369">
+               <Modal.Tag color={colors['color-success']}>
                   {year === '2020' && `${t('modal:new', 'NEW')}`}
                </Modal.Tag>
                <Modal.Tag color="white">
@@ -121,7 +121,8 @@ const ModalContainer = ({
                                  {`${movie.release_date}`.substring(0, 4)}
                               </SimilarCard.Tag>
                               <SimilarCard.Text>
-                                 {`${movie.overview}`.substring(0, 100)}...
+                                 {`${movie.overview}`.substring(0, 100)}
+                                 ...
                               </SimilarCard.Text>
                            </Wrapper>
                         </SimilarCard.Section>

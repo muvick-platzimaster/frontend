@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import { colors } from '../../styles/theme'
+import { breakpoints, colors } from '../../styles/theme'
 
 export const Container = styled.section`
    padding: 2rem 0;
@@ -12,15 +12,18 @@ export const Grid = styled.div``
 export const Column = styled.div`
    display: flex;
    flex-direction: column;
-   /* width: calc(100% / 3); */
 `
 
 export const Row = styled.div`
    display: grid;
+   grid-column-gap: 2rem;
    justify-content: space-between;
-   flex-wrap: wrap;
    grid-template-columns: 3fr 1fr 1fr;
    width: 100%;
+
+   @media (max-width: ${breakpoints.sm}) {
+      grid-template-columns: 1fr;
+   }
 `
 
 export const Title = styled.p`
@@ -29,7 +32,10 @@ export const Title = styled.p`
 
 export const Text = styled.p`
    font-size: 0.8rem;
-   padding: 0 10em 0 0;
+
+   @media (max-width: ${breakpoints.sm}) {
+      text-align: center;
+   }
 `
 
 export const LinkAnchor = styled(Link)`
@@ -37,9 +43,13 @@ export const LinkAnchor = styled(Link)`
    color: ${colors['color-font-muted']};
    cursor: pointer;
    margin-bottom: 1rem;
-   margin-right: 1rem;
+
    &:hover {
       text-decoration: underline;
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
+      text-align: center;
    }
 `
 
@@ -48,8 +58,12 @@ export const Anchor = styled.a`
    color: ${colors['color-font-muted']};
    cursor: pointer;
    margin-bottom: 1rem;
-   margin-right: 1rem;
+
    &:hover {
       text-decoration: underline;
+   }
+
+   @media (max-width: ${breakpoints.sm}) {
+      text-align: center;
    }
 `

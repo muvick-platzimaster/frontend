@@ -219,6 +219,10 @@ export const SearchContainer = styled.div`
    &:hover {
       max-width: 300px;
    }
+
+   @media (max-width: ${breakpoints.xs}) {
+      background: ${colors['color-body-base']}ee;
+   }
 `
 
 export const Search = styled.input`

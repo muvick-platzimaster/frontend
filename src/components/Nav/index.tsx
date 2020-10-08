@@ -30,6 +30,7 @@ import { SwitchContext } from '../../context/SwitchContext'
 import config from '../../config'
 import { TOKEN } from '../../constants/itemsLocalStorage'
 
+/* Types */
 interface Props {
    linkTo?: string
    children: React.ReactNode

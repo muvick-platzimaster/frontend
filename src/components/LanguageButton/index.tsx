@@ -22,7 +22,13 @@ const LanguageButton: FC = () => {
    }
 
    return (
-      <Button type="button" onClick={() => handleLanguage()}>
+      <Button
+         type="button"
+         onClick={() => {
+            handleLanguage()
+            window.location.reload()
+         }}
+      >
          {i18n.language === 'en' ? 'Es' : 'En'}
       </Button>
    )

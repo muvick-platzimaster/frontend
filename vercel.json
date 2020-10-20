@@ -3,13 +3,24 @@
    "builds": [
       {
          "src": "package.json",
-         "use": "@vercel/static-build",
-         "config": {
-            "distDir": "dist",
-            "includesFiles": "dist/**"
-         }
+         "use": "@vercel/static-build"
       }
    ],
-
-   "routes": [{ "handle": "filesystem" }, { "src": "/.*", "dest": "/" }]
+   "routes": [
+      {
+         "handle": "filesystem"
+      },
+      {
+         "src": "/.*",
+         "dest": "/"
+      },
+      {
+         "src": "(.*).js",
+         "dest": "$1.js"
+      },
+      {
+         "src": "(.*).json",
+         "dest": "$1.json"
+      }
+   ]
 }

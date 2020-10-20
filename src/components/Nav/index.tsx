@@ -121,6 +121,7 @@ Nav.Search = function NavSearch() {
 
       // TODO: Cambiar este endpoint y controlar el cancelToken
       const URL = `/${switchValue}?query=${value}&language=${i18n.language}&page=1`
+
       Axios({
          baseURL: config.API_URL_SERVER,
          url: URL,

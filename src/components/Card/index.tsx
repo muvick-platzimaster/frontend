@@ -29,7 +29,7 @@ import {
    Pane,
    Badge
 } from './styles/card'
-import { Plus, Spinner, Trash } from '../Icons'
+import { Plus, Share, Spinner, Trash } from '../Icons'
 
 /* Context */
 import { SwitchContext } from '../../context/SwitchContext'
@@ -280,6 +280,19 @@ Card.Feature = function CardFeature() {
          setAdded(null)
       }, 2000)
    }
+
+   const handleShare = () => {
+      if (!navigator.share) return alert('share not support ')
+
+      navigator
+         .share({
+            title: `${itemFeature.title}`,
+            text: `${itemFeature.overview}`,
+            url: `/browse/${title ? 'movie' : 'tv'}/${id}`
+         })
+         .catch(() => null)
+   }
+
    return (
       <Feature
          src={
@@ -318,6 +331,13 @@ Card.Feature = function CardFeature() {
                   {added || <Plus height="1rem" width="1rem" />}
                </Feature.Button>
             )}
+
+            <Feature.Button
+               onClick={handleShare}
+               colorHover={colors['color-gray-dark']}
+            >
+               <Share height="1rem" width="1rem" />
+            </Feature.Button>
          </Feature.Pane>
          <Feature.Close handleClose={setShowFeature} />
       </Feature>

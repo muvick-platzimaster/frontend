@@ -70,6 +70,8 @@ module.exports = {
       new WorkboxWebpackPlugin.GenerateSW({
          clientsClaim: true,
          skipWaiting: true,
+         navigateFallback: '/index.html',
+         offlineGoogleAnalytics: true,
          runtimeCaching: [
             {
                urlPattern: new RegExp(

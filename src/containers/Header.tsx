@@ -28,7 +28,6 @@ function HeaderContainer({ children }: Props): JSX.Element {
                )}
             </Header.Grid>
          </Wrapper>
-
          <Header.Content>{children}</Header.Content>
       </Header>
    )

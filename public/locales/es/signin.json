@@ -7,5 +7,10 @@
       "sign": "Iniciar sesión",
       "signin": "Iniciar sesión",
       "signup": "Regístrate ahora"
+   },
+   "errors": {
+      "invalid_credentials": "El correo o la contraseña son incorrectas.",
+      "must_be_an_email": "El correo es inválido.",
+      "internal_error": "Error interno en el servidor"
    }
 }

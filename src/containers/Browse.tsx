@@ -44,12 +44,14 @@ const BrowseContainer: FC = () => {
          >
             {t('nav:tvshows', 'TV Shows')}
          </Nav.SwitchButton>
-         <Card.RowContainer API="/my-lists">
+         <Card.RowContainer API={`/my-lists?language=${i18n.language}`}>
             <Card.Title>{t('browse:mylist', 'My List')}</Card.Title>{' '}
             <Card.Entities genre="my-list" />
          </Card.RowContainer>
 
-         <Card.RowContainer API={`/${switchValue}/popular`}>
+         <Card.RowContainer
+            API={`/${switchValue}/popular?language=${i18n.language}`}
+         >
             <Card.Title>{t('browse:popular', 'Popular')}</Card.Title>{' '}
             <Card.Entities genre="popular" />
          </Card.RowContainer>

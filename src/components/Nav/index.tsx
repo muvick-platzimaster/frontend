@@ -30,6 +30,7 @@ import { SwitchContext } from '../../context/SwitchContext'
 import config from '../../config'
 import { TOKEN } from '../../constants/itemsLocalStorage'
 
+/* Types */
 interface Props {
    linkTo?: string
    children: React.ReactNode
@@ -120,6 +121,7 @@ Nav.Search = function NavSearch() {
 
       // TODO: Cambiar este endpoint y controlar el cancelToken
       const URL = `/${switchValue}?query=${value}&language=${i18n.language}&page=1`
+
       Axios({
          baseURL: config.API_URL_SERVER,
          url: URL,

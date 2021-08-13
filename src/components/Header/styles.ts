@@ -40,6 +40,10 @@ export const Container = styled.header`
          `
       }
    }}
+
+   @media (max-width: ${breakpoints.xs}) {
+      padding-bottom: 0;
+   }
 `
 
 export const Logo = styled(LogoMuvick)`
@@ -72,5 +76,10 @@ export const Content = styled.div`
 
    @media (max-width: ${breakpoints.sm}) {
       padding: 3rem 0;
+   }
+
+   @media (max-width: ${breakpoints.xs}) {
+      padding-bottom: 0;
+      padding-top: 2rem;
    }
 `

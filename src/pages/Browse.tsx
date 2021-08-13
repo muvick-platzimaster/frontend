@@ -69,7 +69,7 @@ function Browse(): JSX.Element {
 
          <NavContainer background={randomMovie.backdrop_path}>
             <Browser.Title>
-               {loading ? `${t('modal:loading')}...` : randomMovie.title}
+               {loading ? `${t('modal:loading')}` : randomMovie.title}
             </Browser.Title>
             {!loading && (
                <>

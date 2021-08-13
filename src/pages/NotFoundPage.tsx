@@ -16,10 +16,16 @@ import { useTranslation } from 'react-i18next'
 
 /* Google Analytics */
 import { Analytics } from '../analytics'
+
+/* Internationalization */
+import i18n from '../i18n'
+
 Analytics(window.location.pathname + window.location.search)
 
 function NotFoundPage(): JSX.Element {
-   const { data: popular } = useFetchData('/movies/popular')
+   const { data: popular } = useFetchData(
+      `/movies/popular?language=${i18n.language}`
+   )
    const [randomMovie, setRandomMovie] = useState<Partial<Movie>>({})
    const { t } = useTranslation(['notfound'])
 

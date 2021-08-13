@@ -70,11 +70,12 @@ module.exports = {
       new WorkboxWebpackPlugin.GenerateSW({
          clientsClaim: true,
          skipWaiting: true,
-         navigateFallback: '/',
+         navigateFallback: '/index.html',
+         offlineGoogleAnalytics: true,
          runtimeCaching: [
             {
                urlPattern: new RegExp(
-                  'https?://(images.unsplash.com|www.casadelaweb.com|image.tmdb.org|assets.nflxext.com)'
+                  'https://(images.unsplash.com|www.casadelaweb.com|image.tmdb.org|assets.nflxext.com)/'
                ),
                handler: 'CacheFirst',
                options: {
@@ -89,7 +90,7 @@ module.exports = {
                }
             },
             {
-               urlPattern: new RegExp('https://muvick-backend.herokuapp.com'),
+               urlPattern: new RegExp('https://muvick-backend.herokuapp.com/'),
                handler: 'NetworkFirst',
                options: {
                   cacheName: 'api'

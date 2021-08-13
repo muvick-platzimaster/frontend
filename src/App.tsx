@@ -21,7 +21,7 @@ import {
 import { GlobalStyle } from './styles/GlobalStyle'
 
 /* Components */
-import { Player, Fallback } from './components/'
+import { Player, Fallback, Online } from './components/'
 
 /* Constants */
 import ROUTES from './constants/routes'
@@ -52,36 +52,58 @@ const App: React.FC = () => {
                <GlobalStyle />
                <Router>
                   <Switch>
-                     <Route exact path={ROUTES.HOME}>
-                        {token ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
-                     </Route>
-                     <Route exact path={ROUTES.SIGN_IN}>
-                        {token ? <Redirect to={ROUTES.BROWSE} /> : <Signin />}
-                     </Route>
-                     <Route exact path={ROUTES.BROWSE}>
-                        {token ? <Browse /> : <Redirect to={ROUTES.SIGN_IN} />}
-                     </Route>
-                     <Route exact path={ROUTES.SIGN_UP}>
-                        {token ? <Redirect to={ROUTES.BROWSE} /> : <Signup />}
-                     </Route>
-                     <Route exact path={ROUTES.MOVIE}>
-                        {token ? <Player /> : <Redirect to={ROUTES.SIGN_IN} />}
-                     </Route>
-                     <Route exact path={ROUTES.MY_LIST}>
-                        {token ? <MyList /> : <Redirect to={ROUTES.SIGN_IN} />}
-                     </Route>
-                     <Route exact path={ROUTES.VERIFY}>
-                        {token ? (
-                           !confirmed ? (
-                              <UserVerification />
+                     <Online>
+                        <Route exact path={ROUTES.HOME}>
+                           {token ? <Redirect to={ROUTES.BROWSE} /> : <Home />}
+                        </Route>
+                        <Route exact path={ROUTES.SIGN_IN}>
+                           {token ? (
+                              <Redirect to={ROUTES.BROWSE} />
                            ) : (
-                              <NotFoundPage />
-                           )
-                        ) : (
-                           <Redirect to={ROUTES.SIGN_IN} />
-                        )}
-                     </Route>
-                     <Route component={NotFoundPage} />
+                              <Signin />
+                           )}
+                        </Route>
+                        <Route exact path={ROUTES.BROWSE}>
+                           {token ? (
+                              <Browse />
+                           ) : (
+                              <Redirect to={ROUTES.SIGN_IN} />
+                           )}
+                        </Route>
+                        <Route exact path={ROUTES.SIGN_UP}>
+                           {token ? (
+                              <Redirect to={ROUTES.BROWSE} />
+                           ) : (
+                              <Signup />
+                           )}
+                        </Route>
+                        <Route exact path={ROUTES.MOVIE}>
+                           {token ? (
+                              <Player />
+                           ) : (
+                              <Redirect to={ROUTES.SIGN_IN} />
+                           )}
+                        </Route>
+                        <Route exact path={ROUTES.MY_LIST}>
+                           {token ? (
+                              <MyList />
+                           ) : (
+                              <Redirect to={ROUTES.SIGN_IN} />
+                           )}
+                        </Route>
+                        <Route exact path={ROUTES.VERIFY}>
+                           {token ? (
+                              !confirmed ? (
+                                 <UserVerification />
+                              ) : (
+                                 <NotFoundPage />
+                              )
+                           ) : (
+                              <Redirect to={ROUTES.SIGN_IN} />
+                           )}
+                        </Route>
+                        <Route component={NotFoundPage} />
+                     </Online>
                   </Switch>
                </Router>
             </SwitchContext.Provider>

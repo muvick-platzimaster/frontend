@@ -53,7 +53,7 @@ function NavContainer({ children, error404, background }: Props): JSX.Element {
                      </section>
                      <section className="Nav__Menu--dropdown" ref={ref}>
                         <Nav.Button onClick={() => setShowMenu(true)}>
-                           {t('nav:explore', 'Explore')}
+                           {t('nav:explore', 'Explore ')}
                         </Nav.Button>
                         {showMenu && (
                            <div className="dropdownContent">
